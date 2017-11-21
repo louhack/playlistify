@@ -1,0 +1,58 @@
+[
+    {
+        "idAlbumSputnik": "259560",
+        "artistName": "Gang of Youths",
+        "albumName": "Go Farther In Lightness",
+        "note": "4.4",
+        "releaseMonth": "August 2017",
+        "imagePath": "https://www.sputnikmusic.com/images/albums/259476.jpg"        
+    },
+    {
+        "idAlbumSputnik": "259551",
+        "artistName": "Brand New",
+        "albumName": "Science Fiction",
+        "note": "4.3",
+        "releaseMonth": "August 2017",
+        "imagePath": "https://www.sputnikmusic.com/images/albums/259476.jpg"        
+    },
+    {
+        "idAlbumSputnik": "257943",
+        "artistName": "Converge",
+        "albumName": "I Can Tell You About Pain",
+        "note": "4.0",
+        "releaseMonth": "August 2017",
+        "imagePath": "https://www.sputnikmusic.com/images/albums/259476.jpg"        
+    },
+    {
+        "idAlbumSputnik": "255466",
+        "artistName": "Cavalen",
+        "albumName": "Viva Adore",
+        "note": "4.0",
+        "releaseMonth": "August 2017",
+        "imagePath": "https://www.sputnikmusic.com/images/albums/259476.jpg"        
+    },
+    {
+        "idAlbumSputnik": "258691",
+        "artistName": "Down I Go",
+        "albumName": "Mortals",
+        "note": "4.0",
+        "releaseMonth": "August 2017",
+        "imagePath": "https://www.sputnikmusic.com/images/albums/259476.jpg"
+    },
+    {
+        "idAlbumSputnik": "256274",
+        "artistName": "Milo",
+        "albumName": "Who Told You To Think?!",
+        "note": "4.0",
+        "releaseMonth": "August 2017",
+        "imagePath": "https://www.sputnikmusic.com/images/albums/259476.jpg"
+    },
+    {
+        "idAlbumSputnik": "257775",
+        "artistName": "Get The Shot",
+        "albumName": "Infinite Punishment",
+        "note": "4.0",
+        "releaseMonth": "August 2017",
+        "imagePath": "https://www.sputnikmusic.com/images/albums/259476.jpg"        
+    }
+]
