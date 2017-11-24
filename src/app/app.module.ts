@@ -4,9 +4,10 @@ import { HttpModule } from '@angular/http';
 
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { AlbumListComponent } from './album/album-list/album-list.component';
+import { HeaderComponent } from './components/header/header.component';
+import { AlbumListComponent } from './components/album/album-list/album-list.component';
 import { AlbumService } from './services/album.service';
+import { SpotifyAuthService } from './services/spotify/spotify-auth.service';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { AlbumService } from './services/album.service';
     BrowserModule,
     HttpModule,
   ],
-  providers: [AlbumService],
+  providers: [AlbumService, SpotifyAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,10 +12,13 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin: auto;">
       <ul class="nav navbar-nav">
         <li role="presentation"><a href="/">Menu 1<span class="sr-only">(current)</span></a></li>
         <li role="presentation"><a href="/">Menu 2</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" >
+          <li><button class="btn btn-primary btn-green" (click)="onTest()">Login with Spotify</button></li>
       </ul>
 </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

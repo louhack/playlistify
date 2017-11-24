@@ -17,7 +17,7 @@ export class AlbumService {
 }
 
   fetchData() {
-    return this.http.get('assets/data/data.1.json')
+    return this.http.get('assets/data/data.2.json')
     .map((res: Response) => {
       const albums: Album[] = res.json();
       // for (let album of albums){
