@@ -1,4 +1,4 @@
-export class Album {
+export class AlbumSputnik {
     public artistName: string;
     public albumName: string;
     public idAlbumSputnik: string;

@@ -7,3 +7,18 @@
     font-size: 1.3em;
     margin-top: 4px;
 }
+
+.loggedin {
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+.nav > li {
+    display: flex;
+}
+
+.img-profile {
+    height: 44px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}

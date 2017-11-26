@@ -12,13 +12,19 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin: auto;">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li role="presentation"><a href="/">Menu 1<span class="sr-only">(current)</span></a></li>
+        <li role="presentation" routerLinkActive="active">
+          <a [routerLink]="['/sputnik']">Sputnik Music<span class="sr-only">(current)</span></a>
+        </li>
         <li role="presentation"><a href="/">Menu 2</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" >
-          <li><button class="btn btn-primary btn-green" (click)="onTest()">Login with Spotify</button></li>
+          <li *ngIf="!userService.isLoggedIn"><button class="btn btn-primary btn-green" (click)="onLogin()">Login with Spotify</button></li>
+          <li *ngIf="userService.isLoggedIn">
+                  <img [src]="user.images[0].url" alt="user img" class="img-circle img-profile">
+                  <p class="loggedin">You are logged in as {{ user.display_name }}</p>
+          </li>
       </ul>
 </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

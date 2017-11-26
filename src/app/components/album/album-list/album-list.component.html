@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
     <ul class="nav nav-pills">
-      <li role="presentation" class="active"><a href="#">Sputnik Music</a></li>
-      <li role="presentation"><a href="#">Last fm</a></li>
-      <li role="presentation"><a href="#">Messages</a></li>
+      <li role="presentation" class="active"><a href="#">New Releases</a></li>
+      <li role="presentation"><a href="#">Other</a></li>
+      <li role="presentation"><a href="#">Misc</a></li>
     </ul>
   </div>
   <hr>
   <div class="row">
-    <div class="col-sm-6 col-md-4" *ngFor="let album of albumsList">
+    <div class="col-sm-6 col-md-4" *ngFor="let album of albumsList; let i = index">
           <div class="thumbnail">
               <img id="AlbumCover" [src]="album.imagePath" [alt]="album.albumName">
               <div class="caption">
@@ -17,7 +17,7 @@
                 <p>Sputnik mark: {{ album.note }}</p>
                 <p>Release Date : {{ album.releaseMonth }}</p>
                 <p>ID Sputnik Music: {{ album.idAlbumSputnik }}</p>
-                <p><a href="#" class="btn btn-primary" role="button">Add to playlist</a></p>
+                <p><button class="btn btn-primary" role="button" (click)="addToPlaylist(i)" [disabled]="!userService.isLoggedIn">Add to playlist</button></p>
               </div>
           </div>
     </div>

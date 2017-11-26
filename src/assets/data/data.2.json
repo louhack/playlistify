@@ -3,17 +3,17 @@
         "idAlbumSputnik": "262637",
         "artistName": "Iron Maiden",
         "albumName": "The Book of Souls: Live Chapter",
-        "note": "4.2",
+        "note": "4.1",
         "releaseMonth": "November 2017",
         "imagePath": "http://www.sputnikmusic.com/images/albums/262637.jpg"
     },
     {
-        "idAlbumSputnik": "268511",
-        "artistName": "Ghost Atlas",
-        "album": "All Is In Sync, and There's Nothing Left to Sing",
+        "idAlbumSputnik": "267112",
+        "artistName": "Count to Altek",
+        "albumName": "She Will Fly With You Forever",
         "note": "4.1",
         "releaseMonth": "November 2017",
-        "imagePath": "http://www.sputnikmusic.com/images/albums/268511.jpg"
+        "imagePath": "http://www.sputnikmusic.com/images/albums/267112.jpg"
     },
     {
         "idAlbumSputnik": "267217",
@@ -24,10 +24,18 @@
         "imagePath": "http://www.sputnikmusic.com/images/albums/267217.jpg"
     },
     {
+        "idAlbumSputnik": "268511",
+        "artistName": "Ghost Atlas",
+        "albumName": "All Is In Sync, and There's Nothing Left to Sing",
+        "note": "4.0",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/268511.jpg"
+    },
+    {
         "idAlbumSputnik": "265728",
         "artistName": "Desolate Shrine",
-        "album": "Deliverance From The Godless Void",
-        "note": "4.1",
+        "albumName": "Deliverance From The Godless Void",
+        "note": "4.0",
         "releaseMonth": "November 2017",
         "imagePath": "http://www.sputnikmusic.com/images/albums/265728.jpg"
     },
@@ -40,14 +48,6 @@
         "imagePath": "http://www.sputnikmusic.com/images/albums/268271.jpg"
     },
     {
-        "idAlbumSputnik": "267112",
-        "artistName": "Count to Altek",
-        "album": "She Will Fly With You Forever",
-        "note": "4.0",
-        "releaseMonth": "November 2017",
-        "imagePath": "http://www.sputnikmusic.com/images/albums/267112.jpg"
-    },
-    {
         "idAlbumSputnik": "259476",
         "artistName": "Converge",
         "albumName": "The Dusk in Us",
@@ -58,8 +58,8 @@
     {
         "idAlbumSputnik": "263544",
         "artistName": "Godflesh",
-        "album": "Post Self",
-        "note": "3.9",
+        "albumName": "Post Self",
+        "note": "4.0",
         "releaseMonth": "November 2017",
         "imagePath": "http://www.sputnikmusic.com/images/albums/263544.jpg"
     },
@@ -72,12 +72,28 @@
         "imagePath": "http://www.sputnikmusic.com/images/albums/267138.jpg"
     },
     {
+        "idAlbumSputnik": "267426",
+        "artistName": "Thantifaxath",
+        "albumName": "Void Masquerading as Matter",
+        "note": "3.9",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/267426.jpg"
+    },
+    {
         "idAlbumSputnik": "268585",
         "artistName": "Gleemer",
-        "album": "Anymore",
+        "albumName": "Anymore",
         "note": "3.9",
         "releaseMonth": "November 2017",
         "imagePath": "http://www.sputnikmusic.com/images/albums/268585.jpg"
+    },
+    {
+        "idAlbumSputnik": "268445",
+        "artistName": "Black Sabbath",
+        "albumName": "The End (Live)",
+        "note": "3.9",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/268445.jpg"
     },
     {
         "idAlbumSputnik": "259177",
@@ -90,7 +106,7 @@
     {
         "idAlbumSputnik": "267462",
         "artistName": "James Holden and The Animal Spirits",
-        "album": "The Animal Spirits",
+        "albumName": "The Animal Spirits",
         "note": "3.9",
         "releaseMonth": "November 2017",
         "imagePath": "http://www.sputnikmusic.com/images/albums/267462.jpg"
@@ -106,23 +122,15 @@
     {
         "idAlbumSputnik": "260494",
         "artistName": "Moonspell",
-        "album": "1755",
+        "albumName": "1755",
         "note": "3.9",
         "releaseMonth": "November 2017",
         "imagePath": "http://www.sputnikmusic.com/images/albums/260494.jpg"
     },
     {
-        "idAlbumSputnik": "268853",
-        "artistName": "Krallice",
-        "albumName": "Go Be Forgotten",
-        "note": "3.9",
-        "releaseMonth": "November 2017",
-        "imagePath": "http://www.sputnikmusic.com/images/albums/268853.jpg"
-    },
-    {
         "idAlbumSputnik": "264506",
         "artistName": "Adimiron",
-        "album": "Et Liber Eris",
+        "albumName": "Et Liber Eris",
         "note": "3.9",
         "releaseMonth": "November 2017",
         "imagePath": "http://www.sputnikmusic.com/images/albums/264506.jpg"
@@ -136,19 +144,211 @@
         "imagePath": "http://www.sputnikmusic.com/images/albums/262852.jpg"
     },
     {
-        "idAlbumSputnik": "265779",
-        "artistName": "YLVA",
-        "album": "M E T A",
+        "idAlbumSputnik": "263047",
+        "artistName": "Cavalera Conspiracy",
+        "albumName": "Psychosis",
         "note": "3.8",
         "releaseMonth": "November 2017",
-        "imagePath": "http://www.sputnikmusic.com/images/albums/265779.jpg"
+        "imagePath": "http://www.sputnikmusic.com/images/albums/263047.jpg"
+    },
+    {
+        "idAlbumSputnik": "268853",
+        "artistName": "Krallice",
+        "albumName": "Go Be Forgotten",
+        "note": "3.8",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/268853.jpg"
+    },
+    {
+        "idAlbumSputnik": "259944",
+        "artistName": "Quicksand",
+        "albumName": "Interiors",
+        "note": "3.8",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/259944.jpg"
+    },
+    {
+        "idAlbumSputnik": "267049",
+        "artistName": "Polaris (AUS)",
+        "albumName": "The Mortal Coil",
+        "note": "3.8",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/267049.jpg"
+    },
+    {
+        "idAlbumSputnik": "266090",
+        "artistName": "Charlotte Gainsbourg",
+        "albumName": "Rest",
+        "note": "3.8",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/266090.jpg"
+    },
+    {
+        "idAlbumSputnik": "266919",
+        "artistName": "Bjork",
+        "albumName": "Utopia",
+        "note": "3.8",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/266919.jpg"
+    },
+    {
+        "idAlbumSputnik": "268069",
+        "artistName": "Langhorne Slim",
+        "albumName": "Lost At Last, Vol 1",
+        "note": "3.8",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/268069.jpg"
+    },
+    {
+        "idAlbumSputnik": "268584",
+        "artistName": "Chaos Moon",
+        "albumName": "Eschaton MÃ©moire",
+        "note": "3.8",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/268584.jpg"
+    },
+    {
+        "idAlbumSputnik": "262223",
+        "artistName": "Zao",
+        "albumName": "Pyrrhic Victory",
+        "note": "3.7",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/262223.jpg"
+    },
+    {
+        "idAlbumSputnik": "261299",
+        "artistName": "Cannibal Corpse",
+        "albumName": "Red Before Black",
+        "note": "3.7",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/261299.jpg"
+    },
+    {
+        "idAlbumSputnik": "258990",
+        "artistName": "The Body and Full Of Hell",
+        "albumName": "Ascending a Mountain of Heavy Light",
+        "note": "3.7",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/258990.jpg"
+    },
+    {
+        "idAlbumSputnik": "263628",
+        "artistName": "Noel Gallagher's High Flying Birds",
+        "albumName": "Who Built the Moon?",
+        "note": "3.7",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/263628.jpg"
+    },
+    {
+        "idAlbumSputnik": "267219",
+        "artistName": "Scour",
+        "albumName": "Red",
+        "note": "3.7",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/267219.jpg"
+    },
+    {
+        "idAlbumSputnik": "267963",
+        "artistName": "Gatecreeper",
+        "albumName": "Sweltering Madness",
+        "note": "3.7",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/267963.jpg"
+    },
+    {
+        "idAlbumSputnik": "260562",
+        "artistName": "Dan Terminus",
+        "albumName": "Automated Refrains",
+        "note": "3.7",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/260562.jpg"
+    },
+    {
+        "idAlbumSputnik": "267004",
+        "artistName": "Yaeji",
+        "albumName": "EP2",
+        "note": "3.7",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/267004.jpg"
+    },
+    {
+        "idAlbumSputnik": "261338",
+        "artistName": "Entheos (USA)",
+        "albumName": "Dark Future",
+        "note": "3.7",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/261338.jpg"
+    },
+    {
+        "idAlbumSputnik": "267024",
+        "artistName": "Bibio",
+        "albumName": "Phantom Brickworks",
+        "note": "3.7",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/267024.jpg"
     },
     {
         "idAlbumSputnik": "267591",
         "artistName": "Armand Hammer",
         "albumName": "Rome",
-        "note": "3.8",
+        "note": "3.7",
         "releaseMonth": "November 2017",
         "imagePath": "http://www.sputnikmusic.com/images/albums/267591.jpg"
+    },
+    {
+        "idAlbumSputnik": "265779",
+        "artistName": "YLVA",
+        "albumName": "M E T A",
+        "note": "3.6",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/265779.jpg"
+    },
+    {
+        "idAlbumSputnik": "263071",
+        "artistName": "Threat Signal",
+        "albumName": "Disconnect",
+        "note": "3.6",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/263071.jpg"
+    },
+    {
+        "idAlbumSputnik": "265665",
+        "artistName": "Speak the Truth... Even if Your Voice Shakes",
+        "albumName": "Everyone You Love Will Slip Away From You",
+        "note": "3.6",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/265665.jpg"
+    },
+    {
+        "idAlbumSputnik": "268091",
+        "artistName": "Phinehas",
+        "albumName": "Dark Flag",
+        "note": "3.6",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/268091.jpg"
+    },
+    {
+        "idAlbumSputnik": "267338",
+        "artistName": "Aosoth",
+        "albumName": "V: The Inside Scriptures",
+        "note": "3.6",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/267338.jpg"
+    },
+    {
+        "idAlbumSputnik": "268021",
+        "artistName": "Ulver",
+        "albumName": "Sic Transit Gloria Mundi",
+        "note": "3.6",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/268021.jpg"
+    },
+    {
+        "idAlbumSputnik": "268522",
+        "artistName": "Tame Impala",
+        "albumName": "Currents B-Sides & Remixes",
+        "note": "3.5",
+        "releaseMonth": "November 2017",
+        "imagePath": "http://www.sputnikmusic.com/images/albums/268522.jpg"
     }
 ]

@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
-import { TokenInterface } from './tokenInterface';
+import { TokenInterface } from '../../interfaces/tokenInterface';
+import { Http, RequestOptionsArgs, Headers } from '@angular/http';
+import { Router } from '@angular/router';
+import { UserService } from './user.service';
+
 
 @Injectable()
 export class SpotifyAuthService {
+
     public authenticationTokenKey = 'authenticationTokenKey';
     public authenticationTokenTypeKey = 'authenticationTokenTypeKey';
 
@@ -16,16 +21,20 @@ export class SpotifyAuthService {
         }
       };
 
+      constructor(private userService: UserService) {
+      }
+
     private createRedirectUri(redirectUri: string): string {
         return window.location.origin + redirectUri;
     }
     private createSpotifyAuthenticationUrl(): string {
         const spotifyConfig = this.authentication.spotify;
+        // tslint:disable-next-line:max-line-length
         return `${spotifyConfig.authenticationUrl}?client_id=${spotifyConfig.clientId}&redirect_uri=${this.createRedirectUri(spotifyConfig.redirectUri)}&response_type=${spotifyConfig.responseType}&scope=${encodeURIComponent(spotifyConfig.scopes)}`;
     }
 
     public authenticateUsingSpotify() {
-        window.location.href = this.createSpotifyAuthenticationUrl();
+       window.location.href = this.createSpotifyAuthenticationUrl();
     }
 
     public onAuthenticationSuccess({expires_in, access_token, token_type}: TokenInterface) {
@@ -40,17 +49,7 @@ export class SpotifyAuthService {
     public clearAuthenticationDetails() {
         window.sessionStorage.removeItem(this.authenticationTokenKey);
         window.sessionStorage.removeItem(this.authenticationTokenTypeKey);
+        this.userService.isLoggedIn = false;
     }
 
 }
-
-
-
-
-// http://localhost:4200/login#
-
-// access_token=BQDF_jLJz8Vl4ZcM-vZTpTkOKTR6woHj6yr3LELCtsW1NLsx9MsHTvWttOQG6M0gLkH_gmEiAvL_A_Vbm-lZEN38BWNcsbuvjd6EQBNsX4_ONF_eiy-MbZ1SJT5JFeGEgY8qyJkP9_4wiRuJ4_P5b1HkiDpODDPq7BO3wAHktfVirApshmEQmdQiZGeVE1vYME4zkEMzp5-FThtpnXiQumDuaXAlU_hN2j9YzcaXZ5pXy7eCbg
-
-// &token_type=Bearer
-
-// &expires_in=3600

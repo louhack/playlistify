@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyAuthService } from '../../services/spotify/spotify-auth.service';
+import { UserService } from '../../services/spotify/user.service';
+import { User } from '../../models/user.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -8,12 +11,27 @@ import { SpotifyAuthService } from '../../services/spotify/spotify-auth.service'
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService: SpotifyAuthService) { }
+  user: User;
+  userSubscription: Subscription;
+
+
+  constructor(private authService: SpotifyAuthService,
+    private userService: UserService) { }
 
   ngOnInit() {
-  }
 
-  onTest() {
+    this.userSubscription = this.userService.userChanged.subscribe(
+      (user: User) => {
+        this.user = user;
+        // console.log(this.user);
+      });
+
+      // if (this.userService.isLoggedIn) {
+      //     this.userService.getUserProfilFromSpotify();
+      // }
+    }
+
+  onLogin() {
     this.authService.authenticateUsingSpotify();
   }
 }

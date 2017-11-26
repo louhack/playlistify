@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AlbumService } from '../../../services/album.service';
-import { Album } from '../../../models/album.model';
+import { AlbumSputnik } from '../../../models/albumSputnik.model';
 import { Subscription } from 'rxjs/Subscription';
 import { Http } from '@angular/http';
 import { SpotifyAuthService } from '../../../services/spotify/spotify-auth.service';
+import { UserService } from '../../../services/spotify/user.service';
+import { AlbumSputnikService } from '../../../services/albumSputnik.service';
 
 @Component({
   selector: 'app-album-list',
@@ -12,20 +13,24 @@ import { SpotifyAuthService } from '../../../services/spotify/spotify-auth.servi
 })
 export class AlbumListComponent implements OnInit {
 
-  albumsList: Album[] = [];
+  albumsList: AlbumSputnik[] = [];
   albumsSubcription: Subscription;
 
 
-  constructor(private albumsService: AlbumService) { }
+  constructor(private albumsService: AlbumSputnikService, private userService: UserService) { }
 
   ngOnInit() {
     this.albumsList = this.albumsService.getAlbums();
 
      this.albumsSubcription = this.albumsService.albumsChanged.subscribe(
-      (albums: Album[]) => {
+      (albums: AlbumSputnik[]) => {
         this.albumsList = albums;
-        // console.log(JSON.stringify(this.albumsList));
      });
+    }
+
+
+    addToPlaylist(index: number) {
+      console.log(this.albumsList[index]);
     }
 
 
