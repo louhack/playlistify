@@ -12,7 +12,7 @@ import { UserService } from '../../services/spotify/user.service';
 export class LoginComponent implements OnInit {
 
   constructor(private authService: SpotifyAuthService,
-      private userService: UserService,
+    private userService: UserService,
       private router: Router,
       private route: ActivatedRoute
     ) {
@@ -20,7 +20,12 @@ export class LoginComponent implements OnInit {
 
         if (params.access_token) {
           this.authService.storeAuthenticationDetails(params.access_token, params.token_type);
-          this.userService.getUserProfilFromSpotify();
+          this.userService.getUserProfilFromSpotify().then(
+            res => {
+              console.log('Promise ' + res);
+              this.userService.getUserPlaylistFromSpotify();
+            }
+          );
           this.router.navigate(['/']);
 
         } else {

@@ -5,6 +5,8 @@ import { Http } from '@angular/http';
 import { SpotifyAuthService } from '../../../services/spotify/spotify-auth.service';
 import { UserService } from '../../../services/spotify/user.service';
 import { AlbumSputnikService } from '../../../services/albumSputnik.service';
+import { SpotifyPlaylist } from '../../../models/spotifyPlaylist.model';
+import { Event } from '@angular/router/src/events';
 
 @Component({
   selector: 'app-album-list',
@@ -14,7 +16,10 @@ import { AlbumSputnikService } from '../../../services/albumSputnik.service';
 export class AlbumListComponent implements OnInit {
 
   albumsList: AlbumSputnik[] = [];
-  albumsSubcription: Subscription;
+  albumsSubscription: Subscription;
+
+  playlists: SpotifyPlaylist[] = [];
+  playlistsSubscription: Subscription;
 
 
   constructor(private albumsService: AlbumSputnikService, private userService: UserService) { }
@@ -22,17 +27,29 @@ export class AlbumListComponent implements OnInit {
   ngOnInit() {
     this.albumsList = this.albumsService.getAlbums();
 
-     this.albumsSubcription = this.albumsService.albumsChanged.subscribe(
+     this.albumsSubscription = this.albumsService.albumsChanged.subscribe(
       (albums: AlbumSputnik[]) => {
         this.albumsList = albums;
      });
-    }
+
+     this.playlists = this.userService.getPlaylists();
+
+     this.playlistsSubscription = this.userService.playlistsChanged.subscribe(
+       (playlists: SpotifyPlaylist[]) => {
+         this.playlists = playlists;
+       }
+     );
+  }
 
 
     addToPlaylist(index: number) {
       console.log(this.albumsList[index]);
     }
 
+    onPlaylistChange(id: string) {
+      console.log(JSON.stringify(id));
+
+    }
 
 }
 

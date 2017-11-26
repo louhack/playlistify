@@ -3,13 +3,12 @@ import { TokenInterface } from '../../interfaces/tokenInterface';
 import { Http, RequestOptionsArgs, Headers } from '@angular/http';
 import { Router } from '@angular/router';
 import { UserService } from './user.service';
+import { User } from '../../models/user.model';
+import { SpotifyEndPoints } from './spotifyApiEndpoints';
 
 
 @Injectable()
 export class SpotifyAuthService {
-
-    public authenticationTokenKey = 'authenticationTokenKey';
-    public authenticationTokenTypeKey = 'authenticationTokenTypeKey';
 
     authentication = {
         spotify: {
@@ -21,7 +20,7 @@ export class SpotifyAuthService {
         }
       };
 
-      constructor(private userService: UserService) {
+      constructor(private userService: UserService, private spotifyEndPoints: SpotifyEndPoints, private http: Http) {
       }
 
     private createRedirectUri(redirectUri: string): string {
@@ -42,13 +41,13 @@ export class SpotifyAuthService {
     }
 
     public storeAuthenticationDetails(accessToken: string, tokenType: string) {
-        window.sessionStorage.setItem(this.authenticationTokenKey, accessToken);
-        window.sessionStorage.setItem(this.authenticationTokenTypeKey, tokenType);
+        window.sessionStorage.setItem(this.spotifyEndPoints.authenticationTokenKey, accessToken);
+        window.sessionStorage.setItem(this.spotifyEndPoints.authenticationTokenTypeKey, tokenType);
     }
 
     public clearAuthenticationDetails() {
-        window.sessionStorage.removeItem(this.authenticationTokenKey);
-        window.sessionStorage.removeItem(this.authenticationTokenTypeKey);
+        window.sessionStorage.removeItem(this.spotifyEndPoints.authenticationTokenKey);
+        window.sessionStorage.removeItem(this.spotifyEndPoints.authenticationTokenTypeKey);
         this.userService.isLoggedIn = false;
     }
 
