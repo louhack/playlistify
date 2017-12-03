@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SpotifyAuthService } from '../../services/spotify/spotify-auth.service';
 import { UserService } from '../../services/spotify/user.service';
 import { User } from '../../models/user.model';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-header',
