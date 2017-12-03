@@ -25,10 +25,6 @@ export class HeaderComponent implements OnInit {
         this.user = user;
         // console.log(this.user);
       });
-
-      // if (this.userService.isLoggedIn) {
-      //     this.userService.getUserProfilFromSpotify();
-      // }
     }
 
   onLogin() {

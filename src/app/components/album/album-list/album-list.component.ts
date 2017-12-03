@@ -7,6 +7,8 @@ import { UserService } from '../../../services/spotify/user.service';
 import { AlbumSputnikService } from '../../../services/albumSputnik.service';
 import { SpotifyPlaylist } from '../../../models/spotifyPlaylist.model';
 import { Event } from '@angular/router/src/events';
+import { SpotifyApiService } from '../../../services/spotify/spotifyApi.service';
+import { AlbumSpotify } from '../../../interfaces/albumSpotifyInterface';
 
 @Component({
   selector: 'app-album-list',
@@ -22,7 +24,7 @@ export class AlbumListComponent implements OnInit {
   playlistsSubscription: Subscription;
 
 
-  constructor(private albumsService: AlbumSputnikService, private userService: UserService) { }
+  constructor(private albumsService: AlbumSputnikService, private userService: UserService, private spotifyApiService: SpotifyApiService) { }
 
   ngOnInit() {
     this.albumsList = this.albumsService.getAlbums();
@@ -43,7 +45,16 @@ export class AlbumListComponent implements OnInit {
 
 
     addToPlaylist(index: number) {
-      console.log(this.albumsList[index]);
+      this.spotifyApiService.searchItem(this.albumsList[index].albumName, 'album')
+        .subscribe(
+          (albumList: AlbumSpotify[]) => {
+            if (albumList.length > 0) {
+              console.log(albumList);
+            } else {
+              console.log('No Album found');
+            }
+
+          });
     }
 
     onPlaylistChange(id: string) {

@@ -37,18 +37,26 @@ export class SpotifyAuthService {
     }
 
     public onAuthenticationSuccess({expires_in, access_token, token_type}: TokenInterface) {
-        this.storeAuthenticationDetails(access_token, token_type);
+        this.storeToken(access_token, token_type);
     }
 
-    public storeAuthenticationDetails(accessToken: string, tokenType: string) {
+    public storeToken(accessToken: string, tokenType: string) {
         window.sessionStorage.setItem(this.spotifyEndPoints.authenticationTokenKey, accessToken);
         window.sessionStorage.setItem(this.spotifyEndPoints.authenticationTokenTypeKey, tokenType);
     }
 
-    public clearAuthenticationDetails() {
+    public clearToken() {
         window.sessionStorage.removeItem(this.spotifyEndPoints.authenticationTokenKey);
         window.sessionStorage.removeItem(this.spotifyEndPoints.authenticationTokenTypeKey);
         this.userService.isLoggedIn = false;
+    }
+
+    public getToken(): TokenInterface {
+        const access_token = window.sessionStorage.getItem(this.spotifyEndPoints.authenticationTokenKey);
+        const token_type = window.sessionStorage.getItem(this.spotifyEndPoints.authenticationTokenTypeKey);
+        const expires_in = '';
+
+        return {access_token, token_type, expires_in};
     }
 
 }

@@ -12,6 +12,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { UserService } from './services/spotify/user.service';
 import { SpotifyEndPoints } from './services/spotify/spotifyApiEndpoints';
 import { AlbumSputnikService } from './services/albumSputnik.service';
+import { SpotifyApiService } from './services/spotify/spotifyApi.service';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { AlbumSputnikService } from './services/albumSputnik.service';
     SpotifyAuthService,
     UserService,
     SpotifyEndPoints,
+    SpotifyApiService,
   ],
   bootstrap: [AppComponent]
 })

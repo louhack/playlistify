@@ -46,7 +46,6 @@ export class UserService {
                 this.http.get(this.spotifyEndPoints.currentUserProfileEndPoint, this.spotifyEndPoints.createRequestOptions()).subscribe(
                     (response: any) => {
                                 const res = response.json();
-                                // console.log('res' + JSON.stringify(res.display_name));
                                 this.setUser(new User(res.display_name, res.id, res.images));
                                 this.userChanged.next(this.getUser());
                                 resolve(true);
@@ -60,21 +59,13 @@ export class UserService {
         this.http.get(this.spotifyEndPoints.currentUserPlaylistsEndPoint, this.spotifyEndPoints.createRequestOptions()).subscribe(
             (response: any) => {
                 const res = response.json();
-                // console.log('res' + JSON.stringify(res.items));
                 this.setPlaylists(res.items);
-                // this.userChanged.next(this.getUser());
+
             });
     }
 
     setPlaylists(playlistsResponse: SpotifyPlaylist[]) {
-        // console.log(playlistsResponse);
         this.playlists = playlistsResponse;
         this.playlistsChanged.next(this.playlists);
-        // console.log(this.playlists);
-        // for (const playlist of playlistsResponse) {
-            // this.playlists.push(playlist);
-            // console.log(playlist);
-        // }
-        // console.log(JSON.stringify(this.playlists));
     }
 }

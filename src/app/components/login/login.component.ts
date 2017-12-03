@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
         const params = QueryString.parse(route.snapshot.fragment);
 
         if (params.access_token) {
-          this.authService.storeAuthenticationDetails(params.access_token, params.token_type);
+          this.authService.storeToken(params.access_token, params.token_type);
           this.userService.getUserProfilFromSpotify().then(
             res => {
               console.log('Promise ' + res);
