@@ -48,18 +48,22 @@ export class AlbumListComponent implements OnInit {
       this.spotifyApiService.searchItem(this.albumsList[index].albumName, 'album')
         .subscribe(
           (albumList: AlbumSpotify[]) => {
-            if (albumList.length > 0) {
               console.log(albumList);
-            } else {
-              console.log('No Album found');
-            }
+              this.albumsList[index].spotifySearchResults = albumList;
+              this.albumsList[index].searchedOnSpotify = true;
 
+              // Add to selected playlist if one result
+              // if more than 1 : display a button to choose the right one
           });
     }
 
     onPlaylistChange(id: string) {
       console.log(JSON.stringify(id));
 
+    }
+
+    onChoose(index: number) {
+      console.log(this.albumsList[index]);
     }
 
 }

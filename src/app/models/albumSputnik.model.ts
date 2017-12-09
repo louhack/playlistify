@@ -1,3 +1,5 @@
+import { AlbumSpotify } from '../interfaces/albumSpotifyInterface';
+
 export class AlbumSputnik {
     public artistName: string;
     public albumName: string;
@@ -5,6 +7,9 @@ export class AlbumSputnik {
     public imagePath: string;
     public note: number;
     public releaseMonth: string;
+
+    public spotifySearchResults: AlbumSpotify[];
+    public searchedOnSpotify = false;
 
     // "album_id_sputnik_music": "259560",
     // "artiste": "Gang of Youths",

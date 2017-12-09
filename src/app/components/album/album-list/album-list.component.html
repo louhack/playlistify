@@ -25,7 +25,16 @@
                 <p>Sputnik mark: {{ album.note }}</p>
                 <p>Release Date : {{ album.releaseMonth }}</p>
                 <p>ID Sputnik Music: {{ album.idAlbumSputnik }}</p>
-                <p><button class="btn btn-primary" role="button" (click)="addToPlaylist(i)" [disabled]="!userService.isLoggedIn">Add to playlist</button></p>
+                <p><button  class="btn btn-primary" 
+                            role="button"  
+                            (click)="addToPlaylist(i)" 
+                            [disabled]="!userService.isLoggedIn">Add to playlist</button>
+                   <span *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length === 0"> No result found</span>
+                </p>
+                <ng-container *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length > 1">
+                  <p>{{ album.spotifySearchResults.length }} results found!</p>
+                  <button class="btn btn-primary" (click)="onChoose(i)">Select Record</button>
+                </ng-container>              
               </div>
           </div>
     </div>
