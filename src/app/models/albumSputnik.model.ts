@@ -1,6 +1,7 @@
 import { AlbumSpotify } from '../interfaces/albumSpotifyInterface';
 
 export class AlbumSputnik {
+    public _id: string;
     public artistName: string;
     public albumName: string;
     public idAlbumSputnik: string;
@@ -18,7 +19,8 @@ export class AlbumSputnik {
     // "release_month": "August 2017"
 
 
-    constructor(artistName: string, albumName: string, idAlbumSputnik: string,                     imagePath: string, note: number, releaseMonth: string ) {
+    constructor(_id: string, artistName: string, albumName: string, idAlbumSputnik: string,                     imagePath: string, note: number, releaseMonth: string ) {
+        this._id = _id;
         this.artistName = artistName;
         this.albumName = albumName;
         this.idAlbumSputnik = idAlbumSputnik;

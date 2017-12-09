@@ -12,15 +12,17 @@ export class AlbumSputnikService {
   private albumList: AlbumSputnik[] = [];
   albumsChanged = new Subject<AlbumSputnik[]>();
 
+  api_url = 'http://localhost:3000';
+  albumUrl = `${this.api_url}/api/albums`;
 
   constructor(private http: Http) {
     this.fetchData();
 }
 
   fetchData() {
-    return this.http.get('assets/data/data.2.json')
+    return this.http.get(this.albumUrl)
     .map((res: Response) => {
-      const albums: AlbumSputnik[] = res.json();
+      const albums: AlbumSputnik[] = res.json().data.docs;
       return albums;
     })
     .subscribe((data: AlbumSputnik[]) => {
