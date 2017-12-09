@@ -9,13 +9,31 @@ var bluebird = require('bluebird');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+var seedDB = require('./seeds/data');
+
 var app = express();
 
+//populate DB
+// seedDB();
+
+// MongoDB Connection
 var mongoose = require('mongoose');
 mongoose.Promise = bluebird;
 mongoose.connect('mongodb://127.0.0.1:27017/playlistifyApp', { useMongoClient: true})
       .then(()=> { console.log(`Succesfully Connected to the Mongodb Database at URL : mongodb://127.0.0.1:27017/playlistifyApp`)})
       .catch(()=> { console.log(`Error Connecting to the Mongodb Database at URL : mongodb://127.0.0.1:27017/playlistifyApp`)});
+
+
+
+
+      
+// CORS CONFIGURATION
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
