@@ -9,7 +9,9 @@ var bluebird = require('bluebird');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
-var seedDB = require('./seeds/data');
+var api = require('./routes/api.route')
+
+// var seedDB = require('./seeds/data');
 
 var app = express();
 
@@ -22,8 +24,6 @@ mongoose.Promise = bluebird;
 mongoose.connect('mongodb://127.0.0.1:27017/playlistifyApp', { useMongoClient: true})
       .then(()=> { console.log(`Succesfully Connected to the Mongodb Database at URL : mongodb://127.0.0.1:27017/playlistifyApp`)})
       .catch(()=> { console.log(`Error Connecting to the Mongodb Database at URL : mongodb://127.0.0.1:27017/playlistifyApp`)});
-
-
 
 
       
@@ -49,6 +49,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
