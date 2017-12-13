@@ -5,11 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var bluebird = require('bluebird');
-
+var passport = require('passport');
 var index = require('./routes/index');
 var users = require('./routes/users');
+var session = require('express-session');
 
-var api = require('./routes/api.route')
+var api = require('./routes/api.route');
 
 // var seedDB = require('./seeds/data');
 
@@ -46,11 +47,136 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', index);
+app.use(express.static(path.join(__dirname, '../dist')));
+// app.use('/', index);
+app.use('/api', api);
 app.use('/users', users);
 
-app.use('/api', api);
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}))
+
+
+
+// Passport Spotify configuration
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
+const SpotifyStrategy = require('passport-spotify').Strategy;
+
+passport.use(new SpotifyStrategy({
+    clientID: '3ec89e264ee040a1af30921007fbc1c4',
+    clientSecret: '535992b925044cfca2ad2922fac25489',
+    callbackURL: "http://localhost:3000/auth/spotify/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    // var User = mongoose.model('users')
+    // var email = profile.emails[0].value
+
+    // User.findOne({
+    //   email: email
+    // }, function (err, user) {
+    //   if (err) {
+    //     debug('passport: Error ' + err)
+    //     return done(err)
+    //   }
+    //   if (!user) {
+    //     User.create({
+    //       email: email,
+    //       password: uuid.v4(),
+    //       oauth: 'google',
+    //       profile: {
+    //         name: profile.displayName
+    //       }
+    //     }, function (err, user) {
+    //       return done(err, user)
+    //     })
+    //   } else {
+    //     return done(err, user)
+    //   }
+    // })
+    
+    
+    
+    // console.log(profile);
+    // console.log(accessToken);
+    // User.findOrCreate({ spotifyId: profile.id }, function (err, user) {
+    //   return done(err, user);
+    // });
+
+    //profile.accessToken = accessToken;
+    
+    // process.nextTick(function () {
+      // To keep the example simple, the user's spotify profile is returned to
+      // represent the logged-in user. In a typical application, you would want
+      // to associate the spotify account with a user record in your database,
+      // and return that user instead.
+      return done(null, profile);
+// });
+    // return done(null, profile);
+  }
+));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('/auth/spotify',
+passport.authenticate('spotify', {scopes: 'playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-top-read user-read-email user-read-private'}),
+function(req, res){
+  // The request will be redirected to spotify for authentication, so this
+  // function will not be called.
+});
+
+app.get('/auth/spotify/callback',
+passport.authenticate('spotify', { failureRedirect: '/error' }),
+function(req, res) {
+  // Successful authentication, redirect home.
+  // console.log('la req'); 
+  // console.log('\n');
+  console.log(req);
+  // console.log('\n');
+  // res.setHeader('x-auth-token', req.authInfo);
+  res.redirect('/login');
+});
+
+app.get('/auth/spotify/token', (req, res, next) => {
+  // console.log('User display');
+  // console.log(req);
+  // console.log(req.isAuthenticated());
+
+  // var user = req.user
+  // delete user['password']
+  // var token = jwt.sign({
+  //   _id: user._id
+  // }, settings.jwt.secret, settings.jwt.options) // good for two hours
+  // res.cookie('token', token)
+  // debug('end postSignup')
+  // res.json({
+  //   success: true,
+  //   authenticated: true,
+  //   user: {
+  //     profile: user.profile,
+  //     roles: user.roles,
+  //     gravatar: user.gravatar,
+  //     email: user.email,
+  //     _id: user._id
+  //   },
+  //   token: 'JWT ' + token
+
+});
+
+
+app.get('*', (req, res) => {
+  console.log(__dirname);
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

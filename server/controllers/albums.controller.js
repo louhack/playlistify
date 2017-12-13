@@ -19,7 +19,7 @@ exports.getAlbums = async function(req, res, next){
         
         // Return the albums list with the appropriate HTTP Status Code and Message.
         
-        return res.status(200).json({status: 200, data: albums, message: "Albums Succesfully Recieved"});
+        return res.status(200).json({status: 200, data: albums, message: "Albums Successfully Recieved"});
         
     }catch(e){
         

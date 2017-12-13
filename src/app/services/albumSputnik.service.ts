@@ -13,7 +13,7 @@ export class AlbumSputnikService {
   albumsChanged = new Subject<AlbumSputnik[]>();
 
   api_url = 'http://localhost:3000';
-  albumUrl = `${this.api_url}/api/albums`;
+  albumUrl = `/api/albums`;
 
   constructor(private http: Http) {
     this.fetchData();
