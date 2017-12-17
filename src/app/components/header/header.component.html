@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -20,11 +20,22 @@
         <li role="presentation"><a href="/">Menu 2</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" >
-          <li *ngIf="!userService.isLoggedIn"><button class="btn btn-primary btn-green" (click)="onLogin()">Login with Spotify</button></li>
+          <li *ngIf="!userService.isLoggedIn"><a class="btn btn-primary" id="btn-spotify-login" href="/auth/spotify" role="button">Login with Spotify</a></li>
           <li *ngIf="userService.isLoggedIn">
                   <img [src]="user.images[0].url" alt="user img" class="img-circle img-profile">
-                  <p class="loggedin">You are logged in as {{ user.display_name }}</p>
+                  <p class="loggedin">{{ user.display_name }}</p>
           </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <form  *ngIf="userService.isLoggedIn" class="navbar-form playlistList">
+            <div class="form-group">
+              <select name="playlist" (change)="onPlaylistChange($event.target.value)" class="playlistSelect">
+                  <ng-container *ngFor="let playlist of playlists; let i = index">
+                    <option [value]="playlists[i].id">{{ playlists[i].name }}</option>
+                  </ng-container>
+                </select>
+            </div>
+          </form>
       </ul>
 </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

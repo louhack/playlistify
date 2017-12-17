@@ -19,6 +19,7 @@ export class UserService {
 
     private playlists: SpotifyPlaylist[];
     playlistsChanged = new Subject<SpotifyPlaylist[]>();
+    private selectedPlaylistId: String;
 
     constructor(private http: Http,
         private spotifyEndPoints: SpotifyEndPoints) {}
@@ -67,5 +68,13 @@ export class UserService {
     setPlaylists(playlistsResponse: SpotifyPlaylist[]) {
         this.playlists = playlistsResponse;
         this.playlistsChanged.next(this.playlists);
+    }
+
+    setSelectedPlaylistId(playlistId: string) {
+        this.selectedPlaylistId = playlistId;
+    }
+
+    getSelectedPlaylistId() {
+        return this.selectedPlaylistId;
     }
 }

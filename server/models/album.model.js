@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var mongoosePaginate = require('mongoose-paginate');
 
-
 var AlbumSchema = new mongoose.Schema({
     artistName: String,
     albumName: String,
@@ -9,6 +8,7 @@ var AlbumSchema = new mongoose.Schema({
     imagePath: String,
     note: Number,
     releaseMonth: String,
+    spotidyId: String,
 });
 
 AlbumSchema.plugin(mongoosePaginate);

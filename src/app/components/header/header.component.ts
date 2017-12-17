@@ -3,6 +3,7 @@ import { SpotifyAuthService } from '../../services/spotify/spotify-auth.service'
 import { UserService } from '../../services/spotify/user.service';
 import { User } from '../../models/user.model';
 import { Subscription } from 'rxjs/Subscription';
+import { SpotifyPlaylist } from '../../models/spotifyPlaylist.model';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,9 @@ export class HeaderComponent implements OnInit {
 
   user: User;
   userSubscription: Subscription;
+
+  playlists: SpotifyPlaylist[] = [];
+  playlistsSubscription: Subscription;
 
 
   constructor(private authService: SpotifyAuthService,
@@ -25,9 +29,24 @@ export class HeaderComponent implements OnInit {
         this.user = user;
         // console.log(this.user);
       });
+
+      // this.playlists = this.userService.getPlaylists();
+
+      this.playlistsSubscription = this.userService.playlistsChanged.subscribe(
+        (playlists: SpotifyPlaylist[]) => {
+          this.playlists = playlists;
+          this.userService.setSelectedPlaylistId(this.playlists[0].id);
+        });
+
     }
 
   onLogin() {
     this.authService.authenticateUsingSpotify();
+  }
+
+  onPlaylistChange(id: string) {
+    console.log(JSON.stringify(id));
+    this.userService.setSelectedPlaylistId(id);
+
   }
 }

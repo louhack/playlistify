@@ -1,17 +1,5 @@
 <div class="container">
   <div class="row">
-    <p>Lien spotify</p>
-    <a href="/auth/spotify">Login to Spotify</a>
-  </div>
-  <div class="row" *ngIf="userService.isLoggedIn">
-    <select name="playlist" (change)="onPlaylistChange($event.target.value)">
-      <ng-container *ngFor="let playlist of playlists; let i = index">
-        <option [value]="playlists[i].id">{{ playlists[i].name }}</option>
-      </ng-container>
-    </select>
-    <hr>
-  </div>
-  <div class="row">
     <ul class="nav nav-pills">
       <li role="presentation" class="active"><a href="#">New Releases</a></li>
       <li role="presentation"><a href="#">Other</a></li>

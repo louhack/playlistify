@@ -20,7 +20,7 @@ export class SpotifyAuthService {
         }
       };
 
-      constructor(private userService: UserService, private spotifyEndPoints: SpotifyEndPoints, private http: Http) {
+      constructor(private userService: UserService, private spotifyEndPoints: SpotifyEndPoints, private http: Http, private router: Router) {
       }
 
     private createRedirectUri(redirectUri: string): string {
@@ -33,7 +33,8 @@ export class SpotifyAuthService {
     }
 
     public authenticateUsingSpotify() {
-       window.location.href = this.createSpotifyAuthenticationUrl();
+    //    window.location.href = this.createSpotifyAuthenticationUrl();
+        this.router.navigate(['/auth/spotify']);
     }
 
     public onAuthenticationSuccess({expires_in, access_token, token_type}: TokenInterface) {

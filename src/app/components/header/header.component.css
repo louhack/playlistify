@@ -1,9 +1,10 @@
-.btn-green {
+/* .btn-green { */
+#btn-spotify-login {
     color: #fff;
     background-color: #2ebd59;
     border-radius: 500px;
     border: none;
-    padding: 8px 30px 8px;
+    padding: 10px 30px 10px;
     font-size: 1.3em;
     margin-top: 4px;
 }
@@ -21,4 +22,12 @@
     height: 44px;
     margin-top: 3px;
     margin-bottom: 3px;
+}
+
+.playlistList{
+    margin-top: 12px;
+}
+
+.playlistSelect {
+    width: 250px;
 }

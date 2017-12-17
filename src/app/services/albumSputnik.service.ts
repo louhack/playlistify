@@ -4,6 +4,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
+import { AlbumSpotify } from '../interfaces/albumSpotifyInterface';
 
 
 @Injectable()
@@ -31,6 +32,14 @@ export class AlbumSputnikService {
     },
    (error) => console.log(error));
 
+  }
+
+  updateAlbum(album: AlbumSputnik): Promise<boolean> {
+    return new Promise(
+      resolve => {
+        resolve(true);
+      }
+     );
   }
 
   getAlbums() {

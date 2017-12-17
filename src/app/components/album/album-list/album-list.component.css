@@ -2,3 +2,11 @@
     height: 300px;
     width: 300px;
 }
+
+form .navbar-form{
+ padding-top: 5px;
+}
+
+.nav select {
+    width: 250px;
+}

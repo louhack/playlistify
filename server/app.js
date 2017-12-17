@@ -102,25 +102,8 @@ passport.use(new SpotifyStrategy({
     //     return done(err, user)
     //   }
     // })
-    
-    
-    
-    // console.log(profile);
-    // console.log(accessToken);
-    // User.findOrCreate({ spotifyId: profile.id }, function (err, user) {
-    //   return done(err, user);
-    // });
-
-    //profile.accessToken = accessToken;
-    
-    // process.nextTick(function () {
-      // To keep the example simple, the user's spotify profile is returned to
-      // represent the logged-in user. In a typical application, you would want
-      // to associate the spotify account with a user record in your database,
-      // and return that user instead.
+      profile.authToken = accessToken;
       return done(null, profile);
-// });
-    // return done(null, profile);
   }
 ));
 
@@ -137,20 +120,13 @@ function(req, res){
 app.get('/auth/spotify/callback',
 passport.authenticate('spotify', { failureRedirect: '/error' }),
 function(req, res) {
-  // Successful authentication, redirect home.
-  // console.log('la req'); 
-  // console.log('\n');
-  console.log(req);
-  // console.log('\n');
-  // res.setHeader('x-auth-token', req.authInfo);
   res.redirect('/login');
 });
 
 app.get('/auth/spotify/token', (req, res, next) => {
-  // console.log('User display');
-  // console.log(req);
-  // console.log(req.isAuthenticated());
-
+  // Request to db to find user and spotify token and update of response
+  console.log(req.user.authToken);
+  res.json(req.user);
   // var user = req.user
   // delete user['password']
   // var token = jwt.sign({

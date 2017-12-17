@@ -8,6 +8,7 @@ export class AlbumSputnik {
     public imagePath: string;
     public note: number;
     public releaseMonth: string;
+    public spotifyId: string;
 
     public spotifySearchResults: AlbumSpotify[];
     public searchedOnSpotify = false;
@@ -19,7 +20,7 @@ export class AlbumSputnik {
     // "release_month": "August 2017"
 
 
-    constructor(_id: string, artistName: string, albumName: string, idAlbumSputnik: string,                     imagePath: string, note: number, releaseMonth: string ) {
+    constructor(_id: string, artistName: string, albumName: string, idAlbumSputnik: string,                     imagePath: string, note: number, releaseMonth: string, spotifyId: string ) {
         this._id = _id;
         this.artistName = artistName;
         this.albumName = albumName;
@@ -27,5 +28,6 @@ export class AlbumSputnik {
         this.imagePath = imagePath;
         this.note = note;
         this.releaseMonth = releaseMonth;
+        this.spotifyId = spotifyId;
     }
 }
