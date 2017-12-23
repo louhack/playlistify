@@ -26,7 +26,7 @@ export class SpotifyApiService {
     }
 
     addAlbumToPlaylist(spotifyAlbumId: string, playlistId: string): any {
-        
+        console.log('adding album to playlist');
     }
 
     getTracksFromSpotify(spotifyAlbumId: string) {

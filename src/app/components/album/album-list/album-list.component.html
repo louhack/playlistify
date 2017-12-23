@@ -1,34 +1,38 @@
 <div class="container">
   <div class="row">
     <ul class="nav nav-pills">
-      <li role="presentation" class="active"><a href="#">New Releases</a></li>
-      <li role="presentation"><a href="#">Other</a></li>
-      <li role="presentation"><a href="#">Misc</a></li>
+      <li role="presentation" class="nav-item"><a class="nav-link active" href="#">New Releases</a></li>
+      <li role="presentation" class="nav-item"><a class="nav-link" href="#">Other</a></li>
+      <li role="presentation" class="nav-item"><a class="nav-link" href="#">Misc</a></li>
     </ul>
   </div>
   <hr>
   <div class="row">
-    <div class="col-sm-6 col-md-4" *ngFor="let album of albumsList; let i = index">
-          <div class="thumbnail">
-              <img id="AlbumCover" [src]="album.imagePath" [alt]="album.albumName">
-              <div class="caption">
-                <h3>Artist name: {{ album.artistName }}</h3>
-                <h4>Album name: {{ album.albumName }}</h4>
-                <p>Sputnik mark: {{ album.note }}</p>
-                <p>Release Date : {{ album.releaseMonth }}</p>
-                <p>ID Sputnik Music: {{ album.idAlbumSputnik }}</p>
-                <p><button  class="btn btn-primary" 
-                            role="button"  
-                            (click)="addToPlaylist(i)" 
-                            [disabled]="!userService.isLoggedIn">Add to playlist</button>
-                   <span *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length === 0"> No result found</span>
-                </p>
-                <ng-container *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length > 1">
-                  <p>{{ album.spotifySearchResults.length }} results found!</p>
-                  <button class="btn btn-primary" (click)="onChoose(i)">Select Record</button>
-                </ng-container>              
-              </div>
-          </div>
+    <div class="card-deck" >
+      <div *ngFor="let album of albumsList; let i = index" class="col-sm-6 col-md-4"> 
+            <div class="card mb-5">
+                <img class="card-img-top" [src]="album.imagePath" [alt]="album.albumName">
+                <div class="card-body">
+                  <h4 class="card-title">Artist: {{ album.artistName }}</h4>
+                  <p class="card-subtitle mb-2">Album: {{ album.albumName }}</p>
+                  <p class="card-text">Sputnik mark: {{ album.note }}</p>
+                  <p class="card-text">Release Date : {{ album.releaseMonth }}</p>
+                  <p class="card-text">ID Sputnik Music: {{ album.idAlbumSputnik }}</p>
+                </div>
+                <div class="card-footer">
+                  <p><button  class="btn btn-primary" 
+                              role="button"  
+                              (click)="addToPlaylist(i)" 
+                              [disabled]="!userService.isLoggedIn">Add to playlist</button>
+                    <span *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length === 0"> No result found</span>
+                  </p>
+                  <ng-container *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length > 1">
+                    <p>{{ album.spotifySearchResults.length }} results found!</p>
+                    <button class="btn btn-primary" (click)="onChoose(i)">Select Record</button>
+                  </ng-container>              
+                </div>
+            </div>
+      </div>
     </div>
   </div>
 </div>

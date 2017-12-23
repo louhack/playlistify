@@ -1,42 +1,35 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">Playlistify</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li role="presentation" routerLinkActive="active">
-          <a [routerLink]="['/sputnik']">Sputnik Music<span class="sr-only">(current)</span></a>
-        </li>
-        <li role="presentation"><a href="/">Menu 2</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right" >
-          <li *ngIf="!userService.isLoggedIn"><a class="btn btn-primary" id="btn-spotify-login" href="/auth/spotify" role="button">Login with Spotify</a></li>
-          <li *ngIf="userService.isLoggedIn">
-                  <img [src]="user.images[0].url" alt="user img" class="img-circle img-profile">
-                  <p class="loggedin">{{ user.display_name }}</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="/">Playlistify</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item" role="presentation" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/sputnik']">Sputnik Music<span class="sr-only">(current)</span></a>
           </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Menu 2</a>
+        </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-          <form  *ngIf="userService.isLoggedIn" class="navbar-form playlistList">
-            <div class="form-group">
-              <select name="playlist" (change)="onPlaylistChange($event.target.value)" class="playlistSelect">
-                  <ng-container *ngFor="let playlist of playlists; let i = index">
-                    <option [value]="playlists[i].id">{{ playlists[i].name }}</option>
-                  </ng-container>
-                </select>
-            </div>
-          </form>
+      <form  *ngIf="userService.isLoggedIn" class="form-inline my-2 my-lg-0 playlistList">
+            <select name="playlist" (change)="onPlaylistChange($event.target.value)" class="playlistSelect">
+                <ng-container *ngFor="let playlist of playlists; let i = index">
+                  <option [value]="playlists[i].id">{{ playlists[i].name }}</option>
+                </ng-container>
+            </select>
+        </form>
+      <ul class="navbar-nav mt-2 mt-lg-0">
+        <li *ngIf="!userService.isLoggedIn" class="nav-item"><a class="btn btn-primary" id="btn-spotify-login" href="/auth/spotify" role="button">Login with Spotify</a></li>
+        <ng-container *ngIf="userService.isLoggedIn">
+          <li class="nav-item">
+            <img [src]="user.images[0].url" alt="user img" class="img-circle img-profile">
+          </li>
+          <li>
+            <p class="loggedin">{{ user.display_name }}</p>
+          </li>
+        </ng-container>
       </ul>
-</div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+  </div>
 </nav>

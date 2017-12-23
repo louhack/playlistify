@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   constructor(private authService: SpotifyAuthService,
     private userService: UserService,
       private router: Router,
-      private route: ActivatedRoute,
       private http: Http,
     ) { }
 
@@ -23,7 +22,7 @@ export class LoginComponent implements OnInit {
     this.http.get('/auth/spotify/token')
     .map(res => res.json())
     .subscribe(res => {
-      console.log(res);
+      // console.log(res);
       if (res.authToken) {
         this.authService.storeToken(res.authToken, 'Bearer');
         this.userService.getUserProfilFromSpotify().then(
