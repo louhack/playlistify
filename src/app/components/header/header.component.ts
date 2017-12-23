@@ -54,11 +54,9 @@ export class HeaderComponent implements OnInit {
 
   checkAuthentication() {
     if (this.authService.getToken()) {
-      console.log('token found');
       this.http.get('/auth/spotify/token')
         .map(res => res.json())
         .subscribe(res => {
-          console.log(res);
           if (res.authToken) {
             this.authService.storeToken(res.authToken, 'Bearer');
             this.userService.getUserProfilFromSpotify().then(
@@ -69,8 +67,6 @@ export class HeaderComponent implements OnInit {
             );
       }
     }, err => {
-      console.log('Authentification impossible');
-      this.router.navigate(['/error']);
     });
 
     }

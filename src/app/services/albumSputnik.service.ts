@@ -29,7 +29,6 @@ export class AlbumSputnikService {
     })
     .subscribe((data: AlbumSputnik[]) => {
       this.loadAlbums(data);
-      // console.log('les data: ' + JSON.stringify(this.albumList));
     },
    (error) => console.log(error));
 

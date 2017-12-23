@@ -13,11 +13,11 @@
             <div class="card mb-5">
                 <img class="card-img-top" [src]="album.imagePath" [alt]="album.albumName">
                 <div class="card-body">
-                  <h4 class="card-title">Artist: {{ album.artistName }}</h4>
-                  <p class="card-subtitle mb-2">Album: {{ album.albumName }}</p>
-                  <p class="card-text">Sputnik mark: {{ album.note }}</p>
-                  <p class="card-text">Release Date : {{ album.releaseMonth }}</p>
-                  <p class="card-text">ID Sputnik Music: {{ album.idAlbumSputnik }}</p>
+                  <h3 class="card-title">{{ album.artistName }}</h3>
+                  <p class="card-subtitle mb-3"><strong>{{ album.albumName }}</strong></p>
+                  <p>Sputnik rating: {{ album.note }}</p>
+                  <p>Release Date: {{ album.releaseMonth }}</p>
+                  <p><a href="https://www.sputnikmusic.com/album/{{album.idAlbumSputnik}}/" target="_blank">Consulter sur Sputnik Music</a></p>
                 </div>
                 <div class="card-footer">
                   <p><button  class="btn btn-primary" 

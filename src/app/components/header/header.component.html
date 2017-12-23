@@ -13,13 +13,14 @@
           <a class="nav-link" href="#">Menu 2</a>
         </li>
       </ul>
-      <form  *ngIf="userService.isLoggedIn" class="form-inline my-2 my-lg-0 playlistList">
-            <select name="playlist" (change)="onPlaylistChange($event.target.value)" class="playlistSelect">
-                <ng-container *ngFor="let playlist of playlists; let i = index">
-                  <option [value]="playlists[i].id">{{ playlists[i].name }}</option>
-                </ng-container>
-            </select>
-        </form>
+      <form *ngIf="userService.isLoggedIn" class="form-inline my-2 my-lg-0 playlistList">
+        <a href="#"><i class="fas fa-plus-circle fa-lg"></i></a>
+        <select name="playlist" (change)="onPlaylistChange($event.target.value)" class="playlistSelect">
+            <ng-container *ngFor="let playlist of playlists; let i = index">
+              <option [value]="playlists[i].id">{{ playlists[i].name }}</option>
+            </ng-container>
+        </select>
+      </form>
       <ul class="navbar-nav mt-2 mt-lg-0">
         <li *ngIf="!userService.isLoggedIn" class="nav-item"><a class="btn btn-primary" id="btn-spotify-login" href="/auth/spotify" role="button">Login with Spotify</a></li>
         <ng-container *ngIf="userService.isLoggedIn">
