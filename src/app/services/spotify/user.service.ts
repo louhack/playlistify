@@ -19,7 +19,7 @@ export class UserService {
 
     private playlists: SpotifyPlaylist[];
     playlistsChanged = new Subject<SpotifyPlaylist[]>();
-    private selectedPlaylistId: String;
+    private selectedPlaylistId: string;
 
     constructor(private http: Http,
         private spotifyEndPoints: SpotifyEndPoints) {}

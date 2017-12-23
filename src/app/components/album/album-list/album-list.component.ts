@@ -45,28 +45,45 @@ export class AlbumListComponent implements OnInit {
 
 
     addToPlaylist(index: number) {
-      this.spotifyApiService.searchItem('album:' + this.albumsList[index].albumName + ' artist:' + this.albumsList[index].artistName , 'album')
-        .subscribe(
-          (albumList: AlbumSpotify[]) => {
-              console.log(albumList);
-              if (albumList.length > 0) {
-                this.albumsList[index].spotifySearchResults = albumList;
-                this.albumsList[index].searchedOnSpotify = true;
-                if (albumList.length === 1) {
-                  this.spotifyApiService.
-                }
-              } else {
-                this.spotifyApiService.searchItem(this.albumsList[index].albumName, 'album').subscribe(
-                    (albList: AlbumSpotify[]) => {
-                      console.log(albList);
-                      this.albumsList[index].spotifySearchResults = albumList;
-                      this.albumsList[index].searchedOnSpotify = true;
-                    });
-              }
+      // album not found or search on spotify preiously
+      const spotifyAlbumId = this.albumsList[index].spotifyId;
+      if (!spotifyAlbumId) {
+        this.searchAlbumOnSpotify(index);
+      } else {
+        // album has a spotify id, it has alredy be search and found previously
+        this.spotifyApiService.addAlbumToPlaylist(spotifyAlbumId, this.userService.getSelectedPlaylistId());
+      }
 
-              // Add to selected playlist if one result
-              // if more than 1 : display a button to choose the right one
-          });
+    }
+
+    searchAlbumOnSpotify(index: number) {
+      const album = this.albumsList[index];
+
+        this.spotifyApiService
+          .searchItem('album:' + album.albumName + ' artist:' + album.artistName , 'album')
+            .subscribe(
+              (foundAlbums: AlbumSpotify[]) => {
+                  // console.log(albumList);
+                  if (foundAlbums.length > 0) {
+                    this.albumsList[index].spotifySearchResults = foundAlbums;
+                    this.albumsList[index].searchedOnSpotify = true;
+
+                    if (foundAlbums.length === 1) {
+                      // if only one result, save the spotify album id for later
+                      // than add album to the selected playlist
+                      this.albumsList[index].spotifyId = foundAlbums[0].id;
+                      this.albumsService.updateAlbum(this.albumsList[index]);
+                    }
+                  } else {
+                    // no result found for search with album+artist, search with only album
+                    this.spotifyApiService.searchItem(this.albumsList[index].albumName, 'album').subscribe(
+                        (foundAlbums2: AlbumSpotify[]) => {
+                          // console.log(albList);
+                          this.albumsList[index].spotifySearchResults = foundAlbums2;
+                          this.albumsList[index].searchedOnSpotify = true;
+                        });
+                  }
+              });
     }
 
 

@@ -15,6 +15,7 @@ export class AlbumSputnikService {
 
   api_url = 'http://localhost:3000';
   albumUrl = `/api/albums`;
+  // upDateAlbumUrl = `/api/album`;
 
   constructor(private http: Http) {
     this.fetchData();
@@ -37,9 +38,13 @@ export class AlbumSputnikService {
   updateAlbum(album: AlbumSputnik): Promise<boolean> {
     return new Promise(
       resolve => {
-        resolve(true);
-      }
-     );
+        this.http.put(this.albumUrl, album).subscribe(
+          data => {
+            console.log(data);
+            resolve(true);
+          }
+        );
+      });
   }
 
   getAlbums() {

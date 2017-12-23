@@ -77,6 +77,7 @@ exports.updateAlbum = async function(req, res, next){
         imagePath: req.body.imagePath ? req.body.imagePath : null, 
         note: req.body.note ? req.body.note : null, 
         releaseMonth: req.body.releaseMonth ? req.body.releaseMonth : null, 
+        spotifyId: req.body.spotifyId ? req.body.spotifyId : null,
         
     }
 

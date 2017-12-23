@@ -8,7 +8,7 @@ var AlbumSchema = new mongoose.Schema({
     imagePath: String,
     note: Number,
     releaseMonth: String,
-    spotidyId: String,
+    spotifyId: String,
 });
 
 AlbumSchema.plugin(mongoosePaginate);

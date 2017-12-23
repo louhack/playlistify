@@ -53,10 +53,12 @@ app.use('/api', api);
 app.use('/users', users);
 
 app.use(session({
-  secret: 'keyboard cat',
+  name: 'SpotifySession',
+  secret: 'mYSupeRsEcrEtKey',
   resave: false,
-  saveUninitialized: true
-}))
+  saveUninitialized: true,
+  cookie: { maxAge: 3600000 }
+}));
 
 
 
@@ -125,8 +127,11 @@ function(req, res) {
 
 app.get('/auth/spotify/token', (req, res, next) => {
   // Request to db to find user and spotify token and update of response
-  console.log(req.user.authToken);
-  res.json(req.user);
+  console.log(req.isAuthenticated());
+  if(req.isAuthenticated()){
+    console.log(req.session);
+    res.json(req.user);
+  }
   // var user = req.user
   // delete user['password']
   // var token = jwt.sign({

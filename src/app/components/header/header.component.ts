@@ -4,6 +4,8 @@ import { UserService } from '../../services/spotify/user.service';
 import { User } from '../../models/user.model';
 import { Subscription } from 'rxjs/Subscription';
 import { SpotifyPlaylist } from '../../models/spotifyPlaylist.model';
+import { Http } from '@angular/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -20,17 +22,16 @@ export class HeaderComponent implements OnInit {
 
 
   constructor(private authService: SpotifyAuthService,
-    private userService: UserService) { }
+              private userService: UserService,
+              private http: Http,
+              private router: Router) { }
 
   ngOnInit() {
-
     this.userSubscription = this.userService.userChanged.subscribe(
       (user: User) => {
         this.user = user;
         // console.log(this.user);
       });
-
-      // this.playlists = this.userService.getPlaylists();
 
       this.playlistsSubscription = this.userService.playlistsChanged.subscribe(
         (playlists: SpotifyPlaylist[]) => {
@@ -38,7 +39,8 @@ export class HeaderComponent implements OnInit {
           this.userService.setSelectedPlaylistId(this.playlists[0].id);
         });
 
-    }
+        this.checkAuthentication();
+      }
 
   onLogin() {
     this.authService.authenticateUsingSpotify();
@@ -49,4 +51,29 @@ export class HeaderComponent implements OnInit {
     this.userService.setSelectedPlaylistId(id);
 
   }
+
+  checkAuthentication() {
+    if (this.authService.getToken()) {
+      console.log('token found');
+      this.http.get('/auth/spotify/token')
+        .map(res => res.json())
+        .subscribe(res => {
+          console.log(res);
+          if (res.authToken) {
+            this.authService.storeToken(res.authToken, 'Bearer');
+            this.userService.getUserProfilFromSpotify().then(
+              resp => {
+                this.userService.getUserPlaylistFromSpotify();
+                this.router.navigate(['/']);
+              }
+            );
+      }
+    }, err => {
+      console.log('Authentification impossible');
+      this.router.navigate(['/error']);
+    });
+
+    }
+  }
+
 }

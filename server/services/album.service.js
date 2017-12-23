@@ -77,6 +77,7 @@ exports.updateAlbumService = async function(album){
     oldAlbum.imagePath = album.imagePath ? album.imagePath : oldAlbum.imagePath;
     oldAlbum.note = album.note ? album.note : oldAlbum.note;
     oldAlbum.releaseMonth = album.releaseMonth ? album.releaseMonth : oldAlbum.releaseMonth;
+    oldAlbum.spotifyId = album.spotifyId  ? album.spotifyId : oldAlbum.spotifyId;
 
     console.log(oldAlbum)
 

@@ -17,40 +17,26 @@ export class LoginComponent implements OnInit {
       private router: Router,
       private route: ActivatedRoute,
       private http: Http,
-    ) {
-
-      http.get('/auth/spotify/token')
-        .map(res => res.json())
-        .subscribe(res => {
-          console.log(res);
-          if (res.authToken) {
-            this.authService.storeToken(res.authToken, 'Bearer');
-            this.userService.getUserProfilFromSpotify().then(
-              resp => {
-                this.userService.getUserPlaylistFromSpotify();
-                this.router.navigate(['/']);
-              }
-            );
-          }
-        }, err => {
-          console.log('Authentification impossible');
-          this.router.navigate(['/error']);
-        });
-
-        // const params = QueryString.parse(route.snapshot.fragment);
-
-
-        //  this.router.navigate(['/']);
-
-        // } else {
-        //  // this.router.navigate(['/error']);
-        //   console.log('Authentication impossible');
-        // }
-        // console.log(params);
-        // console.log(route);
-   }
+    ) { }
 
   ngOnInit() {
+    this.http.get('/auth/spotify/token')
+    .map(res => res.json())
+    .subscribe(res => {
+      console.log(res);
+      if (res.authToken) {
+        this.authService.storeToken(res.authToken, 'Bearer');
+        this.userService.getUserProfilFromSpotify().then(
+          resp => {
+            this.userService.getUserPlaylistFromSpotify();
+            this.router.navigate(['/']);
+          }
+        );
+      }
+    }, err => {
+      console.log('Authentification impossible');
+      this.router.navigate(['/error']);
+    });
   }
 
 }

@@ -6,9 +6,9 @@ import { SpotifyEndPoints } from './spotifyApiEndpoints';
 import { AlbumSpotify } from '../../interfaces/albumSpotifyInterface';
 import { Observable } from 'rxjs/Observable';
 
+
 @Injectable()
 export class SpotifyApiService {
-
 
     constructor(private http: Http,
         private userService: UserService,
@@ -23,5 +23,13 @@ export class SpotifyApiService {
                 const albumList: AlbumSpotify[] = response.json().albums.items;
                 return albumList;
             });
+    }
+
+    addAlbumToPlaylist(spotifyAlbumId: string, playlistId: string): any {
+        
+    }
+
+    getTracksFromSpotify(spotifyAlbumId: string) {
+
     }
 }
