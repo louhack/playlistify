@@ -11,14 +11,14 @@ var UserSchema = new mongoose.Schema({
         },
         email: String,
         picture: { 
-            height: number,
-            url: string,
-            width: number,
+            height: Number,
+            url: String,
+            width: Number,
             default: [],
             type: Array,
         }
     },
-    oauth: {
+    token: {
         type: String,
     },
     lastLoggedIn: {

@@ -22,9 +22,8 @@ export class LoginComponent implements OnInit {
     this.http.get('/auth/spotify/token')
     .map(res => res.json())
     .subscribe(res => {
-      // console.log(res);
-      if (res.authToken) {
-        this.authService.storeToken(res.authToken, 'Bearer');
+      if (res.token) {
+        this.authService.storeToken(res.token, 'Bearer');
         this.userService.getUserProfilFromSpotify().then(
           resp => {
             this.userService.getUserPlaylistFromSpotify();

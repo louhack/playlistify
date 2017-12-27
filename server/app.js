@@ -11,6 +11,9 @@ var users = require('./routes/users');
 var session = require('express-session');
 
 var api = require('./routes/api.route');
+var UserService = require('./services/user.service');
+
+
 
 // var seedDB = require('./seeds/data');
 
@@ -78,33 +81,28 @@ passport.use(new SpotifyStrategy({
     clientSecret: '535992b925044cfca2ad2922fac25489',
     callbackURL: "http://localhost:3000/auth/spotify/callback"
   },
-  function(accessToken, refreshToken, profile, done) {
-    // var User = mongoose.model('users')
+  function (accessToken, refreshToken, profile, done) {
+    console.log(profile);
+    console.log('user creation');
     // var email = profile.emails[0].value
+    var userId = profile.id;
+    var userToLoggedIn = {
+      displayName : profile.displayName,
+      id : profile.id,
+      email : profile.email,
+      picture: profile._json.images,
+      token: accessToken
+    };
 
-    // User.findOne({
-    //   email: email
-    // }, function (err, user) {
-    //   if (err) {
-    //     debug('passport: Error ' + err)
-    //     return done(err)
-    //   }
-    //   if (!user) {
-    //     User.create({
-    //       email: email,
-    //       password: uuid.v4(),
-    //       oauth: 'google',
-    //       profile: {
-    //         name: profile.displayName
-    //       }
-    //     }, function (err, user) {
-    //       return done(err, user)
-    //     })
-    //   } else {
-    //     return done(err, user)
-    //   }
-    // })
-      profile.authToken = accessToken;
+    try {
+      UserService.getUserOrCreateUserService(userToLoggedIn)
+      .then(res => {
+      },err => console.log(err));
+    } catch (error) {
+      console.log(error);
+    }
+
+      //console.log('profile: ', profile);
       return done(null, profile);
   }
 ));
@@ -126,11 +124,30 @@ function(req, res) {
 });
 
 app.get('/auth/spotify/token', (req, res, next) => {
-  // Request to db to find user and spotify token and update of response
-  console.log(req.isAuthenticated());
+  // Request to db to find user and spotify token and update response
+
   if(req.isAuthenticated()){
-    console.log(req.session);
-    res.json(req.user);
+    console.log('User is authenticated: ', req.user);
+    //TODO Retrieve Token
+
+
+    var id = req.user.id;
+
+    try {
+       UserService.getUserService(id)
+        .then(
+          user => {
+            console.log('user: ', user);
+            res.json(user);
+          },
+          err => {
+            console.log('error while retrieving user: ', err);
+          }
+        );
+    } catch (e) {
+      console.log(e);
+    }
+
   }
   // var user = req.user
   // delete user['password']
