@@ -82,8 +82,8 @@ passport.use(new SpotifyStrategy({
     callbackURL: "http://localhost:3000/auth/spotify/callback"
   },
   function (accessToken, refreshToken, profile, done) {
-    console.log(profile);
-    console.log('user creation');
+    // console.log(profile);
+    // console.log('user creation');
     // var email = profile.emails[0].value
     var userId = profile.id;
     var userToLoggedIn = {
@@ -127,7 +127,7 @@ app.get('/auth/spotify/token', (req, res, next) => {
   // Request to db to find user and spotify token and update response
 
   if(req.isAuthenticated()){
-    console.log('User is authenticated: ', req.user);
+   // console.log('User is authenticated: ', req.user);
     //TODO Retrieve Token
 
 
@@ -137,7 +137,7 @@ app.get('/auth/spotify/token', (req, res, next) => {
        UserService.getUserService(id)
         .then(
           user => {
-            console.log('user: ', user);
+           // console.log('user: ', user);
             res.json(user);
           },
           err => {
@@ -172,7 +172,7 @@ app.get('/auth/spotify/token', (req, res, next) => {
 
 
 app.get('*', (req, res) => {
-  console.log(__dirname);
+ // console.log(__dirname);
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 

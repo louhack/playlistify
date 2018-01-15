@@ -13,6 +13,7 @@ import { UserService } from './services/spotify/user.service';
 import { SpotifyEndPoints } from './services/spotify/spotifyApiEndpoints';
 import { AlbumSputnikService } from './services/albumSputnik.service';
 import { SpotifyApiService } from './services/spotify/spotifyApi.service';
+import { MessageService } from './services/message.service';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { SpotifyApiService } from './services/spotify/spotifyApi.service';
     UserService,
     SpotifyEndPoints,
     SpotifyApiService,
+    MessageService,
   ],
   bootstrap: [AppComponent]
 })

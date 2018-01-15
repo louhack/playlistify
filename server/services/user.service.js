@@ -53,13 +53,13 @@ exports.getUserOrCreateUserService = async function(user){
             } else {
                 //update token
                 userFound.token = user.token;
-                var updatedUser = await User.update({'profile.id': userFound.profile.id}, {token: user.token},
+                var updatedUser = await User.update({'profile.id': userFound.profile.id}, {token: user.token, lastLoggedIn: Date.now()},
                 (err, raw) => {
-                    if (err) return handleError(err);
-                    console.log('Token udpdated', raw);
+                    if (err) console.log(err);
+                    // console.log('Token udpdated', raw);
                 });
                 
-                console.log('retour update: ', updatedUser);
+               // console.log('retour update: ', updatedUser);
                 return userFound;
             }
         } else {
@@ -80,7 +80,11 @@ exports.getUserOrCreateUserService = async function(user){
         }
     } catch (error) {
             // return a Error message describing the reason
+            console.log(error);
             throw Error("Error while Searching the User");
+            
+
+
     }
 }
 
