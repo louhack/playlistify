@@ -44,15 +44,14 @@ export class AlbumListComponent implements OnInit {
   }
 
 
-    addToPlaylist(index: number) {
+    async addToPlaylist(index: number) {
       // album not found or search on spotify preiously
       const spotifyAlbumId = this.albumsList[index].spotifyId;
       if (!spotifyAlbumId) {
-        this.searchAlbumOnSpotify(index);
-      } else {
+        await this.searchAlbumOnSpotify(index);
+      }
         // album has a spotify id, it has alredy be search and found previously
         this.spotifyApiService.addAlbumToPlaylist(spotifyAlbumId, this.userService.getSelectedPlaylistId());
-      }
 
     }
 
