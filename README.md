@@ -1,27 +1,35 @@
 # Playlistify
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.3.
+THIS APPLICATION IS STILL UNDER DEVELOPMENT AND IS NOT FULLY FUNCTIONAL YET.
+Playlistify allows playlist creation with albums webscrapped from Sputnikmusic.com
 
-## Development server
+# FEATURES
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Extraction of new releases using geb scrapping in Python of https://www.sputnikmusic.com/newreleases.php (script to be added)
+Saving albums extracted to MongoDB
+Display a page with album extracted from Sputnik Music
+Search extracted albums in Spotify using Spotify API
+Authentication against spotify
+Add album to an existing or new user's playlist
 
-## Code scaffolding
+# Application Architecture
+## Back-End : ./server
+- NODE JS
+- EXPRESS
+- MONGODB
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Run Back-end
+nodemon ./server/www
 
-## Build
+## Front-End : ./src
+ - Angular 5
+ - Boostrap 4
+ 
+### Build Front-End
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
