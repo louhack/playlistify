@@ -1,11 +1,11 @@
 # Playlistify
 
 THIS APPLICATION IS STILL UNDER DEVELOPMENT AND IS NOT FULLY FUNCTIONAL YET. <br>
-Playlistify allows playlist creation with albums webscrapped from Sputnikmusic.com
+Playlistify allows playlists creation or update with albums extracted from Sputnikmusic.com (New Releases)
 
 # FEATURES
 
-- Extraction of new releases using geb scrapping in Python of https://www.sputnikmusic.com/newreleases.php (script to be added)<br>
+- Extraction of new releases using web scrapping in Python of the page https://www.sputnikmusic.com/newreleases.php (script to be added)<br>
 - Saving albums extracted to MongoDB<br> (To be automatized)
 - Display a page with album extracted from Sputnik Music (To be udpdated)<br>
 - Search extracted albums in Spotify using Spotify API (Not fully functional)<br>
