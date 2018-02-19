@@ -1,27 +1,36 @@
 # Playlistify
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.3.
+THIS APPLICATION IS STILL UNDER DEVELOPMENT AND IS NOT FULLY FUNCTIONAL YET. <br>
+Playlistify allows playlists creation or update with albums extracted from Sputnikmusic.com (New Releases)
 
-## Development server
+# FEATURES
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Extraction of new releases using web scrapping in Python of the page https://www.sputnikmusic.com/newreleases.php (script to be added)<br>
+- Saving albums extracted to MongoDB<br> (To be automatized)
+- Display a page with album extracted from Sputnik Music (To be udpdated)<br>
+- Search extracted albums in Spotify using Spotify API (Not fully functional)<br>
+- Authentication against spotify<br>
+- Add album to an existing or new user's playlist (To be developped)<br>
 
-## Code scaffolding
+# Application Architecture
+## Back-End : 
+Directory: ./server
+- NODE JS
+- EXPRESS
+- MONGODB
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Run Back-end
+nodemon ./server/bin/www
 
-## Build
-
+## Front-End : 
+Directory: ./src
+ - Angular 5
+ - Boostrap 4
+ 
+### Build Front-End
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
