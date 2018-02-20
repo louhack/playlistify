@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit {
   }
   
   isLoggedIn(){
-   return.userService.isLoggedIn; 
+   return this.userService.isLoggedIn; 
   }
 
   checkAuthentication() {
