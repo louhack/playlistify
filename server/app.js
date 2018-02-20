@@ -15,17 +15,17 @@ var UserService = require('./services/user.service');
 
 
 
-// var seedDB = require('./seeds/data');
+var seedDB = require('./seeds/data');
 
 var app = express();
 
 //populate DB
-// seedDB();
+seedDB();
 
 // MongoDB Connection
 var mongoose = require('mongoose');
 mongoose.Promise = bluebird;
-mongoose.connect('mongodb://127.0.0.1:27017/playlistifyApp', { useMongoClient: true})
+mongoose.connect(MONGODB_URI || 'mongodb://127.0.0.1:27017/playlistifyApp', { useMongoClient: true})
       .then(()=> { console.log(`Succesfully Connected to the Mongodb Database at URL : mongodb://127.0.0.1:27017/playlistifyApp`)})
       .catch(()=> { console.log(`Error Connecting to the Mongodb Database at URL : mongodb://127.0.0.1:27017/playlistifyApp`)});
 
