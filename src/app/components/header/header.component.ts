@@ -51,6 +51,10 @@ export class HeaderComponent implements OnInit {
     this.userService.setSelectedPlaylistId(id);
 
   }
+  
+  isLoggedIn(){
+   return.userService.isLoggedIn; 
+  }
 
   checkAuthentication() {
     if (this.authService.getToken()) {
