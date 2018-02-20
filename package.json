@@ -2,7 +2,7 @@
   "name": "playlistify",
   "version": "0.0.1",
   "license": "MIT",
-  "main": "node ./server/bin/www",
+  "main": "./server/bin/www",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
