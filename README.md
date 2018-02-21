@@ -1,7 +1,8 @@
 # Playlistify
 
 THIS APPLICATION IS STILL UNDER DEVELOPMENT AND IS NOT FULLY FUNCTIONAL YET. <br>
-Playlistify allows playlists creation or update with albums extracted from Sputnikmusic.com (New Releases)
+Playlistify allows playlists creation or update with albums extracted from Sputnikmusic.com (New Releases)<br>
+DEMO : https://playlistify-app.herokuapp.com/
 
 # FEATURES
 

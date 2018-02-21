@@ -14,6 +14,9 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  //to fix collapse problem with bootstrap
+  show:boolean = false;
+  
   user: User;
   userSubscription: Subscription;
 
@@ -42,6 +45,11 @@ export class HeaderComponent implements OnInit {
         this.checkAuthentication();
       }
 
+  
+  toggleCollapse() {
+    this.show = !this.show
+  }
+ 
   onLogin() {
     this.authService.authenticateUsingSpotify();
   }
@@ -50,6 +58,10 @@ export class HeaderComponent implements OnInit {
     console.log(JSON.stringify(id));
     this.userService.setSelectedPlaylistId(id);
 
+  }
+  
+  isLoggedIn(){
+   return this.userService.isLoggedIn; 
   }
 
   checkAuthentication() {
