@@ -15,7 +15,7 @@ var UserService = require('./services/user.service');
 
 
 
-// var seedDB = require('./seeds/data');
+ //var seedDB = require('./seeds/data');
 
 var app = express();
 
