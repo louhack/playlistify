@@ -14,9 +14,9 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  //to fix collapse problem with bootstrap
-  show:boolean = false;
-  
+  // to fix collapse problem with bootstrap
+  show = false;
+
   user: User;
   userSubscription: Subscription;
 
@@ -45,11 +45,11 @@ export class HeaderComponent implements OnInit {
         this.checkAuthentication();
       }
 
-  
+
   toggleCollapse() {
-    this.show = !this.show
+    this.show = !this.show;
   }
- 
+
   onLogin() {
     this.authService.authenticateUsingSpotify();
   }
@@ -59,29 +59,32 @@ export class HeaderComponent implements OnInit {
     this.userService.setSelectedPlaylistId(id);
 
   }
-  
-  isLoggedIn(){
-   return this.userService.isLoggedIn; 
+
+  isLoggedIn() {
+   return this.userService.isLoggedIn;
   }
 
   checkAuthentication() {
-    if (this.authService.getToken()) {
-      this.http.get('/auth/spotify/token')
-        .map(res => res.json())
-        .subscribe(res => {
-          if (res.authToken) {
-            this.authService.storeToken(res.authToken, 'Bearer');
-            this.userService.getUserProfilFromSpotify().then(
-              resp => {
-                this.userService.getUserPlaylistFromSpotify();
-                this.router.navigate(['/']);
-              }
-            );
-      }
-    }, err => {
-    });
+    this.authService.retrieveTokenFromServer();
+    // console.log('chackAuthentication ', this.authService.getToken());
+    // if (this.authService.getToken()) {
+    //   this.http.get('/auth/spotify/token')
+    //     .map(res => res.json())
+    //     .subscribe(res => {
+    //       console.log(res);
+    //       if (res.token) {
+    //         this.authService.storeToken(res.token, 'Bearer');
+    //         this.userService.getUserProfilFromSpotify().then(
+    //           resp => {
+    //             this.userService.getUserPlaylistFromSpotify();
+    //             this.router.navigate(['/']);
+    //           }
+    //         );
+    //   }
+    // }, err => {
+    // });
 
-    }
+    // }
   }
 
 }
