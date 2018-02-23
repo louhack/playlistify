@@ -5,21 +5,32 @@ var UserSchema = new mongoose.Schema({
         displayName: {
             type: String,
         },
-        id: {
-            type: String,
-            index: true,
+        email: {
+          type: String,
         },
-        email: String,
-        picture: { 
-            height: Number,
-            url: String,
-            width: Number,
-            default: [],
-            type: Array,
+    },
+    spotify: {
+        id: {
+          type: String,
+          index: true,
+        },
+        picture: {
+          height: Number,
+          url: String,
+          width: Number,
+          default: [],
+          type: Array,
+        },
+        accessToken: {
+          type: String,
+        },
+        refreshToken: {
+          type: String,
         }
     },
-    token: {
-        type: String,
+    created: {
+      type: Date,
+      default: Date.now
     },
     lastLoggedIn: {
       type: Date,

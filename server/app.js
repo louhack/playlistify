@@ -2,7 +2,6 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var bluebird = require('bluebird');
 var passport = require('passport');
@@ -48,7 +47,6 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '../dist')));
 // app.use('/', index);
@@ -56,10 +54,10 @@ app.use('/api', api);
 app.use('/users', users);
 
 app.use(session({
-  name: 'SpotifySession',
+  name: 'PlaylistifySession,',
   secret: 'mYSupeRsEcrEtKey',
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: { maxAge: 3600000 }
 }));
 
@@ -82,27 +80,52 @@ passport.use(new SpotifyStrategy({
     callbackURL: "http://localhost:3000/auth/spotify/callback"
   },
   function (accessToken, refreshToken, profile, done) {
-    // console.log(profile);
-    // console.log('user creation');
-    // var email = profile.emails[0].value
-    var userId = profile.id;
-    var userToLoggedIn = {
-      displayName : profile.displayName,
-      id : profile.id,
-      email : profile.email,
-      picture: profile._json.images,
-      token: accessToken
-    };
+    // profile  {
+    // provider: 'spotify',
+    // id: '1119198705',
+    // username: '1119198705',
+    // displayName: 'Loïc Haquin',
+    // profileUrl: 'https://open.spotify.com/user/1119198705',
+    // photos: [ 'https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/13627205_10155034200724298_2176009845694240894_n.jpg?oh=c51fc6a82c76a1875dd1909efef0a47d&oe=5B177CEC' ],
+    // country: 'FR',
+    // followers: 7,
+    // product: 'premium',
+    // _raw: '{\n  "country" : "FR",\n  "display_name" : "Loïc Haquin",\n  "email" : "loic.haquin@gmail.com",\n  "external_urls" : {\n    "spotify" : "https://open.spotify.com/user/1119198705"\n  },\n  "followers" : {\n    "href" : null,\n    "total" : 7\n  },\n  "href" : "https://api.spotify.com/v1/users/1119198705",\n  "id" : "1119198705",\n  "images" : [ {\n    "height" : null,\n
+    //  "url" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/13627205_10155034200724298_2176009845694240894_n.jpg?oh=c51fc6a82c76a1875dd1909efef0a47d&oe=5B177CEC",\n    "width" : null\n  } ],\n  "product" : "premium",\n  "type" : "user",\n  "uri" : "spotify:user:1119198705"\n}',
+    // _json:
+    //  { country: 'FR',
+    //    display_name: 'Loïc Haquin',
+    //    email: 'loic.haquin@gmail.com',
+    //    external_urls: { spotify: 'https://open.spotify.com/user/1119198705' },
+    //    followers: { href: null, total: 7 },
+    //    href: 'https://api.spotify.com/v1/users/1119198705',
+    //    id: '1119198705',
+    //    images: [ [Object] ],
+    //    product: 'premium',
+    //    type: 'user',
+    //    uri: 'spotify:user:1119198705' },
+    // emails: [ { value: 'loic.haquin@gmail.com', type: null } ] }
 
     try {
-      UserService.getUserOrCreateUserService(userToLoggedIn)
-      .then(res => {
-      },err => console.log(err));
+      var userToLogIn = {
+        profile: {
+          displayName : profile.displayName,
+          email : profile.emails[0].value,
+        },
+        spotify: {
+          id : profile.id,
+          picture: profile._json.images,
+          accessToken: accessToken,
+          refreshToken: refreshToken
+        }
+      };
+
+    UserService.getUserOrCreateUserService(userToLogIn)
+      .then(res => {},err => console.log(err));
+
     } catch (error) {
       console.log(error);
     }
-
-      //console.log('profile: ', profile);
       return done(null, profile);
   }
 ));
@@ -111,7 +134,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/auth/spotify',
-passport.authenticate('spotify', {scopes: 'playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-top-read user-read-email user-read-private'}),
+passport.authenticate('spotify', {scope: ['user-read-email', 'playlist-read-private', 'playlist-read-collaborative', 'playlist-modify-public', 'playlist-modify-private', 'user-library-read', 'user-top-read', 'user-read-private']}),
 function(req, res){
   // The request will be redirected to spotify for authentication, so this
   // function will not be called.
@@ -123,22 +146,15 @@ function(req, res) {
   res.redirect('/login');
 });
 
-app.get('/auth/spotify/token', (req, res, next) => {
+app.get('/auth/spotify/token', (req, res) => {
   // Request to db to find user and spotify token and update response
-
   if(req.isAuthenticated()){
-   // console.log('User is authenticated: ', req.user);
-    //TODO Retrieve Token
-
-
     var id = req.user.id;
-
     try {
        UserService.getUserService(id)
         .then(
           user => {
-           // console.log('user: ', user);
-            res.json(user);
+            res.json(user.spotify.accessToken);
           },
           err => {
             console.log('error while retrieving user: ', err);
@@ -147,32 +163,11 @@ app.get('/auth/spotify/token', (req, res, next) => {
     } catch (e) {
       console.log(e);
     }
-
   }
-  // var user = req.user
-  // delete user['password']
-  // var token = jwt.sign({
-  //   _id: user._id
-  // }, settings.jwt.secret, settings.jwt.options) // good for two hours
-  // res.cookie('token', token)
-  // debug('end postSignup')
-  // res.json({
-  //   success: true,
-  //   authenticated: true,
-  //   user: {
-  //     profile: user.profile,
-  //     roles: user.roles,
-  //     gravatar: user.gravatar,
-  //     email: user.email,
-  //     _id: user._id
-  //   },
-  //   token: 'JWT ' + token
-
 });
 
 
 app.get('*', (req, res) => {
- // console.log(__dirname);
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 

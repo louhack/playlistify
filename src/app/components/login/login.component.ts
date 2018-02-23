@@ -19,22 +19,24 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.http.get('/auth/spotify/token')
-    .map(res => res.json())
-    .subscribe(res => {
-      if (res.token) {
-        this.authService.storeToken(res.token, 'Bearer');
-        this.userService.getUserProfilFromSpotify().then(
-          resp => {
-            this.userService.getUserPlaylistFromSpotify();
-            this.router.navigate(['/']);
-          }
-        );
-      }
-    }, err => {
-      console.log('Authentification impossible');
-      this.router.navigate(['/error']);
-    });
+    this.authService.retrieveTokenFromServer();
+    // this.http.get('/auth/spotify/token')
+    // .map(token => token.json())
+    // .subscribe(token => {
+    //   console.log(token);
+    //   if (token) {
+    //     this.authService.storeToken(token, 'Bearer');
+    //     this.userService.getUserProfilFromSpotify().then(
+    //       resp => {
+    //         this.userService.getUserPlaylistFromSpotify();
+    //         this.router.navigate(['/']);
+    //       }
+    //     );
+    //   }
+    // }, err => {
+    //   console.log('Authentification impossible');
+    //   this.router.navigate(['/error']);
+    // });
   }
 
 }

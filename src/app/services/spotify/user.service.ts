@@ -65,6 +65,7 @@ export class UserService {
             });
     }
 
+
     setPlaylists(playlistsResponse: SpotifyPlaylist[]) {
         this.playlists = playlistsResponse;
         this.playlistsChanged.next(this.playlists);

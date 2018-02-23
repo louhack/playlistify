@@ -60,4 +60,24 @@ export class SpotifyAuthService {
         return {access_token, token_type, expires_in};
     }
 
+    retrieveTokenFromServer() {
+      this.http.get('/auth/spotify/token')
+      .map(token => token.json())
+      .subscribe(token => {
+        // console.log(token);
+        if (token) {
+          this.storeToken(token, 'Bearer');
+          this.userService.getUserProfilFromSpotify().then(
+            resp => {
+              this.userService.getUserPlaylistFromSpotify();
+              this.router.navigate(['/']);
+            }
+          );
+        }
+      }, err => {
+        // console.log('Authentification impossible');
+        this.router.navigate(['/']);
+      });
+    }
+
 }
