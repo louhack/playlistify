@@ -18,12 +18,12 @@ soup = BeautifulSoup(r.text, 'lxml')
 
 #print(soup)
 
-#Je récupère le 1er mois affiché sur la page qui correspondant au mois en cours
+#Je recupere le 1er mois affiche sur la page qui correspondant au mois en cours
 currentmonth = soup.find(class_="plaincontentbox").table.td.string
 # print("Voici les releases du mois de", lastmonth.string)
 
 
-#Je récupère le tableau des release du mois en cours
+#Je recupere le tableau des release du mois en cours
 table_releases = soup.find_all(class_="alt1")
 # print("Nombre element dans table_releases", len(table_releases), repr(table_releases))
 # print("Nombre element dans table_releases", len(table_releases))
