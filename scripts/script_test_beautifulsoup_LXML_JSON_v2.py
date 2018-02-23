@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 from lxml import html
 import requests
-import csv
 import json
 import re
 from  pymongo import MongoClient
