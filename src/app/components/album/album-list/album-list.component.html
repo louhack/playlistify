@@ -9,27 +9,27 @@
   <hr>
   <div class="row">
     <div class="card-deck" >
-      <div *ngFor="let album of albumsList; let i = index" class="col-sm-6 col-md-4"> 
+      <div *ngFor="let album of albumsList; let i = index" class="col-sm-6 col-md-4">
             <div class="card mb-5">
-                <img class="card-img-top" [src]="album.imagePath" [alt]="album.albumName">
+                <img class="card-img-top" [src]="album.sputnikMusic.imagePath" [alt]="album.albumName">
                 <div class="card-body">
                   <h3 class="card-title">{{ album.artistName }}</h3>
                   <p class="card-subtitle mb-3"><strong>{{ album.albumName }}</strong></p>
-                  <p>Sputnik rating: {{ album.note }}</p>
-                  <p>Release Date: {{ album.releaseMonth }}</p>
-                  <p><a href="https://www.sputnikmusic.com/album/{{album.idAlbumSputnik}}/" target="_blank">Consulter sur Sputnik Music</a></p>
+                  <p>Sputnik rating: {{ album.sputnikMusic.note }}</p>
+                  <p>Release Date: {{ getDate(i) }}</p>
+                  <p><a href="https://www.sputnikmusic.com/album/{{album.sputnikMusic.id}}/" target="_blank">Consulter sur Sputnik Music</a></p>
                 </div>
                 <div class="card-footer">
-                  <p><button  class="btn btn-primary" 
-                              role="button"  
-                              (click)="addToPlaylist(i)" 
+                  <p><button  class="btn btn-primary"
+                              role="button"
+                              (click)="addToPlaylist(i)"
                               [disabled]="!userService.isLoggedIn">Add to playlist</button>
                     <span *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length === 0"> No result found</span>
                   </p>
                   <ng-container *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length > 1">
                     <p>{{ album.spotifySearchResults.length }} results found!</p>
                     <button class="btn btn-primary" (click)="onChoose(i)">Select Record</button>
-                  </ng-container>              
+                  </ng-container>
                 </div>
             </div>
       </div>

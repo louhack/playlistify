@@ -11,7 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { UserService } from './services/spotify/user.service';
 import { SpotifyEndPoints } from './services/spotify/spotifyApiEndpoints';
-import { AlbumSputnikService } from './services/albumSputnik.service';
+import { AlbumService } from './services/album.service';
 import { SpotifyApiService } from './services/spotify/spotifyApi.service';
 import { MessageService } from './services/message.service';
 
@@ -30,7 +30,7 @@ import { MessageService } from './services/message.service';
     AppRoutingModule,
   ],
   providers: [
-    AlbumSputnikService,
+    AlbumService,
     SpotifyAuthService,
     UserService,
     SpotifyEndPoints,

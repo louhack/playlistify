@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { AlbumSputnik } from '../../../models/albumSputnik.model';
+import { Album } from '../../../models/album.model';
 import { Subscription } from 'rxjs/Subscription';
 import { Http } from '@angular/http';
 import { SpotifyAuthService } from '../../../services/spotify/spotify-auth.service';
 import { UserService } from '../../../services/spotify/user.service';
-import { AlbumSputnikService } from '../../../services/albumSputnik.service';
+import { AlbumService } from '../../../services/album.service';
 import { SpotifyPlaylist } from '../../../models/spotifyPlaylist.model';
 import { Event } from '@angular/router/src/events';
 import { SpotifyApiService } from '../../../services/spotify/spotifyApi.service';
 import { AlbumSpotify } from '../../../interfaces/albumSpotifyInterface';
+import { MyCalendar } from '../../../shared/myCalendar';
 
 @Component({
   selector: 'app-album-list',
@@ -17,20 +18,20 @@ import { AlbumSpotify } from '../../../interfaces/albumSpotifyInterface';
 })
 export class AlbumListComponent implements OnInit {
 
-  albumsList: AlbumSputnik[] = [];
+  albumsList: Album[] = [];
   albumsSubscription: Subscription;
 
   // playlists: SpotifyPlaylist[] = [];
   // playlistsSubscription: Subscription;
 
 
-  constructor(private albumsService: AlbumSputnikService, private userService: UserService, private spotifyApiService: SpotifyApiService) { }
+  constructor(private albumsService: AlbumService, private userService: UserService, private spotifyApiService: SpotifyApiService) { }
 
   ngOnInit() {
     this.albumsList = this.albumsService.getAlbums();
 
      this.albumsSubscription = this.albumsService.albumsChanged.subscribe(
-      (albums: AlbumSputnik[]) => {
+      (albums: Album[]) => {
         this.albumsList = albums;
      });
 
@@ -43,10 +44,13 @@ export class AlbumListComponent implements OnInit {
     // );
   }
 
+    getDate(i: number) {
+        return (MyCalendar.month[+this.albumsList[i].sputnikMusic.releaseDate.month - 1]) + ' ' + this.albumsList[i].sputnikMusic.releaseDate.year;
+    }
 
     async addToPlaylist(index: number) {
       // album not found or search on spotify preiously
-      const spotifyAlbumId = this.albumsList[index].spotifyId;
+      const spotifyAlbumId = this.albumsList[index].spotify.id;
       if (!spotifyAlbumId) {
         await this.searchAlbumOnSpotify(index);
       }
@@ -70,7 +74,7 @@ export class AlbumListComponent implements OnInit {
                     if (foundAlbums.length === 1) {
                       // if only one result, save the spotify album id for later
                       // than add album to the selected playlist
-                      this.albumsList[index].spotifyId = foundAlbums[0].id;
+                      this.albumsList[index].spotify.id = foundAlbums[0].id;
                       this.albumsService.updateAlbum(this.albumsList[index]);
                     }
                   } else {
