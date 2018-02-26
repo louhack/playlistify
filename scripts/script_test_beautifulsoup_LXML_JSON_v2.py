@@ -156,7 +156,7 @@ f.close()
 connection = MongoClient("mongodb://webScrapper:akill007@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=heroku_j6lv18qq")
 # mongodb://<dbuser>:<dbpassword>@ds243418.mlab.com:43418/heroku_j6lv18qq
 #connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
-db = connection.playlistifyApp
+#db = connection.playlistifyApp
 releases = db.albums
 albums = open("data.json", "r")
 parsedAlbums = json_util.loads(albums.read())
