@@ -8,25 +8,28 @@ var passport = require('passport');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var session = require('express-session');
+require('dotenv-safe').load();
+
+const config = require('config');
 
 var api = require('./routes/api.route');
 var UserService = require('./services/user.service');
 
 
 
-//var seedDB = require('./seeds/data');
 
 var app = express();
 
+//var seedDB = require('./seeds/data');
 //populate DB
 //seedDB();
-
+console.log(config.get('Database.host'));
 // MongoDB Connection
 var mongoose = require('mongoose');
 mongoose.Promise = bluebird;
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/playlistifyApp', { useMongoClient: true})
-      .then(()=> { console.log(`Succesfully Connected to the Mongodb Database at URL : mongodb://127.0.0.1:27017/playlistifyApp`)})
-      .catch(()=> { console.log(`Error Connecting to the Mongodb Database at URL : mongodb://127.0.0.1:27017/playlistifyApp`)});
+mongoose.connect(config.get('Database.host'), { useMongoClient: true})
+      .then(()=> { console.log(`Succesfully Connected to the Mongodb Database at : %s`, config.get('Database.db_name'))})
+      .catch(()=> { console.log(`Error Connecting to the Mongodb Database at : %s`, config.get('Database.db_name'))});
 
 
 
@@ -44,18 +47,18 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+app.use(logger('dev')); // SET LOGGER
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../dist'))); // DIRECTORY FOR FRONT-END
 // app.use('/', index);
 app.use('/api', api);
 app.use('/users', users);
 
 app.use(session({
-  name: 'PlaylistifySession,',
-  secret: 'mYSupeRsEcrEtKey',
+  name: config.get('Session.name'),
+  secret: config.get('Session.secret'),
   resave: false,
   saveUninitialized: false,
   cookie: { maxAge: 3600000 }
@@ -75,11 +78,11 @@ passport.deserializeUser(function(obj, done) {
 const SpotifyStrategy = require('passport-spotify').Strategy;
 
 passport.use(new SpotifyStrategy({
-    clientID: '3ec89e264ee040a1af30921007fbc1c4',
-    clientSecret: '535992b925044cfca2ad2922fac25489',
-    callbackURL: "http://localhost:3000/auth/spotify/callback"
+    clientID: config.get('Spotify.clientID'),
+    clientSecret: config.get('Spotify.clientSecret'),
+    callbackURL: config.get('Spotify.callbackURL')
   },
-  function (accessToken, refreshToken, profile, done) {
+  function (accessToken, refreshToken, expires_in, profile, done) {
     // profile  {
     // provider: 'spotify',
     // id: '1119198705',

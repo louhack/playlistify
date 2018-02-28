@@ -1,0 +1,18 @@
+{
+  "Database": {
+    "host": "process.env.MONGODB_URI",
+    "db_name": "playlistifyApp"
+  },
+  "Session": {
+    "name": "PlaylistifySession",
+    "secret": "SESSION_SECRET"
+  },
+  "Spotify": {
+    "clientID": "SPOTIFY_ID",
+    "clientSecret": "SPOTIFY_SECRET",
+    "callbackURL": "http://localhost:3000/auth/spotify/callback"
+  }
+}
+
+
+
