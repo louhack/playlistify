@@ -28,8 +28,8 @@ console.log(config.get('Database.host'));
 var mongoose = require('mongoose');
 mongoose.Promise = bluebird;
 mongoose.connect(config.get('Database.host'), { useMongoClient: true})
-      .then(()=> { console.log(`Succesfully Connected to the Mongodb Database at : %s`, config.get('Database.db_name'))})
-      .catch(()=> { console.log(`Error Connecting to the Mongodb Database at : %s`, config.get('Database.db_name'))});
+      .then(()=> { console.log(`Succesfully Connected to the Mongodb Database : %s`, config.get('Database.db_name'))})
+      .catch(()=> { console.log(`Error Connecting to the Mongodb Database : %s`, config.get('Database.db_name'))});
 
 
 
@@ -108,7 +108,6 @@ passport.use(new SpotifyStrategy({
     //    type: 'user',
     //    uri: 'spotify:user:1119198705' },
     // emails: [ { value: 'loic.haquin@gmail.com', type: null } ] }
-
     try {
       var userToLogIn = {
         profile: {
@@ -119,7 +118,8 @@ passport.use(new SpotifyStrategy({
           id : profile.id,
           picture: profile._json.images,
           accessToken: accessToken,
-          refreshToken: refreshToken
+          refreshToken: refreshToken,
+          expires_in: Date.now()+expires_in
         }
       };
 
