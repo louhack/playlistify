@@ -4,11 +4,18 @@ var mongoosePaginate = require('mongoose-paginate');
 var AlbumSchema = new mongoose.Schema({
     artistName: String,
     albumName: String,
-    idAlbumSputnik: String,
-    imagePath: String,
-    note: Number,
-    releaseMonth: String,
-    spotifyId: String,
+    sputnikMusic:{
+      id: String,
+      imagePath: String,
+      note: Number,
+      releaseDate: {
+        month: Number,
+        year: Number
+      },
+    },
+    spotify: {
+      id: String,
+    }
 });
 
 AlbumSchema.plugin(mongoosePaginate);

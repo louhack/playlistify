@@ -1,4 +1,4 @@
-// Getting Album Model 
+// Getting Album Model
 var Album = require('../models/album.model');
 
 // Saving the context of this module inside the _this variable
@@ -10,26 +10,27 @@ exports.getAlbumsService = async function(query, page, limit){
     // Options setup for the mongoose paginate
     var options = {
         page,
-        limit
+        limit,
+        sort:{'_id':1}
     }
-    
-    // Try Catch the awaited promise to handle the error 
-    
+
+    // Try Catch the awaited promise to handle the error
+
     try {
         var albums = await Album.paginate(query, options);
-        
+
         // Return the albums list that was retured by the mongoose promise
         return albums;
 
     } catch (e) {
 
-        // return a Error message describing the reason 
+        // return a Error message describing the reason
         throw Error('Error while Paginating Albums');
     }
 }
 
 exports.createAlbumService = async function(album){
-    
+
     // Creating a new Mongoose Object by using the new keyword
     var newAlbum = new Album({
         artistName : album.artistName,
@@ -42,13 +43,13 @@ exports.createAlbumService = async function(album){
 
     try{
 
-        // Commit album 
+        // Commit album
         var savedAlbum = await newAlbum.save();
 
         return savedAlbum;
     }catch(e){
-      
-        // return a Error message describing the reason     
+
+        // return a Error message describing the reason
         throw Error("Error while Creating Album");
     }
 }
@@ -58,7 +59,7 @@ exports.updateAlbumService = async function(album){
 
     try{
         //Find the old Album Object by the IdSputnik
-    
+
         var oldAlbum = await Album.findById(id);
     }catch(e){
         throw Error("Error occured while Finding the Album")
@@ -90,7 +91,7 @@ exports.updateAlbumService = async function(album){
 }
 
 exports.deleteAlbumService = async function(id){
-    
+
     // Delete the Album
     try{
         var deleted = await Album.remove({_id: id});
