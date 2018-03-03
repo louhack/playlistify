@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyAuthService } from '../../services/spotify/spotify-auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import * as QueryString from 'query-string';
 import { UserService } from '../../services/spotify/user.service';
 import { Http } from '@angular/http';
 

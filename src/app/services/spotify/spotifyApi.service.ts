@@ -12,6 +12,7 @@ import { Track } from '../../interfaces/trackInterface';
 import { MessageService } from '../message.service';
 
 
+
 @Injectable()
 export class SpotifyApiService {
 
@@ -26,20 +27,28 @@ export class SpotifyApiService {
         console.log(searchReq);
         return this.http.get(searchReq, this.spotifyEndPoints.createRequestOptions()).map(
             (response: Response) => {
+              console.log(response);
                 const albumList: AlbumSpotify[] = response.json().albums.items;
                 return albumList;
             });
     }
 
-    addAlbumToPlaylist(spotifyAlbumId: string, playlistId: string): any {
+    addAlbumToPlaylist(spotifyAlbumId: string, playlistId: string): Promise<boolean> {
+      return new Promise(
+        resolve => {
         console.log('adding album to playlist');
         this.getTracksFromSpotify(spotifyAlbumId)
-            .subscribe(
-                (tracks: Track[]) => {
-                    console.log('tracks spotify: ', tracks);
-                }
-
+        .subscribe(
+          (tracks: Track[]) => {
+            console.log('tracks spotify: ', tracks);
+            this.addTracksToPlaylist(tracks, this.userService.getSelectedPlaylistId())
+              .subscribe( value => {
+                console.log(value);
+              });
+          }
         );
+        resolve(true);
+      });
     }
 
     getTracksFromSpotify(spotifyAlbumId: string): Observable<Track[]> {
@@ -50,6 +59,27 @@ export class SpotifyApiService {
                 console.log(r);
                 return this.spotifyMap<Track[]>(r);
             });
+    }
+
+    addTracksToPlaylist(tracks: Track[], playlistId: string) {
+      const tracksList = [];
+      for (const track of tracks) {
+        // tracksList += ',' + track.uri;
+        tracksList.push(track.uri);
+      }
+      console.log('tracksList ', tracksList);
+      const apiEndPoint = this.spotifyEndPoints.addTrackToPlaylistEndPoint.replace('{playlist_id}', playlistId).replace('{user_id}', this.userService.getUserId());
+      const request = encodeURI(apiEndPoint);
+      const body = { 'uris': tracksList};
+      console.log('BODY ', JSON.stringify(body));
+      return this.http.post(request, JSON.stringify(body), this.spotifyEndPoints.createRequestOptions())
+          .map((response: Response) => {
+            console.log(response);
+            return response;
+            // const albumList: AlbumSpotify[] = response.json().albums.items;
+            // return albumList;
+          });
+
     }
 
 

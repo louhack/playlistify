@@ -78,4 +78,8 @@ export class UserService {
     getSelectedPlaylistId() {
         return this.selectedPlaylistId;
     }
+
+    getUserId() {
+      return this.user.id;
+    }
 }

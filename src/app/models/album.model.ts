@@ -17,15 +17,12 @@ export class Album {
       id: string;
     };
 
-    public spotifySearchResults: AlbumSpotify[];
+    public spotifyId = '';
+
+    // this.spotify.id = '';
+
+    public spotifySearchResults: AlbumSpotify[] = [];
     public searchedOnSpotify = false;
-
-    // "album_id_sputnik_music": "259560",
-    // "artiste": "Gang of Youths",
-    // "album": "Go Farther In Lightness",
-    // "note": "4.4",
-    // "release_month": "August 2017"
-
 
     constructor(_id: string, artistName: string, albumName: string,
                 sputnikInfo: {
@@ -44,10 +41,18 @@ export class Album {
         this.artistName = artistName;
         this.albumName = albumName;
         this.sputnikMusic = sputnikInfo;
-        this.spotify = spotify;
-        if (this.spotify.id) {
+        // console.log('constructeur album ', this.albumName),
+        if (spotify != null) {
+          // console.log(spotify);
+          this.spotify = spotify;
+          this.spotifyId = spotify.id;
           this.searchedOnSpotify = true;
+        } else {
+          this.spotify = {
+            id: ''
+          };
         }
+
     }
 
 

@@ -10,7 +10,7 @@ import { AlbumSpotify } from '../interfaces/albumSpotifyInterface';
 @Injectable()
 export class AlbumService {
 
-  private albumList: Album [] = [];
+  private albumList: Album [] = <Album[]>[];
   albumsChanged = new Subject<Album[]>();
 
   api_url = 'http://localhost:3000';
@@ -24,7 +24,13 @@ export class AlbumService {
   fetchData() {
     return this.http.get(this.albumUrl)
     .map((res: Response) => {
-      const albums: Album[] = res.json().data.docs;
+      // console.log(res.json().data.docs);
+      const albums = new Array<Album>();
+      for (const album of res.json().data.docs) {
+        // console.log(album.hasOwnProperty('spotify') ? album.spotify : null);
+        albums.push(new Album(album._id, album.artistName, album.albumName, album.sputnikMusic, album.hasOwnProperty('spotify') ? album.spotify : null));
+      }
+
       return albums;
     })
     .subscribe((data: Album[]) => {
@@ -34,7 +40,7 @@ export class AlbumService {
 
   }
 
-  updateAlbum(album: Album): Promise<boolean> {
+  updateAlbumonDB(album: Album): Promise<boolean> {
     return new Promise(
       resolve => {
         this.http.put(this.albumUrl, album).subscribe(
@@ -44,6 +50,11 @@ export class AlbumService {
           }
         );
       });
+  }
+
+  updateAlbum(index: number, newAlbum: Album) {
+    this.albumList[index] = newAlbum;
+    this.albumsChanged.next(this.albumList.slice());
   }
 
   getAlbums() {

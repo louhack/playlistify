@@ -24,8 +24,8 @@
                               role="button"
                               (click)="addToPlaylist(i)"
                               [disabled]="!userService.isLoggedIn">Add to playlist</button>
-                    <span *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length === 0"> No result found</span>
-                  </p>
+                            </p>
+                            <p><span *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length === 0 && album.spotify.id ===''"> No result found</span></p>
                   <ng-container *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length > 1">
                     <p>{{ album.spotifySearchResults.length }} results found!</p>
                     <button class="btn btn-primary" (click)="onChoose(i)">Select Record</button>

@@ -50,43 +50,81 @@ export class AlbumListComponent implements OnInit {
 
     async addToPlaylist(index: number) {
       // album not found or search on spotify preiously
-      const spotifyAlbumId = this.albumsList[index].spotify.id;
-      if (!spotifyAlbumId) {
+      // console.log(this.albumsList[index]);
+      const album = this.albumsList[index];
+      // console.log(album);
+
+      if (!album.searchedOnSpotify) {
+        console.log('Searchin on spotify');
         await this.searchAlbumOnSpotify(index);
       }
-        // album has a spotify id, it has alredy be search and found previously
-        this.spotifyApiService.addAlbumToPlaylist(spotifyAlbumId, this.userService.getSelectedPlaylistId());
 
+      console.log('Search finished');
+      console.log('Id spotifyfound', album.spotify.id);
+
+      // album has a spotify id, it has alredy be search and found previously
+      if (album.searchedOnSpotify && album.spotify.id !== '') {
+        console.log('ajouter album à la playlist');
+        const spotifyAlbumId = this.albumsList[index].spotify.id;
+        await this.spotifyApiService.addAlbumToPlaylist(
+              spotifyAlbumId,
+              this.userService.getSelectedPlaylistId()
+        );
+      }
     }
 
-    searchAlbumOnSpotify(index: number) {
-      const album = this.albumsList[index];
 
+    searchAlbumOnSpotify(index: number): Promise<boolean> {
+      return new Promise(
+        resolve => {
+        const album = this.albumsList[index];
         this.spotifyApiService
           .searchItem('album:' + album.albumName + ' artist:' + album.artistName , 'album')
             .subscribe(
               (foundAlbums: AlbumSpotify[]) => {
-                  // console.log(albumList);
+                  console.log('FoundAlbums');
+                  console.log(foundAlbums);
                   if (foundAlbums.length > 0) {
-                    this.albumsList[index].spotifySearchResults = foundAlbums;
-                    this.albumsList[index].searchedOnSpotify = true;
+                    album.spotifySearchResults = foundAlbums;
+                    album.searchedOnSpotify = true;
 
                     if (foundAlbums.length === 1) {
                       // if only one result, save the spotify album id for later
                       // than add album to the selected playlist
-                      this.albumsList[index].spotify.id = foundAlbums[0].id;
-                      this.albumsService.updateAlbum(this.albumsList[index]);
+                      console.log('alb list: ');
+                      console.log(album);
+                      album.spotify.id = foundAlbums[0].id;
+                      this.albumsService.updateAlbumonDB(album).then(success => {
+                        console.log('mise à jour album');
+                        this.albumsService.updateAlbum(index, album);
+                      });
                     }
+                    resolve(true);
                   } else {
                     // no result found for search with album+artist, search with only album
-                    this.spotifyApiService.searchItem(this.albumsList[index].albumName, 'album').subscribe(
-                        (foundAlbums2: AlbumSpotify[]) => {
-                          // console.log(albList);
-                          this.albumsList[index].spotifySearchResults = foundAlbums2;
-                          this.albumsList[index].searchedOnSpotify = true;
+                    this.spotifyApiService.searchItem(album.albumName, 'album').subscribe(
+                      (foundAlbums2: AlbumSpotify[]) => {
+                        if (foundAlbums2.length > 0) {
+                          console.log('foundAlbums 2');
+                          console.log(foundAlbums2);
+                          album.spotifySearchResults = foundAlbums2;
+                          album.searchedOnSpotify = true;
+                          if (foundAlbums2.length === 1) {
+                            console.log('mise à jour album if 2');
+                            album.spotify.id = foundAlbums2[0].id;
+                            this.albumsService.updateAlbumonDB(album).then(success => {
+                              this.albumsService.updateAlbum(index, album);
+                            });
+                          }
+                          resolve(true);
+                          } else {
+                            resolve(false);
+                          }
                         });
                   }
-              });
+              },
+            err => console.log(err));
+        });
     }
 
 

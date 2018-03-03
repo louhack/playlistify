@@ -5,4 +5,5 @@ export interface Track {
     duration_ms: number;
     preview_url: string;
     id: string;
+    uri: string;
 }
