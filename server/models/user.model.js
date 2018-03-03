@@ -26,6 +26,9 @@ var UserSchema = new mongoose.Schema({
         },
         refreshToken: {
           type: String,
+        },
+        expires_in: {
+          type: Number,
         }
     },
     created: {

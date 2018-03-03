@@ -54,31 +54,30 @@ exports.getUserOrCreateUserService = async function(user){
         //   accessToken: accessToken,
         //   refreshToken: refreshToken
         // }
-        console.log('user to search', user);
+       // console.log('user to search', user);
         var userFound = await User.findOne({'spotify.id': user.spotify.id});
 
         //console.log('user.token: ', user.token);
-        console.log('userFound : ', userFound);
+        // console.log('userFound : ', userFound);
         if (userFound) {
             if(userFound.spotify.accessToken === user.spotify.accessToken) {
                 console.log('token up-to-date');
                 return userFound;
             } else {
                 //update token
-                userFound.spotify.accessToken = user.spotify.accessToken;
-                var updatedUser = await User.update({'spotify.id': userFound.spotify.id}, {'spotify.accessToken': user.spotify.accessToken, 'lastLoggedIn': Date.now()},
-                (err, raw) => {
-                    if (err) console.log(err);
-                    // console.log('Token udpdated', raw);
-                });
+                this.updateToken(userFound.spotify.id, user.spotify.accessToken, user.spotify.expires_in)
+                .then(res => {
+                  return res;
 
-               console.log('retour update: ', updatedUser);
-                return userFound;
+                },err => console.log(err));
             }
+
+              //  userFound.spotify.accessToken = user.spotify.accessToken;
+              //  userFound.spotify.expires_in = user.spotify.expires_in;
         } else {
             console.log("creating new user");
             // Creating a new Mongoose Object by using the new keyword
-            var newUser = new User(user);
+           var newUser = new User(user);
 
             var userCreated = await newUser.save();
             return userCreated;
@@ -93,22 +92,21 @@ exports.getUserOrCreateUserService = async function(user){
     }
 }
 
+exports.updateToken = async function(id,accessToken, expires_in) {
+  try {
+   var usr = await User.findOneAndUpdate({'spotify.id': id}, {'spotify.accessToken': accessToken, 'spotify.expires_in': expires_in, 'lastLoggedIn': Date.now()});
+  } catch (error) {
+    console.log('Error while updating Token: ', error);
+  }
+  return usr;
+}
 exports.createUserService = async function(user){
 
     // Creating a new Mongoose Object by using the new keyword
-    var newUser = new User({
-        profile: {
-            displayName : user.displayName,
-            id : user.id,
-            email : user.email,
-            picture: user.picture
-        }
-    });
-
     try{
-
-        // Commit user
-        var savedUser = await newUser.save();
+      var newUser = new User(user);
+      // Commit user
+      var savedUser = await newUser.save();
 
         return savedUser;
     }catch(e){
@@ -119,12 +117,13 @@ exports.createUserService = async function(user){
 }
 
 exports.updateUserService = async function(user){
+  console.log ('UPDATE USER: ', user);
     var id = user.id;
 
     try{
         //Find the old User Object by the Id Spotify
 
-        var oldUser = await User.findOne({id: id});
+        var oldUser = await User.findOne({'spotify.id': id});
     }catch(e){
         throw Error("Error occured while Finding the User")
     }
@@ -134,13 +133,13 @@ exports.updateUserService = async function(user){
         return false;
     }
 
-   console.log(oldUser)
+  //  console.log(oldUser)
 
     //Edit the User Object
-    oldUser.displayName = user.displayName ? user.displayName : oldUser.displayName;
-    oldUser.email = user.email ? user.email : oldUser.email;
+    oldUser.profile.displayName = user.profile.displayName ? user.profile.displayName : oldUser.profile.displayName;
+    oldUser.profile.email = user.profile.email ? user.profile.email : oldUser.profile.email;
 
-    console.log(oldUser)
+  //   console.log(oldUser)
 
     try{
         var savedUser = await oldUser.save()
