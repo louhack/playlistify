@@ -70,15 +70,21 @@ exports.updateAlbum = async function(req, res, next){
     console.log(req.body)
 
     var album = {
-        id,
-        artistName: req.body.artistName ? req.body.artistName : null,
-        albumName: req.body.albumName ? req.body.albumName : null,
-        idAlbumSputnik: req.body.idAlbumSputnik ? req.body.idAlbumSputnik : null,
-        imagePath: req.body.imagePath ? req.body.imagePath : null,
-        note: req.body.note ? req.body.note : null,
-        releaseMonth: req.body.releaseMonth ? req.body.releaseMonth : null,
-        spotifyId: req.body.spotifyId ? req.body.spotifyId : null,
-
+      _id: req.body._id,
+      artistName: req.body.artistName ? req.body.artistName : null,
+      albumName: req.body.albumName ? req.body.albumName : null,
+      sputnikMusic:{
+        id: req.body.sputnikMusic.id ? req.body.sputnikMusic.id : null,
+        imagePath: req.body.sputnikMusic.imagePath ? req.body.sputnikMusic.imagePath : null,
+        note: req.body.sputnikMusic.note ? req.body.sputnikMusic.note : null,
+        releaseDate: {
+          month: req.body.sputnikMusic.releaseDate.month ? req.body.sputnikMusic.releaseDate.month : null,
+          year: req.body.sputnikMusic.releaseDate.year ? req.body.sputnikMusic.releaseDate.year : null,
+        },
+      },
+      spotify: {
+        id: req.body.spotify.id ? req.body.spotify.id : null,
+      }
     }
 
 

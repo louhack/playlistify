@@ -55,7 +55,7 @@ exports.createAlbumService = async function(album){
 }
 
 exports.updateAlbumService = async function(album){
-    var id = album.id;
+    var id = album._id;
 
     try{
         //Find the old Album Object by the IdSputnik
@@ -70,17 +70,17 @@ exports.updateAlbumService = async function(album){
         return false;
     }
 
-    console.log(oldAlbum)
+    console.log('Album retrieve from DB  **** ', oldAlbum)
 
     //Edit the Album Object
     oldAlbum.artistName = album.artistName ? album.artistName : oldAlbum.artistName;
     oldAlbum.albumName = album.albumName ? album.albumName : oldAlbum.albumName;
-    oldAlbum.imagePath = album.imagePath ? album.imagePath : oldAlbum.imagePath;
-    oldAlbum.note = album.note ? album.note : oldAlbum.note;
-    oldAlbum.releaseMonth = album.releaseMonth ? album.releaseMonth : oldAlbum.releaseMonth;
-    oldAlbum.spotifyId = album.spotifyId  ? album.spotifyId : oldAlbum.spotifyId;
+    oldAlbum.sputnikMusic.imagePath = album.sputnikMusic.imagePath ? album.sputnikMusic.imagePath : oldAlbum.sputnikMusic.imagePath;
+    oldAlbum.sputnikMusic.note = album.sputnikMusic.note ? album.sputnikMusic.note : oldAlbum.sputnikMusic.note;
+    oldAlbum.sputnikMusic.releaseDate = album.sputnikMusic.releaseDate ? album.sputnikMusic.releaseDate : oldAlbum.sputnikMusic.releaseDate;
+    oldAlbum.spotify.id = album.spotify.id  ? album.spotify.id : oldAlbum.spotify.id;
 
-    console.log(oldAlbum)
+    console.log('Updated Album to save *** ', oldAlbum)
 
     try{
         var savedAlbum = await oldAlbum.save()
