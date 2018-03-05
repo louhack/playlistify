@@ -99,7 +99,7 @@ for table in table_releases:
 				j+=1
 			i+=1
 
-#print(releases_list)
+print(releases_list)
 # f.close()
 with open('data.json', 'w', encoding='iso-8859-1') as f:
   json.dump(releases_list, f, indent=4, ensure_ascii=True)
