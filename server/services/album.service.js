@@ -11,7 +11,7 @@ exports.getAlbumsService = async function(query, page, limit){
     var options = {
         page,
         limit,
-        sort:{'sputnikMusic.releaseDate': -1, 'sputnikMusic.note': -1}
+        sort:{'sputnikMusic.releaseDate.year': -1, 'sputnikMusic.releaseDate.month': -1, 'sputnikMusic.note': -1}
     }
 
     // Try Catch the awaited promise to handle the error
