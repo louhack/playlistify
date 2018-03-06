@@ -6,12 +6,12 @@ DEMO : https://playlistify-app.herokuapp.com/
 
 # FEATURES
 
-- Extraction of new releases using web scrapping in Python of the page https://www.sputnikmusic.com/newreleases.php (script to be added)<br>
-- Saving albums extracted to MongoDB<br> (To be automatized)
-- Display a page with album extracted from Sputnik Music (To be udpdated)<br>
+- Extraction of new releases using web scrapping in Python of the page https://www.sputnikmusic.com/newreleases.php<br>
+- Saving albums extracted to MongoDB<br>
+- Display a page with album extracted from Sputnik Music<br>
 - Search extracted albums in Spotify using Spotify API (Not fully functional)<br>
 - Authentication against spotify<br>
-- Add album to an existing or new user's playlist (To be developped)<br>
+- Add album to an existing or new user's playlist (Not fully functional)<br>
 
 # Application Architecture
 ## Back-End : 
