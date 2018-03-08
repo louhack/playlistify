@@ -67,7 +67,7 @@ for table in table_releases:
 			 		k=0
 			 		# print("Artiste ou Album", string)
 
-			imagePath_1 = "http://www.sputnikmusic.com/images/albums/"+album_link_1[7:13]+".jpg"
+			imagePath_1 = "https://www.sputnikmusic.com/images/albums/"+album_link_1[7:13]+".jpg"
 			releaseJson = {'artistName':artiste_1, 'albumName':album_1,'sputnikMusic':{'id':album_link_1[7:13], 'note':note_release_1, 'releaseDate':{ 'month': monthDic[releaseDate[0]], 'year': releaseDate[1]}, 'imagePath': imagePath_1}}
 			releases_list.append(releaseJson)
 			j+=1
