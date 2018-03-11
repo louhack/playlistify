@@ -23,7 +23,7 @@ var app = express();
 //var seedDB = require('./seeds/data');
 //populate DB
 //seedDB();
-console.log(config.get('Database.host'));
+// console.log(config.get('Database.host'));
 // MongoDB Connection
 var mongoose = require('mongoose');
 mongoose.Promise = bluebird;

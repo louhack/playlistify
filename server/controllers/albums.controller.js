@@ -18,8 +18,7 @@ exports.getAlbums = async function(req, res, next){
         var albums = await AlbumService.getAlbumsService({}, page, limit)
 
         // Return the albums list with the appropriate HTTP Status Code and Message.
-
-        return res.status(200).json({status: 200, data: albums, message: "Albums Successfully Recieved"});
+        return res.status(200).json({status: 200, data: albums, message: "Albums Successfully Received"});
 
     }catch(e){
 
@@ -67,7 +66,7 @@ exports.updateAlbum = async function(req, res, next){
 
     var id = req.body._id;
 
-    console.log(req.body)
+    // console.log(req.body)
 
     var album = {
       _id: req.body._id,
