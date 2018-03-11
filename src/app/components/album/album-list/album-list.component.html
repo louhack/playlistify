@@ -8,6 +8,21 @@
   </div>
   <hr>
   <div class="row">
+    <div class="col-xs-12 col-12">
+          <pagination
+            class="pagination-sm"
+            [(ngModel)]="currentPage"
+            [totalItems]="totalNumberOfAlbums"
+            [itemsPerPage]="itemsPerPage"
+            [maxSize]="maxSize"
+            [boundaryLinks]="true"
+            [rotate]="false"
+            (numPages)="numPages = $event"
+            (pageChanged)="pageChanged($event)">
+          </pagination>
+    </div>
+  </div>
+  <div class="row">
     <div class="card-deck" >
       <div *ngFor="let album of albumsList; let i = index" class="col-sm-6 col-md-4">
             <div class="card mb-5">

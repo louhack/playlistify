@@ -9,9 +9,9 @@ _this = this;
 exports.getAlbums = async function(req, res, next){
 
     // Check the existence of the query parameters, If the exists doesn't exists assign a default value
-
-    var page = req.query.page ? req.query.page : 1
-    var limit = req.query.limit ? req.query.limit : 50;
+  console.log(req.query);
+    var page = req.query.page ? +req.query.page : 1
+    var limit = req.query.limit ? +req.query.limit : 50;
 
     try{
 

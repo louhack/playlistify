@@ -14,6 +14,8 @@ import { SpotifyEndPoints } from './services/spotify/spotifyApiEndpoints';
 import { AlbumService } from './services/album.service';
 import { SpotifyApiService } from './services/spotify/spotifyApi.service';
 import { MessageService } from './services/message.service';
+import { PaginationModule } from 'ngx-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,8 +28,10 @@ import { MessageService } from './services/message.service';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpModule,
     AppRoutingModule,
+    PaginationModule.forRoot(),
   ],
   providers: [
     AlbumService,
