@@ -68,7 +68,7 @@ for table in table_releases:
 			 		# print("Artiste ou Album", string)
 
 			imagePath_1 = "https://www.sputnikmusic.com/images/albums/"+album_link_1[7:13]+".jpg"
-			releaseJson = {'artistName':artiste_1, 'albumName':album_1,'sputnikMusic':{'id':album_link_1[7:13], 'note':note_release_1, 'releaseDate':{ 'month': monthDic[releaseDate[0]], 'year': releaseDate[1]}, 'imagePath': imagePath_1}}
+			releaseJson = {'artistName':artiste_1, 'albumName':album_1,'sputnikMusic':{'id':album_link_1[7:13], 'note':note_release_1, 'releaseDate':{ 'month': int(monthDic[releaseDate[0]]), 'year': int(releaseDate[1])}, 'imagePath': imagePath_1}}
 			releases_list.append(releaseJson)
 			j+=1
 
@@ -108,8 +108,8 @@ f.close()
 ##### UPSERT IN DB - COLLECTION :ALBUMS
 #connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
 #mongodb://heroku_j6lv18qq:k7100p7qnmkdo5kk7i9io0q6ap@ds243418.mlab.com:43418/heroku_j6lv18qq
-#connection = MongoClient("mongodb://heroku_j6lv18qq:k7100p7qnmkdo5kk7i9io0q6ap@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=admin")
-connection = MongoClient("mongodb://webScrapper:akill007@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=heroku_j6lv18qq")
+connection = MongoClient("mongodb://heroku_j6lv18qq:k7100p7qnmkdo5kk7i9io0q6ap@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=admin")
+#connection = MongoClient("mongodb://webScrapper:akill007@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=heroku_j6lv18qq")
 # mongodb://<dbuser>:<dbpassword>@ds243418.mlab.com:43418/heroku_j6lv18qq
 #connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
 db = connection.get_default_database()
