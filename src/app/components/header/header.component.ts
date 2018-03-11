@@ -55,7 +55,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onPlaylistChange(id: string) {
-    console.log(JSON.stringify(id));
+    // console.log(JSON.stringify(id));
     this.userService.setSelectedPlaylistId(id);
 
   }
