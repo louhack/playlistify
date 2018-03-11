@@ -93,7 +93,7 @@ for table in table_releases:
 				 		k=0
 
 				imagePath_2 = "http://www.sputnikmusic.com/images/albums/"+album_link_2[7:13]+".jpg"
-				releaseJson2 = {'artistName':artiste_2, 'albumName':album_2,'sputnikMusic':{'id':album_link_2[7:13], 'note':note_release_2, 'releaseDate':{ 'month': monthDic[releaseDate[0]], 'year': releaseDate[1]}, 'imagePath': imagePath_2}}
+				releaseJson2 = {'artistName':artiste_2, 'albumName':album_2,'sputnikMusic':{'id':album_link_2[7:13], 'note':note_release_2, 'releaseDate':{ 'month': int(monthDic[releaseDate[0]]), 'year': int(releaseDate[1])}, 'imagePath': imagePath_2}}
 				releases_list.append(releaseJson2)
 				#releases_list.append({'idAlbumSputnik':album_link_2[7:13],'artistName':artiste_2, 'albumName':album_2, 'note':note_release_2, 'releaseMonth':mois_lu, 'imagePath':imagePath_2})
 				j+=1
