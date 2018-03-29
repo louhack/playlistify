@@ -6,14 +6,14 @@ var bodyParser = require('body-parser');
 var bluebird = require('bluebird');
 var passport = require('passport');
 var index = require('./routes/index');
-var users = require('./routes/users');
+// var users = require('./routes/users');
 var session = require('express-session');
 require('dotenv-safe').load();
 
 const config = require('config');
 
 var api = require('./routes/api.route');
-var UserService = require('./services/user.service');
+var UserController = require('./controllers/users.controller');
 
 
 
@@ -54,7 +54,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '../dist'))); // DIRECTORY FOR FRONT-END
 // app.use('/', index);
 app.use('/api', api);
-app.use('/users', users);
+// app.use('/users', users);
 
 app.use(session({
   name: config.get('Session.name'),
@@ -83,31 +83,6 @@ passport.use(new SpotifyStrategy({
     callbackURL: config.get('Spotify.callbackURL')
   },
   function (accessToken, refreshToken, expires_in, profile, done) {
-    // profile  {
-    // provider: 'spotify',
-    // id: '1119198705',
-    // username: '1119198705',
-    // displayName: 'Loïc Haquin',
-    // profileUrl: 'https://open.spotify.com/user/1119198705',
-    // photos: [ 'https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/13627205_10155034200724298_2176009845694240894_n.jpg?oh=c51fc6a82c76a1875dd1909efef0a47d&oe=5B177CEC' ],
-    // country: 'FR',
-    // followers: 7,
-    // product: 'premium',
-    // _raw: '{\n  "country" : "FR",\n  "display_name" : "Loïc Haquin",\n  "email" : "loic.haquin@gmail.com",\n  "external_urls" : {\n    "spotify" : "https://open.spotify.com/user/1119198705"\n  },\n  "followers" : {\n    "href" : null,\n    "total" : 7\n  },\n  "href" : "https://api.spotify.com/v1/users/1119198705",\n  "id" : "1119198705",\n  "images" : [ {\n    "height" : null,\n
-    //  "url" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p200x200/13627205_10155034200724298_2176009845694240894_n.jpg?oh=c51fc6a82c76a1875dd1909efef0a47d&oe=5B177CEC",\n    "width" : null\n  } ],\n  "product" : "premium",\n  "type" : "user",\n  "uri" : "spotify:user:1119198705"\n}',
-    // _json:
-    //  { country: 'FR',
-    //    display_name: 'Loïc Haquin',
-    //    email: 'loic.haquin@gmail.com',
-    //    external_urls: { spotify: 'https://open.spotify.com/user/1119198705' },
-    //    followers: { href: null, total: 7 },
-    //    href: 'https://api.spotify.com/v1/users/1119198705',
-    //    id: '1119198705',
-    //    images: [ [Object] ],
-    //    product: 'premium',
-    //    type: 'user',
-    //    uri: 'spotify:user:1119198705' },
-    // emails: [ { value: 'loic.haquin@gmail.com', type: null } ] }
     try {
       var userToLogIn = {
         profile: {
@@ -123,7 +98,7 @@ passport.use(new SpotifyStrategy({
         }
       };
 
-    UserService.getUserOrCreateUserService(userToLogIn)
+    UserController.getUserOrCreateUser(userToLogIn)
       .then(res => {},err => console.log(err));
 
     } catch (error) {
