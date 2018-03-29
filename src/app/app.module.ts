@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,8 +17,7 @@ import { SpotifyEndPoints } from './services/spotify/spotifyApiEndpoints';
 import { AlbumService } from './services/album.service';
 import { SpotifyApiService } from './services/spotify/spotifyApi.service';
 import { MessageService } from './services/message.service';
-import { PaginationModule } from 'ngx-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { AlbumsModalComponent } from './components/album/albums-modal/albums-modal.component';
 
 
 @NgModule({
@@ -25,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     AlbumListComponent,
     LoginComponent,
     ErrorComponent,
+    AlbumsModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { FormsModule } from '@angular/forms';
     HttpModule,
     AppRoutingModule,
     PaginationModule.forRoot(),
+    ModalModule.forRoot(),
   ],
   providers: [
     AlbumService,
@@ -41,6 +45,7 @@ import { FormsModule } from '@angular/forms';
     SpotifyApiService,
     MessageService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AlbumsModalComponent]
 })
 export class AppModule { }

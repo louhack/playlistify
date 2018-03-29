@@ -5,14 +5,14 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 import { AlbumSpotify } from '../interfaces/albumSpotifyInterface';
-import { AlbumsListI } from '../components/albumsList.interface';
+import { AlbumsListI } from '../interfaces/albumsList.interface';
 
 
 @Injectable()
 export class AlbumService {
 
   albumUrl = `/api/albums`;
-
+  albumChanged = new Subject<{index: number, album: Album}>();
 
   constructor(private http: Http) { }
 
@@ -29,7 +29,7 @@ export class AlbumService {
   }
 
 
-  getAlbums(page: Number, limit: Number): Observable<AlbumsListI> {
+  getAlbums(page: number, limit: number): Observable<AlbumsListI> {
     return this.http.get(this.albumUrl, {params: {page: page, limit: limit}})
     .map((res: Response) => {
       // console.log(res.json());
@@ -49,8 +49,7 @@ export class AlbumService {
 
   }
 
-  loadAlbums(albums: Album[]) {
-    // this.albumsList = albums;
-    // this.albumsChanged.next(this.albumsList.slice());
+  updateAlbum(index: number, album: Album) {
+    this.albumChanged.next({index: index, album: album});
   }
 }

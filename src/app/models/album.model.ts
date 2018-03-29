@@ -17,12 +17,11 @@ export class Album {
       id: string;
     };
 
-    public spotifyId = '';
-
     // this.spotify.id = '';
 
     public spotifySearchResults: AlbumSpotify[] = [];
     public searchedOnSpotify = false;
+    public addedToPlaylist: string;
 
     constructor(_id: string, artistName: string, albumName: string,
                 sputnikInfo: {
@@ -45,7 +44,6 @@ export class Album {
         if (spotify != null) {
           // console.log(spotify);
           this.spotify = spotify;
-          this.spotifyId = spotify.id;
           this.searchedOnSpotify = true;
         } else {
           this.spotify = {

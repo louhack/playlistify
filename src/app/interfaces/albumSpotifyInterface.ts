@@ -8,4 +8,6 @@ export interface AlbumSpotify {
     images: Image[];
     name: string;
     tracks: Track[];
+    album_type: string;
+    uri: string;
 }

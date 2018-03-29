@@ -20,9 +20,23 @@ export class UserService {
     private playlists: SpotifyPlaylist[];
     playlistsChanged = new Subject<SpotifyPlaylist[]>();
     private selectedPlaylistId: string;
+    private selectedPlaylistName: string;
 
     constructor(private http: Http,
         private spotifyEndPoints: SpotifyEndPoints) {}
+
+    updateAlbumAddedToPlaylist (albumId: string, playlistName: string) {
+      return new Promise(
+        resolve => {
+          this.http.put('', '', '').subscribe(
+            data => {
+              // console.log(data);
+              resolve(true);
+            }
+          );
+        });
+
+    }
 
     getUser() {
         return this.user;
@@ -71,12 +85,22 @@ export class UserService {
         this.playlistsChanged.next(this.playlists);
     }
 
-    setSelectedPlaylistId(playlistId: string) {
+    setSelectedPlaylistById(playlistId: string) {
         this.selectedPlaylistId = playlistId;
+        const playlistIndex = this.playlists.findIndex(playlist => playlist.id === playlistId);
+        this.selectedPlaylistName = this.playlists[playlistIndex].name;
     }
 
     getSelectedPlaylistId() {
         return this.selectedPlaylistId;
+    }
+
+    getSelectedPlaylistName() {
+      return this.selectedPlaylistName;
+    }
+
+    setSelectedPlaylistName(playlistName: string) {
+      this.selectedPlaylistName = playlistName;
     }
 
     getUserId() {

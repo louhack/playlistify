@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
       this.playlistsSubscription = this.userService.playlistsChanged.subscribe(
         (playlists: SpotifyPlaylist[]) => {
           this.playlists = playlists;
-          this.userService.setSelectedPlaylistId(this.playlists[0].id);
+          this.userService.setSelectedPlaylistById(this.playlists[0].id);
         });
 
         this.checkAuthentication();
@@ -54,9 +54,9 @@ export class HeaderComponent implements OnInit {
     this.authService.authenticateUsingSpotify();
   }
 
-  onPlaylistChange(id: string) {
-    // console.log(JSON.stringify(id));
-    this.userService.setSelectedPlaylistId(id);
+  onPlaylistChange(id: any) {
+    // console.log(JSON.stringify(event));
+    this.userService.setSelectedPlaylistById(id);
 
   }
 

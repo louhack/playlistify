@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Event } from '@angular/router/src/events';
 import { Http } from '@angular/http';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 import { Album } from '../../../models/album.model';
 import { SpotifyAuthService } from '../../../services/spotify/spotify-auth.service';
@@ -10,6 +11,8 @@ import { SpotifyPlaylist } from '../../../models/spotifyPlaylist.model';
 import { SpotifyApiService } from '../../../services/spotify/spotifyApi.service';
 import { AlbumSpotify } from '../../../interfaces/albumSpotifyInterface';
 import { MyCalendar } from '../../../shared/myCalendar';
+import { AlbumsModalComponent } from '../albums-modal/albums-modal.component';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-album-list',
@@ -19,36 +22,25 @@ import { MyCalendar } from '../../../shared/myCalendar';
 export class AlbumListComponent implements OnInit {
 
   albumsList: Album[] = [];
-  totalNumberOfAlbums: Number;
-  totalNumberOfPages: Number;
-  currentPage: Number;
-  maxSize: Number = 5;
-  numPages: Number = 0;
-  itemsPerPage: Number = 20;
+  albumSubscription: Subscription;
 
-  constructor(private albumsService: AlbumService, private userService: UserService, private spotifyApiService: SpotifyApiService) { }
+  totalNumberOfAlbums: number;
+  totalNumberOfPages: number;
+  currentPage: number;
+  maxSize = 5;
+  numPages = 0;
+  itemsPerPage = 20;
 
 
-  pageChanged(event: any): void {
-    console.log('Page changed to: ' + event.page);
-    console.log('Number items per page: ' + event.itemsPerPage);
-    console.log('NumPages value: ' + this.numPages);
-    this.albumsService.getAlbums(event.page, event.itemsPerPage)
-      .subscribe(albumsListI => {
-        this.albumsList = albumsListI.albumsList;
-        this.currentPage = albumsListI.currentPage;
-        this.totalNumberOfPages = albumsListI.totalNumberOfPages;
-        this.totalNumberOfAlbums = albumsListI.totalNumberOfAlbums;
-      });
+  bsModalRef: BsModalRef;
+
+  constructor(private albumsService: AlbumService, private userService: UserService, private spotifyApiService: SpotifyApiService, private modalService: BsModalService) {
+    this.albumSubscription = albumsService.albumChanged.subscribe(
+      albumChanged => {
+        this.albumsList[albumChanged.index] = albumChanged.album;
+      }
+    );
   }
-
-  // numPages(event: any): void {
-
-  // }
-  // albumsSubscription: Subscription;
-
-  // playlists: SpotifyPlaylist[] = [];
-  // playlistsSubscription: Subscription;
 
   ngOnInit() {
     this.albumsService.getAlbums(1, 20)
@@ -58,8 +50,47 @@ export class AlbumListComponent implements OnInit {
         this.totalNumberOfPages = albumsListI.totalNumberOfPages;
         this.totalNumberOfAlbums = albumsListI.totalNumberOfAlbums;
       });
-
   }
+
+  pageChanged(event: any): void {
+    this.albumsService.getAlbums(event.page, event.itemsPerPage)
+      .subscribe(albumsListI => {
+        this.albumsList = albumsListI.albumsList;
+        this.currentPage = albumsListI.currentPage;
+        this.totalNumberOfPages = albumsListI.totalNumberOfPages;
+        this.totalNumberOfAlbums = albumsListI.totalNumberOfAlbums;
+      });
+  }
+
+  openModalWithComponent(albumIndex: number) {
+    // retrieve albumsFound and pass them to the modal
+    const album = this.albumsList[albumIndex];
+    const initialState = {
+      albumsFound: album.spotifySearchResults,
+      title: album.albumName
+    };
+    this.bsModalRef = this.modalService.show(AlbumsModalComponent, {initialState});
+    this.bsModalRef.content.albumIndex = albumIndex;
+    this.bsModalRef.content.onChosenAlbum.subscribe((info: {index: number, spotifyId: string}) => {
+      album.spotify.id = info.spotifyId;
+      album.searchedOnSpotify = true;
+      album.spotifySearchResults = [];
+      this.albumsService.updateAlbumonDB(album).then(success => {
+        // console.log('mise à jour album');
+        this.updateAlbum(info.index, album);
+        this.addToPlaylist(info.index);
+      });
+      console.log('depuis album list. index: ' + info.index + ' SpotifyId: ' + info.spotifyId);
+    });
+  }
+
+  // numPages(event: any): void {
+
+  // }
+
+  // playlists: SpotifyPlaylist[] = [];
+  // playlistsSubscription: Subscription;
+
 
     getDate(i: number) {
         return (MyCalendar.month[+this.albumsList[i].sputnikMusic.releaseDate.month - 1]) + ' ' + this.albumsList[i].sputnikMusic.releaseDate.year;
@@ -87,6 +118,7 @@ export class AlbumListComponent implements OnInit {
               spotifyAlbumId,
               this.userService.getSelectedPlaylistId()
         );
+        this.albumsList[index].addedToPlaylist = this.userService.getSelectedPlaylistName();
       }
     }
 
