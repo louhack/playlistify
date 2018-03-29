@@ -129,7 +129,7 @@ app.get('/auth/spotify/token', (req, res) => {
   if(req.isAuthenticated()){
     var id = req.user.id;
     try {
-       UserService.getUserService(id)
+      UserController.getUserService(id)
         .then(
           user => {
             res.json(user.spotify.accessToken);

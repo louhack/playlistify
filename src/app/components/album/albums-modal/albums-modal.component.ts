@@ -15,6 +15,7 @@ export class AlbumsModalComponent implements OnInit {
   albumIndex: number;
   albumRadio = false;
   @Output() onChosenAlbum = new EventEmitter<{index: number, spotifyId: string}>();
+  chosenAlbum: string;
 
   constructor(public bsModalRef: BsModalRef, private albumService: AlbumService) {}
 
