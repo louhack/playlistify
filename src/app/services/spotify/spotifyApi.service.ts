@@ -24,10 +24,8 @@ export class SpotifyApiService {
 
     public searchItem(query: string, searchType: string): Observable<AlbumSpotify[]> {
        const searchReq = encodeURI(this.spotifyEndPoints.searchItemEndPoint + '?q=' + query + '&type=' + searchType);
-        // console.log(searchReq);
         return this.http.get(searchReq, this.spotifyEndPoints.createRequestOptions()).map(
             (response: Response) => {
-              // console.log(response);
                 const albumList: AlbumSpotify[] = response.json().albums.items;
                 return albumList;
             });
@@ -36,14 +34,11 @@ export class SpotifyApiService {
     addAlbumToPlaylist(spotifyAlbumId: string, playlistId: string): Promise<boolean> {
       return new Promise(
         resolve => {
-        // console.log('adding album to playlist');
         this.getTracksFromSpotify(spotifyAlbumId)
         .subscribe(
           (tracks: Track[]) => {
-            // console.log('tracks spotify: ', tracks);
             this.addTracksToPlaylist(tracks, this.userService.getSelectedPlaylistId())
               .subscribe( value => {
-                // console.log(value);
               });
           }
         );
@@ -56,7 +51,6 @@ export class SpotifyApiService {
         return this.http
             .get(req, this.spotifyEndPoints.createRequestOptions())
             .map(r => {
-                // console.log(r);
                 return this.spotifyMap<Track[]>(r);
             });
     }
@@ -64,27 +58,29 @@ export class SpotifyApiService {
     addTracksToPlaylist(tracks: Track[], playlistId: string) {
       const tracksList = [];
       for (const track of tracks) {
-        // tracksList += ',' + track.uri;
         tracksList.push(track.uri);
       }
-      // console.log('tracksList ', tracksList);
       const apiEndPoint = this.spotifyEndPoints.addTrackToPlaylistEndPoint.replace('{playlist_id}', playlistId).replace('{user_id}', this.userService.getUserId());
       const request = encodeURI(apiEndPoint);
       const body = { 'uris': tracksList};
-      // console.log('BODY ', JSON.stringify(body));
       return this.http.post(request, JSON.stringify(body), this.spotifyEndPoints.createRequestOptions())
           .map((response: Response) => {
-            // console.log(response);
             return response;
-            // const albumList: AlbumSpotify[] = response.json().albums.items;
-            // return albumList;
           });
 
     }
 
+    createPlaylistSpotify(playlistName: string) {
+      const req = encodeURI(this.spotifyEndPoints.createPlaylistEndPoint.replace('{user_id}', this.userService.getUserId()));
+      const body = {'name': playlistName };
+      return this.http
+          .post(req, JSON.stringify(body), this.spotifyEndPoints.createRequestOptions())
+          .map((response: Response) => {
+              return response;
+          });
+  }
 
     private spotifyMap<T>(res: Response): T {
-        // console.log('spotMap: ', res.json());
         return res.json().items;
     }
 

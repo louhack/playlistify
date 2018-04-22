@@ -6,6 +6,7 @@ export class SpotifyEndPoints {
     public addTrackToPlaylistEndPoint = 'https://api.spotify.com/v1/users/{user_id}/playlists/{playlist_id}/tracks';
     public searchItemEndPoint = 'https://api.spotify.com/v1/search';
     public getAlbumTracksEndPoint = 'https://api.spotify.com/v1/albums/{id}/tracks';
+    public createPlaylistEndPoint = 'https://api.spotify.com/v1/users/{user_id}/playlists';
 
     public authenticationTokenKey = 'authenticationTokenKey';
     public authenticationTokenTypeKey = 'authenticationTokenTypeKey';

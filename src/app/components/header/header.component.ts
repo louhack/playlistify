@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { SpotifyAuthService } from '../../services/spotify/spotify-auth.service';
 import { UserService } from '../../services/spotify/user.service';
 import { User } from '../../models/user.model';
@@ -6,6 +6,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { SpotifyPlaylist } from '../../models/spotifyPlaylist.model';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { SpotifyApiService } from '../../services/spotify/spotifyApi.service';
 
 @Component({
   selector: 'app-header',
@@ -23,17 +25,20 @@ export class HeaderComponent implements OnInit {
   playlists: SpotifyPlaylist[] = [];
   playlistsSubscription: Subscription;
 
+  // Model to create a playlist
+  modalRef: BsModalRef;
 
   constructor(private authService: SpotifyAuthService,
+              private spotifyAPIService: SpotifyApiService,
               private userService: UserService,
               private http: Http,
-              private router: Router) { }
+              private router: Router,
+              private modalService: BsModalService) { }
 
   ngOnInit() {
     this.userSubscription = this.userService.userChanged.subscribe(
       (user: User) => {
         this.user = user;
-        // console.log(this.user);
       });
 
       this.playlistsSubscription = this.userService.playlistsChanged.subscribe(
@@ -55,7 +60,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onPlaylistChange(id: any) {
-    // console.log(JSON.stringify(event));
     this.userService.setSelectedPlaylistById(id);
 
   }
@@ -66,25 +70,18 @@ export class HeaderComponent implements OnInit {
 
   checkAuthentication() {
     this.authService.retrieveTokenFromServer();
-    // console.log('chackAuthentication ', this.authService.getToken());
-    // if (this.authService.getToken()) {
-    //   this.http.get('/auth/spotify/token')
-    //     .map(res => res.json())
-    //     .subscribe(res => {
-    //       console.log(res);
-    //       if (res.token) {
-    //         this.authService.storeToken(res.token, 'Bearer');
-    //         this.userService.getUserProfilFromSpotify().then(
-    //           resp => {
-    //             this.userService.getUserPlaylistFromSpotify();
-    //             this.router.navigate(['/']);
-    //           }
-    //         );
-    //   }
-    // }, err => {
-    // });
+  }
 
-    // }
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  async createPlaylist(playlistName: string) {
+    await this.spotifyAPIService.createPlaylistSpotify(playlistName)
+      .subscribe(response => {
+      });
+      this.userService.getUserPlaylistFromSpotify();
+      this.modalRef.hide();
   }
 
 }

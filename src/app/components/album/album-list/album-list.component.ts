@@ -31,7 +31,7 @@ export class AlbumListComponent implements OnInit {
   numPages = 0;
   itemsPerPage = 20;
 
-
+// Modal for playlist creation
   bsModalRef: BsModalRef;
 
   constructor(private albumsService: AlbumService, private userService: UserService, private spotifyApiService: SpotifyApiService, private modalService: BsModalService) {
@@ -76,7 +76,6 @@ export class AlbumListComponent implements OnInit {
       album.searchedOnSpotify = true;
       album.spotifySearchResults = [];
       this.albumsService.updateAlbumonDB(album).then(success => {
-        // console.log('mise à jour album');
         this.updateAlbum(info.index, album);
         this.addToPlaylist(info.index);
       });
@@ -84,12 +83,6 @@ export class AlbumListComponent implements OnInit {
     });
   }
 
-  // numPages(event: any): void {
-
-  // }
-
-  // playlists: SpotifyPlaylist[] = [];
-  // playlistsSubscription: Subscription;
 
 
     getDate(i: number) {
@@ -98,17 +91,11 @@ export class AlbumListComponent implements OnInit {
 
     async addToPlaylist(index: number) {
       // album not found or search on spotify preiously
-      // console.log(this.albumsList[index]);
       const album = this.albumsList[index];
-      // console.log(album);
 
       if (!album.searchedOnSpotify) {
-        // console.log('Searchin on spotify');
         await this.searchAlbumOnSpotify(index);
       }
-
-      // console.log('Search finished');
-      // console.log('Id spotifyfound', album.spotify.id);
 
       // album has a spotify id, it has alredy be search and found previously
       if (album.searchedOnSpotify && album.spotify.id !== '') {
@@ -131,8 +118,7 @@ export class AlbumListComponent implements OnInit {
           .searchItem('album:' + album.albumName + ' artist:' + album.artistName , 'album')
             .subscribe(
               (foundAlbums: AlbumSpotify[]) => {
-                  // console.log('FoundAlbums');
-                  // console.log(foundAlbums);
+
                   if (foundAlbums.length > 0) {
                     album.spotifySearchResults = foundAlbums;
                     album.searchedOnSpotify = true;
@@ -140,11 +126,8 @@ export class AlbumListComponent implements OnInit {
                     if (foundAlbums.length === 1) {
                       // if only one result, save the spotify album id for later
                       // than add album to the selected playlist
-                      // console.log('alb list: ');
-                      // console.log(album);
                       album.spotify.id = foundAlbums[0].id;
                       this.albumsService.updateAlbumonDB(album).then(success => {
-                        // console.log('mise à jour album');
                         this.updateAlbum(index, album);
                       });
                     }
@@ -154,12 +137,9 @@ export class AlbumListComponent implements OnInit {
                     this.spotifyApiService.searchItem(album.albumName, 'album').subscribe(
                       (foundAlbums2: AlbumSpotify[]) => {
                         if (foundAlbums2.length > 0) {
-                          // console.log('foundAlbums 2');
-                          // console.log(foundAlbums2);
                           album.spotifySearchResults = foundAlbums2;
                           album.searchedOnSpotify = true;
                           if (foundAlbums2.length === 1) {
-                            // console.log('mise à jour album if 2');
                             album.spotify.id = foundAlbums2[0].id;
                             this.albumsService.updateAlbumonDB(album).then(success => {
                             this.updateAlbum(index, album);
@@ -180,11 +160,6 @@ export class AlbumListComponent implements OnInit {
     updateAlbum(index: number, newAlbum: Album) {
       this.albumsList[index] = newAlbum;
     }
-
-    // onChoose(index: number) {
-    //   console.log(this.albumsList[index]);
-    //   console.log(this.userService.getSelectedPlaylistId());
-    // }
 
 }
 

@@ -21,7 +21,6 @@ export class AlbumService {
       resolve => {
         this.http.put(this.albumUrl, album).subscribe(
           data => {
-            // console.log(data);
             resolve(true);
           }
         );
@@ -32,10 +31,8 @@ export class AlbumService {
   getAlbums(page: number, limit: number): Observable<AlbumsListI> {
     return this.http.get(this.albumUrl, {params: {page: page, limit: limit}})
     .map((res: Response) => {
-      // console.log(res.json());
       const albums = new Array<Album>();
       for (const album of res.json().data.docs) {
-        // console.log(album.hasOwnProperty('spotify') ? album.spotify : null);
         albums.push(new Album(album._id, album.artistName, album.albumName, album.sputnikMusic, album.hasOwnProperty('spotify') ? album.spotify : null));
       }
       const albumsListI: AlbumsListI = {
