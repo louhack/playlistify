@@ -76,12 +76,12 @@ export class HeaderComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
-  async createPlaylist(playlistName: string) {
-    await this.spotifyAPIService.createPlaylistSpotify(playlistName)
+  createPlaylist(playlistName: string) {
+    this.spotifyAPIService.createPlaylistSpotify(playlistName)
       .subscribe(response => {
+        this.userService.getUserPlaylistFromSpotify();
+        this.modalRef.hide();
       });
-      this.userService.getUserPlaylistFromSpotify();
-      this.modalRef.hide();
   }
 
 }
