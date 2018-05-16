@@ -1,11 +1,12 @@
 import { User } from '../../models/user.model';
-import { Http, RequestOptionsArgs, Headers } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
+
 import { SpotifyAuthService } from './spotify-auth.service';
 import { SpotifyEndPoints } from './spotifyApiEndpoints';
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
 import { SpotifyPlaylist } from '../../models/spotifyPlaylist.model';
+// import { Subscription } from 'rxjs/Subscription';
 
 @Injectable()
 export class UserService {
@@ -22,15 +23,14 @@ export class UserService {
     private selectedPlaylistId: string;
     private selectedPlaylistName: string;
 
-    constructor(private http: Http,
+    constructor(private http: HttpClient,
         private spotifyEndPoints: SpotifyEndPoints) {}
 
     updateAlbumAddedToPlaylist (albumId: string, playlistName: string) {
       return new Promise(
         resolve => {
-          this.http.put('', '', '').subscribe(
+          this.http.put('', '').subscribe(
             data => {
-              // console.log(data);
               resolve(true);
             }
           );
@@ -58,10 +58,10 @@ export class UserService {
     getUserProfilFromSpotify(): Promise<boolean> {
         return new Promise(
             resolve => {
-                this.http.get(this.spotifyEndPoints.currentUserProfileEndPoint, this.spotifyEndPoints.createRequestOptions()).subscribe(
+                this.http.get(this.spotifyEndPoints.currentUserProfileEndPoint, { headers: this.spotifyEndPoints.createRequestOptions()}).subscribe(
                     (response: any) => {
                                 const res = response.json();
-                                this.setUser(new User(res.display_name, res.id, res.images));
+                                this.setUser(new User('', res.display_name, res.id, res.images));
                                 this.userChanged.next(this.getUser());
                                 resolve(true);
                     }
@@ -70,11 +70,25 @@ export class UserService {
         );
     }
 
+    getUserProfilFromBackEnd(): Promise<boolean> {
+      return new Promise(
+          resolve => {
+              this.http.get('/api/user/profile').subscribe(
+                  (response: any) => {
+                              const res = response['data'];
+                              this.setUser(new User(res._id, res.profile.displayName, res.spotify.id, res.spotify.picture));
+                              this.userChanged.next(this.getUser());
+                              resolve(true);
+                  }
+              );
+          }
+      );
+  }
+
     getUserPlaylistFromSpotify() {
-        this.http.get(this.spotifyEndPoints.currentUserPlaylistsEndPoint, this.spotifyEndPoints.createRequestOptions()).subscribe(
+        this.http.get(this.spotifyEndPoints.currentUserPlaylistsEndPoint, { headers: this.spotifyEndPoints.createRequestOptions()}).subscribe(
             (response: any) => {
-                const res = response.json();
-                this.setPlaylists(res.items);
+                this.setPlaylists(response['items']);
 
             });
     }
@@ -103,7 +117,15 @@ export class UserService {
       this.selectedPlaylistName = playlistName;
     }
 
-    getUserId() {
+    getUserSpotifyId() {
       return this.user.id;
+    }
+
+    getUserDbId() {
+      return this.user._id;
+    }
+
+    isAuthenticated(): boolean {
+      return this.isLoggedIn;
     }
 }

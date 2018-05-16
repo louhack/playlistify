@@ -70,8 +70,6 @@ exports.updateAlbumService = async function(album){
         return false;
     }
 
-    console.log('Album retrieve from DB  **** ', oldAlbum)
-
     //Edit the Album Object
     oldAlbum.artistName = album.artistName ? album.artistName : oldAlbum.artistName;
     oldAlbum.albumName = album.albumName ? album.albumName : oldAlbum.albumName;
@@ -79,8 +77,6 @@ exports.updateAlbumService = async function(album){
     oldAlbum.sputnikMusic.note = album.sputnikMusic.note ? album.sputnikMusic.note : oldAlbum.sputnikMusic.note;
     oldAlbum.sputnikMusic.releaseDate = album.sputnikMusic.releaseDate ? album.sputnikMusic.releaseDate : oldAlbum.sputnikMusic.releaseDate;
     oldAlbum.spotify.id = album.spotify.id  ? album.spotify.id : oldAlbum.spotify.id;
-
-    console.log('Updated Album to save *** ', oldAlbum)
 
     try{
         var savedAlbum = await oldAlbum.save()

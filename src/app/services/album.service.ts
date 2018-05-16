@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Album } from '../models/album.model';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/map';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { AlbumSpotify } from '../interfaces/albumSpotifyInterface';
 import { AlbumsListI } from '../interfaces/albumsList.interface';
+import { AlbumPlaylistI } from '../interfaces/albumAddedToPlaylist.interface';
 
 
 @Injectable()
@@ -14,9 +14,9 @@ export class AlbumService {
   albumUrl = `/api/albums`;
   albumChanged = new Subject<{index: number, album: Album}>();
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  updateAlbumonDB(album: Album): Promise<boolean> {
+  updateAlbumOnDB(album: Album): Promise<boolean> {
     return new Promise(
       resolve => {
         this.http.put(this.albumUrl, album).subscribe(
@@ -28,25 +28,48 @@ export class AlbumService {
   }
 
 
-  getAlbums(page: number, limit: number): Observable<AlbumsListI> {
-    return this.http.get(this.albumUrl, {params: {page: page, limit: limit}})
-    .map((res: Response) => {
-      const albums = new Array<Album>();
-      for (const album of res.json().data.docs) {
-        albums.push(new Album(album._id, album.artistName, album.albumName, album.sputnikMusic, album.hasOwnProperty('spotify') ? album.spotify : null));
-      }
-      const albumsListI: AlbumsListI = {
-        albumsList: albums,
-        totalNumberOfAlbums: res.json().data.total,
-        currentPage: res.json().data.page,
-        totalNumberOfPages: res.json().data.pages
-      };
-      return albumsListI;
-    });
+  getAlbums(page: number, limit: number) {
+    const httpParams = new HttpParams().set('page', page.toString());
+    httpParams.append('limit', limit.toString());
+
+    return this.http.get(this.albumUrl, {params: httpParams})
+      .pipe(map((res) => {
+        const albums = new Array<Album>();
+        for (const album of res['data'].docs) {
+          albums.push(new Album(album._id, album.artistName, album.albumName, album.sputnikMusic, album.hasOwnProperty('spotify') ? album.spotify : null));
+        }
+        const albumsListI: AlbumsListI = {
+          albumsList: albums,
+          totalNumberOfAlbums: res['data'].total,
+          currentPage: res['data'].page,
+          totalNumberOfPages: res['data'].pages
+        };
+        return albumsListI;
+    }));
 
   }
 
   updateAlbum(index: number, album: Album) {
     this.albumChanged.next({index: index, album: album});
+  }
+
+  savePlaylistAlbum (item: AlbumPlaylistI): Observable<Object> {
+    return this.http.post('/api/user/playlistifyAlbum', {params: {playlist: item}});
+      // .map( response => {});
+  }
+
+  searchPlaylistifiedAlbums (albums: Album[], userId: string): Observable<any> {
+    const albumIds: string[] = [];
+    albums.forEach( album => {
+      albumIds.push(album._id);
+    });
+
+    console.log(albumIds);
+
+    return this.http.get('/api/user/playlistifiedAlbum', {params: { userId: userId, albumId: albumIds}})
+      .pipe(map((resp: Response) => {
+        console.log(resp);
+        return resp;
+      }));
   }
 }

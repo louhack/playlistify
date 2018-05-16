@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Event } from '@angular/router/src/events';
 import { Http } from '@angular/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Subscription } from 'rxjs';
 
 import { Album } from '../../../models/album.model';
 import { SpotifyAuthService } from '../../../services/spotify/spotify-auth.service';
@@ -12,7 +13,7 @@ import { SpotifyApiService } from '../../../services/spotify/spotifyApi.service'
 import { AlbumSpotify } from '../../../interfaces/albumSpotifyInterface';
 import { MyCalendar } from '../../../shared/myCalendar';
 import { AlbumsModalComponent } from '../albums-modal/albums-modal.component';
-import { Subscription } from 'rxjs/Subscription';
+import { AlbumPlaylistI } from '../../../interfaces/albumAddedToPlaylist.interface';
 
 @Component({
   selector: 'app-album-list',
@@ -49,6 +50,9 @@ export class AlbumListComponent implements OnInit {
         this.currentPage = albumsListI.currentPage;
         this.totalNumberOfPages = albumsListI.totalNumberOfPages;
         this.totalNumberOfAlbums = albumsListI.totalNumberOfAlbums;
+        if (this.userService.isAuthenticated()) {
+          this.searchPlaylistifiedAlbums();
+        }
       });
   }
 
@@ -59,6 +63,9 @@ export class AlbumListComponent implements OnInit {
         this.currentPage = albumsListI.currentPage;
         this.totalNumberOfPages = albumsListI.totalNumberOfPages;
         this.totalNumberOfAlbums = albumsListI.totalNumberOfAlbums;
+        if (this.userService.isAuthenticated()) {
+          this.searchPlaylistifiedAlbums();
+        }
       });
   }
 
@@ -75,11 +82,10 @@ export class AlbumListComponent implements OnInit {
       album.spotify.id = info.spotifyId;
       album.searchedOnSpotify = true;
       album.spotifySearchResults = [];
-      this.albumsService.updateAlbumonDB(album).then(success => {
+      this.albumsService.updateAlbumOnDB(album).then(success => {
         this.updateAlbum(info.index, album);
         this.addToPlaylist(info.index);
       });
-      console.log('depuis album list. index: ' + info.index + ' SpotifyId: ' + info.spotifyId);
     });
   }
 
@@ -99,16 +105,62 @@ export class AlbumListComponent implements OnInit {
 
       // album has a spotify id, it has alredy be search and found previously
       if (album.searchedOnSpotify && album.spotify.id !== '') {
-        // console.log('ajouter album à la playlist');
         const spotifyAlbumId = this.albumsList[index].spotify.id;
         await this.spotifyApiService.addAlbumToPlaylist(
               spotifyAlbumId,
               this.userService.getSelectedPlaylistId()
         );
-        this.albumsList[index].addedToPlaylist = this.userService.getSelectedPlaylistName();
+
+        const albumPlaylistToSave: AlbumPlaylistI = {
+          idSpotify: this.userService.getSelectedPlaylistId(),
+          name: this.userService.getSelectedPlaylistName(),
+          userId: this.userService.getUserDbId(),
+          albumId: this.albumsList[index]._id
+        };
+        this.albumsList[index].addedToPlaylist = albumPlaylistToSave;
+
+        this.savePlaylist(this.albumsList[index].addedToPlaylist);
       }
     }
 
+    savePlaylist(savePlaylist: AlbumPlaylistI) {
+      console.log('APPEL API PLAYLIST SUR : ' + JSON.stringify(savePlaylist));
+      this.albumsService.savePlaylistAlbum(savePlaylist)
+        .subscribe(
+          response => console.log('REPONSE : ' + JSON.stringify(response)
+        ));
+    }
+
+    searchPlaylistifiedAlbums() {
+      const album = {
+        // idSpotify: '3293JpoQ0udUvBn0L3OBrK',
+        userId: '5a97303efc0e0449003dedda',
+        albumId: '5a981206b4ffc6be9e5780f7'
+      };
+
+      // let playlist;
+
+      this.albumsService.searchPlaylistifiedAlbums(this.albumsList, this.userService.getUserDbId())
+        .subscribe(
+            response => {
+              if(response['data'] != null){
+                const playlist = response['data'];
+                console.log('GET RESPONSE : ' + JSON.stringify(response['data']));
+                playlist.forEach(playlist => {
+                  this.albumsList.forEach( album => {
+                    if(playlist.albumId === album._id) {
+                      album.addedToPlaylist =  playlist;
+                      // album.addedToPlaylist.idSpotify = playlist.idSpotify;
+                      // album.addedToPlaylist.name= playlist.name;
+                      // album.addedToPlaylist.userId= playlist.userId;
+                      // album.addedToPlaylist.albumId = playlist.albumId;
+                    }
+                  });
+                });
+              }
+            }
+        );
+    }
 
     searchAlbumOnSpotify(index: number): Promise<boolean> {
       return new Promise(
@@ -127,7 +179,7 @@ export class AlbumListComponent implements OnInit {
                       // if only one result, save the spotify album id for later
                       // than add album to the selected playlist
                       album.spotify.id = foundAlbums[0].id;
-                      this.albumsService.updateAlbumonDB(album).then(success => {
+                      this.albumsService.updateAlbumOnDB(album).then(success => {
                         this.updateAlbum(index, album);
                       });
                     }
@@ -141,7 +193,7 @@ export class AlbumListComponent implements OnInit {
                           album.searchedOnSpotify = true;
                           if (foundAlbums2.length === 1) {
                             album.spotify.id = foundAlbums2[0].id;
-                            this.albumsService.updateAlbumonDB(album).then(success => {
+                            this.albumsService.updateAlbumOnDB(album).then(success => {
                             this.updateAlbum(index, album);
                             });
                           }

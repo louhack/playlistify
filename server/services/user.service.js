@@ -1,17 +1,21 @@
 // Getting User Model
 var User = require('../models/user.model');
+var Playlists = require('../models/playlist.model');
 
 // Saving the context of this module inside the _this variable
 _this = this;
 
 // Async function to get the Users List
-exports.getUsersService = async function(query, page, limit){
+exports.getUsersService = async function(req, res, next){
 
-    // Options setup for the mongoose paginate
-    var options = {
-        page,
-        limit
-    }
+  var page = req.query.page ? +req.query.page : 1
+  var limit = req.query.limit ? +req.query.limit : 20;
+
+  // Options setup for the mongoose paginate
+  var options = {
+      page,
+      limit
+  }
 
     // Try Catch the awaited promise to handle the error
 
@@ -42,19 +46,6 @@ exports.getUserService = async function(id) {
 
 exports.getUserOrCreateUserService = async function(user){
     try {
-
-      // var user = {
-        // profile: {
-        //   displayName : profile.displayName,
-        //   email : profile.emails[0].value,
-        // },
-        // spotify: {
-        //   id : profile.id,
-        //   picture: profile._json.images,
-        //   accessToken: accessToken,
-        //   refreshToken: refreshToken
-        // }
-       // console.log('user to search', user);
         var userFound = await User.findOne({'spotify.id': user.spotify.id});
 
         //console.log('user.token: ', user.token);
@@ -65,7 +56,7 @@ exports.getUserOrCreateUserService = async function(user){
                 return userFound;
             } else {
                 //update token
-                this.updateToken(userFound.spotify.id, user.spotify.accessToken, user.spotify.expires_in)
+                this.updateTokenService(userFound.spotify.id, user.spotify.accessToken, user.spotify.expires_in)
                 .then(res => {
                   return res;
 
@@ -86,13 +77,10 @@ exports.getUserOrCreateUserService = async function(user){
             // return a Error message describing the reason
             console.log(error);
             throw Error("Error while Searching the User");
-
-
-
     }
 }
 
-exports.updateToken = async function(id,accessToken, expires_in) {
+exports.updateTokenService = async function(id,accessToken, expires_in) {
   try {
    var usr = await User.findOneAndUpdate({'spotify.id': id}, {'spotify.accessToken': accessToken, 'spotify.expires_in': expires_in, 'lastLoggedIn': Date.now()});
   } catch (error) {
@@ -117,7 +105,6 @@ exports.createUserService = async function(user){
 }
 
 exports.updateUserService = async function(user){
-  console.log ('UPDATE USER: ', user);
     var id = user.id;
 
     try{
@@ -161,4 +148,21 @@ exports.deleteUserService = async function(id){
     }catch(e){
         throw Error("Error Occured while Deleting the User")
     }
+  }
+
+exports.getPlaylistsService = async function(){
+  try {
+   return 'get user\'s playlist';
+  } catch (error) {
+    console.log('ERROR WHILE GET PLAYLISTS : ' + error);
+  }
+
+exports.saveAlbumPlaylistService = async function() {
+  try {
+    return 'save album\'s playlist';
+  } catch (error) {
+    console.log('ERROR WHILE SAVING ALBUM\'S PLAYLIST : ' + error);
+
+  }
+}
 }

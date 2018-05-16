@@ -13,21 +13,18 @@ require('dotenv-safe').load();
 const config = require('config');
 
 var api = require('./routes/api.route');
-var UserController = require('./controllers/users.controller');
+var UserService = require('./services/user.service');
+var middleware = require("./middleware/auth.middleware");
 
 
 
 
 var app = express();
 
-//var seedDB = require('./seeds/data');
-//populate DB
-//seedDB();
-// console.log(config.get('Database.host'));
 // MongoDB Connection
 var mongoose = require('mongoose');
 mongoose.Promise = bluebird;
-mongoose.connect(config.get('Database.host'), { useMongoClient: true})
+mongoose.connect(config.get('Database.host'))
       .then(()=> { console.log(`Succesfully Connected to the Mongodb Database : %s`, config.get('Database.db_name'))})
       .catch(()=> { console.log(`Error Connecting to the Mongodb Database : %s`, config.get('Database.db_name'))});
 
@@ -52,10 +49,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '../dist'))); // DIRECTORY FOR FRONT-END
-// app.use('/', index);
-app.use('/api', api);
-// app.use('/users', users);
 
+
+// SESSION CONFIGURATION
 app.use(session({
   name: config.get('Session.name'),
   secret: config.get('Session.secret'),
@@ -98,7 +94,7 @@ passport.use(new SpotifyStrategy({
         }
       };
 
-    UserController.getUserOrCreateUser(userToLogIn)
+      UserService.getUserOrCreateUserService(userToLogIn)
       .then(res => {},err => console.log(err));
 
     } catch (error) {
@@ -111,6 +107,12 @@ passport.use(new SpotifyStrategy({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+// ROUTE INITIALIZATION
+app.use('/api', api);
+
+
+// AUTHENTICATION ROUTE USING SPOTIFY PASSPORT
 app.get('/auth/spotify',
 passport.authenticate('spotify', {scope: ['user-read-email', 'playlist-read-private', 'playlist-read-collaborative', 'playlist-modify-public', 'playlist-modify-private', 'user-library-read', 'user-top-read', 'user-read-private']}),
 function(req, res){
@@ -124,12 +126,11 @@ function(req, res) {
   res.redirect('/login');
 });
 
-app.get('/auth/spotify/token', (req, res) => {
+app.get('/auth/spotify/token', middleware.isLoggedIn, (req, res) => {
   // Request to db to find user and spotify token and update response
-  if(req.isAuthenticated()){
     var id = req.user.id;
     try {
-      UserController.getUserService(id)
+      UserService.getUserService(id)
         .then(
           user => {
             res.json(user.spotify.accessToken);
@@ -141,7 +142,6 @@ app.get('/auth/spotify/token', (req, res) => {
     } catch (e) {
       console.log(e);
     }
-  }
 });
 
 

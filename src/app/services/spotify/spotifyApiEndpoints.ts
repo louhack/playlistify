@@ -1,4 +1,6 @@
-import { RequestOptionsArgs, Headers } from '@angular/http';
+// import { RequestOptionsArgs, Headers } from '@angular/http';
+import { HttpHeaders } from '@angular/common/http';
+
 
 export class SpotifyEndPoints {
     public currentUserProfileEndPoint = 'https://api.spotify.com/v1/me';
@@ -11,16 +13,15 @@ export class SpotifyEndPoints {
     public authenticationTokenKey = 'authenticationTokenKey';
     public authenticationTokenTypeKey = 'authenticationTokenTypeKey';
 
-    public createRequestOptions(): RequestOptionsArgs {
+    public createRequestOptions(): HttpHeaders {
         const authorizationHeaderName = 'Authorization';
-        const headers = new Headers();
         const tokenType = window.sessionStorage.getItem(this.authenticationTokenTypeKey);
         const token = window.sessionStorage.getItem(this.authenticationTokenKey);
-        headers.append(
+        const headers = new HttpHeaders().set(
             authorizationHeaderName,
             `${tokenType} ${token}`
         );
-        return {headers};
+        return headers;
     }
 
 }

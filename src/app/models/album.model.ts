@@ -1,4 +1,5 @@
 import { AlbumSpotify } from '../interfaces/albumSpotifyInterface';
+import { AlbumPlaylistI } from '../interfaces/albumAddedToPlaylist.interface';
 
 export class Album {
     public _id: string;
@@ -21,7 +22,7 @@ export class Album {
 
     public spotifySearchResults: AlbumSpotify[] = [];
     public searchedOnSpotify = false;
-    public addedToPlaylist: string;
+    public addedToPlaylist: AlbumPlaylistI;
 
     constructor(_id: string, artistName: string, albumName: string,
                 sputnikInfo: {
@@ -40,9 +41,7 @@ export class Album {
         this.artistName = artistName;
         this.albumName = albumName;
         this.sputnikMusic = sputnikInfo;
-        // console.log('constructeur album ', this.albumName),
         if (spotify != null) {
-          // console.log(spotify);
           this.spotify = spotify;
           this.searchedOnSpotify = true;
         } else {

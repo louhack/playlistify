@@ -1,12 +1,13 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Subscription } from 'rxjs';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+
 import { SpotifyAuthService } from '../../services/spotify/spotify-auth.service';
 import { UserService } from '../../services/spotify/user.service';
 import { User } from '../../models/user.model';
-import { Subscription } from 'rxjs/Subscription';
 import { SpotifyPlaylist } from '../../models/spotifyPlaylist.model';
-import { Http } from '@angular/http';
-import { Router } from '@angular/router';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { SpotifyApiService } from '../../services/spotify/spotifyApi.service';
 
 @Component({
@@ -31,7 +32,7 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: SpotifyAuthService,
               private spotifyAPIService: SpotifyApiService,
               private userService: UserService,
-              private http: Http,
+              private http: HttpClient,
               private router: Router,
               private modalService: BsModalService) { }
 

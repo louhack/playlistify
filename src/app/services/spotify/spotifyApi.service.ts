@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { UserService } from './user.service';
 import { SpotifyAuthService } from './spotify-auth.service';
@@ -16,7 +16,7 @@ import { MessageService } from '../message.service';
 @Injectable()
 export class SpotifyApiService {
 
-    constructor(private http: Http,
+    constructor(private http: HttpClient,
         private userService: UserService,
         private spotifyAuthService: SpotifyAuthService,
         private spotifyEndPoints: SpotifyEndPoints,
@@ -24,11 +24,11 @@ export class SpotifyApiService {
 
     public searchItem(query: string, searchType: string): Observable<AlbumSpotify[]> {
        const searchReq = encodeURI(this.spotifyEndPoints.searchItemEndPoint + '?q=' + query + '&type=' + searchType);
-        return this.http.get(searchReq, this.spotifyEndPoints.createRequestOptions()).map(
-            (response: Response) => {
-                const albumList: AlbumSpotify[] = response.json().albums.items;
-                return albumList;
-            });
+        return this.http.get(searchReq, { headers: this.spotifyEndPoints.createRequestOptions()})
+        .pipe( map( (albums) => {
+          return albums['albums'].items;
+          })
+        );
     }
 
     addAlbumToPlaylist(spotifyAlbumId: string, playlistId: string): Promise<boolean> {
@@ -39,20 +39,20 @@ export class SpotifyApiService {
           (tracks: Track[]) => {
             this.addTracksToPlaylist(tracks, this.userService.getSelectedPlaylistId())
               .subscribe( value => {
+                resolve(true);
               });
           }
         );
-        resolve(true);
       });
     }
 
     getTracksFromSpotify(spotifyAlbumId: string): Observable<Track[]> {
         const req = encodeURI(this.spotifyEndPoints.getAlbumTracksEndPoint.replace('{id}', spotifyAlbumId));
         return this.http
-            .get(req, this.spotifyEndPoints.createRequestOptions())
-            .map(r => {
+            .get<Response>(req, { headers: this.spotifyEndPoints.createRequestOptions()})
+            .pipe(map(r => {
                 return this.spotifyMap<Track[]>(r);
-            });
+            }));
     }
 
     addTracksToPlaylist(tracks: Track[], playlistId: string) {
@@ -60,28 +60,28 @@ export class SpotifyApiService {
       for (const track of tracks) {
         tracksList.push(track.uri);
       }
-      const apiEndPoint = this.spotifyEndPoints.addTrackToPlaylistEndPoint.replace('{playlist_id}', playlistId).replace('{user_id}', this.userService.getUserId());
+      const apiEndPoint = this.spotifyEndPoints.addTrackToPlaylistEndPoint.replace('{playlist_id}', playlistId).replace('{user_id}', this.userService.getUserSpotifyId());
       const request = encodeURI(apiEndPoint);
       const body = { 'uris': tracksList};
-      return this.http.post(request, JSON.stringify(body), this.spotifyEndPoints.createRequestOptions())
-          .map((response: Response) => {
+      return this.http.post(request, JSON.stringify(body), { headers: this.spotifyEndPoints.createRequestOptions()})
+          .pipe(map((response: Response) => {
             return response;
-          });
+          }));
 
     }
 
     createPlaylistSpotify(playlistName: string) {
-      const req = encodeURI(this.spotifyEndPoints.createPlaylistEndPoint.replace('{user_id}', this.userService.getUserId()));
+      const req = encodeURI(this.spotifyEndPoints.createPlaylistEndPoint.replace('{user_id}', this.userService.getUserSpotifyId()));
       const body = {'name': playlistName };
       return this.http
-          .post(req, JSON.stringify(body), this.spotifyEndPoints.createRequestOptions())
-          .map((response: Response) => {
+          .post(req, JSON.stringify(body), { headers: this.spotifyEndPoints.createRequestOptions()})
+          .pipe(map((response: Response) => {
               return response;
-          });
+          }));
   }
 
-    private spotifyMap<T>(res: Response): T {
-        return res.json().items;
+    private spotifyMap<T>(res: any): T {
+        return res.items;
     }
 
 

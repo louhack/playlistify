@@ -23,7 +23,6 @@ export class AlbumsModalComponent implements OnInit {
   }
 
   onSave(value: string) {
-    console.log('Album chosen: ' + value);
     this.onChosenAlbum.emit({index: this.albumIndex, spotifyId: value});
     this.bsModalRef.hide();
   }

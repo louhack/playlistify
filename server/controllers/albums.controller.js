@@ -9,7 +9,6 @@ _this = this;
 exports.getAlbums = async function(req, res, next){
 
   // Check the existence of the query parameters, If the exists doesn't exists assign a default value
-  // console.log(req.query);
   var page = req.query.page ? +req.query.page : 1
   var limit = req.query.limit ? +req.query.limit : 20;
 
@@ -80,8 +79,6 @@ exports.updateAlbum = async function(req, res, next){
     }
 
     var id = req.body._id;
-
-    // console.log(req.body)
 
     var album = {
       _id: req.body._id,

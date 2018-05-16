@@ -41,7 +41,7 @@
                               [disabled]="!userService.isLoggedIn">Add to playlist</button>
                             </p>
                             <p><span *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length === 0 && album.spotify.id ===''"> Sorry ! No result found</span></p>
-                            <p *ngIf="album.addedToPlaylist">Album successfully added to playlist {{ album.addedToPlaylist }}</p>
+                            <p *ngIf="album.addedToPlaylist">Album added to playlist {{ album.addedToPlaylist.name }}</p>
                   <ng-container *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length > 1">
                     <p>{{ album.spotifySearchResults.length }} results found! Please select the right one</p>
                     <button class="btn btn-primary" (click)="openModalWithComponent(i)">Select Record</button>

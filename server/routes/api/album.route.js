@@ -2,8 +2,9 @@ var express = require('express');
 
 var router = express.Router();
 
-// Getting the Album Controller that we just created
+var middleware = require("../../middleware/auth.middleware");
 
+// Getting the Album Controller that we just created
 var AlbumsController = require('../../controllers/albums.controller');
 
 
@@ -11,11 +12,11 @@ var AlbumsController = require('../../controllers/albums.controller');
 
 router.get('/', AlbumsController.getAlbums);
 
-router.post('/', AlbumsController.createAlbum);
+router.post('/', middleware.isLoggedIn, AlbumsController.createAlbum);
 
-router.put('/', AlbumsController.updateAlbum);
+router.put('/', middleware.isLoggedIn, AlbumsController.updateAlbum);
 
-router.delete('/:id',AlbumsController.removeAlbum);
+router.delete('/:id', middleware.isLoggedIn, AlbumsController.removeAlbum);
 
 
 // Export the Router

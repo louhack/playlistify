@@ -1,5 +1,11 @@
+var async = require("async");
+
 // Getting User Model
 var User = require('../models/user.model');
+
+var Playlist = require('../models/playlist.model');
+
+var ObjectId = require('mongodb').ObjectID;
 
 // Saving the context of this module inside the _this variable
 _this = this;
@@ -31,124 +37,121 @@ exports.getUsers = async function(req, res, next){
     }
 }
 
-exports.getUserService = async function(id) {
-    try {
-        var user = await User.findOne({'spotify.id': id});
-
-        return user;
-    }
-    catch(e){
-        // return a Error message describing the reason
-        throw Error("Error while Searching the User");
-    }
-}
-
-exports.getUserOrCreateUser = async function(user){
-    try {
-        var userFound = await User.findOne({'spotify.id': user.spotify.id});
-
-        //console.log('user.token: ', user.token);
-        // console.log('userFound : ', userFound);
-        if (userFound) {
-            if(userFound.spotify.accessToken === user.spotify.accessToken) {
-                console.log('token up-to-date');
-                return userFound;
-            } else {
-                //update token
-                this.updateToken(userFound.spotify.id, user.spotify.accessToken, user.spotify.expires_in)
-                .then(res => {
-                  return res;
-
-                },err => console.log(err));
-            }
-
-              //  userFound.spotify.accessToken = user.spotify.accessToken;
-              //  userFound.spotify.expires_in = user.spotify.expires_in;
-        } else {
-            console.log("creating new user");
-            // Creating a new Mongoose Object by using the new keyword
-           var newUser = new User(user);
-
-            var userCreated = await newUser.save();
-            return userCreated;
-        }
-    } catch (error) {
-            // return a Error message describing the reason
-            console.log(error);
-            throw Error("Error while Searching the User");
-
-
-
-    }
-}
-
-exports.updateToken = async function(id,accessToken, expires_in) {
+exports.getUser = async function(req, res, next) {
   try {
-   var usr = await User.findOneAndUpdate({'spotify.id': id}, {'spotify.accessToken': accessToken, 'spotify.expires_in': expires_in, 'lastLoggedIn': Date.now()});
-  } catch (error) {
-    console.log('Error while updating Token: ', error);
-  }
-  return usr;
+    var id = req.user.id;
+    var user = await User.findOne({'spotify.id': id});
+
+    var userData = {
+      _id: user._id,
+      spotify: {
+        id: user.spotify.id,
+        picture: user.spotify.picture
+      },
+      profile: {
+        displayName: user.profile.displayName,
+        email: user.profile.email
+      }
+    }
+    // Return the user with the appropriate HTTP Status Code and Message.
+    return res.status(200).json({status: 200, data: userData, message: "User found"});
+
+  } catch (e) {
+    // return a Error message describing the reason
+    return res.status(400).json({status: 400, message: e.message});
+    }
 }
-exports.createUserService = async function(user){
+
+exports.getUserOrCreateUser = async function(req, res, next){
+
+}
+
+
+exports.createUser = async function(req, res, next){
 
     // Creating a new Mongoose Object by using the new keyword
-    try{
-      var newUser = new User(user);
-      // Commit user
-      var savedUser = await newUser.save();
-
-        return savedUser;
-    }catch(e){
-
-        // return a Error message describing the reason
-        throw Error("Error while Creating User");
-    }
 }
 
-exports.updateUserService = async function(user){
-  console.log ('UPDATE USER: ', user);
-    var id = user.id;
+exports.updateUser = async function(req, res, next){
 
-    try{
-        //Find the old User Object by the Id Spotify
 
-        var oldUser = await User.findOne({'spotify.id': id});
-    }catch(e){
-        throw Error("Error occured while Finding the User")
-    }
-
-    // If no old User Object exists return false
-    if(!oldUser){
-        return false;
-    }
-
-  //  console.log(oldUser)
-
-    //Edit the User Object
-    oldUser.profile.displayName = user.profile.displayName ? user.profile.displayName : oldUser.profile.displayName;
-    oldUser.profile.email = user.profile.email ? user.profile.email : oldUser.profile.email;
-
-  //   console.log(oldUser)
-
-    try{
-        var savedUser = await oldUser.save()
-        return savedUser;
-    }catch(e){
-        throw Error("And Error occured while updating the User");
-    }
 }
 
-exports.deleteUserService = async function(id){
+exports.deleteUserService = async function(req, res, next){
 
     // Delete the User
-    try{
-        var deleted = await User.remove({_id: id});
-        if(deleted.result.n === 0){
-            throw Error("User Could not be deleted")
-        }
-        return deleted
-    }catch(e){
-        throw Error("Error Occured while Deleting the User")
-    }
+
+  }
+
+exports.getPlaylists = async function(req, res, next){
+  try {
+    const userId = req.query.userId;
+    var albumIds = [];
+    albumIds = req.query.albumId;
+    var playlistifiedAlbums = [];
+
+  async.each(albumIds, function(albumId, callback){
+      Playlist.findOne({'userId': userId, 'albumId': albumId}
+      ,(err, res) => {
+          if(err) {
+            console.log(err);
+          } else {
+              if(res){
+                console.log('RES : ' + res);
+                playlistifiedAlbums.push(res);
+              }
+            }
+            callback();
+      });
+    },function(err){
+      console.log('Playlistified Albums : ' + playlistifiedAlbums);
+      if(err) {
+        console.log('ERROR WHILE SEARCHING FOR PLAYLIST : %s', err)
+      }
+      if (playlistifiedAlbums.length > 0){
+        return res.status(200).json({status: 200, data: playlistifiedAlbums, message: "Playlist Successfully Found"});
+      }
+      return res.status(200).json({status: 200, message: "No Playlist Found"});
+
+    });
+
+    // albumIds.forEach(async(albumId) => {
+    //   await Playlist.findOne({'userId': userId, 'albumId': albumId}, (err, res) => {
+    //     if(err) {
+    //       console.log(err);
+    //     } else {
+    //       if(res){
+    //         console.log('RES : ' + res);
+    //         playlistifiedAlbums.push(res);
+    //       }
+
+    //     }
+    //   });
+    // });
+
+
+
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+exports.playlistifyAlbum = async function(req, res, next) {
+  try {
+    const data = req.body.params.playlist;
+
+    var albumToPlaylistify = new Playlist(data);
+    // Commit user
+    var savedPlaylistifiedAlbum = await albumToPlaylist.save();
+
+    console.log(savedPlaylistifiedAlbum);
+
+    return res.status(201).json({status: 201, data: 'OK', message: "Playlist Successfully Created"})
+
+   // return res.status(200).json({status: 200, data: 'ADDED TO PLAYLIST', message: "Playlist Saved"});
+  } catch (e) {
+    console.log('ERROR : ' + JSON.stringify(e));
+    return res.status(400).json({status: 400, message: e.message});
+
+  }
 }
