@@ -142,7 +142,7 @@ exports.playlistifyAlbum = async function(req, res, next) {
 
     var albumToPlaylistify = new Playlist(data);
     // Commit user
-    var savedPlaylistifiedAlbum = await albumToPlaylist.save();
+    var savedPlaylistifiedAlbum = await albumToPlaylistify.save();
 
     console.log(savedPlaylistifiedAlbum);
 
