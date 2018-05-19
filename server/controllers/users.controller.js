@@ -97,14 +97,12 @@ exports.getPlaylists = async function(req, res, next){
             console.log(err);
           } else {
               if(res){
-                console.log('RES : ' + res);
                 playlistifiedAlbums.push(res);
               }
             }
             callback();
       });
     },function(err){
-      console.log('Playlistified Albums : ' + playlistifiedAlbums);
       if(err) {
         console.log('ERROR WHILE SEARCHING FOR PLAYLIST : %s', err)
       }
@@ -114,23 +112,6 @@ exports.getPlaylists = async function(req, res, next){
       return res.status(200).json({status: 200, message: "No Playlist Found"});
 
     });
-
-    // albumIds.forEach(async(albumId) => {
-    //   await Playlist.findOne({'userId': userId, 'albumId': albumId}, (err, res) => {
-    //     if(err) {
-    //       console.log(err);
-    //     } else {
-    //       if(res){
-    //         console.log('RES : ' + res);
-    //         playlistifiedAlbums.push(res);
-    //       }
-
-    //     }
-    //   });
-    // });
-
-
-
   } catch (e) {
     console.log(e);
   }
@@ -144,13 +125,10 @@ exports.playlistifyAlbum = async function(req, res, next) {
     // Commit user
     var savedPlaylistifiedAlbum = await albumToPlaylistify.save();
 
-    console.log(savedPlaylistifiedAlbum);
-
     return res.status(201).json({status: 201, data: 'OK', message: "Playlist Successfully Created"})
 
    // return res.status(200).json({status: 200, data: 'ADDED TO PLAYLIST', message: "Playlist Saved"});
   } catch (e) {
-    console.log('ERROR : ' + JSON.stringify(e));
     return res.status(400).json({status: 400, message: e.message});
 
   }

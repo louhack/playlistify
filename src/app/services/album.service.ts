@@ -64,11 +64,8 @@ export class AlbumService {
       albumIds.push(album._id);
     });
 
-    console.log(albumIds);
-
     return this.http.get('/api/user/playlistifiedAlbum', {params: { userId: userId, albumId: albumIds}})
       .pipe(map((resp: Response) => {
-        console.log(resp);
         return resp;
       }));
   }

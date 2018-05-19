@@ -1969,22 +1969,20 @@ function seedDB(){
     Album.remove({}, (err) => {
       if (err){
           console.log(err);
-      } 
-      //console.log("removed Album");
+      }
       //add a few albums
         data.forEach((seed) => {
             Album.create(seed, (err, album) => {
                 if(err){
                     console.log(err);
                 } else{
-                    //console.log("added an album");
                     album.save();
                 }
             });
         });
     });
-    
-    
+
+
 }
 
 

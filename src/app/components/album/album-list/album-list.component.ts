@@ -124,36 +124,23 @@ export class AlbumListComponent implements OnInit {
     }
 
     savePlaylist(savePlaylist: AlbumPlaylistI) {
-      console.log('APPEL API PLAYLIST SUR : ' + JSON.stringify(savePlaylist));
       this.albumsService.savePlaylistAlbum(savePlaylist)
         .subscribe(
-          response => console.log('REPONSE : ' + JSON.stringify(response)
-        ));
+          // response => console.log('REPONSE : ' + JSON.stringify(response)
+        );
     }
 
     searchPlaylistifiedAlbums() {
-      const album = {
-        // idSpotify: '3293JpoQ0udUvBn0L3OBrK',
-        userId: '5a97303efc0e0449003dedda',
-        albumId: '5a981206b4ffc6be9e5780f7'
-      };
-
-      // let playlist;
-
+      // search if albums of the page have already been added to a playlist
       this.albumsService.searchPlaylistifiedAlbums(this.albumsList, this.userService.getUserDbId())
         .subscribe(
             response => {
               if(response['data'] != null){
                 const playlist = response['data'];
-                console.log('GET RESPONSE : ' + JSON.stringify(response['data']));
                 playlist.forEach(playlist => {
                   this.albumsList.forEach( album => {
                     if(playlist.albumId === album._id) {
                       album.addedToPlaylist =  playlist;
-                      // album.addedToPlaylist.idSpotify = playlist.idSpotify;
-                      // album.addedToPlaylist.name= playlist.name;
-                      // album.addedToPlaylist.userId= playlist.userId;
-                      // album.addedToPlaylist.albumId = playlist.albumId;
                     }
                   });
                 });

@@ -48,11 +48,8 @@ exports.getUserOrCreateUserService = async function(user){
     try {
         var userFound = await User.findOne({'spotify.id': user.spotify.id});
 
-        //console.log('user.token: ', user.token);
-        // console.log('userFound : ', userFound);
         if (userFound) {
             if(userFound.spotify.accessToken === user.spotify.accessToken) {
-                console.log('token up-to-date');
                 return userFound;
             } else {
                 //update token
@@ -66,7 +63,6 @@ exports.getUserOrCreateUserService = async function(user){
               //  userFound.spotify.accessToken = user.spotify.accessToken;
               //  userFound.spotify.expires_in = user.spotify.expires_in;
         } else {
-            console.log("creating new user");
             // Creating a new Mongoose Object by using the new keyword
            var newUser = new User(user);
 
@@ -120,13 +116,9 @@ exports.updateUserService = async function(user){
         return false;
     }
 
-  //  console.log(oldUser)
-
     //Edit the User Object
     oldUser.profile.displayName = user.profile.displayName ? user.profile.displayName : oldUser.profile.displayName;
     oldUser.profile.email = user.profile.email ? user.profile.email : oldUser.profile.email;
-
-  //   console.log(oldUser)
 
     try{
         var savedUser = await oldUser.save()
