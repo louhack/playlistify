@@ -15,6 +15,10 @@
     /* padding-bottom: 5px; */
 }
 
+.p.loggedin {
+  margin-bottom: 0;
+}
+
 .nav > li {
     display: flex;
 }
