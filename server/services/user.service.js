@@ -53,7 +53,7 @@ exports.getUserOrCreateUserService = async function(user){
                 return userFound;
             } else {
                 //update token
-                this.updateTokenService(userFound.spotify.id, user.spotify.accessToken, user.spotify.expires_in)
+                this.updateTokenService(userFound.spotify.id, user.spotify.accessToken, user.spotify.expires_in, user.spotify.picture)
                 .then(res => {
                   return res;
 
@@ -76,9 +76,9 @@ exports.getUserOrCreateUserService = async function(user){
     }
 }
 
-exports.updateTokenService = async function(id,accessToken, expires_in) {
+exports.updateTokenService = async function(id,accessToken, expires_in, profilePictureURL) {
   try {
-   var usr = await User.findOneAndUpdate({'spotify.id': id}, {'spotify.accessToken': accessToken, 'spotify.expires_in': expires_in, 'lastLoggedIn': Date.now()});
+   var usr = await User.findOneAndUpdate({'spotify.id': id}, {'spotify.accessToken': accessToken, 'spotify.expires_in': expires_in, 'lastLoggedIn': Date.now(), 'spotify.picture': profilePictureURL});
   } catch (error) {
     console.log('Error while updating Token: ', error);
   }
