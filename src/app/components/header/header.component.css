@@ -11,7 +11,7 @@
 }
 
 .loggedin {
-    padding-top: 10px;
+    padding-top: 8px;
     /* padding-bottom: 5px; */
 }
 
@@ -24,9 +24,9 @@
 }
 
 .img-profile {
-    height: 44px;
-    margin-top: 3px;
-    margin-bottom: 3px;
+    height: 40px;
+    margin-top: 4px;
+    margin-bottom: 0px;
 }
 
 .playlistList{
