@@ -121,5 +121,4 @@ parsedAlbums = json_util.loads(albums.read())
 for album in parsedAlbums:
 	# print("PRINT ALBUM ", album["sputnikMusic"]["id"])
   album['lastModified'] = str(datetime.today().isoformat())
-  print(album)
   result = releases.update_one({'sputnikMusic.id': album['sputnikMusic']['id'] }, {'$set': album}, upsert=True)
