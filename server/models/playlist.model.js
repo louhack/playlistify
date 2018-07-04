@@ -10,6 +10,10 @@ var PlaylistSchema = new mongoose.Schema({
     albumId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Album"
+    },
+    addedDate: {
+      type: Date,
+      default: Date.now
     }
 });
 

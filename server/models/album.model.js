@@ -15,7 +15,12 @@ var AlbumSchema = new mongoose.Schema({
     },
     spotify: {
       id: String,
-    }
+    },
+    created: {
+      type: Date,
+      default: Date.now
+    },
+    lastModified: Date
 });
 
 AlbumSchema.plugin(mongoosePaginate);

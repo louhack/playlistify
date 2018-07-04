@@ -5,6 +5,7 @@ import json
 import re
 from  pymongo import MongoClient
 from bson import json_util
+from datetime import datetime
 
 monthDic = {}
 monthDic["January"]=1
@@ -119,4 +120,6 @@ parsedAlbums = json_util.loads(albums.read())
 
 for album in parsedAlbums:
 	# print("PRINT ALBUM ", album["sputnikMusic"]["id"])
-	releases.update_one({'sputnikMusic.id': album['sputnikMusic']['id'] }, {"$set": album}, upsert=True)
+  album['lastModified'] = str(datetime.today().isoformat())
+  print(album)
+  result = releases.update_one({'sputnikMusic.id': album['sputnikMusic']['id'] }, {'$set': album}, upsert=True)
