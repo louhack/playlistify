@@ -33,8 +33,8 @@ soup = BeautifulSoup(r.text, 'lxml')
 
 #Je recupere le 1er mois affiche sur la page qui correspondant au mois en cours
 #print(soup.find(class_="plaincontentbox").tr.next_sibling.td.string)
-currentmonth = soup.find(class_="plaincontentbox").tr.next_sibling.td.string
-#currentmonth = soup.find(class_="plaincontentbox").table.td.string
+#currentmonth = soup.find(class_="plaincontentbox").tr.next_sibling.td.string
+currentmonth = soup.find(class_="plaincontentbox").table.td.string
 
 
 #Je recupere le tableau des release du mois en cours
