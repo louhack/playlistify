@@ -33,8 +33,8 @@ soup = BeautifulSoup(r.text, 'lxml')
 
 #Je recupere le 1er mois affiche sur la page qui correspondant au mois en cours
 #print(soup.find(class_="plaincontentbox").tr.next_sibling.td.string)
-currentmonth = soup.find(class_="plaincontentbox").tr.next_sibling.td.string
-#currentmonth = soup.find(class_="plaincontentbox").table.td.string
+#currentmonth = soup.find(class_="plaincontentbox").tr.next_sibling.td.string
+currentmonth = soup.find(class_="plaincontentbox").table.td.string
 
 
 #Je recupere le tableau des release du mois en cours
@@ -106,10 +106,10 @@ with open('data.json', 'w', encoding='iso-8859-1') as f:
 f.close()
 
 ##### UPSERT IN DB - COLLECTION :ALBUMS
-connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
+# connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
 #mongodb://heroku_j6lv18qq:k7100p7qnmkdo5kk7i9io0q6ap@ds243418.mlab.com:43418/heroku_j6lv18qq
 #connection = MongoClient("mongodb://heroku_j6lv18qq:k7100p7qnmkdo5kk7i9io0q6ap@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=admin")
-#connection = MongoClient("mongodb://webScrapper:akill007@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=heroku_j6lv18qq")
+connection = MongoClient("mongodb://webScrapper:akill007@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=heroku_j6lv18qq")
 # mongodb://<dbuser>:<dbpassword>@ds243418.mlab.com:43418/heroku_j6lv18qq
 #connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
 db = connection.get_default_database()
