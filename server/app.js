@@ -8,6 +8,9 @@ var passport = require('passport');
 var index = require('./routes/index');
 // var users = require('./routes/users');
 var session = require('express-session');
+
+const MongoStore = require('connect-mongo')(session);
+
 require('dotenv-safe').load();
 
 const config = require('config');
@@ -24,11 +27,11 @@ var app = express();
 // MongoDB Connection
 var mongoose = require('mongoose');
 mongoose.Promise = bluebird;
-mongoose.connect(config.get('Database.host'))
+mongoose.connect(config.get('Database.host'),  { useNewUrlParser: true })
       .then(()=> { console.log(`Succesfully Connected to the Mongodb Database : %s`, config.get('Database.db_name'))})
       .catch(()=> { console.log(`Error Connecting to the Mongodb Database : %s`, config.get('Database.db_name'))});
 
-
+const dbPlaylistify = mongoose.connection;
 
 // CORS CONFIGURATION
 app.use(function(req, res, next) {
@@ -57,6 +60,7 @@ app.use(session({
   secret: config.get('Session.secret'),
   resave: false,
   saveUninitialized: false,
+  store: new MongoStore({ mongooseConnection: dbPlaylistify}),
   cookie: { maxAge: 3600000 }
 }));
 
