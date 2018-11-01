@@ -10,8 +10,10 @@
       <input type="radio" class="form-check-input align-self-center"
         name="albumRadio"
         value="{{album.id}}"
+        id="{{album.id}}"
         (change)="chosenAlbum=$event.target.value;albumRadio=true">
-      <img class="mr-3 w-25 h-25" [src]="album.images[0].url" [alt]="album.name">
+        <label class="d-inline-flex" for="{{album.id}}">
+          <img class="mr-3 w-25 h-25" [src]="album.images[0].url" [alt]="album.name">
       <div class="media-body align-self-center">
         <h5 class="mt-0 mb-1">{{ album.name }}</h5>
         <p class="mb-0">Artist(s): <span *ngFor="let artist of album.artists; let i = index">
@@ -19,7 +21,9 @@
           </span>
         </p>
         <p class="mb-0">Album type: {{ album.album_type }}</p>
+
       </div>
+    </label>
     </li>
   </ul>
 </div>
