@@ -15,7 +15,12 @@ export class Album {
       }
     };
     public spotify: {
-      id: string;
+      id: string,
+      numberOfTracks: number,
+      totalLength: number,
+      genres: string[],
+      releaseDate: string,
+      releaseDatePrecision: string
     };
 
     // this.spotify.id = '';
@@ -34,7 +39,14 @@ export class Album {
                     year: string
                   }
               },
-                spotify: {id: string}
+                spotify: {
+                  id: string
+                  numberOfTracks: number,
+                  totalLength: number,
+                  genres: string[],
+                  releaseDate: string,
+                  releaseDatePrecision: string
+                }
               ) {
 
         this._id = _id;
@@ -46,7 +58,12 @@ export class Album {
           this.searchedOnSpotify = true;
         } else {
           this.spotify = {
-            id: ''
+            id: '',
+            numberOfTracks: 0,
+            totalLength: 0,
+            genres: [],
+            releaseDate: '',
+            releaseDatePrecision: ''
           };
         }
 

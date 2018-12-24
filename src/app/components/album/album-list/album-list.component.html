@@ -25,14 +25,23 @@
   <div class="row">
     <div *ngFor="let album of albumsList; let i = index" class="col-sm-6 col-md-4">
             <div class="card mb-4">
-                <img class="card-img-top" [src]="album.sputnikMusic.imagePath" [alt]="album.albumName">
+              <div class="card-header">
+                <h4 class="card-title">{{ album.artistName }}</h4>
+                <p class="card-subtitle"><strong>{{ album.albumName }}</strong></p>
+              </div>
+              <img class="card-img-top" [src]="album.sputnikMusic.imagePath" [alt]="album.albumName">
                 <div class="card-body">
-                  <h4 class="card-title">{{ album.artistName }}</h4>
-                  <p class="card-subtitle mb-3"><strong>{{ album.albumName }}</strong></p>
-                  <p>Sputnik rating: {{ album.sputnikMusic.note }}</p>
-                  <p>Release Date: {{ getDate(i) }}</p>
-                  <p><a href="https://www.sputnikmusic.com/album/{{album.sputnikMusic.id}}/" target="_blank">Consulter sur Sputnik Music</a></p>
-                  <p>Id Spotify: {{ album.spotify.id }}</p>
+                  <tabset>
+                    <tab heading="Spotify">
+                      <p *ngIf="album.spotify.id; else elseBlock" class="mt-2">Id Spotify: {{ album.spotify.id }}</p>
+                      <ng-template #elseBlock><p class="mt-2">No information. Please search on Spotify or try to add to a playlist</p></ng-template>
+                    </tab>
+                    <tab heading="Sputnik Music">
+                      <p class="mt-2">Sputnik rating: {{ album.sputnikMusic.note }}</p>
+                      <p>Release Date: {{ getDate(i) }}</p>
+                      <p><a href="https://www.sputnikmusic.com/album/{{album.sputnikMusic.id}}/" target="_blank">Consulter sur Sputnik Music</a></p>
+                    </tab>
+                  </tabset>
                 </div>
                 <div class="card-footer">
                   <p><button  class="btn btn-primary"

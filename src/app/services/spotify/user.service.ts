@@ -61,6 +61,7 @@ export class UserService {
                 this.http.get(this.spotifyEndPoints.currentUserProfileEndPoint, { headers: this.spotifyEndPoints.createRequestOptions()}).subscribe(
                     (response: any) => {
                                 const res = response.json();
+                                // console.log(res);
                                 this.setUser(new User('', res.display_name, res.id, res.images));
                                 this.userChanged.next(this.getUser());
                                 resolve(true);

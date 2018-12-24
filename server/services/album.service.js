@@ -5,29 +5,29 @@ var Album = require('../models/album.model');
 _this = this;
 
 // Async function to get the Album List
-exports.getAlbumsService = async function(query, page, limit){
+// exports.getAlbumsService = async function(query, page, limit){
 
-    // Options setup for the mongoose paginate
-    var options = {
-        page,
-        limit,
-        sort:{'sputnikMusic.releaseDate.year': -1, 'sputnikMusic.releaseDate.month': -1, 'sputnikMusic.note': -1, 'artistName': 1}
-    }
+//     // Options setup for the mongoose paginate
+//     var options = {
+//         page,
+//         limit,
+//         sort:{'sputnikMusic.releaseDate.year': -1, 'sputnikMusic.releaseDate.month': -1, 'sputnikMusic.note': -1, 'artistName': 1}
+//     }
 
-    // Try Catch the awaited promise to handle the error
+//     // Try Catch the awaited promise to handle the error
 
-    try {
-        var albums = await Album.paginate(query, options);
+//     try {
+//         var albums = await Album.paginate(query, options);
 
-        // Return the albums list that was retured by the mongoose promise
-        return albums;
+//         // Return the albums list that was retured by the mongoose promise
+//         return albums;
 
-    } catch (e) {
+//     } catch (e) {
 
-        // return a Error message describing the reason
-        throw Error('Error while Paginating Albums');
-    }
-}
+//         // return a Error message describing the reason
+//         throw Error('Error while Paginating Albums');
+//     }
+// }
 
 exports.createAlbumService = async function(album){
 

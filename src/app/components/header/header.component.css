@@ -10,9 +10,14 @@
     font-weight: bold;
 }
 
+#btn-create-playlist {
+  color: #2ebd59;
+}
+
 .loggedin {
-    padding-top: 8px;
+    /* padding-top: 8px; */
     /* padding-bottom: 5px; */
+    margin-bottom: 0;
 }
 
 .p.loggedin {
@@ -25,7 +30,7 @@
 
 .img-profile {
     height: 40px;
-    margin-top: 4px;
+    margin-top: 0px;
     margin-bottom: 0px;
 }
 

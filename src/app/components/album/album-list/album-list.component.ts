@@ -14,6 +14,7 @@ import { AlbumSpotify } from '../../../interfaces/albumSpotifyInterface';
 import { MyCalendar } from '../../../shared/myCalendar';
 import { AlbumsModalComponent } from '../albums-modal/albums-modal.component';
 import { AlbumPlaylistI } from '../../../interfaces/albumAddedToPlaylist.interface';
+import { AlbumsListI } from '../../../interfaces/albumsList.interface';
 
 @Component({
   selector: 'app-album-list',
@@ -50,8 +51,11 @@ export class AlbumListComponent implements OnInit {
         this.currentPage = albumsListI.currentPage;
         this.totalNumberOfPages = albumsListI.totalNumberOfPages;
         this.totalNumberOfAlbums = albumsListI.totalNumberOfAlbums;
-        if (this.userService.isAuthenticated()) {
-          this.searchPlaylistifiedAlbums();
+      },
+       () => {},
+       () => {
+          if (this.userService.isAuthenticated()) {
+            this.searchPlaylistifiedAlbums();
         }
       });
   }
@@ -134,12 +138,12 @@ export class AlbumListComponent implements OnInit {
       // search if albums of the page have already been added to a playlist
       this.albumsService.searchPlaylistifiedAlbums(this.albumsList, this.userService.getUserDbId())
         .subscribe(
-            response => {
-              if(response['data'] != null){
-                const playlist = response['data'];
-                playlist.forEach(playlist => {
+          (playlists: AlbumPlaylistI[])  => {
+              if (playlists != null) {
+                // const playlists = response['data'];
+                playlists.forEach(playlist => {
                   this.albumsList.forEach( album => {
-                    if(playlist.albumId === album._id) {
+                    if (playlist.albumId === album._id) {
                       album.addedToPlaylist =  playlist;
                     }
                   });

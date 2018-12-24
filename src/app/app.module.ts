@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,6 +37,7 @@ import { AlbumsModalComponent } from './components/album/albums-modal/albums-mod
     AppRoutingModule,
     PaginationModule.forRoot(),
     ModalModule.forRoot(),
+    TabsModule.forRoot(),
   ],
   providers: [
     AlbumService,

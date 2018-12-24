@@ -66,7 +66,8 @@ export class AlbumService {
 
     return this.http.get('/api/user/playlistifiedAlbum', {params: { userId: userId, albumId: albumIds}})
       .pipe(map((resp: Response) => {
-        return resp;
+        // console.log(resp['data']);
+        return resp['data'];
       }));
   }
 }
