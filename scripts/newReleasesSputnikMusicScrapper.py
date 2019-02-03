@@ -5,6 +5,8 @@ import json
 import re
 from  pymongo import MongoClient
 from bson import json_util
+import datetime
+import pytz
 
 monthDic = {}
 monthDic["January"]=1
@@ -24,10 +26,10 @@ r = requests.get("http://www.sputnikmusic.com/newreleases.php")
 if r.status_code != 200:
 	exit
 
-r.encoding = 'iso-8859-1'
+# r.encoding = 'iso-8859-1'
 #print(r.text)
 # with open("""..\\SputnikMusic\\New Releases _ Sputnikmusic.html""") as fp:
-soup = BeautifulSoup(r.text, 'lxml')
+soup = BeautifulSoup(r.content.decode("utf8"), 'lxml')
 
 #print(soup)
 
@@ -108,10 +110,10 @@ f.close()
 ##### UPSERT IN DB - COLLECTION :ALBUMS
 # connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
 #mongodb://heroku_j6lv18qq:k7100p7qnmkdo5kk7i9io0q6ap@ds243418.mlab.com:43418/heroku_j6lv18qq
-#connection = MongoClient("mongodb://heroku_j6lv18qq:k7100p7qnmkdo5kk7i9io0q6ap@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=admin")
+# NOK connection = MongoClient("mongodb://heroku_j6lv18qq:k7100p7qnmkdo5kk7i9io0q6ap@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=admin")
 connection = MongoClient("mongodb://webScrapper:akill007@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=heroku_j6lv18qq")
 # mongodb://<dbuser>:<dbpassword>@ds243418.mlab.com:43418/heroku_j6lv18qq
-#connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
+# connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
 db = connection.get_default_database()
 releases = db.albums
 albums = open("data.json", "r")
@@ -120,4 +122,5 @@ parsedAlbums = json_util.loads(albums.read())
 for album in parsedAlbums:
 	# print("PRINT ALBUM ", album["sputnikMusic"]["id"])
   # album['lastModified'] = str(datetime.today().isoformat())
-  result = releases.update_one({'sputnikMusic.id': album['sputnikMusic']['id'] }, {'$currentDate': { 'lastModified': True }, '$set': album}, upsert=True)
+  timezone = pytz.timezone("Europe/Paris")
+  result = releases.update_one({'artistName': album['artistName'], 'albumName': album['albumName']}, {'$set': album, '$currentDate': { 'lastModified': True }, '$setOnInsert': {'created': timezone.localize(datetime.datetime.now())}}, upsert=True)
