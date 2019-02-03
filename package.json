@@ -50,6 +50,7 @@
     "passport-spotify": "^1.0.1",
     "rxjs": "^6.3.3",
     "serve-favicon": "~2.5.0",
+    "terser": "3.14.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
