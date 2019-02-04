@@ -29,17 +29,29 @@
                 <h4 class="card-title">{{ album.artistName }}</h4>
                 <p class="card-subtitle"><strong>{{ album.albumName }}</strong></p>
               </div>
-              <img class="card-img-top" [src]="album.sputnikMusic.imagePath" [alt]="album.albumName">
+              <img *ngIf="album.spotify && album.spotify.cover; else sputnikCover" class="card-img-top" [src]="album.spotify.cover" alt="album.albumName">
+              <ng-template #sputnikCover>
+                <img *ngIf="album.sputnikMusic; else heavyBlogCover" class="card-img-top" [src]="album.sputnikMusic.imagePath" [alt]="album.albumName">
+              </ng-template>
+              <ng-template #heavyBlogCover>
+                <img class="card-img-top" [src]="album.heavyBIsH.imagePath" [alt]="album.albumName">
+              </ng-template>
                 <div class="card-body">
                   <tabset>
                     <tab heading="Spotify">
-                      <p *ngIf="album.spotify.id; else elseBlock" class="mt-2">Id Spotify: {{ album.spotify.id }}</p>
+                        <p *ngIf="album.spotify" class="mt-2">Release Date: {{ album.spotify.releaseDate }}</p>
+                        <p *ngIf="album.spotify" class="mt-2">Tracks: {{ album.spotify.total_tracks }}</p>
+
                       <ng-template #elseBlock><p class="mt-2">No information. Please search on Spotify or try to add to a playlist</p></ng-template>
                     </tab>
-                    <tab heading="Sputnik Music">
+                    <tab *ngIf="album.sputnikMusic" heading="Sputnik Music">
                       <p class="mt-2">Sputnik rating: {{ album.sputnikMusic.note }}</p>
-                      <p>Release Date: {{ getDate(i) }}</p>
+                      <p>Release Date: {{ getDate(i,0) }}</p>
                       <p><a href="https://www.sputnikmusic.com/album/{{album.sputnikMusic.id}}/" target="_blank">Consulter sur Sputnik Music</a></p>
+                    </tab>
+                    <tab *ngIf="album.heavyBIsH" heading="HBIH">
+                      <p class="mt-2">Release Date: {{ getDate(i,1) }}</p>
+                      <p><a href="{{ album.heavyBIsH.reviewLink }}" target="_blank">Consulter sur HBIH</a></p>
                     </tab>
                   </tabset>
                 </div>
@@ -47,10 +59,10 @@
                   <p><button  class="btn btn-primary"
                               role="button"
                               (click)="addToPlaylist(i)"
-                              [disabled]="!userService.isLoggedIn || (album.searchedOnSpotify && album.spotify.id ==='')">Add to playlist</button>
+                              [disabled]="!userService.isLoggedIn || (album.searchedOnSpotify && album.spotify)">Add to playlist</button>
                             </p>
-                            <p><span *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length === 0 && album.spotify.id ===''"> Sorry ! No result found</span></p>
-                            <p *ngIf="album.addedToPlaylist">Album added to playlist {{ album.addedToPlaylist.name }}</p>
+                            <p><span *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length === 0 && !album.spotify"> Sorry ! No result found</span></p>
+                            <p *ngIf="album.addedToPlaylist">Album added to playlist {{ album.addedToPlaylist.name}}</p>
                   <ng-container *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length > 1">
                     <p>{{ album.spotifySearchResults.length }} results found! Please select the right one</p>
                     <button class="btn btn-primary" (click)="openModalWithComponent(i)">Select Record</button>

@@ -3,7 +3,6 @@ import { Album } from '../models/album.model';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AlbumSpotify } from '../interfaces/albumSpotifyInterface';
 import { AlbumsListI } from '../interfaces/albumsList.interface';
 import { AlbumPlaylistI } from '../interfaces/albumAddedToPlaylist.interface';
 
@@ -16,12 +15,12 @@ export class AlbumService {
 
   constructor(private http: HttpClient) { }
 
-  updateAlbumOnDB(album: Album): Promise<boolean> {
+  updateAlbumOnDB(album: Album): Promise<Album> {
     return new Promise(
       resolve => {
         this.http.put(this.albumUrl, album).subscribe(
-          data => {
-            resolve(true);
+          response => {
+            resolve(response['data']);
           }
         );
       });
@@ -36,7 +35,7 @@ export class AlbumService {
       .pipe(map((res) => {
         const albums = new Array<Album>();
         for (const album of res['data'].docs) {
-          albums.push(new Album(album._id, album.artistName, album.albumName, album.sputnikMusic, album.hasOwnProperty('spotify') ? album.spotify : null));
+          albums.push(new Album(album._id, album.artistName, album.albumName, album.sputnikMusic, album.heavyBIsH, album.hasOwnProperty('spotify') ? album.spotify : null));
         }
         const albumsListI: AlbumsListI = {
           albumsList: albums,
@@ -54,7 +53,10 @@ export class AlbumService {
   }
 
   savePlaylistAlbum (item: AlbumPlaylistI): Observable<Object> {
-    return this.http.post('/api/user/playlistifyAlbum', {params: {playlist: item}});
+    return this.http.post<Album>('/api/user/playlistifyAlbum', {params: {playlist: item}})
+      .pipe(map (resp => {
+        return resp['data'];
+      }));
       // .map( response => {});
   }
 
@@ -66,7 +68,7 @@ export class AlbumService {
 
     return this.http.get('/api/user/playlistifiedAlbum', {params: { userId: userId, albumId: albumIds}})
       .pipe(map((resp: Response) => {
-        // console.log(resp['data']);
+      // console.log(resp['data']);
         return resp['data'];
       }));
   }

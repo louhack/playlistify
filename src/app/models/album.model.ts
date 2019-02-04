@@ -16,11 +16,21 @@ export class Album {
     };
     public spotify: {
       id: string,
-      numberOfTracks: number,
-      totalLength: number,
-      genres: string[],
-      releaseDate: string,
-      releaseDatePrecision: string
+    //   numberOfTracks: number,
+    //   totalLength: number,
+    //   genres: string[],
+    //   releaseDate: string,
+    //   releaseDatePrecision: string
+    };
+
+    public heavyBIsH: {
+        id: string,
+        imagePath: string,
+        releaseDate: {
+          month: string,
+          year: string
+        }
+        reviewLink: string
     };
 
     // this.spotify.id = '';
@@ -39,6 +49,15 @@ export class Album {
                     year: string
                   }
               },
+              heavyBlogInfo: {
+                id: string,
+                imagePath: string,
+                releaseDate: {
+                  month: string,
+                  year: string
+                }
+                reviewLink: string
+            },
                 spotify: {
                   id: string
                   numberOfTracks: number,
@@ -53,19 +72,21 @@ export class Album {
         this.artistName = artistName;
         this.albumName = albumName;
         this.sputnikMusic = sputnikInfo;
+        this.heavyBIsH = heavyBlogInfo;
         if (spotify != null) {
           this.spotify = spotify;
           this.searchedOnSpotify = true;
-        } else {
-          this.spotify = {
-            id: '',
-            numberOfTracks: 0,
-            totalLength: 0,
-            genres: [],
-            releaseDate: '',
-            releaseDatePrecision: ''
-          };
         }
+        // else {
+        //   this.spotify = {
+        //     id: '',
+        //     // numberOfTracks: 0,
+        //     // totalLength: 0,
+        //     // genres: [],
+        //     // releaseDate: '',
+        //     // releaseDatePrecision: ''
+        //   };
+        // }
 
     }
 

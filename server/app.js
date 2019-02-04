@@ -28,8 +28,8 @@ var app = express();
 var mongoose = require('mongoose');
 mongoose.Promise = bluebird;
 mongoose.connect(config.get('Database.host'),  { useNewUrlParser: true })
-      .then(()=> { console.log(`Succesfully Connected to the Mongodb Database : %s`, config.get('Database.db_name'))})
-      .catch(()=> { console.log(`Error Connecting to the Mongodb Database : %s`, config.get('Database.db_name'))});
+      .then(()=> { console.log(`Succesfully Connected to the Mongodb Database : %s`, config.get('Database.db_name'));})
+      .catch(()=> { console.log(`Error Connecting to the Mongodb Database : %s`, config.get('Database.db_name'));});
 
 const dbPlaylistify = mongoose.connection;
 

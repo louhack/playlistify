@@ -4,10 +4,8 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { UserService } from './user.service';
-import { SpotifyAuthService } from './spotify-auth.service';
 import { SpotifyEndPoints } from './spotifyApiEndpoints';
 import { AlbumSpotify } from '../../interfaces/albumSpotifyInterface';
-import { Album } from '../../models/album.model';
 import { Track } from '../../interfaces/trackInterface';
 import { MessageService } from '../message.service';
 
@@ -18,7 +16,6 @@ export class SpotifyApiService {
 
     constructor(private http: HttpClient,
         private userService: UserService,
-        private spotifyAuthService: SpotifyAuthService,
         private spotifyEndPoints: SpotifyEndPoints,
         private messageService: MessageService) {}
 

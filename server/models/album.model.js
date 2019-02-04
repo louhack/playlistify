@@ -13,12 +13,24 @@ var AlbumSchema = new mongoose.Schema({
         year: Number
       },
     },
+    heavyBIsH:{
+      id: String,
+      reviewLink: String,
+      imagePath: String,
+      releaseDate: {
+        month: Number,
+        year: Number
+      },
+    },
     spotify: {
       id: String,
+      releaseDate: String,
+      cover: String,
+      total_tracks: Number
     },
     created: {
       type: Date,
-      default: Date.now
+      //default: Date.now
     },
     lastModified: Date
 });

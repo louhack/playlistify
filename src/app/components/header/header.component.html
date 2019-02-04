@@ -42,9 +42,9 @@
       <!-- <ul class="navbar-nav mt-2 mt-lg-0"> -->
         <span *ngIf="!isLoggedIn()" class="nav-item"><a class="btn btn-primary" id="btn-spotify-login" href="/auth/spotify" role="button">Login with Spotify</a></span>
         <ng-container *ngIf="isLoggedIn()">
-          <!-- <span *ngIf="user.images[0].url!=null" class="nav-item">
+          <span *ngIf="user.images[0].url" class="nav-item">
             <img [src]="user.images[0].url" alt="user img" class="rounded-circle img-profile">
-          </span> -->
+          </span>
           <span class="navbar-text">{{ user.display_name }}</span>
           <!-- <p class="loggedin">{{ user.display_name }}</p> -->
         </ng-container>
