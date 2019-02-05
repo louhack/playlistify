@@ -39,9 +39,10 @@
                 <div class="card-body">
                   <tabset>
                     <tab heading="Spotify">
-                        <p *ngIf="album.spotify" class="mt-2">Release Date: {{ album.spotify.releaseDate }}</p>
-                        <p *ngIf="album.spotify" class="mt-2">Tracks: {{ album.spotify.total_tracks }}</p>
-
+                      <ng-template *ngIf="album.spotify; else elseBlock">
+                        <p class="mt-2">Release Date: {{ album.spotify.releaseDate }}</p>
+                        <p class="mt-2">Tracks: {{ album.spotify.total_tracks }}</p>
+                      </ng-template>
                       <ng-template #elseBlock><p class="mt-2">No information. Please search on Spotify or try to add to a playlist</p></ng-template>
                     </tab>
                     <tab *ngIf="album.sputnikMusic" heading="Sputnik Music">
