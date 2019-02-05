@@ -76,22 +76,24 @@ export class AlbumListComponent implements OnInit {
 
   openModalWithComponent(albumIndex: number) {
     // retrieve albumsFound and pass them to the modal
-    const album = this.albumsList[albumIndex];
+    const albumToUpdate = this.albumsList[albumIndex];
+    // console.log('AlbumToUpdate: ' + JSON.stringify(albumToUpdate));
     const initialState = {
-      albumsFound: album.spotifySearchResults,
-      title: album.albumName
+      albumsFound: albumToUpdate.spotifySearchResults,
+      title: albumToUpdate.albumName
     };
     this.bsModalRef = this.modalService.show(AlbumsModalComponent, {initialState});
     this.bsModalRef.content.albumIndex = albumIndex;
-    this.bsModalRef.content.onChosenAlbum.subscribe((info: {index: number, spotifyId: string}) => {
-      album.spotify = album.spotifySearchResults[info.index];
-      album.searchedOnSpotify = true;
-      album.spotifySearchResults = [];
-      this.albumsService.updateAlbumOnDB(album).then( (albumUpdated: Album) => {
+    this.bsModalRef.content.onChosenAlbum.subscribe((info: {resultIndex: number}) => {
+      // console.log('Result Selected: ' + JSON.stringify(info.resultIndex));
+      albumToUpdate.spotify = albumToUpdate.spotifySearchResults[info.resultIndex];
+      albumToUpdate.searchedOnSpotify = true;
+      albumToUpdate.spotifySearchResults = [];
+      this.albumsService.updateAlbumOnDB(albumToUpdate).then( (albumUpdated: Album) => {
         albumUpdated.searchedOnSpotify = true;
         albumUpdated.spotifySearchResults = [];
-        this.updateAlbum(info.index, albumUpdated);
-        this.addToPlaylist(info.index);
+        this.updateAlbum(albumIndex, albumUpdated);
+        this.addToPlaylist(albumIndex);
       });
     });
   }

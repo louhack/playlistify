@@ -6,10 +6,10 @@
 </div>
 <div class="modal-body">
   <ul *ngIf="albumsFound.length">
-    <li *ngFor="let album of albumsFound" class="media mb-2">
+    <li *ngFor="let album of albumsFound ; let i = index" class="media mb-2">
       <input type="radio" class="form-check-input align-self-center"
         name="albumRadio"
-        value="{{album.id}}"
+        value="{{ i }}"
         id="{{album.id}}"
         (change)="chosenAlbum=$event.target.value;albumRadio=true">
         <label class="d-inline-flex" for="{{album.id}}">

@@ -16,6 +16,7 @@ export class AlbumService {
   constructor(private http: HttpClient) { }
 
   updateAlbumOnDB(album: Album): Promise<Album> {
+    // console.log(JSON.stringify(Album));
     return new Promise(
       resolve => {
         this.http.put(this.albumUrl, album).subscribe(

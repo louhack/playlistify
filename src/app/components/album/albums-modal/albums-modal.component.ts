@@ -1,7 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { AlbumSpotify } from '../../../interfaces/albumSpotifyInterface';
-import { AlbumService } from '../../../services/album.service';
 
 @Component({
   selector: 'app-albums-modal',
@@ -14,16 +13,16 @@ export class AlbumsModalComponent implements OnInit {
   albumsFound: AlbumSpotify[] = [];
   albumIndex: number;
   albumRadio = false;
-  @Output() onChosenAlbum = new EventEmitter<{index: number, spotifyId: string}>();
+  @Output() onChosenAlbum = new EventEmitter<{resultIndex: number}>();
   chosenAlbum: string;
 
-  constructor(public bsModalRef: BsModalRef, private albumService: AlbumService) {}
+  constructor(public bsModalRef: BsModalRef) {}
 
   ngOnInit() {
   }
 
-  onSave(value: string) {
-    this.onChosenAlbum.emit({index: this.albumIndex, spotifyId: value});
+  onSave(value: number) {
+    this.onChosenAlbum.emit({resultIndex: value});
     this.bsModalRef.hide();
   }
 
