@@ -21,8 +21,8 @@ export class AlbumsModalComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSave(value: number) {
-    this.onChosenAlbum.emit({resultIndex: value});
+  onSave(value: string) {
+    this.onChosenAlbum.emit({resultIndex: +value});
     this.bsModalRef.hide();
   }
 
