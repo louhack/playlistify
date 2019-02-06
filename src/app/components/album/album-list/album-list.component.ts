@@ -142,7 +142,7 @@ export class AlbumListComponent implements OnInit {
     savePlaylist(savePlaylist: AlbumPlaylistI) {
       this.albumsService.savePlaylistAlbum(savePlaylist)
         .subscribe(
-           album => console.log('REPONSE : ' + JSON.stringify(album))
+          //  album => console.log('REPONSE : ' + JSON.stringify(album))
         );
     }
 
@@ -154,9 +154,10 @@ export class AlbumListComponent implements OnInit {
               if (playlists != null) {
                 // const playlists = response['data'];
                 playlists.forEach(playlist => {
-                  this.albumsList.forEach( album => {
+                  this.albumsList.forEach( (album, index) => {
                     if (playlist.albumId === album._id) {
                       album.addedToPlaylist =  playlist;
+                      this.updateAlbum(index, album);
                     }
                   });
                 });
