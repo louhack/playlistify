@@ -54,19 +54,28 @@ for article in table_articles:
 
     artist = stringSplit[0]
     album = stringSplit[1]
-
+    # print("ARTIST " + artist)
     #Récupération de la date du post. Servira en tant que Date de Release
     releaseDate = article.header.div.div.div.span.next_sibling.next_sibling.next_sibling.next_sibling.a.string.split()
     #print(releaseDate)
 
+    # print(article.header.next_sibling.next_sibling.next_sibling.next_sibling.a.img.get('srcset'))
+    try:
+      img_tab = article.header.next_sibling.next_sibling.next_sibling.next_sibling.a.img.get('srcset').split()
+    except AttributeError as error:
+      print(error)
+      print("Album's cover not found. Artist: " + artist)
+    else:
+      if len(img_tab) > 2:
+        img = img_tab[2]
+      else:
+        img = img_tab[0]
 
-    # print(link)
-
-    img = article.header.next_sibling.next_sibling.next_sibling.next_sibling.a.img.get('srcset').split()[2]
-
-    #print(img)
-    releaseJson = {'artistName':artist, 'albumName':album,'heavyBIsH':{'id':idRelease, 'reviewLink': reviewLink, 'releaseDate':{ 'month': int(monthDic[releaseDate[0]]), 'year': int(releaseDate[2])}, 'imagePath': img}}
-    releases_list.append(releaseJson)
+      #print(img)
+      releaseJson = {'artistName':artist, 'albumName':album,'heavyBIsH':{'id':idRelease, 'reviewLink': reviewLink, 'releaseDate':{ 'month': int(monthDic[releaseDate[0]]), 'year': int(releaseDate[2])}, 'imagePath': img}}
+      releases_list.append(releaseJson)
+    finally:
+      pass
 
   # print("END OF RELEASE ===========")
 
