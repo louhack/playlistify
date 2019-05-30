@@ -10,6 +10,7 @@ import { AlbumSpotify } from '../../../interfaces/albumSpotifyInterface';
 export class AlbumsModalComponent implements OnInit {
 
   title: string;
+  artist: string;
   albumsFound: AlbumSpotify[] = [];
   albumIndex: number;
   albumRadio = false;

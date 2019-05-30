@@ -80,7 +80,8 @@ export class AlbumListComponent implements OnInit {
     // console.log('AlbumToUpdate: ' + JSON.stringify(albumToUpdate));
     const initialState = {
       albumsFound: albumToUpdate.spotifySearchResults,
-      title: albumToUpdate.albumName
+      title: albumToUpdate.albumName,
+      artist: albumToUpdate.artistName
     };
     this.bsModalRef = this.modalService.show(AlbumsModalComponent, {initialState});
     this.bsModalRef.content.albumIndex = albumIndex;
