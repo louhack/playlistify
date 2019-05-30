@@ -171,7 +171,7 @@ export class AlbumListComponent implements OnInit {
         resolve => {
         const album = this.albumsList[index];
         this.spotifyApiService
-          .searchItem('album:' + album.albumName + ' artist:' + album.artistName , 'album')
+          .searchItem(album.albumName + ' artist:' + album.artistName , 'album')
             .subscribe(
               (foundAlbums: AlbumSpotify[]) => {
 
@@ -193,7 +193,7 @@ export class AlbumListComponent implements OnInit {
                     resolve(true);
                   } else {
                     // no result found for search with album+artist, search with only album
-                    this.spotifyApiService.searchItem(album.albumName, 'album').subscribe(
+                    this.spotifyApiService.searchItem('artist:' + album.artistName, 'album').subscribe(
                       (foundAlbums2: AlbumSpotify[]) => {
                         if (foundAlbums2.length > 0) {
                           album.searchedOnSpotify = true;
