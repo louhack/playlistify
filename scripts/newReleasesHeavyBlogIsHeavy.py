@@ -7,6 +7,8 @@ from  pymongo import MongoClient
 from bson import json_util
 import datetime
 import pytz
+from datetime import date
+
 
 monthDic = {}
 monthDic["January"]=1
@@ -94,10 +96,14 @@ db = connection.get_default_database()
 releases = db.albums
 albums = open("heavyB_data.json", "r")
 parsedAlbums = json_util.loads(albums.read())
+timezone = pytz.timezone("Europe/Paris")
+today = date.today()
+t_day = today.day
+t_month = today.month
+t_year = today.year
 
 for album in parsedAlbums:
   # print("PRINT ALBUM ", album["heavyBIsH"]["id"])
   #album['created'] = str(datetime.today().isoformat())
-  timezone = pytz.timezone("Europe/Paris")
   #result = releases.update_one({'heavyBIsH.id': album['heavyBIsH']['id'] }, {'$set': album, '$currentDate': { 'lastModified': True }, '$setOnInsert': {'created': timezone.localize(datetime.datetime.now())}}, upsert=True)
-  result = releases.update_one({'artistName': album['artistName'], 'albumName': album['albumName'] }, {'$set': album, '$currentDate': { 'lastModified': True }, '$setOnInsert': {'created': timezone.localize(datetime.datetime.now())}}, upsert=True)
+  result = releases.update_one({'artistName': album['artistName'], 'albumName': album['albumName'] }, {'$set': album, '$currentDate': { 'lastModified': True }, '$setOnInsert': {'created': timezone.localize(datetime.datetime.now()), 'sortDate': {'day': t_day, 'month':t_month, 'year': t_year}}}, upsert=True)

@@ -61,26 +61,26 @@ exports.updateAlbumService = async function(album){
         //Find the old Album Object by the IdSputnik
 
         var oldAlbum = await Album.findById(id);
-    }catch(e){
-        throw Error("Error occured while Finding the Album")
-    }
 
-    // If no old Album Object exists return false
-    if(!oldAlbum){
-        return false;
-    }
+        // If no old Album Object exists return false
+        if(!oldAlbum){
+          return false;
+        }
 
-    //Edit the Album Object
-    oldAlbum.artistName = album.artistName ? album.artistName : oldAlbum.artistName;
-    oldAlbum.albumName = album.albumName ? album.albumName : oldAlbum.albumName;
-    oldAlbum.sputnikMusic.imagePath = album.sputnikMusic.imagePath ? album.sputnikMusic.imagePath : oldAlbum.sputnikMusic.imagePath;
-    oldAlbum.sputnikMusic.note = album.sputnikMusic.note ? album.sputnikMusic.note : oldAlbum.sputnikMusic.note;
-    oldAlbum.sputnikMusic.releaseDate = album.sputnikMusic.releaseDate ? album.sputnikMusic.releaseDate : oldAlbum.sputnikMusic.releaseDate;
-    oldAlbum.spotify.id = album.spotify.id  ? album.spotify.id : oldAlbum.spotify.id;
+        //Edit the Album Object
+        oldAlbum.artistName = album.artistName ? album.artistName : oldAlbum.artistName;
+        oldAlbum.albumName = album.albumName ? album.albumName : oldAlbum.albumName;
+        oldAlbum.sputnikMusic.imagePath = album.sputnikMusic.imagePath ? album.sputnikMusic.imagePath : oldAlbum.sputnikMusic.imagePath;
+        oldAlbum.sputnikMusic.note = album.sputnikMusic.note ? album.sputnikMusic.note : oldAlbum.sputnikMusic.note;
+        oldAlbum.sputnikMusic.releaseDate = album.sputnikMusic.releaseDate ? album.sputnikMusic.releaseDate : oldAlbum.sputnikMusic.releaseDate;
+        oldAlbum.spotify.id = album.spotify.id  ? album.spotify.id : oldAlbum.spotify.id;
+      }catch(e){
+          throw Error("Error occured while Finding the Album")
+      }
 
-    try{
-        var savedAlbum = await oldAlbum.save()
-        return savedAlbum;
+        try{
+          var savedAlbum = await oldAlbum.save();
+          return savedAlbum;
     }catch(e){
         throw Error("And Error occured while updating the Album");
     }

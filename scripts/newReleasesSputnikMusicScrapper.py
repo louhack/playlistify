@@ -7,6 +7,7 @@ from  pymongo import MongoClient
 from bson import json_util
 import datetime
 import pytz
+from datetime import date
 
 monthDic = {}
 monthDic["January"]=1
@@ -36,8 +37,9 @@ soup = BeautifulSoup(r.content.decode("utf8"), 'lxml')
 #Je recupere le 1er mois affiche sur la page qui correspondant au mois en cours
 #print(soup.find(class_="plaincontentbox").tr.next_sibling.td.string)
 #currentmonth = soup.find(class_="plaincontentbox").tr.next_sibling.td.string
+#print(soup.find(class_="plaincontentbox").tr.next_sibling.td.string)
 currentmonth = soup.find(class_="plaincontentbox").table.td.string
-
+#currentmonth = soup.find(class_="plaincontentbox").tr.next_sibling.td.string
 
 #Je recupere le tableau des release du mois en cours
 table_releases = soup.find_all(class_="alt1")
@@ -70,7 +72,7 @@ for table in table_releases:
 			 		# print("Artiste ou Album", string)
 
 			imagePath_1 = "https://www.sputnikmusic.com/images/albums/"+album_link_1[7:13]+".jpg"
-			releaseJson = {'artistName':artiste_1, 'albumName':album_1,'sputnikMusic':{'id':album_link_1[7:13], 'note':note_release_1, 'releaseDate':{ 'month': int(monthDic[releaseDate[0]]), 'year': int(releaseDate[1])}, 'imagePath': imagePath_1}}
+			releaseJson = {'artistName':artiste_1, 'albumName':album_1,'sputnikMusic':{'id':album_link_1[7:13], 'note':float(note_release_1), 'releaseDate':{ 'month': int(monthDic[releaseDate[0]]), 'year': int(releaseDate[1])}, 'imagePath': imagePath_1}}
 			releases_list.append(releaseJson)
 			j+=1
 
@@ -95,7 +97,7 @@ for table in table_releases:
 				 		k=0
 
 				imagePath_2 = "https://www.sputnikmusic.com/images/albums/"+album_link_2[7:13]+".jpg"
-				releaseJson2 = {'artistName':artiste_2, 'albumName':album_2,'sputnikMusic':{'id':album_link_2[7:13], 'note':note_release_2, 'releaseDate':{ 'month': int(monthDic[releaseDate[0]]), 'year': int(releaseDate[1])}, 'imagePath': imagePath_2}}
+				releaseJson2 = {'artistName':artiste_2, 'albumName':album_2,'sputnikMusic':{'id':album_link_2[7:13], 'note':float(note_release_2), 'releaseDate':{ 'month': int(monthDic[releaseDate[0]]), 'year': int(releaseDate[1])}, 'imagePath': imagePath_2}}
 				releases_list.append(releaseJson2)
 				#releases_list.append({'idAlbumSputnik':album_link_2[7:13],'artistName':artiste_2, 'albumName':album_2, 'note':note_release_2, 'releaseMonth':mois_lu, 'imagePath':imagePath_2})
 				j+=1
@@ -111,16 +113,22 @@ f.close()
 # connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
 #mongodb://heroku_j6lv18qq:k7100p7qnmkdo5kk7i9io0q6ap@ds243418.mlab.com:43418/heroku_j6lv18qq
 # NOK connection = MongoClient("mongodb://heroku_j6lv18qq:k7100p7qnmkdo5kk7i9io0q6ap@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=admin")
-connection = MongoClient("mongodb://webScrapper:akill007@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=heroku_j6lv18qq")
 # mongodb://<dbuser>:<dbpassword>@ds243418.mlab.com:43418/heroku_j6lv18qq
-# connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
+
+connection = MongoClient("mongodb://webScrapper:akill007@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=heroku_j6lv18qq")
+#connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
+
 db = connection.get_default_database()
 releases = db.albums
 albums = open("data.json", "r")
 parsedAlbums = json_util.loads(albums.read())
+timezone = pytz.timezone("Europe/Paris")
+today = date.today()
+t_day = today.day
+t_month = today.month
+t_year = today.year
 
 for album in parsedAlbums:
 	# print("PRINT ALBUM ", album["sputnikMusic"]["id"])
   # album['lastModified'] = str(datetime.today().isoformat())
-  timezone = pytz.timezone("Europe/Paris")
-  result = releases.update_one({'artistName': album['artistName'], 'albumName': album['albumName']}, {'$set': album, '$currentDate': { 'lastModified': True }, '$setOnInsert': {'created': timezone.localize(datetime.datetime.now())}}, upsert=True)
+  result = releases.update_one({'artistName': album['artistName'], 'albumName': album['albumName']}, {'$set': album, '$currentDate': { 'lastModified': True }, '$setOnInsert': {'created': timezone.localize(datetime.datetime.now()), 'sortDate': {'day': t_day, 'month':t_month, 'year': t_year}}}, upsert=True)
