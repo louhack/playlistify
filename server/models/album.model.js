@@ -28,6 +28,11 @@ var AlbumSchema = new mongoose.Schema({
       cover: String,
       total_tracks: Number
     },
+    sortDate: {
+      day: Number,
+      month: Number,
+      year: Number
+    },
     created: {
       type: Date,
       //default: Date.now
