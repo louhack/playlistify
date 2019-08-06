@@ -2,33 +2,64 @@
 var Album = require('../models/album.model');
 var mongoose = require('mongoose');
 var bluebird = require('bluebird');
+require('dotenv-safe').load();
+
+const config = require('config');
 
 async function migrateData () {
   mongoose.Promise = bluebird;
-  await mongoose.connect("mongodb://127.0.0.1:27017/playlistifyApp",  { useNewUrlParser: true })
+  await mongoose.connect(config.get('Database.host'),  { useNewUrlParser: true })
   .then(()=> { console.log(`Succesfully Connected to the Mongodb Database`);})
   .catch(()=> { console.log(`Error Connecting to the Mongodb Database`);});
   const dbPlaylistify = mongoose.connection;
 
 try {
     var albums = await Album.find();
-    var count = await Album.countDocuments();
-
+    // var album = await Album.findById("5a981206b4ffc6be9e577ec1");
+    // var count = await Album.countDocuments();
+    var g_counter = albums.length;
+    // var g_counter = 1;
+    var createdDateCounter = 0;
+    var sptnMCounter = 0;
+    var noSetSortDate = 0;
 
     for (let album of albums) {
-      console.log(album._id);
+     // console.log("Check : " + album._id);
+      // g_counter++;
 
       if (album.sputnikMusic.note){
+        // console.log("update note : %s", typeof album.sputnikMusic.note);
+        // note = new String(album.sputnikMusic.note)
         album.sputnikMusic.note = parseFloat(album.sputnikMusic.note);
+        // console.log("update note : %s", typeof album.sputnikMusic.note);
       }
 
-      album.sortDate = await setSortDate(album);
+      resolution = await setSortDate(album);
 
+      if(resolution[0] === 1) {
+        album.sortDate = resolution[1];
+        createdDateCounter++;
+      }
+      else if (resolution[0] === 2) {
+        album.sortDate = resolution[1];
+        sptnMCounter++;
 
-      var savedAlbum = await album.save();
+      }
+      else {
+        noSetSortDate++;
+      }
+
+      var savedAlbum = await Album.replaceOne({_id:album._id}, album);
+      // console.log(savedAlbum);
 
 
     };
+
+
+    console.log("Records found : " + g_counter)
+    console.log("Records set with creation date : " + createdDateCounter);
+    console.log("Records set with sputnik date : " + sptnMCounter);
+    console.log("Records with no date set : " + noSetSortDate);
 
     await mongoose.disconnect();
 
@@ -42,6 +73,7 @@ try {
 async function setSortDate(album) {
   try {
     return new Promise(resolve => {
+      resolution = 0;
       sortDate_ = {};
 
       if (album.created && !album.sortDate.day){
@@ -57,6 +89,7 @@ async function setSortDate(album) {
           month: parseInt(month_),
           year: parseInt(year_)
         };
+        resolution = 1;
 
       } else if (album.sputnikMusic.releaseDate && !album.sortDate.day){
         // console.log("Sputnkik Release Date\n");
@@ -65,13 +98,15 @@ async function setSortDate(album) {
             month: parseInt(album.sputnikMusic.releaseDate.month),
             year: parseInt(album.sputnikMusic.releaseDate.year)
         };
+        resolution = 2;
 
       } else {
-        console.log("object ID: %s", album._id);
-        resolve(album.sortDate);
+        //console.log("No setSortDate : %s", album._id);
+        resolution = 3;
+        resolve([resolution, album.sortDate]);
       }
 
-      resolve(sortDate_);
+      resolve([resolution, sortDate_]);
 
     })
   } catch (error) {
