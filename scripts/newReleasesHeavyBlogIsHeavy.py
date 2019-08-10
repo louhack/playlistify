@@ -40,44 +40,52 @@ table_articles = soup.find(id="ut-main-content").find_all("article")
 
 for article in table_articles:
   # print("BEGINNING OF RELEASE ==========")
-
+  #print(article)
+  try:
+    artist_and_release = article.find(class_="entry-title").a.string
+    print(artist_and_release)
+    #Séparation de la chaine en 2 parties. Si pas 2 parties exactement alors problème
+    stringSplit = artist_and_release.split(" – ", 1)
+  except AttributeError as attrib_error:
+    print(attrib_error)
+  except TypeError as type_error:
+    print("Type Error " + type_error)
+    # print("not an album: " + artist_and_release)
+  else:
   #extraction du nom de l'artiste et de la release : "ARTISTE - NOM RELEASE"
-  artist_and_release = article.header.div.h2.string
+    if len(stringSplit) == 2:
+      # print (artist_and_release)
+      reviewLink = article.div.a.get('href')
 
-  reviewLink = article.div.a.get('href')
+      #Récupération de l'id du post
+      idRelease=article.get('id').split('-')[1]
 
-  #Séparation de la chaine en 2 parties. Si pas 2 parties exactement alors problème
-  stringSplit = artist_and_release.split(" – ", 1)
+      artist = stringSplit[0]
+      album = stringSplit[1]
+      # print("ARTIST " + artist)
+      #Récupération de la date du post. Servira en tant que Date de Release
+      releaseDate = article.header.div.div.div.span.next_sibling.next_sibling.next_sibling.next_sibling.a.string.split()
+      #print(releaseDate)
 
-  if len(stringSplit) == 2:
-    #Récupération de l'id du post
-    idRelease=article.get('id').split('-')[1]
-
-
-    artist = stringSplit[0]
-    album = stringSplit[1]
-    # print("ARTIST " + artist)
-    #Récupération de la date du post. Servira en tant que Date de Release
-    releaseDate = article.header.div.div.div.span.next_sibling.next_sibling.next_sibling.next_sibling.a.string.split()
-    #print(releaseDate)
-
-    # print(article.header.next_sibling.next_sibling.next_sibling.next_sibling.a.img.get('srcset'))
-    try:
-      img_tab = article.header.next_sibling.next_sibling.next_sibling.next_sibling.a.img.get('srcset').split()
-    except AttributeError as error:
-      print(error)
-      print("Album's cover not found. Artist: " + artist)
-    else:
-      if len(img_tab) > 2:
-        img = img_tab[2]
+      # print(article.header.next_sibling.next_sibling.next_sibling.next_sibling.a.img.get('srcset'))
+      try:
+        # print(article.find(class_="attachment-custom size-custom wp-post-image").get('srcset').split())
+        img_tab = article.find(class_="attachment-custom size-custom wp-post-image").get('srcset').split()
+        #img_tab = article.header.next_sibling.next_sibling.next_sibling.next_sibling.a.img.get('srcset').split()
+      except AttributeError as error:
+        print(error)
+        print("Album's cover not found. Artist: " + artist)
       else:
-        img = img_tab[0]
+        if len(img_tab) > 2:
+          img = img_tab[2]
+        else:
+          img = img_tab[0]
 
-      #print(img)
-      releaseJson = {'artistName':artist, 'albumName':album,'heavyBIsH':{'id':idRelease, 'reviewLink': reviewLink, 'releaseDate':{ 'month': int(monthDic[releaseDate[0]]), 'year': int(releaseDate[2])}, 'imagePath': img}}
-      releases_list.append(releaseJson)
-    finally:
-      pass
+        #print(img)
+        releaseJson = {'artistName':artist, 'albumName':album,'heavyBIsH':{'id':idRelease, 'reviewLink': reviewLink, 'releaseDate':{ 'month': int(monthDic[releaseDate[0]]), 'year': int(releaseDate[2])}, 'imagePath': img}}
+        releases_list.append(releaseJson)
+      finally:
+        pass
 
   # print("END OF RELEASE ===========")
 

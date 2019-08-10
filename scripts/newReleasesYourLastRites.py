@@ -97,8 +97,8 @@ f.close()
 
 
 # ##### UPSERT IN DB - COLLECTION :ALBUMS
-connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
-# connection = MongoClient("mongodb://webScrapper:akill007@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=heroku_j6lv18qq")
+#connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
+connection = MongoClient("mongodb://webScrapper:akill007@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=heroku_j6lv18qq")
 
 db = connection.get_default_database()
 releases = db.albums
