@@ -25,8 +25,8 @@ nodemon ./server/bin/www
 
 ## Front-End : 
 Directory: ./src
- - Angular 5
- - Boostrap 4
+ - Angular 
+ - Boostrap 
  
 ### Build Front-End
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.

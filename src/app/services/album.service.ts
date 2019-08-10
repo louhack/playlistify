@@ -36,7 +36,7 @@ export class AlbumService {
       .pipe(map((res) => {
         const albums = new Array<Album>();
         for (const album of res['data'].docs) {
-          albums.push(new Album(album._id, album.artistName, album.albumName, album.sputnikMusic, album.heavyBIsH, album.hasOwnProperty('spotify') ? album.spotify : null));
+          albums.push(new Album(album._id, album.artistName, album.albumName, album.sputnikMusic, album.heavyBIsH, album.hasOwnProperty('spotify') ? album.spotify : null, album.yourLastRites));
         }
         const albumsListI: AlbumsListI = {
           albumsList: albums,

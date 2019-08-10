@@ -34,7 +34,10 @@
                 <img *ngIf="album.sputnikMusic; else heavyBlogCover" class="card-img-top" [src]="album.sputnikMusic.imagePath" [alt]="album.albumName">
               </ng-template>
               <ng-template #heavyBlogCover>
-                <img class="card-img-top" [src]="album.heavyBIsH.imagePath" [alt]="album.albumName">
+                <img *ngIf="album.heavyBIsH; else yourLastRitesCover" class="card-img-top" [src]="album.heavyBIsH.imagePath" [alt]="album.albumName">
+              </ng-template>
+              <ng-template #yourLastRitesCover>
+                <img *ngIf="album.yourLastRites" class="card-img-top" [src]="album.yourLastRites.imagePath" [alt]="album.albumName">
               </ng-template>
                 <div class="card-body">
                   <tabset>
@@ -51,6 +54,10 @@
                     <tab *ngIf="album.heavyBIsH" heading="HBIH">
                       <p class="mt-2">Release Date: {{ getDate(i,1) }}</p>
                       <p><a href="{{ album.heavyBIsH.reviewLink }}" target="_blank">Consulter sur HBIH</a></p>
+                    </tab>
+                    <tab *ngIf="album.yourLastRites" heading="YLR">
+                      <p class="mt-2">Release Date: {{ getDate(i,2) }}</p>
+                      <p><a href="{{ album.yourLastRites.reviewLink }}" target="_blank">Consulter sur Your Last Rites</a></p>
                     </tab>
                   </tabset>
                 </div>

@@ -104,9 +104,10 @@ export class AlbumListComponent implements OnInit {
     getDate(i: number, s: number) {
       if (s === 0) {
         return (MyCalendar.month[+this.albumsList[i].sputnikMusic.releaseDate.month - 1]) + ' ' + this.albumsList[i].sputnikMusic.releaseDate.year;
-
       } else if (s === 1) {
         return (MyCalendar.month[+this.albumsList[i].heavyBIsH.releaseDate.month - 1]) + ' ' + this.albumsList[i].heavyBIsH.releaseDate.year;
+      }  else if (s === 2) {
+        return (MyCalendar.month[+this.albumsList[i].yourLastRites.releaseDate.month - 1]) + ' ' + this.albumsList[i].yourLastRites.releaseDate.year;
       }
     }
 

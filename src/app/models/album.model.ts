@@ -33,6 +33,16 @@ export class Album {
         reviewLink: string
     };
 
+    public yourLastRites: {
+      id: string,
+      imagePath: string,
+      releaseDate: {
+        month: string,
+        year: string
+      }
+      reviewLink: string
+  };
+
     // this.spotify.id = '';
 
     public spotifySearchResults: AlbumSpotify[] = [];
@@ -65,7 +75,16 @@ export class Album {
                   genres: string[],
                   releaseDate: string,
                   releaseDatePrecision: string
-                }
+                },
+                yourLastRites: {
+                  id: string,
+                  imagePath: string,
+                  releaseDate: {
+                    month: string,
+                    year: string
+                  }
+                  reviewLink: string
+              }
               ) {
 
         this._id = _id;
@@ -73,6 +92,7 @@ export class Album {
         this.albumName = albumName;
         this.sputnikMusic = sputnikInfo;
         this.heavyBIsH = heavyBlogInfo;
+        this.yourLastRites = yourLastRites;
         if (spotify != null) {
           this.spotify = spotify;
           this.searchedOnSpotify = true;

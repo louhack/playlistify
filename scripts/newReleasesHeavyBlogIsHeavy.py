@@ -107,3 +107,5 @@ for album in parsedAlbums:
   #album['created'] = str(datetime.today().isoformat())
   #result = releases.update_one({'heavyBIsH.id': album['heavyBIsH']['id'] }, {'$set': album, '$currentDate': { 'lastModified': True }, '$setOnInsert': {'created': timezone.localize(datetime.datetime.now())}}, upsert=True)
   result = releases.update_one({'artistName': album['artistName'], 'albumName': album['albumName'] }, {'$set': album, '$currentDate': { 'lastModified': True }, '$setOnInsert': {'created': timezone.localize(datetime.datetime.now()), 'sortDate': {'day': t_day, 'month':t_month, 'year': t_year}}}, upsert=True)
+
+connection.close()
