@@ -8,6 +8,7 @@ from bson import json_util
 import datetime
 import pytz
 from datetime import date
+import os
 
 monthDic = {}
 monthDic["January"]=1
@@ -98,7 +99,7 @@ f.close()
 
 # ##### UPSERT IN DB - COLLECTION :ALBUMS
 #connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
-connection = MongoClient("mongodb://webScrapper:akill007@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=heroku_j6lv18qq")
+connection = MongoClient(os.environ.get('MONGODB_WEBSCRAPPER'))
 
 db = connection.get_default_database()
 releases = db.albums

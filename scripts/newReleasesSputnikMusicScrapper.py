@@ -8,6 +8,7 @@ from bson import json_util
 import datetime
 import pytz
 from datetime import date
+import os
 
 monthDic = {}
 monthDic["January"]=1
@@ -115,7 +116,7 @@ f.close()
 # NOK connection = MongoClient("mongodb://heroku_j6lv18qq:k7100p7qnmkdo5kk7i9io0q6ap@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=admin")
 # mongodb://<dbuser>:<dbpassword>@ds243418.mlab.com:43418/heroku_j6lv18qq
 
-connection = MongoClient("mongodb://webScrapper:akill007@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=heroku_j6lv18qq")
+connection = MongoClient(os.environ.get('MONGODB_WEBSCRAPPER'))
 #connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
 
 db = connection.get_default_database()
