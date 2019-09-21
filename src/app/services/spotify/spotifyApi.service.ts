@@ -20,7 +20,7 @@ export class SpotifyApiService {
         private messageService: MessageService) {}
 
     public searchItem(query: string, searchType: string): Observable<AlbumSpotify[]> {
-       const searchReq = encodeURI(this.spotifyEndPoints.searchItemEndPoint + '?q=' + query + '&type=' + searchType);
+       const searchReq = this.spotifyEndPoints.searchItemEndPoint + '?q=' + encodeURI(query) + '&type=' + searchType;
         return this.http.get(searchReq, { headers: this.spotifyEndPoints.createRequestOptions()})
         .pipe( map( (albums) => {
           return albums['albums'].items;

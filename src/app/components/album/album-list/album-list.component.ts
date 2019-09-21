@@ -177,7 +177,7 @@ constructor(private albumsService: AlbumService, private userService: UserServic
         resolve => {
         const album = this.albumsList[index];
         this.spotifyApiService
-          .searchItem(album.albumName + ' artist:' + album.artistName , 'album')
+          .searchItem('album:' + album.albumName + ' artist:' + album.artistName , 'album')
             .subscribe(
               (foundAlbums: AlbumSpotify[]) => {
 
