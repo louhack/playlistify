@@ -70,8 +70,8 @@ for article in table_articles:
 
       # print(article.header.next_sibling.next_sibling.next_sibling.next_sibling.a.img.get('srcset'))
       try:
-        # print(article.find(class_="attachment-custom size-custom wp-post-image").get('srcset').split())
-        img_tab = article.find(class_="attachment-custom size-custom wp-post-image").get('srcset').split()
+        # print(article.find(class_="ut-postThumbnail-Link").img)
+        img_tab = article.find(class_="attachment-custom size-custom wp-post-image jetpack-lazy-image").get('srcset').split()
         #img_tab = article.header.next_sibling.next_sibling.next_sibling.next_sibling.a.img.get('srcset').split()
       except AttributeError as error:
         print(error)
@@ -98,7 +98,7 @@ f.close()
 
 
 ##### UPSERT IN DB - COLLECTION :ALBUMS
-#connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
+#onnection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
 connection = MongoClient(os.environ.get('MONGODB_WEBSCRAPPER'))
 
 db = connection.get_default_database()
@@ -115,6 +115,6 @@ for album in parsedAlbums:
   # print("PRINT ALBUM ", album["heavyBIsH"]["id"])
   #album['created'] = str(datetime.today().isoformat())
   #result = releases.update_one({'heavyBIsH.id': album['heavyBIsH']['id'] }, {'$set': album, '$currentDate': { 'lastModified': True }, '$setOnInsert': {'created': timezone.localize(datetime.datetime.now())}}, upsert=True)
-  result = releases.update_one({'artistName': album['artistName'], 'albumName': album['albumName'] }, {'$set': album, '$currentDate': { 'lastModified': True }, '$setOnInsert': {'created': timezone.localize(datetime.datetime.now()), 'sortDate': {'day': t_day, 'month':t_month, 'year': t_year}}}, upsert=True)
+  result = releases.update_one({'artistName': {'$regex': '^'+re.escape(album['artistName'])+'$', '$options': 'i'}, 'albumName': {'$regex': '^'+re.escape(album['albumName'])+'$',  '$options': 'i'} }, {'$set': album, '$currentDate': { 'lastModified': True }, '$setOnInsert': {'created': timezone.localize(datetime.datetime.now()), 'sortDate': {'day': t_day, 'month':t_month, 'year': t_year}}}, upsert=True)
 
 connection.close()

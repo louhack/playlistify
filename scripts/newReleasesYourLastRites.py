@@ -4,6 +4,7 @@ import requests
 import json
 import re
 from  pymongo import MongoClient
+from pymongo.collation import Collation
 from bson import json_util
 import datetime
 import pytz
@@ -112,6 +113,6 @@ t_month = today.month
 t_year = today.year
 
 for album in parsedAlbums:
-  result = releases.update_one({'artistName': album['artistName'], 'albumName': album['albumName'] }, {'$set': album, '$currentDate': { 'lastModified': True }, '$setOnInsert': {'created': timezone.localize(datetime.datetime.now()), 'sortDate': {'day': t_day, 'month':t_month, 'year': t_year}}}, upsert=True)
+  result = releases.update_one({'artistName': {'$regex': '^'+re.escape(album['artistName'])+'$', '$options': 'i'}, 'albumName': {'$regex': '^'+re.escape(album['albumName'])+'$',  '$options': 'i'} }, {'$set': album, '$currentDate': { 'lastModified': True }, '$setOnInsert': {'created': timezone.localize(datetime.datetime.now()), 'sortDate': {'day': t_day, 'month':t_month, 'year': t_year}}}, upsert=True)
 
 connection.close()
