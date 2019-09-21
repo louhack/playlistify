@@ -105,12 +105,12 @@ exports.getPlaylists = async function(req, res, next){
     },function(err){
       if(err) {
         console.log('ERROR WHILE SEARCHING FOR PLAYLIST : %s', err)
+        return res.status(400).json({status: 400, message: "An error occured"});
       }
       if (playlistifiedAlbums.length > 0){
-        return res.status(200).json({status: 200, data: playlistifiedAlbums, message: "Playlist Successfully Found"});
+        return res.status(200).json({status: 200, data: playlistifiedAlbums, message: "Playlist(s) Successfully Found"});
       }
-      return res.status(200).json({status: 200, message: "No Playlist Found"});
-
+      return res.status(204).json({status: 204, message: "No Playlist Found"});
     });
   } catch (e) {
     console.log(e);

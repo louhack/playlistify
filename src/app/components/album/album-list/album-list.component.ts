@@ -30,39 +30,29 @@ export class AlbumListComponent implements OnInit {
   itemsPerPage = 20;
 
 // Modal for playlist creation
-  bsModalRef: BsModalRef;
+bsModalRef: BsModalRef;
 
-  constructor(private albumsService: AlbumService, private userService: UserService, private spotifyApiService: SpotifyApiService, private modalService: BsModalService) {
-    this.albumSubscription = albumsService.albumChanged.subscribe(
+constructor(private albumsService: AlbumService, private userService: UserService, private spotifyApiService: SpotifyApiService, private modalService: BsModalService) {
+  // console.log('CONSTRUCTOR');
+  this.albumSubscription = albumsService.albumChanged.subscribe(
       albumChanged => {
         this.albumsList[albumChanged.index] = albumChanged.album;
       }
     );
 
-    this.userSubscription = userService.userChanged.subscribe(
-      () => {
-        if (this.userService.isAuthenticated()) {
-          this.searchPlaylistifiedAlbums();
-        }
-      }
+    this.userSubscription = userService.userChanged.subscribe( () => {
+      if (this.userService.isAuthenticated()) {
+         this.searchPlaylistifiedAlbums();
+       }
+    }
     );
 
 
   }
 
   ngOnInit() {
+    // console.log('ON INIT');
     this.albumsService.getAlbums(1, 20)
-      .subscribe(albumsListI => {
-        this.albumsList = albumsListI.albumsList;
-        this.currentPage = albumsListI.currentPage;
-        this.totalNumberOfPages = albumsListI.totalNumberOfPages;
-        this.totalNumberOfAlbums = albumsListI.totalNumberOfAlbums;
-      });
-  }
-
-
-  pageChanged(event: any): void {
-    this.albumsService.getAlbums(event.page, event.itemsPerPage)
       .subscribe(albumsListI => {
         this.albumsList = albumsListI.albumsList;
         this.currentPage = albumsListI.currentPage;
@@ -72,6 +62,20 @@ export class AlbumListComponent implements OnInit {
           this.searchPlaylistifiedAlbums();
         }
       });
+  }
+
+  pageChanged(event: any): void {
+    this.albumsService.getAlbums(event.page, event.itemsPerPage)
+      .subscribe(albumsListI => {
+        this. albumsList = albumsListI.albumsList;
+        this.currentPage = albumsListI.currentPage;
+        this.totalNumberOfPages = albumsListI.totalNumberOfPages;
+        this.totalNumberOfAlbums = albumsListI.totalNumberOfAlbums;
+        if (this.userService.isAuthenticated()) {
+          this.searchPlaylistifiedAlbums();
+        }
+      });
+      window.scroll(0, 0);
   }
 
   openModalWithComponent(albumIndex: number) {

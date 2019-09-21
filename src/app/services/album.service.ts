@@ -70,7 +70,11 @@ export class AlbumService {
     return this.http.get('/api/user/playlistifiedAlbum', {params: { userId: userId, albumId: albumIds}})
       .pipe(map((resp: Response) => {
       // console.log(resp['data']);
-        return resp['data'];
+        if (resp != null) {
+          return resp['data'];
+        } else {
+          return null;
+        }
       }));
   }
 }
