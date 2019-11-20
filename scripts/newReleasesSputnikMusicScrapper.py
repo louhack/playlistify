@@ -31,7 +31,7 @@ if r.status_code != 200:
 # r.encoding = 'iso-8859-1'
 #print(r.text)
 # with open("""..\\SputnikMusic\\New Releases _ Sputnikmusic.html""") as fp:
-soup = BeautifulSoup(r.content.decode("iso-8859-1"), 'lxml')
+soup = BeautifulSoup(r.content.decode("UTF-8", "ignore"), 'lxml')
 
 #print(soup)
 
