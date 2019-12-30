@@ -35,6 +35,55 @@ exports.getAlbums = async function getAlbums (req, res, next){
 
 }
 
+exports.search = async function search (req, res, next){
+  // console.log("Search function");
+  //  console.log(req.query.q);
+  var searchItem = req.query.q;
+  var scope = req.query.scope;
+  var page = req.query.page ? +req.query.page : 1;
+  var limit = req.query.limit ? +req.query.limit : 20;
+  var result = {};
+
+  try {
+
+    if (searchItem) {
+      if (scope=="all"){
+        // console.log("SEARCH ALL");
+        foundAlbums = await Album.find({$or: [{albumName: {$regex: searchItem, $options:'i'}}, {artistName: {$regex: searchItem, $options:'i'}}]}).skip((limit * page) - limit).limit(limit);
+        numOfResults = await Album.count({$or: [{albumName: {$regex: searchItem, $options:'i'}}, {artistName: {$regex: searchItem, $options:'i'}}]});
+      } else if (scope == "albums") {
+        // console.log("SEARCH ALBUMS");
+        foundAlbums = await Album.find({albumName: {$regex: searchItem, $options:'i' }}).skip((limit * page) - limit).limit(limit);
+        numOfResults = await Album.count({albumName: {$regex: searchItem, $options:'i' }});
+      } else {
+        // console.log("SEARCH ARTIST");
+        foundAlbums = await Album.find({artistName: {$regex: searchItem, $options:'i' }}).skip((limit * page) - limit).limit(limit);
+        numOfResults = await Album.count({artistName: {$regex: searchItem, $options:'i' }});
+      }
+      //console.log(foundAlbums);
+    }
+    else {
+      return res.status(400).json({status: 400, message: "No data to search for"});
+
+    }
+
+    if (foundAlbums.length > 0) {
+      result.foundAlbums = foundAlbums;
+      result.count = numOfResults;
+      result.total = foundAlbums.length
+      result.page = page;
+      result.limit = limit;
+      return res.status(200).json({status: 200, data: result, message: "Request Successful"});
+    }
+    else{
+      return res.status(200).json({status: 200, message: "No content"});
+    }
+
+  } catch (error) {
+    return res.status(400).json({status: 400, data: error.message, message: "Error while searching"});
+  }
+}
+
 exports.createAlbum = async function createAlbum (req, res, next){
 
     // Req.Body contains the form submit values.

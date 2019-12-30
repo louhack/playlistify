@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { Album } from '../../../models/album.model';
 import { UserService } from '../../../services/spotify/user.service';
-import { AlbumService } from '../../../services/album.service';
+import { AlbumService } from '../../../services/local/album.service';
 import { SpotifyApiService } from '../../../services/spotify/spotifyApi.service';
 import { AlbumSpotify } from '../../../interfaces/albumSpotifyInterface';
 import { MyCalendar } from '../../../shared/myCalendar';

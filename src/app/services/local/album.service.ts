@@ -1,25 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Album } from '../models/album.model';
-import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { Album } from '../../models/album.model';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AlbumsListI } from '../interfaces/albumsList.interface';
-import { AlbumPlaylistI } from '../interfaces/albumAddedToPlaylist.interface';
+import { AlbumsListI } from '../../interfaces/albumsList.interface';
+import { AlbumPlaylistI } from '../../interfaces/albumAddedToPlaylist.interface';
+import { LocalEndPoints } from './localAPIEndpoints';
 
 
 @Injectable()
 export class AlbumService {
 
-  albumUrl = `/api/albums`;
+  // albumUrl = `/api/albums`;
   albumChanged = new Subject<{index: number, album: Album}>();
 
-  constructor(private http: HttpClient) { }
+  constructor(
+      private http: HttpClient,
+      private localEndPoints: LocalEndPoints) { }
 
   updateAlbumOnDB(album: Album): Promise<Album> {
     // console.log(JSON.stringify(Album));
     return new Promise(
       resolve => {
-        this.http.put(this.albumUrl, album).subscribe(
+        this.http.put(this.localEndPoints.albumEndPoint, album).subscribe(
           response => {
             resolve(response['data']);
           }
@@ -32,7 +35,7 @@ export class AlbumService {
     const httpParams = new HttpParams().set('page', page.toString());
     httpParams.append('limit', limit.toString());
 
-    return this.http.get(this.albumUrl, {params: httpParams})
+    return this.http.get(this.localEndPoints.albumEndPoint, {params: httpParams})
       .pipe(map((res) => {
         const albums = new Array<Album>();
         for (const album of res['data'].docs) {

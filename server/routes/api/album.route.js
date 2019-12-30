@@ -12,6 +12,8 @@ var AlbumsController = require('../../controllers/albums.controller');
 
 router.get('/', AlbumsController.getAlbums);
 
+router.get('/search', AlbumsController.search)
+
 router.post('/', middleware.isLoggedIn, AlbumsController.createAlbum);
 
 router.put('/', middleware.isLoggedIn, AlbumsController.updateAlbum);

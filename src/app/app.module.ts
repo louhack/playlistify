@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TabsModule } from 'ngx-bootstrap/tabs';
@@ -15,10 +15,14 @@ import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { UserService } from './services/spotify/user.service';
 import { SpotifyEndPoints } from './services/spotify/spotifyApiEndpoints';
-import { AlbumService } from './services/album.service';
+import { AlbumService } from './services/local/album.service';
 import { SpotifyApiService } from './services/spotify/spotifyApi.service';
 import { MessageService } from './services/message.service';
 import { AlbumsModalComponent } from './components/album/albums-modal/albums-modal.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { SearchComponent } from './components/search/search.component';
+import { LocalEndPoints } from './services/local/localAPIEndpoints';
+import { SearchService } from './services/local/search.service';
 
 
 @NgModule({
@@ -29,10 +33,13 @@ import { AlbumsModalComponent } from './components/album/albums-modal/albums-mod
     LoginComponent,
     ErrorComponent,
     AlbumsModalComponent,
+    MenuComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     PaginationModule.forRoot(),
@@ -46,6 +53,8 @@ import { AlbumsModalComponent } from './components/album/albums-modal/albums-mod
     SpotifyEndPoints,
     SpotifyApiService,
     MessageService,
+    LocalEndPoints,
+    SearchService
   ],
   bootstrap: [AppComponent],
   entryComponents: [AlbumsModalComponent]
