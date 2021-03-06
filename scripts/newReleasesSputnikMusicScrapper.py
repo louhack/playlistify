@@ -9,6 +9,7 @@ import datetime
 import pytz
 from datetime import date
 import os
+import dns
 
 monthDic = {}
 monthDic["January"]=1
