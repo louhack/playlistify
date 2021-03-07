@@ -37,16 +37,17 @@ soup = BeautifulSoup(r.content.decode("utf8"), 'lxml')
 releases_list = []
 
 #Je recupere le tableau des release du mois en cours
-table_articles = soup.find(id="ut-main-content").find_all("article")
+table_articles = soup.find(id="main").find_all("article")
 
 for article in table_articles:
   # print("BEGINNING OF RELEASE ==========")
   #print(article)
   try:
-    artist_and_release = article.find(class_="entry-title").a.string
+    artist_and_release = article.find(class_="cb-post-title").a.string
     print(artist_and_release)
     #Séparation de la chaine en 2 parties. Si pas 2 parties exactement alors problème
     stringSplit = artist_and_release.split(" – ", 1)
+    #print(stringSplit)
   except AttributeError as attrib_error:
     print(attrib_error)
   except TypeError as type_error:
@@ -60,22 +61,24 @@ for article in table_articles:
 
       #Récupération de l'id du post
       idRelease=article.get('id').split('-')[1]
-
+      #print("idRelease: "+ idRelease)
       artist = stringSplit[0]
       album = stringSplit[1]
       # print("ARTIST " + artist)
       #Récupération de la date du post. Servira en tant que Date de Release
-      releaseDate = article.header.div.div.div.span.next_sibling.next_sibling.next_sibling.next_sibling.a.string.split()
-      #print(releaseDate)
+      releaseDate = article.find(class_="cb-date cb-byline-element").time.string
+      print(releaseDate)
 
       # print(article.header.next_sibling.next_sibling.next_sibling.next_sibling.a.img.get('srcset'))
       try:
         # print(article.find(class_="ut-postThumbnail-Link").img)
-        img_tab = article.find(class_="attachment-custom size-custom wp-post-image jetpack-lazy-image").get('srcset').split()
+
+        img_tab = article.find(class_="cb-mask").a.img.get('srcset').split()
         #img_tab = article.header.next_sibling.next_sibling.next_sibling.next_sibling.a.img.get('srcset').split()
       except AttributeError as error:
         print(error)
         print("Album's cover not found. Artist: " + artist)
+        #print(article.find(class_="cb-mask").a.img.get('srcset'))
       else:
         if len(img_tab) > 2:
           img = img_tab[2]
@@ -83,7 +86,7 @@ for article in table_articles:
           img = img_tab[0]
 
         #print(img)
-        releaseJson = {'artistName':artist, 'albumName':album,'heavyBIsH':{'id':idRelease, 'reviewLink': reviewLink, 'releaseDate':{ 'month': int(monthDic[releaseDate[0]]), 'year': int(releaseDate[2])}, 'imagePath': img}}
+        releaseJson = {'artistName':artist, 'albumName':album,'heavyBIsH':{'id':idRelease, 'reviewLink': reviewLink, 'releaseDate':{ 'month': int(monthDic[releaseDate.split()[0]]), 'year': int(releaseDate.split()[2])}, 'imagePath': img}}
         releases_list.append(releaseJson)
       finally:
         pass
@@ -98,7 +101,7 @@ f.close()
 
 
 ##### UPSERT IN DB - COLLECTION :ALBUMS
-#onnection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
+#connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
 connection = MongoClient(os.environ.get('MONGODB_WEBSCRAPPER'))
 
 db = connection.get_default_database()
