@@ -1,6 +1,6 @@
 export class MyCalendar {
 
-  public static month= [
+  public static month = [
     'January',
     'February',
     'March',

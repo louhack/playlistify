@@ -44,21 +44,31 @@ exports.search = async function search (req, res, next){
   var limit = req.query.limit ? +req.query.limit : 20;
   var result = {};
 
+  var options = {
+    page,
+    limit,
+    sort:{'sortDate.year': -1, 'sortDate.month': -1, 'sputnikMusic.note': -1,'sortDate.day': -1}
+  };
+
   try {
 
     if (searchItem) {
       if (scope=="all"){
         // console.log("SEARCH ALL");
-        foundAlbums = await Album.find({$or: [{albumName: {$regex: searchItem, $options:'i'}}, {artistName: {$regex: searchItem, $options:'i'}}]}).skip((limit * page) - limit).limit(limit);
-        numOfResults = await Album.count({$or: [{albumName: {$regex: searchItem, $options:'i'}}, {artistName: {$regex: searchItem, $options:'i'}}]});
+        foundAlbums = await Album.paginate({$or: [{albumName: {$regex: searchItem, $options:'i'}}, {artistName: {$regex: searchItem, $options:'i'}}]}, options);
+        // foundAlbums = await Album.find({$or: [{albumName: {$regex: searchItem, $options:'i'}}, {artistName: {$regex: searchItem, $options:'i'}}]}).skip((limit * page) - limit).limit(limit);
+        // numOfResults = await Album.count({$or: [{albumName: {$regex: searchItem, $options:'i'}}, {artistName: {$regex: searchItem, $options:'i'}}]});
       } else if (scope == "albums") {
+        foundAlbums = await Album.paginate({albumName: {$regex: searchItem, $options:'i' }}, options);
         // console.log("SEARCH ALBUMS");
-        foundAlbums = await Album.find({albumName: {$regex: searchItem, $options:'i' }}).skip((limit * page) - limit).limit(limit);
-        numOfResults = await Album.count({albumName: {$regex: searchItem, $options:'i' }});
+        // foundAlbums = await Album.find({albumName: {$regex: searchItem, $options:'i' }}).skip((limit * page) - limit).limit(limit);
+        // numOfResults = await Album.count({albumName: {$regex: searchItem, $options:'i' }});
       } else {
+        foundAlbums = await Album.paginate({artistName: {$regex: searchItem, $options:'i' }}, options);
+
         // console.log("SEARCH ARTIST");
-        foundAlbums = await Album.find({artistName: {$regex: searchItem, $options:'i' }}).skip((limit * page) - limit).limit(limit);
-        numOfResults = await Album.count({artistName: {$regex: searchItem, $options:'i' }});
+        // foundAlbums = await Album.find({artistName: {$regex: searchItem, $options:'i' }}).skip((limit * page) - limit).limit(limit);
+        // numOfResults = await Album.count({artistName: {$regex: searchItem, $options:'i' }});
       }
       //console.log(foundAlbums);
     }
@@ -66,18 +76,20 @@ exports.search = async function search (req, res, next){
       return res.status(400).json({status: 400, message: "No data to search for"});
 
     }
+    console.log(JSON.stringify(foundAlbums));
+    return res.status(200).json({status: 200, data: foundAlbums, message: "Search Successful"});
 
-    if (foundAlbums.length > 0) {
-      result.foundAlbums = foundAlbums;
-      result.count = numOfResults;
-      result.total = foundAlbums.length
-      result.page = page;
-      result.limit = limit;
-      return res.status(200).json({status: 200, data: result, message: "Request Successful"});
-    }
-    else{
-      return res.status(200).json({status: 200, message: "No content"});
-    }
+    // if (foundAlbums.length > 0) {
+    //   result.foundAlbums = foundAlbums;
+    //   result.count = numOfResults;
+    //   result.total = foundAlbums.length
+    //   result.page = page;
+    //   result.limit = limit;
+    //   return res.status(200).json({status: 200, data: result, message: "Request Successful"});
+    // }
+    // else{
+    //   return res.status(200).json({status: 200, message: "No content"});
+    // }
 
   } catch (error) {
     return res.status(400).json({status: 400, data: error.message, message: "Error while searching"});
@@ -85,15 +97,6 @@ exports.search = async function search (req, res, next){
 }
 
 exports.createAlbum = async function createAlbum (req, res, next){
-
-    // Req.Body contains the form submit values.
-
-    // var album = {
-    //     title: req.body.title,
-    //     description: req.body.description,
-    //     status: req.body.status
-
-    // }
 
     var album = req.body.album;
 
@@ -137,9 +140,10 @@ exports.updateAlbum = async function updateAlbum (req, res, next){
 
       spotify: {
         id: req.body.spotify.id ? req.body.spotify.id : null,
-        releaseDate: req.body.spotify.release_date ? req.body.spotify.release_date : null,
+        release_date: req.body.spotify.release_date ? req.body.spotify.release_date : null,
+        release_date_precision: req.body.spotify.release_date_precision ? req.body.spotify.release_date_percision : null,
         cover: req.body.spotify.images[1].url ? req.body.spotify.images[1].url : null,
-        total_tracks: req.body.spotify.total_tracks ? req.body.spotify.total_tracks : null
+        total_tracks: req.body.spotify.total_tracks ? req.body.spotify.total_tracks : null,
       }
     };
 
@@ -194,11 +198,13 @@ exports.updateAlbum = async function updateAlbum (req, res, next){
       }
 
       albumToUpdate.spotify.id = albumToUpdate.spotify.id  ? albumToUpdate.spotify.id : album.spotify.id;
-      albumToUpdate.spotify.releaseDate = albumToUpdate.spotify.releaseDate ? albumToUpdate.spotify.releaseDate : album.spotify.releaseDate;
+      albumToUpdate.spotify.release_date = albumToUpdate.spotify.release_date ? albumToUpdate.spotify.release_date : album.spotify.release_date;
+      albumToUpdate.spotify.release_date_precision = albumToUpdate.spotify.release_date_precision ? albumToUpdate.spotify.release_date_precision : album.spotify.release_date_precision;
       albumToUpdate.spotify.cover = albumToUpdate.spotify.cover ? albumToUpdate.spotify.cover : album.spotify.cover;
       albumToUpdate.spotify.total_tracks = albumToUpdate.spotify.total_tracks ? albumToUpdate.spotify.total_tracks : album.spotify.total_tracks;
       //console.log(album.spotify);
       //console.log(albumToUpdate.spotify.releaseDate);
+      albumToUpdate.lastModified = new Date();
 
       var updatedAlbum = await albumToUpdate.save();
         //var updatedAlbum = await AlbumService.updateAlbumService(album)

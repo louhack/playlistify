@@ -10,4 +10,9 @@ export interface AlbumSpotify {
     tracks: Track[];
     album_type: string;
     uri: string;
+    total_tracks: number;
+    release_date: string;
+    release_date_precision: string;
+    cover: string;
+    releaseDate: string;
 }

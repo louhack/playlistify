@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Album } from '../../models/album.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AlbumsListI } from '../../interfaces/albumsList.interface';
 import { AlbumPlaylistI } from '../../interfaces/albumAddedToPlaylist.interface';
@@ -31,26 +31,31 @@ export class AlbumService {
   }
 
 
-  getAlbums(page: number, limit: number) {
+  getAlbums(page: number, limit: number): Observable<AlbumsListI> {
     const httpParams = new HttpParams().set('page', page.toString());
     httpParams.append('limit', limit.toString());
 
     return this.http.get(this.localEndPoints.albumEndPoint, {params: httpParams})
       .pipe(map((res) => {
-        const albums = new Array<Album>();
-        for (const album of res['data'].docs) {
-          albums.push(new Album(album._id, album.artistName, album.albumName, album.sputnikMusic, album.heavyBIsH, album.hasOwnProperty('spotify') ? album.spotify : null, album.yourLastRites));
-        }
-        const albumsListI: AlbumsListI = {
-          albumsList: albums,
-          totalNumberOfAlbums: res['data'].total,
-          currentPage: res['data'].page,
-          totalNumberOfPages: res['data'].pages
-        };
-        return albumsListI;
+        return this.retrieveResponseData(res);
     }));
 
   }
+
+  retrieveResponseData(res: Object): AlbumsListI{
+    const albums = new Array<Album>();
+    for (const album of res['data'].docs) {
+      albums.push(new Album(album._id, album.artistName, album.albumName, album.sputnikMusic, album.heavyBIsH, album.hasOwnProperty('spotify') ? album.spotify : null, album.yourLastRites));
+    }
+    const albumsListI: AlbumsListI = {
+      albumsList: albums,
+      totalNumberOfAlbums: res['data'].total,
+      currentPage: res['data'].page,
+      totalNumberOfPages: res['data'].pages
+    };
+    return albumsListI;
+  }
+
 
   updateAlbum(index: number, album: Album) {
     this.albumChanged.next({index: index, album: album});
@@ -79,5 +84,33 @@ export class AlbumService {
           return null;
         }
       }));
+  }
+
+  searchAlbum(searchItem: string, scope: string, page: number, limit: number): Observable<any> {
+    console.log(searchItem);
+    if(searchItem != (null || "")){
+      return this.http.get<Album[]>(this.localEndPoints.searchEndPoint, {
+        params: {
+          q: searchItem,
+          scope: scope,
+          page: page.toString(),
+          limit: limit.toString()
+        }
+      }
+      // return null;
+      ).pipe(
+        map(response => {
+          console.log(response);
+          if(response['data'] != null){
+            return this.retrieveResponseData(response);
+            // return response['data'];
+          }
+          else {
+            return of({});
+          }
+        })
+        );
+    }
+    return of({});
   }
 }

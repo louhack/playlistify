@@ -24,9 +24,10 @@ var AlbumSchema = new mongoose.Schema({
     },
     spotify: {
       id: String,
-      releaseDate: String,
+      release_date: String,
       cover: String,
-      total_tracks: Number
+      total_tracks: Number,
+      release_date_precision: String,
     },
     sortDate: {
       day: Number,

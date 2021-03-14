@@ -120,7 +120,7 @@ f.close()
 connection = MongoClient(os.environ.get('MONGODB_WEBSCRAPPER'))
 #connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
 
-db = connection.get_default_database()
+db = connection.playlistifyApp
 releases = db.albums
 albums = open("data.json", "r")
 parsedAlbums = json_util.loads(albums.read())

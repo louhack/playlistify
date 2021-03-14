@@ -20,9 +20,7 @@ import { SpotifyApiService } from './services/spotify/spotifyApi.service';
 import { MessageService } from './services/message.service';
 import { AlbumsModalComponent } from './components/album/albums-modal/albums-modal.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { SearchComponent } from './components/search/search.component';
 import { LocalEndPoints } from './services/local/localAPIEndpoints';
-import { SearchService } from './services/local/search.service';
 
 
 @NgModule({
@@ -34,7 +32,6 @@ import { SearchService } from './services/local/search.service';
     ErrorComponent,
     AlbumsModalComponent,
     MenuComponent,
-    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +51,6 @@ import { SearchService } from './services/local/search.service';
     SpotifyApiService,
     MessageService,
     LocalEndPoints,
-    SearchService
   ],
   bootstrap: [AppComponent],
   entryComponents: [AlbumsModalComponent]

@@ -1,5 +1,6 @@
 import { AlbumSpotify } from '../interfaces/albumSpotifyInterface';
 import { AlbumPlaylistI } from '../interfaces/albumAddedToPlaylist.interface';
+import { Image } from '../interfaces/spotifyImage.interface';
 
 export class Album {
     public _id: string;
@@ -19,8 +20,11 @@ export class Album {
     //   numberOfTracks: number,
     //   totalLength: number,
     //   genres: string[],
-    //   releaseDate: string,
-    //   releaseDatePrecision: string
+       release_date: string,
+       total_tracks: number,
+       cover: string,
+       release_date_precision: string
+       images: Image[];
     };
 
     public heavyBIsH: {
@@ -70,11 +74,13 @@ export class Album {
             },
                 spotify: {
                   id: string
-                  numberOfTracks: number,
+                  total_tracks: number,
                   totalLength: number,
                   genres: string[],
-                  releaseDate: string,
-                  releaseDatePrecision: string
+                  release_date: string,
+                  release_date_precision: string,
+                  cover: string,
+                  images: Image[]
                 },
                 yourLastRites: {
                   id: string,

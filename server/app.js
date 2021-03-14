@@ -9,9 +9,9 @@ var index = require('./routes/index');
 // var users = require('./routes/users');
 var session = require('express-session');
 
-const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo').default;
 
-require('dotenv-safe').load();
+require('dotenv-safe').config();
 
 const config = require('config');
 
@@ -26,12 +26,25 @@ var app = express();
 
 // MongoDB Connection
 var mongoose = require('mongoose');
-mongoose.Promise = bluebird;
-mongoose.connect(config.get('Database.host'),  { useNewUrlParser: true })
-      .then(()=> { console.log(`Succesfully Connected to the Mongodb Database : %s`, config.get('Database.db_name'));})
+mongoose.Promise = global.Promise;
+const dbPlaylistify =
+mongoose.connect(config.get('Database.host'),  {
+  keepAlive: 1,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false })
+      .then((m)=> {
+        console.log(`Succesfully Connected to the Mongodb Database : %s`, config.get('Database.db_name'));
+        return m.connection.getClient();
+      })
       .catch(()=> { console.log(`Error Connecting to the Mongodb Database : %s`, config.get('Database.db_name'));});
 
-const dbPlaylistify = mongoose.connection;
+mongoose.connection.on('error', err => {
+        logError(err);
+      });
+
+//const dbPlaylistify = mongoose.connection.getClient();
 
 // CORS CONFIGURATION
 app.use(function(req, res, next) {
@@ -48,11 +61,12 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev')); // SET LOGGER
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '../dist'))); // DIRECTORY FOR FRONT-END
 
+//console.log(dbPlaylistify);
 
 // SESSION CONFIGURATION
 app.use(session({
@@ -60,7 +74,12 @@ app.use(session({
   secret: config.get('Session.secret'),
   resave: false,
   saveUninitialized: false,
-  store: new MongoStore({ mongooseConnection: dbPlaylistify}),
+  store: MongoStore.create({
+      clientPromise: dbPlaylistify,
+      collectionName: 'sessions',
+      stringify: false,
+      autoRemove: 'interval',
+      autoRemoveInterval: 1}),
   cookie: { maxAge: 3600000 }
 }));
 
