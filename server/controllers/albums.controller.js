@@ -18,7 +18,7 @@ exports.getAlbums = async function getAlbums (req, res, next){
   var options = {
     page,
     limit,
-    sort:{'sortDate.year': -1, 'sortDate.month': -1, 'sputnikMusic.note': -1,'sortDate.day': -1}
+    sort:{'sortDate.year': -1, 'sortDate.month': -1,'sortDate.day': -1}
   };
 
     // Try Catch the awaited promise to handle the error
@@ -47,7 +47,7 @@ exports.search = async function search (req, res, next){
   var options = {
     page,
     limit,
-    sort:{'sortDate.year': -1, 'sortDate.month': -1, 'sputnikMusic.note': -1,'sortDate.day': -1}
+    sort:{'sortDate.year': -1, 'sortDate.month': -1,'sortDate.day': -1}
   };
 
   try {
