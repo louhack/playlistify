@@ -86,13 +86,14 @@ export class AlbumService {
       }));
   }
 
-  searchAlbum(searchItem: string, scope: string, page: number, limit: number): Observable<any> {
+  searchAlbum(searchItem: string, scope: string, searchSources:string, page: number, limit: number): Observable<any> {
     console.log(searchItem);
-    if(searchItem != (null || "")){
+    // if(searchItem != (null || "")){
       return this.http.get<Album[]>(this.localEndPoints.searchEndPoint, {
         params: {
           q: searchItem,
           scope: scope,
+          sources: searchSources,
           page: page.toString(),
           limit: limit.toString()
         }
@@ -110,7 +111,7 @@ export class AlbumService {
           }
         })
         );
-    }
-    return of({});
+    // }
+    // return of({});
   }
 }

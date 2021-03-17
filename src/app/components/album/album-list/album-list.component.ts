@@ -10,7 +10,7 @@ import { AlbumSpotify } from '../../../interfaces/albumSpotifyInterface';
 import { MyCalendar } from '../../../shared/myCalendar';
 import { AlbumsModalComponent } from '../albums-modal/albums-modal.component';
 import { AlbumPlaylistI } from '../../../interfaces/albumAddedToPlaylist.interface';
-import { switchMap, distinctUntilChanged, debounceTime } from 'rxjs/operators';
+import { switchMap, distinctUntilChanged, debounceTime, throwIfEmpty } from 'rxjs/operators';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlbumsListI } from '../../../interfaces/albumsList.interface';
 
@@ -29,11 +29,12 @@ export class AlbumListComponent implements OnInit {
   public searchForm = new FormGroup(
     {
       search: new FormControl('', Validators.required),
-      scope: new FormControl ('all', Validators.required)
+      scope: new FormControl ('all', Validators.required),
+      sources: new FormControl('allSources', Validators.required)
     }
     );
 
-  private searchReq = new Subject<{searchData: string, searchScope: string}>();
+  private searchReq = new Subject<{searchData: string, searchScope: string, searchSources: string}>();
 
   totalNumberOfAlbums: number;
   totalNumberOfPages: number;
@@ -63,10 +64,11 @@ searchMode: boolean;
   public searchEvent() {
     var searchRequestObj = {
       searchData: this.searchForm.get('search').value,
-      searchScope: this.searchForm.get('scope').value
+      searchScope: this.searchForm.get('scope').value,
+      searchSources: this.searchForm.get('sources').value
     };
 
-    console.log(searchRequestObj);
+    // console.log(searchRequestObj);
     //see ngOnInit
     this.searchReq.next(searchRequestObj);
   }
@@ -96,7 +98,7 @@ searchMode: boolean;
       switchMap((value) => {
           this.searchMode = true;
           this.currentPage=1;
-          return this.sendSearhReq(value.searchData,value.searchScope, this.currentPage, this.itemsPerPage);
+          return this.sendSearhReq(value.searchData,value.searchScope, value.searchSources, this.currentPage, this.itemsPerPage);
       }),
       // catchError(e => {
       //   console.log(e);
@@ -105,13 +107,13 @@ searchMode: boolean;
       // }
       // )
     ).subscribe(albumsListI => {
-      console.log(albumsListI);
+      // console.log(albumsListI);
       if (!this.isEmptyObject(albumsListI)) {
-        console.log("found results");
+        // console.log("found results");
         this.responseToAlbumList(albumsListI);
       }
       else {
-        console.log("Display list");
+        // console.log("Display list");
         this.searchMode=false;
         this.currentPage=1;
         this.getAlbums(this.currentPage, this.itemsPerPage);
@@ -119,12 +121,12 @@ searchMode: boolean;
 
       });
   }
-  sendSearhReq(searchData: string, searchScope: string, page: number, resultLimit: number): Observable<any> {
-    return this.albumsService.searchAlbum(searchData,searchScope, page, resultLimit);
+  sendSearhReq(searchData: string, searchScope: string, searchSources:string,page: number, resultLimit: number): Observable<any> {
+    return this.albumsService.searchAlbum(searchData,searchScope, searchSources, page, resultLimit);
   }
 
   responseToAlbumList(_albumsList: AlbumsListI){
-    console.log(_albumsList);
+    // console.log(_albumsList);
     this.albumsList = _albumsList.albumsList;
     this.currentPage = _albumsList.currentPage;
     this.totalNumberOfPages = _albumsList.totalNumberOfPages;
@@ -148,16 +150,17 @@ searchMode: boolean;
     if (this.searchMode) {
     const _searchReqObj = {
       searchData: this.searchForm.get('search').value,
-      searchScope: this.searchForm.get('scope').value
+      searchScope: this.searchForm.get('scope').value,
+      searchSources: this.searchForm.get('sources').value
     }
-      this.sendSearhReq(_searchReqObj.searchData,_searchReqObj.searchScope, event.page, event.itemsPerPage).subscribe(albumsListI => {
-        console.log(albumsListI);
+      this.sendSearhReq(_searchReqObj.searchData,_searchReqObj.searchScope, _searchReqObj.searchSources, event.page, event.itemsPerPage).subscribe(albumsListI => {
+        // console.log(albumsListI);
         if (!this.isEmptyObject(albumsListI)) {
-          console.log("found results");
+          // console.log("found results");
           this.responseToAlbumList(albumsListI);
         }
         else {
-          console.log("Display list");
+          // console.log("Display list");
           this.searchMode=false;
           this.currentPage = 1;
           this.getAlbums(this.currentPage, this.itemsPerPage);
@@ -320,6 +323,11 @@ searchMode: boolean;
   updateAlbum(index: number, newAlbum: Album) {
       // this.albumsList[index] = newAlbum;
       this.albumsService.updateAlbum(index, newAlbum);
+  }
+
+  changedSourceEvent(){
+    // console.log("changedSource");
+    this.searchEvent();
   }
 
 }

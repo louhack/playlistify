@@ -1,4 +1,5 @@
 // Getting Album Model
+const { query } = require('@angular/animations');
 var Album = require('../models/album.model');
 
 // Saving the context of this module inside the _this variable
@@ -40,6 +41,7 @@ exports.search = async function search (req, res, next){
   //  console.log(req.query.q);
   var searchItem = req.query.q;
   var scope = req.query.scope;
+  var sources = req.query.sources;
   var page = req.query.page ? +req.query.page : 1;
   var limit = req.query.limit ? +req.query.limit : 20;
   var result = {};
@@ -51,45 +53,45 @@ exports.search = async function search (req, res, next){
   };
 
   try {
+    var query={};
+    const searchAlbums = {albumName: {$regex: searchItem, $options:'i'}};
+    const searchArtists = {artistName: {$regex: searchItem, $options:'i'}};
+    const searchAllTypes = {$or: [searchArtists, searchAlbums]};
 
-    if (searchItem) {
-      if (scope=="all"){
+    const searchSources = ((sources == "sputnikMusic") ? {sputnikMusic: {$exists: true}} : (sources=="hbih") ? {heavyBIsH: {$exists: true}} : (sources =="ylr") ? {yourLastRites: {$exists: true}} : "");
+    //TODO add source , heavyBIsH: {$exists: true}
+    // console.log("sources : " + JSON.stringify(searchSources));
+    query = (scope=="albums" ? searchAlbums : (scope == "artists" ? searchArtists: searchAllTypes));
+    if (searchSources != ""){
+      Object.assign(query, searchSources);
+    }
+    // console.log(query);
+
+
+
+    // console.log("final query " + JSON.stringify(query));
+    // if (searchItem) {
+      // if (scope=="all"){
         // console.log("SEARCH ALL");
-        foundAlbums = await Album.paginate({$or: [{albumName: {$regex: searchItem, $options:'i'}}, {artistName: {$regex: searchItem, $options:'i'}}]}, options);
-        // foundAlbums = await Album.find({$or: [{albumName: {$regex: searchItem, $options:'i'}}, {artistName: {$regex: searchItem, $options:'i'}}]}).skip((limit * page) - limit).limit(limit);
-        // numOfResults = await Album.count({$or: [{albumName: {$regex: searchItem, $options:'i'}}, {artistName: {$regex: searchItem, $options:'i'}}]});
-      } else if (scope == "albums") {
-        foundAlbums = await Album.paginate({albumName: {$regex: searchItem, $options:'i' }}, options);
-        // console.log("SEARCH ALBUMS");
-        // foundAlbums = await Album.find({albumName: {$regex: searchItem, $options:'i' }}).skip((limit * page) - limit).limit(limit);
-        // numOfResults = await Album.count({albumName: {$regex: searchItem, $options:'i' }});
-      } else {
-        foundAlbums = await Album.paginate({artistName: {$regex: searchItem, $options:'i' }}, options);
+        foundAlbums = await Album.paginate(query, options);
 
-        // console.log("SEARCH ARTIST");
-        // foundAlbums = await Album.find({artistName: {$regex: searchItem, $options:'i' }}).skip((limit * page) - limit).limit(limit);
-        // numOfResults = await Album.count({artistName: {$regex: searchItem, $options:'i' }});
-      }
+      // } else if (scope == "albums") {
+        // Object.assign(query,{albumName: {$regex: searchItem, $options:'i' }});
+        // console.log(JSON.stringify(query));
+// {albumName: {$regex: searchItem, $options:'i' }}
+        // foundAlbums = await Album.paginate(query, options);
+
+      // } else {
+        // foundAlbums = await Album.paginate({artistName: {$regex: searchItem, $options:'i' }}, options);
+      // }
       //console.log(foundAlbums);
-    }
-    else {
-      return res.status(400).json({status: 400, message: "No data to search for"});
+    // }
+    // else {
+      // return res.status(400).json({status: 400, message: "No data to search for"});
 
-    }
-    console.log(JSON.stringify(foundAlbums));
+    // }
+    // console.log(JSON.stringify(foundAlbums));
     return res.status(200).json({status: 200, data: foundAlbums, message: "Search Successful"});
-
-    // if (foundAlbums.length > 0) {
-    //   result.foundAlbums = foundAlbums;
-    //   result.count = numOfResults;
-    //   result.total = foundAlbums.length
-    //   result.page = page;
-    //   result.limit = limit;
-    //   return res.status(200).json({status: 200, data: result, message: "Request Successful"});
-    // }
-    // else{
-    //   return res.status(200).json({status: 200, message: "No content"});
-    // }
 
   } catch (error) {
     return res.status(400).json({status: 400, data: error.message, message: "Error while searching"});

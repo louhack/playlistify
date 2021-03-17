@@ -1,7 +1,7 @@
 <!-- <app-search (searchRequest)="searchEvent($event)" ></app-search> -->
 <form [formGroup]="searchForm">
   <div class="form-group row">
-    <label for="Search" class="col-sm-2 col-form-label">Search</label>
+    <label for="Search" class="col-sm-2 col-form-label"><b>Search</b></label>
     <div class="col-sm-10">
       <input #searchbox type="text" class="form-control" id="Search" placeholder="Search artists and albums" (input)="searchEvent()" formControlName="search">
     </div>
@@ -9,8 +9,9 @@
 
   <fieldset class="form-group">
     <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Search options</legend>
-      <div class="col-sm-10">
+      <!-- <legend class="col-form-label col-sm-2 pt-0">Search options</legend> -->
+      <div class="col-sm">
+        <legend class="col-form-label pt-0"><b>Release Type</b></legend>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="scope" id="radioAll" value="all" (change)=searchEvent() formControlName="scope">
           <label class="form-check-label" for="radioAll">
@@ -30,6 +31,37 @@
           </label>
         </div>
       </div>
+
+      <div class="col-sm">
+        <legend class="col-form-label pt-0"><b>Sources</b></legend>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sources" id="radioAllSources" value="allSources" (change)=changedSourceEvent() formControlName="sources">
+          <label class="form-check-label" for="radioAllSources">
+            All
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sources" id="radioSputnikMusicSources" value="sputnikMusic" formControlName="sources"  (change)=changedSourceEvent()>
+          <label class="form-check-label" for="radioSputnikMusicSources">
+            Sputnik Music
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sources" id="radioHBIHSources" value="hbih" formControlName="sources"  (change)=changedSourceEvent()>
+          <label class="form-check-label" for="radioHBIHSources">
+            Heavy Blog Is Heavy
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sources" id="radioYLRSources" value="ylr" formControlName="sources"  (change)=changedSourceEvent()>
+          <label class="form-check-label" for="radioYLRSources">
+            Your Last Rites
+          </label>
+        </div>
+      </div>
+
+
+
     </div>
   </fieldset>
 </form>
