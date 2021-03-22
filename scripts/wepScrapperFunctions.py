@@ -94,7 +94,7 @@ def scrapReleases_HBIH_Missive(page_list):
             else:
               coverPath = ""
 
-            jsonRelease = {'artistName':artist, 'albumName':releaseName,'heavyBIsH':{'id':'', 'reviewLink': pageToScrap['articleLink'], 'releaseDate':{ 'month': getMonth(), 'year': getYear(), 'imagePath': coverPath}, 'genre': genresClean}}
+            jsonRelease = {'artistName':artist, 'albumName':releaseName,'heavyBIsH':{'id':'', 'reviewLink': pageToScrap['articleLink'], 'releaseDate':{ 'month': getMonth(), 'year': getYear()}, 'imagePath': coverPath, 'genres': genresClean}}
             releases_list.append(jsonRelease)
 
         else:
