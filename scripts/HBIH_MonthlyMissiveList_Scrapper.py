@@ -10,6 +10,7 @@ import pytz
 from datetime import date
 import os
 from wepScrapperFunctions import *
+import sys
 
 
 monthDic = {}
@@ -27,33 +28,63 @@ monthDic["November"]=11
 monthDic["December"]=12
 
 EDITORSPICK = "https://www.heavyblogisheavy.com/category/columns/editors-picks/"
+JAZZCLUB = "https://www.heavyblogisheavy.com/category/columns/the-jazz-club/"
+DOOMSDAY = "https://www.heavyblogisheavy.com/category/columns/doomsday/"
+POSTROCK = "https://www.heavyblogisheavy.com/category/columns/post-rock-post/"
+KULT = "https://www.heavyblogisheavy.com/category/columns/kvlt-kolvmn/"
+UNMETAL = "https://www.heavyblogisheavy.com/category/columns/unmetal-monthly/"
 
-try:
-  pageList = []
+def main() -> None:
+  opts = [opt for opt in sys.argv[1:] if opt.startswith("-")]
+  args = [arg for arg in sys.argv[1:] if not arg.startswith("-")]
 
+  # print(args)
+  if args[0] == "EDITORSPICK":
+    pageToScrap = EDITORSPICK
+    source = "Editor's pick"
+  elif args[0] =="JAZZCLUB":
+    pageToScrap = JAZZCLUB
+    source = "Jazz Club"
+  elif args[0] =="DOOMSDAY":
+    pageToScrap = DOOMSDAY
+    source = "Doomsday"
+  elif args[0] =="POSTROCK":
+    pageToScrap = POSTROCK
+    source = "Post-Rock"
+  elif args[0] =="KULT":
+    pageToScrap = KULT
+    source = "KULT"
+  elif args[0] =="UNMETAL":
+    pageToScrap = UNMETAL
+    source = "Unmetal"
+  else:
+    print("No Page to scrap argument")
+    quit()
 
-  soup=getHTMLPage(EDITORSPICK)
+  try:
+    pageList = []
 
-  # TODO retrieve page list
-  # TODO for each page
-  # get page
-  # scrap page and add release to JSON object
-  # Add release to db
+    # print(pageToScrap)
+    soup=getHTMLPage(pageToScrap)
 
-  # print("Table articles ")
-  # print(table_articles)
-  pageList = HBIH_scrapPageList(soup)
-  # print(pageList)
-  releasesList = scrapReleases_HBIH_Missive(pageList)
-  # print(releasesList)
+    # print("Table articles ")
+    # print(table_articles)
+    pageList = HBIH_scrapPageList(soup)
+    # print(pageList)
+    releasesList = scrapReleases_HBIH_Missive(pageList, source)
+    # print(releasesList)
 
-  saveToFile('heavyB_data2.json', releasesList)
+    fileName = 'heavyB_data_'+str(args[0])+'.json'
+    # print(fileName)
+    saveToFile(fileName, releasesList)
 
-  saveToDabase('heavyB_data2.json')
-
-except RuntimeError as runtime_error:
-  print("runtime error")
+    saveToDabase(fileName)
+  except RuntimeError as runtime_error:
+    print(runtime_error)
   # print(runtime_error)
-except AttributeError as attribute_error:
-  print("attribute error")
+  except AttributeError as attribute_error:
+    print(attribute_error)
   # print(attribute_error)
+
+if __name__ == "__main__":
+    main()

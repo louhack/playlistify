@@ -33,8 +33,9 @@ export class Album {
         releaseDate: {
           month: string,
           year: string
-        }
-        reviewLink: string
+        },
+        reviewLink: string,
+        sources: string
     };
 
     public yourLastRites: {
@@ -69,8 +70,9 @@ export class Album {
                 releaseDate: {
                   month: string,
                   year: string
-                }
-                reviewLink: string
+                },
+                reviewLink: string,
+                sources: string
             },
                 spotify: {
                   id: string

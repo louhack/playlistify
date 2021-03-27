@@ -21,6 +21,7 @@ var AlbumSchema = new mongoose.Schema({
         month: Number,
         year: Number
       },
+      sources: String
     },
     spotify: {
       id: String,

@@ -52,7 +52,7 @@ def HBIH_scrapPageList(soup):
   return pageList
 
 
-def scrapReleases_HBIH_Missive(page_list):
+def scrapReleases_HBIH_Missive(page_list, source):
   jsonRelease = {}
   releases_list = []
 
@@ -69,41 +69,62 @@ def scrapReleases_HBIH_Missive(page_list):
         # rePattern_ArtistReleaseGenres = r'(^[^-]*[^ -]) *– *([^(]*) +\(([^)]+)\)'
 
         # this pattern works nicely. Expected pattern : <ArtistName> - < AblumNane> (Genre 1, ..., Genre n)
-        rePattern_ArtistReleaseGenres = r'(^.*[^ -]) *– *([^- ].*[^ (]) *\(([^)]+)\)'
-        # search the release based on the regex pattern
+        print(result.get_text())
+        # rePattern_ArtistReleaseGenres = r'(^.*[^ -]) *– *([^- ].*[^ (]) *\(([^)]+)\)'
+        rePattern_ArtistReleaseGenres = r'(^.*[^ -]) *– *([^- ].*)'
         artistReleaseGenres = re.findall(rePattern_ArtistReleaseGenres, unicodedata.normalize('NFKD', (result.get_text())))
         # print(artistReleaseGenres)
-        if len(artistReleaseGenres) == 1 and len(artistReleaseGenres[0]) == 3:
+
+        if len(artistReleaseGenres) == 1 and len(artistReleaseGenres[0]) == 2:
+          rePattern_ReleaseGenres = r'(.*[^ (]) *\(([^)]+)\)'
+          releaseGenres = re.findall(rePattern_ReleaseGenres, unicodedata.normalize('NFKD', artistReleaseGenres[0][1]))
+          # print(releaseGenres)
+        # (^.*[^ -]) *– *([^- ].*)   -> group1 = artistName // group2 = albumName (Genres)
+        # (.*[^ (]) *\(([^)]+)\)  Decoup qlbumName et Genres
+        # search the release based on the regex pattern
+        # if len(artistReleaseGenres) == 1 and len(artistReleaseGenres[0]) == 3:
             #Regex has matched a release. I save the information
-            artist = str.strip(artistReleaseGenres[0][0])
-            releaseName = str.strip(artistReleaseGenres[0][1])
-            genres = str.split(artistReleaseGenres[0][2], ",")
+          artist = str.strip(artistReleaseGenres[0][0])
+          if len(releaseGenres) > 0:
+            releaseName = str.strip(releaseGenres[0][0])
+            genres = str.split(releaseGenres[0][1], ",")
             genresClean = []
             for genre in genres:
               genresClean.append(str.strip(genre))
+            # print(releaseName)
+            # print(genresClean)
+          else:
+            genresClean=[]
+            releaseName = str.strip(artistReleaseGenres[0][1])
+            # print(releaseName)
 
-            # print("GENRES : " + str(genresClean))
-            # I need to find the path for the cover
+          # print("GENRES : " + str(genresClean))
+          # I need to find the path for the cover
+          coverPath = ""
+          try:
             allCoverPath = result.next_sibling.next_sibling.img.get('srcset').split()
-
             # if several cover path are existing, I save the 2nd one - lower resolution
             if len(allCoverPath) > 2:
               coverPath = allCoverPath[2]
             elif len(allCoverPath) > 0:
               coverPath = allCoverPath[0]
-            else:
-              coverPath = ""
 
-            jsonRelease = {'artistName':artist, 'albumName':releaseName,'heavyBIsH':{'id':'', 'reviewLink': pageToScrap['articleLink'], 'releaseDate':{ 'month': getMonth(), 'year': getYear()}, 'imagePath': coverPath, 'genres': genresClean}}
-            releases_list.append(jsonRelease)
+          except Exception as error:
+            print(error)
+            pass
 
-        else:
-          print("No album detected : " + str(artistReleaseGenres))
+          jsonRelease = {'artistName':artist, 'albumName':releaseName,'heavyBIsH':{'id':'', 'reviewLink': pageToScrap['articleLink'], 'releaseDate':{ 'month': getMonth(), 'year': getYear()}, 'imagePath': coverPath, 'genres': genresClean, 'sources': source}}
+          # print(jsonRelease)
+          releases_list.append(jsonRelease)
+
+        # else:
+          # print("No album detected : " + str(artistReleaseGenres))
 
     except SyntaxError as syntax_error:
       print(syntax_error)
     except AttributeError as attibute_error:
       print(attibute_error)
+
 
   return releases_list
 
@@ -111,7 +132,7 @@ def isTitle_but_no_class(tag):
   """
   Release are located in h2 tags with no class
   """
-  return tag.name == "h2" and not tag.has_attr('class')
+  return (tag.name == "h2" or tag.name == "h3") and not tag.has_attr('class')
 #print(releases_list)
 
 def getTodaysDay():
