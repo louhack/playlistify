@@ -85,8 +85,21 @@
     <div *ngFor="let album of albumsList; let i = index" class="col-sm-6 col-md-4">
             <div class="card mb-4">
               <div class="card-header">
-                <h4 class="card-title">{{ album.artistName }}</h4>
-                <p class="card-subtitle"><strong>{{ album.albumName }}</strong></p>
+                <div class="row">
+                  <div class="col-md-8">
+                    <h4 class="card-title">{{ album.artistName }}</h4>
+                    <p class="card-subtitle"><strong>{{ album.albumName }}</strong></p>
+                  </div>
+                  <div class="col-6 col-md-4" style="text-align: center;padding-right: 0px;">
+                    <button
+                      [id]="(getUserService().isLoggedIn ? 'btn-edit-release' : 'btn-edit-release-disabled')"
+                      class="btn btn-primary"
+                      (click)="editReleaseModal(i)"
+                      [disabled]="!getUserService().isLoggedIn">
+                      <i class="fas fa-edit fa-sm"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
               <img *ngIf="album.spotify && album.spotify.cover; else sputnikCover" class="card-img-top" [src]="album.spotify.cover" alt="album.albumName">
               <ng-template #sputnikCover>
@@ -122,13 +135,22 @@
                   </tabset>
                 </div>
                 <div class="card-footer">
-                  <p><button  class="btn btn-primary"
+                  <!-- <p><button  class="btn btn-primary"
                               role="button"
                               (click)="addToPlaylist(i)"
                               [disabled]="!getUserService().isLoggedIn">Add to playlist</button>
-                            </p>
-                            <p><span *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length === 0 && !album.spotify"> Sorry ! No result found</span></p>
-                            <p *ngIf="album.addedToPlaylist">Album added to playlist {{ album.addedToPlaylist.name}}</p>
+                            </p> -->
+                            <button
+                            (click)="addToPlaylist(i)"
+                            [disabled]="!getUserService().isLoggedIn"
+                            class="mr-1"
+                            id="btn-add-release">
+                            <i class="fas fa-plus-circle" [id]="(getUserService().isLoggedIn ? 'icon-add-release' : 'icon-add-release-disable')"></i>
+                          </button>
+                          <p><span *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length === 0 && !album.spotify"> Sorry ! No result found</span></p>
+                          <p *ngIf="album.addedToPlaylist">Album added to playlist {{ album.addedToPlaylist.name}}
+                          </p>
+                          <p></p>
                   <ng-container *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length > 1">
                     <p>{{ album.spotifySearchResults.length }} results found! Please select the right one</p>
                     <button class="btn btn-primary" (click)="openModalWithComponent(i)">Select Record</button>

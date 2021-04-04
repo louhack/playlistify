@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var mongoosePaginate = require('mongoose-paginate');
+var mongoosePaginate = require('mongoose-paginate-v2');
 
 var AlbumSchema = new mongoose.Schema({
     artistName: String,
@@ -44,5 +44,7 @@ var AlbumSchema = new mongoose.Schema({
 
 AlbumSchema.plugin(mongoosePaginate);
 const Album = mongoose.model('Album', AlbumSchema);
+
+Album.paginate().then({});
 
 module.exports = Album;

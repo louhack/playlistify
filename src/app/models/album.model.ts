@@ -6,100 +6,67 @@ export class Album {
     public _id: string;
     public artistName: string;
     public albumName: string;
-    public sputnikMusic: {
+    public sputnikMusic?: {
       id: string,
-      imagePath: string,
-      note: number,
-      releaseDate: {
+      imagePath?: string,
+      note?: number,
+      releaseDate?: {
         month: string,
         year: string
       }
     };
-    public spotify: {
-      id: string,
-    //   numberOfTracks: number,
-    //   totalLength: number,
-    //   genres: string[],
-       release_date: string,
-       total_tracks: number,
-       cover: string,
-       release_date_precision: string
-       images: Image[];
+    public spotify?: {
+      id?: string,
+      // numberOfTracks: number,
+      // totalLength: number,
+      genres?: string[],
+      release_date?: string,
+      total_tracks?: number,
+      cover?: string,
+      release_date_precision?: string
+      images?: Image[];
     };
 
-    public heavyBIsH: {
+    public heavyBIsH?: {
         id: string,
-        imagePath: string,
-        releaseDate: {
+        imagePath?: string,
+        releaseDate?: {
           month: string,
           year: string
         },
-        reviewLink: string,
-        sources: string
+        reviewLink?: string,
+        sources?: string
     };
 
-    public yourLastRites: {
+    public yourLastRites?: {
       id: string,
-      imagePath: string,
-      releaseDate: {
+      imagePath?: string,
+      releaseDate?: {
         month: string,
         year: string
       }
-      reviewLink: string
+      reviewLink?: string
   };
 
     // this.spotify.id = '';
 
-    public spotifySearchResults: AlbumSpotify[] = [];
+    public spotifySearchResults?: AlbumSpotify[] = [];
     public searchedOnSpotify = false;
-    public addedToPlaylist: AlbumPlaylistI;
+    public addedToPlaylist?: AlbumPlaylistI;
+
 
     constructor(_id: string, artistName: string, albumName: string,
-                sputnikInfo: {
-                  id: string,
-                  imagePath: string,
-                  note: number,
-                  releaseDate: {
-                    month: string,
-                    year: string
-                  }
-              },
-              heavyBlogInfo: {
-                id: string,
-                imagePath: string,
-                releaseDate: {
-                  month: string,
-                  year: string
-                },
-                reviewLink: string,
-                sources: string
-            },
-                spotify: {
-                  id: string
-                  total_tracks: number,
-                  totalLength: number,
-                  genres: string[],
-                  release_date: string,
-                  release_date_precision: string,
-                  cover: string,
-                  images: Image[]
-                },
-                yourLastRites: {
-                  id: string,
-                  imagePath: string,
-                  releaseDate: {
-                    month: string,
-                    year: string
-                  }
-                  reviewLink: string
-              }
+                sputnikMusic?: {id: string},
+                heavyBIsH?: {id: string},
+                spotify?: {},
+                yourLastRites?: {id: string,}
               ) {
 
         this._id = _id;
         this.artistName = artistName;
         this.albumName = albumName;
-        this.sputnikMusic = sputnikInfo;
-        this.heavyBIsH = heavyBlogInfo;
+        this.sputnikMusic = sputnikMusic;
+        this.heavyBIsH = heavyBIsH;
         this.yourLastRites = yourLastRites;
         if (spotify != null) {
           this.spotify = spotify;

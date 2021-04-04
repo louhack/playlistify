@@ -21,6 +21,7 @@ import { MessageService } from './services/message.service';
 import { AlbumsModalComponent } from './components/album/albums-modal/albums-modal.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { LocalEndPoints } from './services/local/localAPIEndpoints';
+import { AlbumEditComponent } from './components/album/album-edit/album-edit.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { LocalEndPoints } from './services/local/localAPIEndpoints';
     ErrorComponent,
     AlbumsModalComponent,
     MenuComponent,
+    AlbumEditComponent,
   ],
   imports: [
     BrowserModule,

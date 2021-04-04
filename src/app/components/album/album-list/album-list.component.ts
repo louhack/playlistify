@@ -13,6 +13,7 @@ import { AlbumPlaylistI } from '../../../interfaces/albumAddedToPlaylist.interfa
 import { switchMap, distinctUntilChanged, debounceTime, throwIfEmpty } from 'rxjs/operators';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlbumsListI } from '../../../interfaces/albumsList.interface';
+import { AlbumEditComponent } from '../album-edit/album-edit.component';
 
 @Component({
   selector: 'app-album-list',
@@ -197,6 +198,27 @@ searchMode: boolean;
       });
     });
   }
+
+  editReleaseModal(albumIndex: number){
+    // retrieve albumsFound and pass them to the modal
+    const albumToEdit = this.albumsList[albumIndex];
+    // console.log('AlbumToUpdate: ' + JSON.stringify(albumToUpdate));
+    const initialState = {
+      album: albumToEdit,
+      updated: false
+    };
+    this.bsModalRef = this.modalService.show(AlbumEditComponent, {initialState});
+    this.bsModalRef.content.onUpdateAlbum.subscribe((album: {albumToUpdate: Album} ) => {
+      this.albumsService.updateAlbumOnDB(album.albumToUpdate).then( (albumUpdated: Album) => {
+        // albumUpdated.searchedOnSpotify = true;
+        // albumUpdated.spotifySearchResults = [];
+        this.updateAlbum(albumIndex, albumUpdated);
+        // this.addToPlaylist(albumIndex);
+        this.bsModalRef.content.updated = true;
+      });
+    })
+// this.bsModalRef.content.albumIndex = albumIndex;
+}
 
 
 

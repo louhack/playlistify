@@ -49,9 +49,9 @@ export class AlbumService {
     }
     const albumsListI: AlbumsListI = {
       albumsList: albums,
-      totalNumberOfAlbums: res['data'].total,
+      totalNumberOfAlbums: res['data'].totalDocs,
       currentPage: res['data'].page,
-      totalNumberOfPages: res['data'].pages
+      totalNumberOfPages: res['data'].totalPages
     };
     return albumsListI;
   }

@@ -1,2 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
 body { padding-top: 70px; }
+
+#btn-add-release {
+  border-width: 0px;
+  background-color: rgba(0,0,0,0);
+
+    /* border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px; */
+}
+
+#icon-add-release-disable {
+  color: grey;
+  border-width: 0px;
+  font-size: xx-large;
+  /* background-color: rgba(0,0,0,0); */
+}
+
+#icon-add-release {
+  color: #2ebd59;
+  border-width: 0px;
+  font-size: xx-large;
+}
+
+#btn-edit-release {
+  background-color:#2ebd59;
+  border-color:transparent;
+}
+
+#btn-edit-release-disabled {
+  background-color:grey;
+  border-color:transparent;
+}
+
+
+/* display: inline-block;
+font-weight: 400;
+color: #212529;
+text-align: center;
+vertical-align: middle;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+background-color: transparent;
+border: 1px solid transparent;
+padding: 0.1rem 0.35rem;
+font-size: 1rem; */

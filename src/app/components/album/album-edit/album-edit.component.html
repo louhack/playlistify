@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Edit {{album.artistName}} - {{album.albumName}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <label>Artist</label>
+  <input type="text" class="form-control" id="artist" [(ngModel)]="album.artistName">
+  <label>Album</label>
+  <input type="text" class="form-control" id="album" [(ngModel)]="album.albumName">
+  <label>Spotify Id</label>
+  <input #spotifyId="ngModel" type="text" class="form-control" id="spotifyId" [(ngModel)]="album.spotify && album.spotify.id"
+  >
+  <label>Release Date</label>
+  <input type="text" class="form-control" id="releaseDate" [(ngModel)]="album.spotify && album.spotify.release_date">
+  <label>Tracks</label>
+  <input type="text" class="form-control" id="totalTracks" [(ngModel)]="album.spotify && album.spotify.total_tracks">
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="onSave()">Save</button>
+<button type="button" class="btn btn-default" (click)="onClose()">Close</button>
+</div>
+
+

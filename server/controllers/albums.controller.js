@@ -1,5 +1,5 @@
 // Getting Album Model
-const { query } = require('@angular/animations');
+// const { query } = require('@angular/animations');
 var Album = require('../models/album.model');
 
 // Saving the context of this module inside the _this variable
@@ -126,40 +126,52 @@ exports.createAlbum = async function createAlbum (req, res, next){
 
 exports.updateAlbum = async function updateAlbum (req, res, next){
 
-    // Id is necessary for the update
+  // Id is necessary for the update
 
-    if(!req.body._id){
-        return res.status(400).json({status: 400, message: "Id must be present"});
+  if(!req.body._id){
+      return res.status(400).json({status: 400, message: "Id must be present"});
+  }
+
+  console.log(req.body);
+
+  var id = req.body._id;
+
+  var album = {
+    _id: req.body._id,
+    artistName: req.body.artistName ? req.body.artistName : null,
+    albumName: req.body.albumName ? req.body.albumName : null,
+
+  }
+
+  if (req.body.spotify && Object.keys(req.body.spotify).length !== 0 && req.body.spotify.constructor === Object) {
+    album.spotify = {};
+    cover_req = [];
+
+    if(req.body.spotify.images && req.body.spotify.images.length > 0) {
+      cover_req = req.body.spotify.images;
     }
 
+    album.spotify =
+    {
+      id: req.body.spotify.id ? req.body.spotify.id : null,
+      release_date: req.body.spotify.release_date ? req.body.spotify.release_date : null,
+      release_date_precision: req.body.spotify.release_date_precision ? req.body.spotify.release_date_percision : null,
+      total_tracks: req.body.spotify.total_tracks ? req.body.spotify.total_tracks : null,
+    }
+    album.spotify.cover = cover_req.length > 0 ? (cover_req[1].url ? cover_req[1].url : null) : null;
+  }
 
-    var id = req.body._id;
-
-    var album = {
-      _id: req.body._id,
-      artistName: req.body.artistName ? req.body.artistName : null,
-      albumName: req.body.albumName ? req.body.albumName : null,
-
-      spotify: {
-        id: req.body.spotify.id ? req.body.spotify.id : null,
-        release_date: req.body.spotify.release_date ? req.body.spotify.release_date : null,
-        release_date_precision: req.body.spotify.release_date_precision ? req.body.spotify.release_date_percision : null,
-        cover: req.body.spotify.images[1].url ? req.body.spotify.images[1].url : null,
-        total_tracks: req.body.spotify.total_tracks ? req.body.spotify.total_tracks : null,
-      }
+  if (req.body.sputnikMusic != null) {
+    album.sputnikMusic =
+    {
+      id: req.body.sputnikMusic.id ? req.body.sputnikMusic.id : null,
+      imagePath: req.body.sputnikMusic.imagePath ? req.body.sputnikMusic.imagePath : null,
+      note: req.body.sputnikMusic.note ? req.body.sputnikMusic.note : null,
+      releaseDate: {
+        month: req.body.sputnikMusic.releaseDate.month ? req.body.sputnikMusic.releaseDate.month : null,
+        year: req.body.sputnikMusic.releaseDate.year ? req.body.sputnikMusic.releaseDate.year : null,
+      },
     };
-
-    if (req.body.sputnikMusic != null) {
-      album.sputnikMusic =
-      {
-        id: req.body.sputnikMusic.id ? req.body.sputnikMusic.id : null,
-        imagePath: req.body.sputnikMusic.imagePath ? req.body.sputnikMusic.imagePath : null,
-        note: req.body.sputnikMusic.note ? req.body.sputnikMusic.note : null,
-        releaseDate: {
-          month: req.body.sputnikMusic.releaseDate.month ? req.body.sputnikMusic.releaseDate.month : null,
-          year: req.body.sputnikMusic.releaseDate.year ? req.body.sputnikMusic.releaseDate.year : null,
-        },
-      };
   }
 
   if (req.body.heavyBIsH != null) {
@@ -184,8 +196,8 @@ exports.updateAlbum = async function updateAlbum (req, res, next){
       }
 
       //Edit the Album Object
-      albumToUpdate.artistName =  albumToUpdate.artistName ? albumToUpdate.artistName : album.artistName;
-      albumToUpdate.albumName = albumToUpdate.albumName ? albumToUpdate.albumName : album.albumName;
+      albumToUpdate.artistName =  albumToUpdate.artistName == album.artistName ? albumToUpdate.artistName : album.artistName;
+      albumToUpdate.albumName = albumToUpdate.albumName == album.albumName ? albumToUpdate.albumName : album.albumName;
 
       if (album.sputnikMusic != null) {
         albumToUpdate.sputnikMusic.imagePath = albumToUpdate.sputnikMusic.imagePath ? albumToUpdate.sputnikMusic.imagePath : album.sputnikMusic.imagePath;
@@ -199,11 +211,13 @@ exports.updateAlbum = async function updateAlbum (req, res, next){
         albumToUpdate.heavyBIsH.releaseDate = albumToUpdate.heavyBIsH.releaseDate ? albumToUpdate.heavyBIsH.releaseDate : album.heavyBIsH.releaseDate;
       }
 
-      albumToUpdate.spotify.id = albumToUpdate.spotify.id  ? albumToUpdate.spotify.id : album.spotify.id;
-      albumToUpdate.spotify.release_date = albumToUpdate.spotify.release_date ? albumToUpdate.spotify.release_date : album.spotify.release_date;
-      albumToUpdate.spotify.release_date_precision = albumToUpdate.spotify.release_date_precision ? albumToUpdate.spotify.release_date_precision : album.spotify.release_date_precision;
-      albumToUpdate.spotify.cover = albumToUpdate.spotify.cover ? albumToUpdate.spotify.cover : album.spotify.cover;
-      albumToUpdate.spotify.total_tracks = albumToUpdate.spotify.total_tracks ? albumToUpdate.spotify.total_tracks : album.spotify.total_tracks;
+      if (album.spotify !=null) {
+        albumToUpdate.spotify.id = albumToUpdate.spotify.id  ? albumToUpdate.spotify.id : album.spotify.id;
+        albumToUpdate.spotify.release_date = albumToUpdate.spotify.release_date ? albumToUpdate.spotify.release_date : album.spotify.release_date;
+        albumToUpdate.spotify.release_date_precision = albumToUpdate.spotify.release_date_precision ? albumToUpdate.spotify.release_date_precision : album.spotify.release_date_precision;
+        albumToUpdate.spotify.cover = albumToUpdate.spotify.cover ? albumToUpdate.spotify.cover : album.spotify.cover;
+        albumToUpdate.spotify.total_tracks = albumToUpdate.spotify.total_tracks ? albumToUpdate.spotify.total_tracks : album.spotify.total_tracks;
+      }
       //console.log(album.spotify);
       //console.log(albumToUpdate.spotify.releaseDate);
       albumToUpdate.lastModified = new Date();
