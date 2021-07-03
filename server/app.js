@@ -9,7 +9,7 @@ var index = require('./routes/index');
 // var users = require('./routes/users');
 var session = require('express-session');
 
-const MongoStore = require('connect-mongo').default;
+const MongoStore = require('connect-mongo');
 
 require('dotenv-safe').config();
 

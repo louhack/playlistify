@@ -1,3 +1,4 @@
+
 <div class="modal-header">
   <h4 class="modal-title pull-left">Edit {{album.artistName}} - {{album.albumName}}</h4>
   <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
@@ -5,6 +6,7 @@
   </button>
 </div>
 <div class="modal-body">
+  <alert *ngIf="updated" [type]="_alert.type" [dismissible]="dismissible" (onClosed)="onClosed(_alert)">{{ _alert.msg }}</alert>
   <label>Artist</label>
   <input type="text" class="form-control" id="artist" [(ngModel)]="album.artistName">
   <label>Album</label>

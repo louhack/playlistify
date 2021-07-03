@@ -8,7 +8,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
+
 import { AlbumListComponent } from './components/album/album-list/album-list.component';
 import { SpotifyAuthService } from './services/spotify/spotify-auth.service';
 import { LoginComponent } from './components/login/login.component';
@@ -22,6 +22,8 @@ import { AlbumsModalComponent } from './components/album/albums-modal/albums-mod
 import { MenuComponent } from './components/menu/menu.component';
 import { LocalEndPoints } from './services/local/localAPIEndpoints';
 import { AlbumEditComponent } from './components/album/album-edit/album-edit.component';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
@@ -44,6 +46,7 @@ import { AlbumEditComponent } from './components/album/album-edit/album-edit.com
     PaginationModule.forRoot(),
     ModalModule.forRoot(),
     TabsModule.forRoot(),
+    AlertModule.forRoot(),
   ],
   providers: [
     AlbumService,

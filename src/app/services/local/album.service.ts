@@ -25,6 +25,9 @@ export class AlbumService {
         this.http.put(this.localEndPoints.albumEndPoint, album).subscribe(
           response => {
             resolve(response['data']);
+          },
+          err => {
+            return err;
           }
         );
       });

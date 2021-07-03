@@ -215,6 +215,11 @@ searchMode: boolean;
         this.updateAlbum(albumIndex, albumUpdated);
         // this.addToPlaylist(albumIndex);
         this.bsModalRef.content.updated = true;
+        this.bsModalRef.content._alert = this.bsModalRef.content.defaultAlerts[0];
+      }, rej => {
+        this.bsModalRef.content.updated = true;
+        this.bsModalRef.content._alert = this.bsModalRef.content.defaultAlerts[1];
+        console.log(rej);
       });
     })
 // this.bsModalRef.content.albumIndex = albumIndex;

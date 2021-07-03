@@ -136,55 +136,59 @@ exports.updateAlbum = async function updateAlbum (req, res, next){
 
   var id = req.body._id;
 
-  var album = {
-    _id: req.body._id,
-    artistName: req.body.artistName ? req.body.artistName : null,
-    albumName: req.body.albumName ? req.body.albumName : null,
+  // var album = {
+  //   _id: req.body._id,
+  //   artistName: req.body.artistName ? req.body.artistName : null,
+  //   albumName: req.body.albumName ? req.body.albumName : null,
 
-  }
+  // }
+  var album = req.body;
 
-  if (req.body.spotify && Object.keys(req.body.spotify).length !== 0 && req.body.spotify.constructor === Object) {
-    album.spotify = {};
-    cover_req = [];
+  // if (req.body.spotify && Object.keys(req.body.spotify).length !== 0 && req.body.spotify.constructor === Object) {
+  //   album.spotify = {};
+  //   cover_req = [];
 
-    if(req.body.spotify.images && req.body.spotify.images.length > 0) {
-      cover_req = req.body.spotify.images;
-    }
+  //   if(req.body.spotify.images && req.body.spotify.images.length > 0) {
+  //     cover_req = req.body.spotify.images;
+  //   }
 
-    album.spotify =
-    {
-      id: req.body.spotify.id ? req.body.spotify.id : null,
-      release_date: req.body.spotify.release_date ? req.body.spotify.release_date : null,
-      release_date_precision: req.body.spotify.release_date_precision ? req.body.spotify.release_date_percision : null,
-      total_tracks: req.body.spotify.total_tracks ? req.body.spotify.total_tracks : null,
-    }
-    album.spotify.cover = cover_req.length > 0 ? (cover_req[1].url ? cover_req[1].url : null) : null;
-  }
+  //   album.spotify =
+  //   {
+  //     id: req.body.spotify.id != "" ? req.body.spotify.id : null,
+  //     release_date: req.body.spotify.release_date ? req.body.spotify.release_date : null,
+  //     release_date_precision: req.body.spotify.release_date_precision ? req.body.spotify.release_date_percision : null,
+  //     total_tracks: req.body.spotify.total_tracks ? req.body.spotify.total_tracks : null,
+  //   }
 
-  if (req.body.sputnikMusic != null) {
-    album.sputnikMusic =
-    {
-      id: req.body.sputnikMusic.id ? req.body.sputnikMusic.id : null,
-      imagePath: req.body.sputnikMusic.imagePath ? req.body.sputnikMusic.imagePath : null,
-      note: req.body.sputnikMusic.note ? req.body.sputnikMusic.note : null,
-      releaseDate: {
-        month: req.body.sputnikMusic.releaseDate.month ? req.body.sputnikMusic.releaseDate.month : null,
-        year: req.body.sputnikMusic.releaseDate.year ? req.body.sputnikMusic.releaseDate.year : null,
-      },
-    };
-  }
+  //   // console.log("Spotify ID : " + album.spotify.id);
 
-  if (req.body.heavyBIsH != null) {
-    album.heavyBIsH =
-    {
-      releaseDate: {
-        month: req.body.heavyBIsH.releaseDate.month,
-        year: req.body.heavyBIsH.releaseDate.year
-      },
-      id: req.body.heavyBIsH.id,
-      imagePath: req.body.heavyBIsH.imagePath
-    };
-  }
+  //   album.spotify.cover = cover_req.length > 0 ? (cover_req[1].url ? cover_req[1].url : null) : null;
+  // }
+
+  // if (req.body.sputnikMusic != null) {
+  //   album.sputnikMusic =
+  //   {
+  //     id: req.body.sputnikMusic.id ? req.body.sputnikMusic.id : null,
+  //     imagePath: req.body.sputnikMusic.imagePath ? req.body.sputnikMusic.imagePath : null,
+  //     note: req.body.sputnikMusic.note ? req.body.sputnikMusic.note : null,
+  //     releaseDate: {
+  //       month: req.body.sputnikMusic.releaseDate.month ? req.body.sputnikMusic.releaseDate.month : null,
+  //       year: req.body.sputnikMusic.releaseDate.year ? req.body.sputnikMusic.releaseDate.year : null,
+  //     },
+  //   };
+  // }
+
+  // if (req.body.heavyBIsH != null) {
+  //   album.heavyBIsH =
+  //   {
+  //     releaseDate: {
+  //       month: req.body.heavyBIsH.releaseDate.month,
+  //       year: req.body.heavyBIsH.releaseDate.year
+  //     },
+  //     id: req.body.heavyBIsH.id,
+  //     imagePath: req.body.heavyBIsH.imagePath
+  //   };
+  // }
 
 
     try{
@@ -195,31 +199,51 @@ exports.updateAlbum = async function updateAlbum (req, res, next){
           return false;
       }
 
-      //Edit the Album Object
-      albumToUpdate.artistName =  albumToUpdate.artistName == album.artistName ? albumToUpdate.artistName : album.artistName;
-      albumToUpdate.albumName = albumToUpdate.albumName == album.albumName ? albumToUpdate.albumName : album.albumName;
+  //     //Edit the Album Object
+  //     albumToUpdate.artistName =  albumToUpdate.artistName == album.artistName ? albumToUpdate.artistName : album.artistName;
+  //     albumToUpdate.albumName = albumToUpdate.albumName == album.albumName ? albumToUpdate.albumName : album.albumName;
+
+  //     if (album.sputnikMusic != null) {
+  //       albumToUpdate.sputnikMusic.imagePath = albumToUpdate.sputnikMusic.imagePath ? albumToUpdate.sputnikMusic.imagePath : album.sputnikMusic.imagePath;
+  //       albumToUpdate.sputnikMusic.note = albumToUpdate.sputnikMusic.note ? albumToUpdate.sputnikMusic.note : album.sputnikMusic.note;
+  //       albumToUpdate.sputnikMusic.releaseDate = albumToUpdate.sputnikMusic.releaseDate ? albumToUpdate.sputnikMusic.releaseDate : album.sputnikMusic.releaseDate;
+
+  //     }
+
+  //     if (album.heavyBIsH != null) {
+  //       albumToUpdate.heavyBIsH.imagePath = albumToUpdate.heavyBIsH.imagePath ? albumToUpdate.heavyBIsH.imagePath : album.heavyBIsH.imagePath;
+  //       albumToUpdate.heavyBIsH.releaseDate = albumToUpdate.heavyBIsH.releaseDate ? albumToUpdate.heavyBIsH.releaseDate : album.heavyBIsH.releaseDate;
+  //     }
+
+  //     if (album.spotify !=null) {
+  //       albumToUpdate.spotify.id = album.spotify.id;//albumToUpdate.spotify.id  ? albumToUpdate.spotify.id : album.spotify.id;
+  //       albumToUpdate.spotify.release_date = albumToUpdate.spotify.release_date ? albumToUpdate.spotify.release_date : album.spotify.release_date;
+  //       albumToUpdate.spotify.release_date_precision = albumToUpdate.spotify.release_date_precision ? albumToUpdate.spotify.release_date_precision : album.spotify.release_date_precision;
+  //       albumToUpdate.spotify.cover = albumToUpdate.spotify.cover ? albumToUpdate.spotify.cover : album.spotify.cover;
+  //       albumToUpdate.spotify.total_tracks = albumToUpdate.spotify.total_tracks ? albumToUpdate.spotify.total_tracks : album.spotify.total_tracks;
+  //     }
+  //     //console.log(album.spotify);
+      //console.log(albumToUpdate.spotify.releaseDate);
+
+      albumToUpdate.artistName = album.artistName;
+      albumToUpdate.albumName = album.albumName;
 
       if (album.sputnikMusic != null) {
-        albumToUpdate.sputnikMusic.imagePath = albumToUpdate.sputnikMusic.imagePath ? albumToUpdate.sputnikMusic.imagePath : album.sputnikMusic.imagePath;
-        albumToUpdate.sputnikMusic.note = albumToUpdate.sputnikMusic.note ? albumToUpdate.sputnikMusic.note : album.sputnikMusic.note;
-        albumToUpdate.sputnikMusic.releaseDate = albumToUpdate.sputnikMusic.releaseDate ? albumToUpdate.sputnikMusic.releaseDate : album.sputnikMusic.releaseDate;
-
+          albumToUpdate.sputnikMusic = album.sputnikMusic;
       }
 
-      if (album.heavyBIsH != null) {
-        albumToUpdate.heavyBIsH.imagePath = albumToUpdate.heavyBIsH.imagePath ? albumToUpdate.heavyBIsH.imagePath : album.heavyBIsH.imagePath;
-        albumToUpdate.heavyBIsH.releaseDate = albumToUpdate.heavyBIsH.releaseDate ? albumToUpdate.heavyBIsH.releaseDate : album.heavyBIsH.releaseDate;
+      if (album.heavyBIsH){
+        albumToUpdate.heavyBIsH;
       }
 
       if (album.spotify !=null) {
-        albumToUpdate.spotify.id = albumToUpdate.spotify.id  ? albumToUpdate.spotify.id : album.spotify.id;
-        albumToUpdate.spotify.release_date = albumToUpdate.spotify.release_date ? albumToUpdate.spotify.release_date : album.spotify.release_date;
-        albumToUpdate.spotify.release_date_precision = albumToUpdate.spotify.release_date_precision ? albumToUpdate.spotify.release_date_precision : album.spotify.release_date_precision;
-        albumToUpdate.spotify.cover = albumToUpdate.spotify.cover ? albumToUpdate.spotify.cover : album.spotify.cover;
-        albumToUpdate.spotify.total_tracks = albumToUpdate.spotify.total_tracks ? albumToUpdate.spotify.total_tracks : album.spotify.total_tracks;
+        albumToUpdate.spotify = album.spotify;
       }
-      //console.log(album.spotify);
-      //console.log(albumToUpdate.spotify.releaseDate);
+
+      if(album.yourLastRites != null){
+        albumToUpdate.yourLastRites = album.yourLastRites;
+      }
+      // albumToUpdate = (Album) album;
       albumToUpdate.lastModified = new Date();
 
       var updatedAlbum = await albumToUpdate.save();
