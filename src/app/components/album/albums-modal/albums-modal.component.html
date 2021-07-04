@@ -1,21 +1,19 @@
 <div class="modal-header">
   <h4 class="modal-title pull-left">Search result(s) for {{artist}} - {{title}}</h4>
-  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="bsModalRef.hide()"></button>
 </div>
 <div class="modal-body">
-  <ul *ngIf="albumsFound.length">
-    <li *ngFor="let album of albumsFound ; let i = index" class="media mb-2">
-      <input type="radio" class="form-check-input align-self-center"
+  <ul *ngIf="albumsFound.length" class="list-group">
+    <li *ngFor="let album of albumsFound ; let i = index" class="d-inline-flex align-items-center">
+      <input type="radio" class="form-check-input me-3"
         #albumR
         name="albumRadio"
         value="{{ i }}"
         id="{{album.id}}"
         (change)="chosenAlbum=albumR.value;albumRadio=true">
-        <label class="d-inline-flex" for="{{album.id}}">
-          <img class="mr-3 w-25 h-25" [src]="album.images[0].url" [alt]="album.name">
-      <div class="media-body align-self-center">
+        <label class="d-inline-flex align-items-center radioBtn" for="{{album.id}}">
+          <img class="me-3 w-25" [src]="album.images[0].url" [alt]="album.name">
+      <div class="align-self-center">
         <h5 class="mt-0 mb-1">{{ album.name }}</h5>
         <p class="mb-0">Artist(s): <span *ngFor="let artist of album.artists; let i = index">
            {{ artist.name }} <ng-container *ngIf="i < album.artists.length && i !=album.artists.length-1"> / </ng-container>

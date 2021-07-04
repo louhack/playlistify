@@ -34,6 +34,9 @@ body { padding-top: 70px; }
   border-color:transparent;
 }
 
+.radioBtn {
+  width: fit-content;
+}
 
 /* display: inline-block;
 font-weight: 400;

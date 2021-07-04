@@ -1,12 +1,13 @@
 
 <div class="modal-header">
   <h4 class="modal-title pull-left">Edit {{album.artistName}} - {{album.albumName}}</h4>
-  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="bsModalRef.hide()"></button>
 </div>
 <div class="modal-body">
-  <alert *ngIf="updated" [type]="_alert.type" [dismissible]="dismissible" (onClosed)="onClosed(_alert)">{{ _alert.msg }}</alert>
+  <div *ngIf="updated && _alert.type=='success'" class="alert alert-success alert-dismissible fade show" role="alert">
+    {{_alert.msg}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="onClosed(_alert)"></button>
+  </div>
   <label>Artist</label>
   <input type="text" class="form-control" id="artist" [(ngModel)]="album.artistName">
   <label>Album</label>

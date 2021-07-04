@@ -61,4 +61,8 @@ export class AlbumEditComponent implements OnInit {
     this.bsModalRef.hide();
   }
 
+  hideAlert(){
+
+  }
+
 }
