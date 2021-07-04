@@ -190,7 +190,7 @@ searchMode: boolean;
       albumToUpdate.spotify = albumToUpdate.spotifySearchResults[info.resultIndex];
       albumToUpdate.searchedOnSpotify = true;
       albumToUpdate.spotifySearchResults = [];
-      this.albumsService.updateAlbumOnDB(albumToUpdate).then( (albumUpdated: Album) => {
+      this.albumsService.updateAlbumOnDB(albumToUpdate).subscribe( (albumUpdated: Album) => {
         albumUpdated.searchedOnSpotify = true;
         albumUpdated.spotifySearchResults = [];
         this.updateAlbum(albumIndex, albumUpdated);
@@ -209,20 +209,23 @@ searchMode: boolean;
     };
     this.bsModalRef = this.modalService.show(AlbumEditComponent, {initialState});
     this.bsModalRef.content.onUpdateAlbum.subscribe((album: {albumToUpdate: Album} ) => {
-      this.albumsService.updateAlbumOnDB(album.albumToUpdate).then( (albumUpdated: Album) => {
+      this.albumsService.updateAlbumOnDB(album.albumToUpdate).subscribe( {
+        next: (albumUpdated: Album) => {
         // albumUpdated.searchedOnSpotify = true;
         // albumUpdated.spotifySearchResults = [];
         this.updateAlbum(albumIndex, albumUpdated);
         // this.addToPlaylist(albumIndex);
         this.bsModalRef.content.updated = true;
         this.bsModalRef.content._alert = this.bsModalRef.content.defaultAlerts[0];
-      }, rej => {
+      },
+        error: (e) => {
         this.bsModalRef.content.updated = true;
         this.bsModalRef.content._alert = this.bsModalRef.content.defaultAlerts[1];
-        console.log(rej);
-      });
-    })
+        console.log(e);
+      }});
+
 // this.bsModalRef.content.albumIndex = albumIndex;
+  });
 }
 
 
@@ -242,6 +245,7 @@ searchMode: boolean;
       const album = this.albumsList[index];
 
       if (!album.searchedOnSpotify) {
+        //search the album
         await this.searchAlbumOnSpotify(index);
       }
 
@@ -308,7 +312,7 @@ searchMode: boolean;
                       // if only one result, save the spotify album id for later
                       // than add album to the selected playlist
                       album.spotify = foundAlbums[0];
-                      this.albumsService.updateAlbumOnDB(album).then( (albumUpdated: Album) => {
+                      this.albumsService.updateAlbumOnDB(album).subscribe( (albumUpdated: Album) => {
                         albumUpdated.searchedOnSpotify = true;
                         albumUpdated.spotifySearchResults = [];
                         this.updateAlbum(index, albumUpdated);
@@ -326,7 +330,7 @@ searchMode: boolean;
                           album.searchedOnSpotify = true;
                           if (foundAlbums2.length === 1) {
                             album.spotify = foundAlbums2[0];
-                            this.albumsService.updateAlbumOnDB(album).then( (albumUpdated: Album) => {
+                            this.albumsService.updateAlbumOnDB(album).subscribe( (albumUpdated: Album) => {
                               albumUpdated.searchedOnSpotify = true;
                               albumUpdated.spotifySearchResults = [];
                               this.updateAlbum(index, albumUpdated);
@@ -357,5 +361,9 @@ searchMode: boolean;
     this.searchEvent();
   }
 
+}
+
+function complete(complete: any, arg1: (albumUpdated: Album) => void, error: any, arg3: (e: any) => void) {
+  throw new Error('Function not implemented.');
 }
 

@@ -132,17 +132,17 @@ exports.updateAlbum = async function updateAlbum (req, res, next){
       return res.status(400).json({status: 400, message: "Id must be present"});
   }
 
-  console.log(req.body);
 
   var id = req.body._id;
 
   // var album = {
-  //   _id: req.body._id,
-  //   artistName: req.body.artistName ? req.body.artistName : null,
-  //   albumName: req.body.albumName ? req.body.albumName : null,
+    //   _id: req.body._id,
+    //   artistName: req.body.artistName ? req.body.artistName : null,
+    //   albumName: req.body.albumName ? req.body.albumName : null,
 
-  // }
-  var album = req.body;
+    // }
+    var album = req.body;
+    console.log(album);
 
   // if (req.body.spotify && Object.keys(req.body.spotify).length !== 0 && req.body.spotify.constructor === Object) {
   //   album.spotify = {};
@@ -238,6 +238,13 @@ exports.updateAlbum = async function updateAlbum (req, res, next){
 
       if (album.spotify !=null) {
         albumToUpdate.spotify = album.spotify;
+
+        cover_req = [];
+        if(album.spotify.images && req.body.spotify.images.length > 0) {
+          cover_req = album.spotify.images;
+        }
+        albumToUpdate.spotify.cover = cover_req.length > 0 ? (cover_req[1].url ? cover_req[1].url : null) : null;
+        console.log("album.spotify : " + JSON.stringify(albumToUpdate.spotify));
       }
 
       if(album.yourLastRites != null){

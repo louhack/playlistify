@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Album } from '../../models/album.model';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { AlbumsListI } from '../../interfaces/albumsList.interface';
 import { AlbumPlaylistI } from '../../interfaces/albumAddedToPlaylist.interface';
 import { LocalEndPoints } from './localAPIEndpoints';
@@ -13,24 +13,26 @@ export class AlbumService {
 
   // albumUrl = `/api/albums`;
   albumChanged = new Subject<{index: number, album: Album}>();
+  messageService: any;
 
   constructor(
       private http: HttpClient,
       private localEndPoints: LocalEndPoints) { }
 
-  updateAlbumOnDB(album: Album): Promise<Album> {
+  updateAlbumOnDB(album: Album): Observable<Album> {
     // console.log(JSON.stringify(Album));
-    return new Promise(
-      resolve => {
-        this.http.put(this.localEndPoints.albumEndPoint, album).subscribe(
-          response => {
-            resolve(response['data']);
-          },
-          err => {
-            return err;
-          }
-        );
-      });
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      })
+    }
+    return this.http.put<Album>(this.localEndPoints.albumEndPoint, album, httpOptions).pipe(
+      tap( _ => console.log('update album')),
+      catchError(this.handleError<any>('updateAlbum')),
+      map(res => {
+        return res['data'];
+      })
+    );
   }
 
 
@@ -65,7 +67,7 @@ export class AlbumService {
   }
 
   savePlaylistAlbum (item: AlbumPlaylistI): Observable<Object> {
-    return this.http.post<Album>('/api/user/playlistifyAlbum', {params: {playlist: item}})
+    return this.http.post<Album>(this.localEndPoints.playlistifiedAlbumsEndPoint, {params: {playlist: item}})
       .pipe(map (resp => {
         return resp['data'];
       }));
@@ -78,7 +80,7 @@ export class AlbumService {
       albumIds.push(album._id);
     });
 
-    return this.http.get('/api/user/playlistifiedAlbum', {params: { userId: userId, albumId: albumIds}})
+    return this.http.get(this.localEndPoints.playlistifiedAlbumsEndPoint, {params: { userId: userId, albumId: albumIds}})
       .pipe(map((resp: Response) => {
       // console.log(resp['data']);
         if (resp != null) {
@@ -117,4 +119,30 @@ export class AlbumService {
     // }
     // return of({});
   }
+
+/**
+   * Handle Http operation that failed.
+   * Let the app continue.
+   * @param operation - name of the operation that failed
+   * @param result - optional value to return as the observable result
+   */
+ private handleError<T>(operation = 'operation', result?: T) {
+  return (error: any): Observable<T> => {
+
+    // TODO: send the error to remote logging infrastructure
+    console.error(error); // log to console instead
+
+    // TODO: better job of transforming error for user consumption
+    this.log(`${operation} failed: ${error.message}`);
+
+    // Let the app keep running by returning an empty result.
+    return of(result as T);
+  };
 }
+
+  /** Log a HeroService message with the MessageService */
+  private log(message: string) {
+    this.messageService.add(`Album update: ${message}`);
+  }
+}
+

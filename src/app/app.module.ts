@@ -56,6 +56,7 @@ import { HeaderComponent } from './components/header/header.component';
     SpotifyApiService,
     MessageService,
     LocalEndPoints,
+    MessageService
   ],
   bootstrap: [AppComponent],
   entryComponents: [AlbumsModalComponent]
