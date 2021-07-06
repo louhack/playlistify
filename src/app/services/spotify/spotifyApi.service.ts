@@ -7,7 +7,7 @@ import { UserService } from './user.service';
 import { SpotifyEndPoints } from './spotifyApiEndpoints';
 import { AlbumSpotify } from '../../interfaces/albumSpotifyInterface';
 import { Track } from '../../interfaces/trackInterface';
-import { MessageService } from '../message.service';
+import { MessageService } from '../local/message.service';
 
 
 

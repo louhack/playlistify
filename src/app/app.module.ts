@@ -17,7 +17,7 @@ import { UserService } from './services/spotify/user.service';
 import { SpotifyEndPoints } from './services/spotify/spotifyApiEndpoints';
 import { AlbumService } from './services/local/album.service';
 import { SpotifyApiService } from './services/spotify/spotifyApi.service';
-import { MessageService } from './services/message.service';
+import { MessageService } from './services/local/message.service';
 import { AlbumsModalComponent } from './components/album/albums-modal/albums-modal.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { LocalEndPoints } from './services/local/localAPIEndpoints';
