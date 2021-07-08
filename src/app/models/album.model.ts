@@ -13,7 +13,8 @@ export class Album {
       releaseDate?: {
         month: string,
         year: string
-      }
+      },
+      numberOfRating?: number
     };
     public spotify?: {
       id?: string,
@@ -23,8 +24,9 @@ export class Album {
       release_date?: string,
       total_tracks?: number,
       cover?: string,
-      release_date_precision?: string
-      images?: Image[];
+      release_date_precision?: string,
+      images?: Image[],
+
     };
 
     public heavyBIsH?: {
