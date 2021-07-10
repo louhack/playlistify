@@ -14,7 +14,7 @@ export class Album {
         month: string,
         year: string
       },
-      numberOfRating?: number
+      numberOfUserRatings?: number
     };
     public spotify?: {
       id?: string,

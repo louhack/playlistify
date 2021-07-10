@@ -120,7 +120,7 @@
                     </tab>
                     <tab *ngIf="album.sputnikMusic" heading="Sputnik Music">
                       <p class="mt-2">Sputnik rating: {{ album.sputnikMusic.note }}</p>
-                      <p class="mt-2">Number of user rating: {{album.sputnikMusic.numberOfRating}}</p>
+                      <p *ngIf="album.sputnikMusic.numberOfUserRatings" class="mt-2">Number of user rating: {{album.sputnikMusic.numberOfUserRatings}}</p>
                       <p>Release Date: {{ getDate(i,0) }}</p>
                       <p><a href="https://www.sputnikmusic.com/album/{{album.sputnikMusic.id}}/" target="_blank">Consulter sur Sputnik Music</a></p>
                     </tab>

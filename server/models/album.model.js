@@ -12,7 +12,7 @@ var AlbumSchema = new mongoose.Schema({
         month: Number,
         year: Number
       },
-      numberOfRating: Number
+      numberOfUserRatings: Number
     },
     heavyBIsH:{
       id: String,
