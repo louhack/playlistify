@@ -59,6 +59,5 @@ import { HeaderComponent } from './components/header/header.component';
     MessageService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [AlbumsModalComponent]
 })
 export class AppModule { }
