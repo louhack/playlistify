@@ -1,1 +1,4216 @@
-
+[
+    {
+        "artistName": "Musk Ox",
+        "albumName": "Inheritance",
+        "sputnikMusic": {
+            "id": "396030",
+            "note": 4.2,
+            "releaseDate": {
+                "month": 7,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396030.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Sallow Moth",
+        "albumName": "Stasis Cocoon",
+        "sputnikMusic": {
+            "id": "400297",
+            "note": 4.0,
+            "releaseDate": {
+                "month": 7,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/400297.jpg",
+            "numberOfUserRatings": "12"
+        }
+    },
+    {
+        "artistName": "Mannveira",
+        "albumName": "Vitahringur",
+        "sputnikMusic": {
+            "id": "396016",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 7,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396016.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Year of No Light",
+        "albumName": "Consolamentum",
+        "sputnikMusic": {
+            "id": "398082",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 7,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398082.jpg",
+            "numberOfUserRatings": "22"
+        }
+    },
+    {
+        "artistName": "Diabolizer",
+        "albumName": "Khalkedonian Death",
+        "sputnikMusic": {
+            "id": "398251",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 7,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398251.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Enshine",
+        "albumName": "Transcending Fire",
+        "sputnikMusic": {
+            "id": "400264",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 7,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/400264.jpg",
+            "numberOfUserRatings": "11"
+        }
+    },
+    {
+        "artistName": "Laura Mvula",
+        "albumName": "Pink Noise",
+        "sputnikMusic": {
+            "id": "400361",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 7,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/400361.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Structures",
+        "albumName": "None of the Above",
+        "sputnikMusic": {
+            "id": "398909",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 7,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398909.jpg",
+            "numberOfUserRatings": "14"
+        }
+    },
+    {
+        "artistName": "At the Gates",
+        "albumName": "The Nightmare of Being",
+        "sputnikMusic": {
+            "id": "393028",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 7,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/393028.jpg",
+            "numberOfUserRatings": "78"
+        }
+    },
+    {
+        "artistName": "The Go! Team",
+        "albumName": "Get Up Sequences Part One",
+        "sputnikMusic": {
+            "id": "400139",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 7,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/400139.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Drawn and Quartered",
+        "albumName": "Congregation Pestilence",
+        "sputnikMusic": {
+            "id": "397793",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 7,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397793.jpg",
+            "numberOfUserRatings": "18"
+        }
+    },
+    {
+        "artistName": "The Maine",
+        "albumName": "XOXO: From Love and Anxiety in Real Time",
+        "sputnikMusic": {
+            "id": "392043",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 7,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392043.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Born of Osiris",
+        "albumName": "Angel or Alien",
+        "sputnikMusic": {
+            "id": "396505",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 7,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396505.jpg",
+            "numberOfUserRatings": "80"
+        }
+    },
+    {
+        "artistName": "Chihei Hatakeyama",
+        "albumName": "Late Spring",
+        "sputnikMusic": {
+            "id": "393706",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 7,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/393706.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Vince Staples",
+        "albumName": "Vince Staples",
+        "sputnikMusic": {
+            "id": "400713",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 7,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/400713.jpg",
+            "numberOfUserRatings": "32"
+        }
+    },
+    {
+        "artistName": "Adjy",
+        "albumName": "The Idyll Opus (I-VI)",
+        "sputnikMusic": {
+            "id": "400315",
+            "note": 4.3,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/400315.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Muse",
+        "albumName": "Origin of Symmetry: XX Anniversary RemiXX",
+        "sputnikMusic": {
+            "id": "397370",
+            "note": 4.0,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397370.jpg",
+            "numberOfUserRatings": "30"
+        }
+    },
+    {
+        "artistName": "Thy Catafalque",
+        "albumName": "Vadak",
+        "sputnikMusic": {
+            "id": "393029",
+            "note": 4.0,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/393029.jpg",
+            "numberOfUserRatings": "94"
+        }
+    },
+    {
+        "artistName": "Kvadrat",
+        "albumName": "\u03a8\u03c5\u03c7\u03b9\u03ba\u03ae \u0391\u03c0\u03bf\u03c3\u03cd\u03bd\u03b8\u03b5\u03c3\u03b7",
+        "sputnikMusic": {
+            "id": "399061",
+            "note": 4.0,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399061.jpg",
+            "numberOfUserRatings": "16"
+        }
+    },
+    {
+        "artistName": "Pig Destroyer",
+        "albumName": "Pornographers of Sound: Live in NYC",
+        "sputnikMusic": {
+            "id": "395352",
+            "note": 4.0,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395352.jpg",
+            "numberOfUserRatings": "12"
+        }
+    },
+    {
+        "artistName": "Hypnotic Brass Ensemble",
+        "albumName": "This is a Mindfulness Drill...",
+        "sputnikMusic": {
+            "id": "400045",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/400045.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Rota Fortunae",
+        "albumName": "Hinterland",
+        "sputnikMusic": {
+            "id": "373478",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/373478.jpg",
+            "numberOfUserRatings": "21"
+        }
+    },
+    {
+        "artistName": "Amenra",
+        "albumName": "De Doorn",
+        "sputnikMusic": {
+            "id": "395774",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395774.jpg",
+            "numberOfUserRatings": "116"
+        }
+    },
+    {
+        "artistName": "Hiatus Kaiyote",
+        "albumName": "Mood Valiant",
+        "sputnikMusic": {
+            "id": "395079",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395079.jpg",
+            "numberOfUserRatings": "62"
+        }
+    },
+    {
+        "artistName": "Souveneer",
+        "albumName": "Dream Journal",
+        "sputnikMusic": {
+            "id": "399724",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399724.jpg",
+            "numberOfUserRatings": "18"
+        }
+    },
+    {
+        "artistName": "Helloween",
+        "albumName": "Helloween",
+        "sputnikMusic": {
+            "id": "391053",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/391053.jpg",
+            "numberOfUserRatings": "94"
+        }
+    },
+    {
+        "artistName": "Witch Vomit",
+        "albumName": "Abhorrent Rapture",
+        "sputnikMusic": {
+            "id": "399497",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399497.jpg",
+            "numberOfUserRatings": "32"
+        }
+    },
+    {
+        "artistName": "Alustrium",
+        "albumName": "A Monument to Silence",
+        "sputnikMusic": {
+            "id": "391881",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/391881.jpg",
+            "numberOfUserRatings": "65"
+        }
+    },
+    {
+        "artistName": "Tyler, the Creator",
+        "albumName": "Call Me If You Get Lost",
+        "sputnikMusic": {
+            "id": "399430",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399430.jpg",
+            "numberOfUserRatings": "281"
+        }
+    },
+    {
+        "artistName": "Flotsam and Jetsam",
+        "albumName": "Blood in the Water",
+        "sputnikMusic": {
+            "id": "393536",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/393536.jpg",
+            "numberOfUserRatings": "50"
+        }
+    },
+    {
+        "artistName": "Turnstile",
+        "albumName": "Turnstile Love Connection",
+        "sputnikMusic": {
+            "id": "399980",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399980.jpg",
+            "numberOfUserRatings": "51"
+        }
+    },
+    {
+        "artistName": "Ekulu",
+        "albumName": "Unscrew My Head",
+        "sputnikMusic": {
+            "id": "398923",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398923.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Perilaxe Occlusion",
+        "albumName": "Raytraces of Death",
+        "sputnikMusic": {
+            "id": "399332",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399332.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Ossaert",
+        "albumName": "Pelgrimsoord",
+        "sputnikMusic": {
+            "id": "398207",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398207.jpg",
+            "numberOfUserRatings": "13"
+        }
+    },
+    {
+        "artistName": "Wasted Space",
+        "albumName": "exsanguination",
+        "sputnikMusic": {
+            "id": "398835",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398835.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "White Ward",
+        "albumName": "Debemur Morti",
+        "sputnikMusic": {
+            "id": "395974",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395974.jpg",
+            "numberOfUserRatings": "29"
+        }
+    },
+    {
+        "artistName": "Japanese Breakfast",
+        "albumName": "Jubilee",
+        "sputnikMusic": {
+            "id": "390121",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/390121.jpg",
+            "numberOfUserRatings": "166"
+        }
+    },
+    {
+        "artistName": "Lightning Bug",
+        "albumName": "A Color of the Sky",
+        "sputnikMusic": {
+            "id": "399948",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399948.jpg",
+            "numberOfUserRatings": "38"
+        }
+    },
+    {
+        "artistName": "We Are The Uni on",
+        "albumName": "Ordinary Life",
+        "sputnikMusic": {
+            "id": "398390",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398390.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Free Throw",
+        "albumName": "Piecing It Together",
+        "sputnikMusic": {
+            "id": "393553",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/393553.jpg",
+            "numberOfUserRatings": "50"
+        }
+    },
+    {
+        "artistName": "Danny Elfman",
+        "albumName": "Big Mess",
+        "sputnikMusic": {
+            "id": "395075",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395075.jpg",
+            "numberOfUserRatings": "20"
+        }
+    },
+    {
+        "artistName": "Lloyd Banks",
+        "albumName": "The Course of the Inevitable",
+        "sputnikMusic": {
+            "id": "397713",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397713.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Surf Gang",
+        "albumName": "SGV1",
+        "sputnikMusic": {
+            "id": "400162",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/400162.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Ancient Wisdom",
+        "albumName": "A Celebration in Honor of Death",
+        "sputnikMusic": {
+            "id": "397019",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397019.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Siderean",
+        "albumName": "Lost on Void's Horizon",
+        "sputnikMusic": {
+            "id": "394195",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/394195.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Dead Heat",
+        "albumName": "World At War",
+        "sputnikMusic": {
+            "id": "394460",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/394460.jpg",
+            "numberOfUserRatings": "22"
+        }
+    },
+    {
+        "artistName": "Stimming",
+        "albumName": "Ludwig",
+        "sputnikMusic": {
+            "id": "399556",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399556.jpg",
+            "numberOfUserRatings": "23"
+        }
+    },
+    {
+        "artistName": "Duskmourn",
+        "albumName": "Fallen Kings and Rusted Crowns",
+        "sputnikMusic": {
+            "id": "389020",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/389020.jpg",
+            "numberOfUserRatings": "18"
+        }
+    },
+    {
+        "artistName": "Spellling",
+        "albumName": "The Turning Wheel",
+        "sputnikMusic": {
+            "id": "394151",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/394151.jpg",
+            "numberOfUserRatings": "72"
+        }
+    },
+    {
+        "artistName": "Somnuri",
+        "albumName": "Nefarious Wave",
+        "sputnikMusic": {
+            "id": "398070",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398070.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Backxwash",
+        "albumName": "I LIE HERE BURIED WITH MY RINGS AND MY DRESSES",
+        "sputnikMusic": {
+            "id": "399585",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399585.jpg",
+            "numberOfUserRatings": "54"
+        }
+    },
+    {
+        "artistName": "Bo Burnham",
+        "albumName": "Inside (The Songs)",
+        "sputnikMusic": {
+            "id": "398916",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398916.jpg",
+            "numberOfUserRatings": "103"
+        }
+    },
+    {
+        "artistName": "Poppy",
+        "albumName": "EAT (NXT Soundtrack)",
+        "sputnikMusic": {
+            "id": "398822",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398822.jpg",
+            "numberOfUserRatings": "118"
+        }
+    },
+    {
+        "artistName": "King Buffalo",
+        "albumName": "The Burden of Restlessness",
+        "sputnikMusic": {
+            "id": "395288",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395288.jpg",
+            "numberOfUserRatings": "27"
+        }
+    },
+    {
+        "artistName": "Wolf Alice",
+        "albumName": "Blue Weekend",
+        "sputnikMusic": {
+            "id": "389547",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/389547.jpg",
+            "numberOfUserRatings": "156"
+        }
+    },
+    {
+        "artistName": "Lucy Dacus",
+        "albumName": "Home Video",
+        "sputnikMusic": {
+            "id": "395076",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395076.jpg",
+            "numberOfUserRatings": "74"
+        }
+    },
+    {
+        "artistName": "Fractal Universe",
+        "albumName": "The Impassable Horizon",
+        "sputnikMusic": {
+            "id": "395207",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395207.jpg",
+            "numberOfUserRatings": "17"
+        }
+    },
+    {
+        "artistName": "The Absence",
+        "albumName": "Coffinized",
+        "sputnikMusic": {
+            "id": "393055",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/393055.jpg",
+            "numberOfUserRatings": "16"
+        }
+    },
+    {
+        "artistName": "Distant",
+        "albumName": "Aeons of Oblivion",
+        "sputnikMusic": {
+            "id": "396007",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396007.jpg",
+            "numberOfUserRatings": "19"
+        }
+    },
+    {
+        "artistName": "Polars Collide",
+        "albumName": "Grotesque",
+        "sputnikMusic": {
+            "id": "399429",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399429.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Fear Factory",
+        "albumName": "Aggression Continuum",
+        "sputnikMusic": {
+            "id": "394107",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/394107.jpg",
+            "numberOfUserRatings": "117"
+        }
+    },
+    {
+        "artistName": "Noctambulist",
+        "albumName": "The Barren Form",
+        "sputnikMusic": {
+            "id": "393100",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/393100.jpg",
+            "numberOfUserRatings": "24"
+        }
+    },
+    {
+        "artistName": "Faye Webster",
+        "albumName": "I Know I'm Funny haha",
+        "sputnikMusic": {
+            "id": "395182",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395182.jpg",
+            "numberOfUserRatings": "23"
+        }
+    },
+    {
+        "artistName": "Styx",
+        "albumName": "Crash Of The Crown",
+        "sputnikMusic": {
+            "id": "396277",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396277.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Seputus",
+        "albumName": "Phantom Indigo",
+        "sputnikMusic": {
+            "id": "392128",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392128.jpg",
+            "numberOfUserRatings": "40"
+        }
+    },
+    {
+        "artistName": "Code",
+        "albumName": "Flyblown Prince",
+        "sputnikMusic": {
+            "id": "389691",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/389691.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "The Raging Nathans",
+        "albumName": "Waste My Heart",
+        "sputnikMusic": {
+            "id": "398246",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398246.jpg",
+            "numberOfUserRatings": "32"
+        }
+    },
+    {
+        "artistName": "Sordide",
+        "albumName": "Les id\u00e9es blanches",
+        "sputnikMusic": {
+            "id": "397654",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397654.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "L'Rain",
+        "albumName": "Fatigue",
+        "sputnikMusic": {
+            "id": "399934",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399934.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "King Gizzard and The Lizard Wizard",
+        "albumName": "Butterfly 3000",
+        "sputnikMusic": {
+            "id": "398907",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398907.jpg",
+            "numberOfUserRatings": "128"
+        }
+    },
+    {
+        "artistName": "Eremit",
+        "albumName": "Bearer of Many Names",
+        "sputnikMusic": {
+            "id": "390826",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/390826.jpg",
+            "numberOfUserRatings": "16"
+        }
+    },
+    {
+        "artistName": "Cerebral Rot",
+        "albumName": "Excretion Of Mortality",
+        "sputnikMusic": {
+            "id": "396021",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396021.jpg",
+            "numberOfUserRatings": "64"
+        }
+    },
+    {
+        "artistName": "Crypta",
+        "albumName": "Echoes Of The Soul",
+        "sputnikMusic": {
+            "id": "393616",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/393616.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Parting",
+        "albumName": "Unmake Me",
+        "sputnikMusic": {
+            "id": "396014",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396014.jpg",
+            "numberOfUserRatings": "12"
+        }
+    },
+    {
+        "artistName": "Dean Blunt",
+        "albumName": "Black Metal 2",
+        "sputnikMusic": {
+            "id": "398946",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398946.jpg",
+            "numberOfUserRatings": "25"
+        }
+    },
+    {
+        "artistName": "Boss Keloid",
+        "albumName": "Family the Smiling Thrush",
+        "sputnikMusic": {
+            "id": "397661",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397661.jpg",
+            "numberOfUserRatings": "31"
+        }
+    },
+    {
+        "artistName": "Hannes Grossmann",
+        "albumName": "To Where The Light Retreats",
+        "sputnikMusic": {
+            "id": "394154",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/394154.jpg",
+            "numberOfUserRatings": "25"
+        }
+    },
+    {
+        "artistName": "Darkthrone",
+        "albumName": "Eternal Hails",
+        "sputnikMusic": {
+            "id": "395149",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395149.jpg",
+            "numberOfUserRatings": "117"
+        }
+    },
+    {
+        "artistName": "Gucci Mane",
+        "albumName": "Ice Daddy",
+        "sputnikMusic": {
+            "id": "395661",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395661.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Kings of Convenience",
+        "albumName": "Peace or Love",
+        "sputnikMusic": {
+            "id": "395619",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395619.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Go Ahead And Die",
+        "albumName": "Go Ahead And Die",
+        "sputnikMusic": {
+            "id": "391978",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/391978.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "o'summer vacation",
+        "albumName": "Wicked Heart",
+        "sputnikMusic": {
+            "id": "325096",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/325096.jpg",
+            "numberOfUserRatings": "27"
+        }
+    },
+    {
+        "artistName": "Part Chimp",
+        "albumName": "Drool",
+        "sputnikMusic": {
+            "id": "399394",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399394.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Mykki Blanco",
+        "albumName": "Broken Hearts and Beauty Sleep",
+        "sputnikMusic": {
+            "id": "395301",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395301.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "The Marias",
+        "albumName": "Cinema",
+        "sputnikMusic": {
+            "id": "399866",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399866.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Eye of Purgatory",
+        "albumName": "The Lighthouse",
+        "sputnikMusic": {
+            "id": "397974",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397974.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Sault (UK)",
+        "albumName": "Nine",
+        "sputnikMusic": {
+            "id": "399986",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399986.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Wristmeetrazor",
+        "albumName": "Replica of a Strange Love",
+        "sputnikMusic": {
+            "id": "391908",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/391908.jpg",
+            "numberOfUserRatings": "39"
+        }
+    },
+    {
+        "artistName": "MIKE",
+        "albumName": "Disco!",
+        "sputnikMusic": {
+            "id": "399686",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399686.jpg",
+            "numberOfUserRatings": "12"
+        }
+    },
+    {
+        "artistName": "Bossk",
+        "albumName": "Migration",
+        "sputnikMusic": {
+            "id": "397975",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397975.jpg",
+            "numberOfUserRatings": "45"
+        }
+    },
+    {
+        "artistName": "Cathexis",
+        "albumName": "Untethered Abyss",
+        "sputnikMusic": {
+            "id": "393141",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/393141.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Pendulum",
+        "albumName": "Elemental",
+        "sputnikMusic": {
+            "id": "399415",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399415.jpg",
+            "numberOfUserRatings": "15"
+        }
+    },
+    {
+        "artistName": "SOUL GLO",
+        "albumName": "DisNigga, Vol. 2",
+        "sputnikMusic": {
+            "id": "399540",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399540.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "ZOC",
+        "albumName": "PvP",
+        "sputnikMusic": {
+            "id": "399190",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399190.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Marina",
+        "albumName": "Ancient Dreams In A Modern Land",
+        "sputnikMusic": {
+            "id": "394082",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/394082.jpg",
+            "numberOfUserRatings": "47"
+        }
+    },
+    {
+        "artistName": "Militarie Gun",
+        "albumName": "All Roads Lead To The Gun",
+        "sputnikMusic": {
+            "id": "396309",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396309.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Drug Church",
+        "albumName": "TAWNY",
+        "sputnikMusic": {
+            "id": "394720",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/394720.jpg",
+            "numberOfUserRatings": "13"
+        }
+    },
+    {
+        "artistName": "The Mountain Goats",
+        "albumName": "Dark In Here",
+        "sputnikMusic": {
+            "id": "394475",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/394475.jpg",
+            "numberOfUserRatings": "22"
+        }
+    },
+    {
+        "artistName": "Daniel Avery",
+        "albumName": "Together in Static",
+        "sputnikMusic": {
+            "id": "399924",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399924.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "cleopatrick",
+        "albumName": "Bummer",
+        "sputnikMusic": {
+            "id": "394707",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/394707.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "KennyHoopla",
+        "albumName": "Survivors Guilt: The Mixtape//",
+        "sputnikMusic": {
+            "id": "398994",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398994.jpg",
+            "numberOfUserRatings": "26"
+        }
+    },
+    {
+        "artistName": "Rebecca Black",
+        "albumName": "Rebecca Black Was Here",
+        "sputnikMusic": {
+            "id": "397432",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397432.jpg",
+            "numberOfUserRatings": "23"
+        }
+    },
+    {
+        "artistName": "Interloper",
+        "albumName": "Search Party",
+        "sputnikMusic": {
+            "id": "399330",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399330.jpg",
+            "numberOfUserRatings": "14"
+        }
+    },
+    {
+        "artistName": "Crowded House",
+        "albumName": "Dreamers Are Waiting",
+        "sputnikMusic": {
+            "id": "389033",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/389033.jpg",
+            "numberOfUserRatings": "15"
+        }
+    },
+    {
+        "artistName": "AFI",
+        "albumName": "Bodies",
+        "sputnikMusic": {
+            "id": "389623",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/389623.jpg",
+            "numberOfUserRatings": "84"
+        }
+    },
+    {
+        "artistName": "Loraine James",
+        "albumName": "Reflection",
+        "sputnikMusic": {
+            "id": "399070",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399070.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Polo G",
+        "albumName": "Hall of Fame",
+        "sputnikMusic": {
+            "id": "398243",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398243.jpg",
+            "numberOfUserRatings": "17"
+        }
+    },
+    {
+        "artistName": "Pestilence",
+        "albumName": "Exitivm",
+        "sputnikMusic": {
+            "id": "392575",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392575.jpg",
+            "numberOfUserRatings": "23"
+        }
+    },
+    {
+        "artistName": "Slayyyter",
+        "albumName": "Troubled Paradise",
+        "sputnikMusic": {
+            "id": "388811",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/388811.jpg",
+            "numberOfUserRatings": "38"
+        }
+    },
+    {
+        "artistName": "Queen Of The Meadow",
+        "albumName": "Survival of the Unfittest",
+        "sputnikMusic": {
+            "id": "398415",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398415.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Pi'erre Bourne",
+        "albumName": "The Life of Pi\u2019erre 5",
+        "sputnikMusic": {
+            "id": "398298",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398298.jpg",
+            "numberOfUserRatings": "13"
+        }
+    },
+    {
+        "artistName": "Beartooth",
+        "albumName": "Below",
+        "sputnikMusic": {
+            "id": "392623",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392623.jpg",
+            "numberOfUserRatings": "53"
+        }
+    },
+    {
+        "artistName": "Ambar Lucid",
+        "albumName": "Get Lost in the Music",
+        "sputnikMusic": {
+            "id": "399603",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399603.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "beabadoobee",
+        "albumName": "Our Extended Play",
+        "sputnikMusic": {
+            "id": "398847",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398847.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "DC Dark Nights: Death Metal",
+        "albumName": "Dark Nights: Death Metal Soundtrack",
+        "sputnikMusic": {
+            "id": "399515",
+            "note": 3.0,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399515.jpg",
+            "numberOfUserRatings": "15"
+        }
+    },
+    {
+        "artistName": "Rise Against",
+        "albumName": "Nowhere Generation",
+        "sputnikMusic": {
+            "id": "391800",
+            "note": 3.0,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/391800.jpg",
+            "numberOfUserRatings": "107"
+        }
+    },
+    {
+        "artistName": "Machine Head",
+        "albumName": "Arrows in Words from the Sky",
+        "sputnikMusic": {
+            "id": "398999",
+            "note": 3.0,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398999.jpg",
+            "numberOfUserRatings": "39"
+        }
+    },
+    {
+        "artistName": "Sojourner",
+        "albumName": "Perennial",
+        "sputnikMusic": {
+            "id": "397667",
+            "note": 3.0,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397667.jpg",
+            "numberOfUserRatings": "15"
+        }
+    },
+    {
+        "artistName": "Light the Torch",
+        "albumName": "You Will Be the Death of Me",
+        "sputnikMusic": {
+            "id": "393697",
+            "note": 3.0,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/393697.jpg",
+            "numberOfUserRatings": "20"
+        }
+    },
+    {
+        "artistName": "Rostam",
+        "albumName": "Changephobia",
+        "sputnikMusic": {
+            "id": "395065",
+            "note": 3.0,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395065.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Scale the Summit",
+        "albumName": "Subjects",
+        "sputnikMusic": {
+            "id": "397340",
+            "note": 2.9,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397340.jpg",
+            "numberOfUserRatings": "25"
+        }
+    },
+    {
+        "artistName": "Lil Durk and Lil Baby",
+        "albumName": "The Voice Of The Heroes",
+        "sputnikMusic": {
+            "id": "398240",
+            "note": 2.9,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398240.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "H.E.R.",
+        "albumName": "Back of My Mind",
+        "sputnikMusic": {
+            "id": "399522",
+            "note": 2.9,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399522.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Red Fang",
+        "albumName": "Arrows",
+        "sputnikMusic": {
+            "id": "393420",
+            "note": 2.9,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/393420.jpg",
+            "numberOfUserRatings": "37"
+        }
+    },
+    {
+        "artistName": "Garbage",
+        "albumName": "No Gods No Masters",
+        "sputnikMusic": {
+            "id": "392905",
+            "note": 2.9,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392905.jpg",
+            "numberOfUserRatings": "21"
+        }
+    },
+    {
+        "artistName": "Mammoth WVH",
+        "albumName": "Mammoth WVH",
+        "sputnikMusic": {
+            "id": "388592",
+            "note": 2.9,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/388592.jpg",
+            "numberOfUserRatings": "20"
+        }
+    },
+    {
+        "artistName": "Doja Cat",
+        "albumName": "Planet Her",
+        "sputnikMusic": {
+            "id": "398895",
+            "note": 2.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398895.jpg",
+            "numberOfUserRatings": "26"
+        }
+    },
+    {
+        "artistName": "Fuckin Whatever",
+        "albumName": "Fuckin Whatever",
+        "sputnikMusic": {
+            "id": "390403",
+            "note": 2.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/390403.jpg",
+            "numberOfUserRatings": "12"
+        }
+    },
+    {
+        "artistName": "Hacktivist",
+        "albumName": "Hyperdialect",
+        "sputnikMusic": {
+            "id": "392949",
+            "note": 2.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392949.jpg",
+            "numberOfUserRatings": "14"
+        }
+    },
+    {
+        "artistName": "Liz Phair",
+        "albumName": "Soberish",
+        "sputnikMusic": {
+            "id": "391907",
+            "note": 2.8,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/391907.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Cautious Clay",
+        "albumName": "Deadpan Love",
+        "sputnikMusic": {
+            "id": "395085",
+            "note": 2.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395085.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Ski Mask The Slump God",
+        "albumName": "Sin City: The Mixtape",
+        "sputnikMusic": {
+            "id": "399660",
+            "note": 2.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/399660.jpg",
+            "numberOfUserRatings": "11"
+        }
+    },
+    {
+        "artistName": "Ryan Adams",
+        "albumName": "Big Colors",
+        "sputnikMusic": {
+            "id": "394761",
+            "note": 2.7,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/394761.jpg",
+            "numberOfUserRatings": "11"
+        }
+    },
+    {
+        "artistName": "Migos",
+        "albumName": "Culture III",
+        "sputnikMusic": {
+            "id": "398669",
+            "note": 2.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398669.jpg",
+            "numberOfUserRatings": "29"
+        }
+    },
+    {
+        "artistName": "Burzum",
+        "albumName": "Uruk Hai (Unreleased Material 1988-1994)",
+        "sputnikMusic": {
+            "id": "398267",
+            "note": 2.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398267.jpg",
+            "numberOfUserRatings": "13"
+        }
+    },
+    {
+        "artistName": "Sleater-Kinney",
+        "albumName": "Path of Wellness",
+        "sputnikMusic": {
+            "id": "396299",
+            "note": 2.6,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396299.jpg",
+            "numberOfUserRatings": "40"
+        }
+    },
+    {
+        "artistName": "Atreyu",
+        "albumName": "Baptize",
+        "sputnikMusic": {
+            "id": "390277",
+            "note": 2.1,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/390277.jpg",
+            "numberOfUserRatings": "60"
+        }
+    },
+    {
+        "artistName": "Maroon 5",
+        "albumName": "Jordi",
+        "sputnikMusic": {
+            "id": "395370",
+            "note": 1.1,
+            "releaseDate": {
+                "month": 6,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395370.jpg",
+            "numberOfUserRatings": "68"
+        }
+    },
+    {
+        "artistName": "Iosonouncane",
+        "albumName": "IRA",
+        "sputnikMusic": {
+            "id": "396681",
+            "note": 4.0,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396681.jpg",
+            "numberOfUserRatings": "100"
+        }
+    },
+    {
+        "artistName": "Skee Mask",
+        "albumName": "Pool",
+        "sputnikMusic": {
+            "id": "396011",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396011.jpg",
+            "numberOfUserRatings": "36"
+        }
+    },
+    {
+        "artistName": "Dr. Colossus",
+        "albumName": "I'm a Stupid Moron With an Ugly Face and a Big...",
+        "sputnikMusic": {
+            "id": "397405",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397405.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Dodsrit",
+        "albumName": "Mortal Coil",
+        "sputnikMusic": {
+            "id": "392626",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392626.jpg",
+            "numberOfUserRatings": "36"
+        }
+    },
+    {
+        "artistName": "Impure Wilhelmina",
+        "albumName": "Antidote",
+        "sputnikMusic": {
+            "id": "390214",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/390214.jpg",
+            "numberOfUserRatings": "23"
+        }
+    },
+    {
+        "artistName": "Sweet Trip",
+        "albumName": "A Tiny House, In Secret Speeches, Polar Equals",
+        "sputnikMusic": {
+            "id": "397518",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397518.jpg",
+            "numberOfUserRatings": "164"
+        }
+    },
+    {
+        "artistName": "Ghastly (FIN)",
+        "albumName": "Mercurial Passages",
+        "sputnikMusic": {
+            "id": "392296",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392296.jpg",
+            "numberOfUserRatings": "23"
+        }
+    },
+    {
+        "artistName": "Ossements",
+        "albumName": "Ossements III",
+        "sputnikMusic": {
+            "id": "398320",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398320.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Sarah Neufeld",
+        "albumName": "Detritus",
+        "sputnikMusic": {
+            "id": "396720",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396720.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Lord Huron",
+        "albumName": "Long Lost",
+        "sputnikMusic": {
+            "id": "395206",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395206.jpg",
+            "numberOfUserRatings": "100"
+        }
+    },
+    {
+        "artistName": "Esoctrilihum",
+        "albumName": "Dy'th Requiem for the Serpent Telepath",
+        "sputnikMusic": {
+            "id": "392705",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392705.jpg",
+            "numberOfUserRatings": "64"
+        }
+    },
+    {
+        "artistName": "Panopticon",
+        "albumName": ".\u200b.\u200b.\u200bAnd Again into the Light",
+        "sputnikMusic": {
+            "id": "391962",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/391962.jpg",
+            "numberOfUserRatings": "164"
+        }
+    },
+    {
+        "artistName": "Goodbye World",
+        "albumName": "At Death's Door",
+        "sputnikMusic": {
+            "id": "395011",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395011.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Mdou Moctar",
+        "albumName": "Afrique Victime",
+        "sputnikMusic": {
+            "id": "397441",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397441.jpg",
+            "numberOfUserRatings": "15"
+        }
+    },
+    {
+        "artistName": "Rhododendron",
+        "albumName": "Protozoan Battle Hymns",
+        "sputnikMusic": {
+            "id": "398239",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398239.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Teramaze",
+        "albumName": "Sorella Minore",
+        "sputnikMusic": {
+            "id": "395856",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395856.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "The Devil Wears Prada",
+        "albumName": "ZII",
+        "sputnikMusic": {
+            "id": "393764",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/393764.jpg",
+            "numberOfUserRatings": "253"
+        }
+    },
+    {
+        "artistName": "August Burns Red",
+        "albumName": "Leveler: 10th Anniversary Edition",
+        "sputnikMusic": {
+            "id": "397418",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397418.jpg",
+            "numberOfUserRatings": "24"
+        }
+    },
+    {
+        "artistName": "Mental Cruelty",
+        "albumName": "A Hill to Die Upon",
+        "sputnikMusic": {
+            "id": "390238",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/390238.jpg",
+            "numberOfUserRatings": "59"
+        }
+    },
+    {
+        "artistName": "Silver Talon",
+        "albumName": "Decadence and Decay",
+        "sputnikMusic": {
+            "id": "396102",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396102.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Cursetheknife",
+        "albumName": "Thank You For Being Here",
+        "sputnikMusic": {
+            "id": "397951",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397951.jpg",
+            "numberOfUserRatings": "14"
+        }
+    },
+    {
+        "artistName": "The Monolith Deathcult",
+        "albumName": "V3 - Vernedering: Connect the Goddamn Dots",
+        "sputnikMusic": {
+            "id": "395861",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395861.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Submotile",
+        "albumName": "Sonic Day Codas",
+        "sputnikMusic": {
+            "id": "396089",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396089.jpg",
+            "numberOfUserRatings": "20"
+        }
+    },
+    {
+        "artistName": "Yautja",
+        "albumName": "The Lurch",
+        "sputnikMusic": {
+            "id": "392285",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392285.jpg",
+            "numberOfUserRatings": "74"
+        }
+    },
+    {
+        "artistName": "DorDeDuh",
+        "albumName": "Har",
+        "sputnikMusic": {
+            "id": "388864",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/388864.jpg",
+            "numberOfUserRatings": "73"
+        }
+    },
+    {
+        "artistName": "Silver Lake",
+        "albumName": "Silver Lake",
+        "sputnikMusic": {
+            "id": "389046",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/389046.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Noctule",
+        "albumName": "Wretched Abyss",
+        "sputnikMusic": {
+            "id": "389638",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/389638.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Fucked Up",
+        "albumName": "Year of the Horse",
+        "sputnikMusic": {
+            "id": "387916",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/387916.jpg",
+            "numberOfUserRatings": "35"
+        }
+    },
+    {
+        "artistName": "VOLA",
+        "albumName": "Witness",
+        "sputnikMusic": {
+            "id": "387823",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/387823.jpg",
+            "numberOfUserRatings": "212"
+        }
+    },
+    {
+        "artistName": "Methadone Skies",
+        "albumName": "Retrofuture Caveman",
+        "sputnikMusic": {
+            "id": "391397",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/391397.jpg",
+            "numberOfUserRatings": "11"
+        }
+    },
+    {
+        "artistName": "Portal",
+        "albumName": "Avow",
+        "sputnikMusic": {
+            "id": "394678",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/394678.jpg",
+            "numberOfUserRatings": "111"
+        }
+    },
+    {
+        "artistName": "The Flight of Sleipnir",
+        "albumName": "Eventide",
+        "sputnikMusic": {
+            "id": "392769",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392769.jpg",
+            "numberOfUserRatings": "29"
+        }
+    },
+    {
+        "artistName": "Dead and Dripping",
+        "albumName": "Miasmic Eulogies Predicating an Eternal Nocturne",
+        "sputnikMusic": {
+            "id": "397158",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397158.jpg",
+            "numberOfUserRatings": "20"
+        }
+    },
+    {
+        "artistName": "Sons of Kemet",
+        "albumName": "Black to the Future",
+        "sputnikMusic": {
+            "id": "396990",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396990.jpg",
+            "numberOfUserRatings": "22"
+        }
+    },
+    {
+        "artistName": "King Gizzard and The Lizard Wizard",
+        "albumName": "Live in Sydney '21",
+        "sputnikMusic": {
+            "id": "398040",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398040.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Hanging Garden",
+        "albumName": "Skeleton Lake",
+        "sputnikMusic": {
+            "id": "396293",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396293.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Galleons",
+        "albumName": "Galleons",
+        "sputnikMusic": {
+            "id": "397147",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397147.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Abkehr",
+        "albumName": "In Blut",
+        "sputnikMusic": {
+            "id": "397159",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397159.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Frost*",
+        "albumName": "Day and Age",
+        "sputnikMusic": {
+            "id": "393996",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/393996.jpg",
+            "numberOfUserRatings": "23"
+        }
+    },
+    {
+        "artistName": "Erika de Casier",
+        "albumName": "Sensational",
+        "sputnikMusic": {
+            "id": "396488",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396488.jpg",
+            "numberOfUserRatings": "36"
+        }
+    },
+    {
+        "artistName": "Bachelor",
+        "albumName": "Doomin' Sun",
+        "sputnikMusic": {
+            "id": "392399",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392399.jpg",
+            "numberOfUserRatings": "16"
+        }
+    },
+    {
+        "artistName": "Acausal Intrusion",
+        "albumName": "Nulitas",
+        "sputnikMusic": {
+            "id": "394485",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/394485.jpg",
+            "numberOfUserRatings": "38"
+        }
+    },
+    {
+        "artistName": "Alluvial",
+        "albumName": "Sarcoma",
+        "sputnikMusic": {
+            "id": "391102",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/391102.jpg",
+            "numberOfUserRatings": "44"
+        }
+    },
+    {
+        "artistName": "Jack Ingram, Miranda Lambert, Jon Randall",
+        "albumName": "The Marfa Tapes",
+        "sputnikMusic": {
+            "id": "396158",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396158.jpg",
+            "numberOfUserRatings": "16"
+        }
+    },
+    {
+        "artistName": "Blood Cultures",
+        "albumName": "LUNO",
+        "sputnikMusic": {
+            "id": "397868",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397868.jpg",
+            "numberOfUserRatings": "16"
+        }
+    },
+    {
+        "artistName": "headcave",
+        "albumName": "2",
+        "sputnikMusic": {
+            "id": "396008",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396008.jpg",
+            "numberOfUserRatings": "23"
+        }
+    },
+    {
+        "artistName": "VEXED (UK)",
+        "albumName": "Culling Culture",
+        "sputnikMusic": {
+            "id": "397538",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397538.jpg",
+            "numberOfUserRatings": "20"
+        }
+    },
+    {
+        "artistName": "Fiddlehead",
+        "albumName": "Between the Richness",
+        "sputnikMusic": {
+            "id": "391616",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/391616.jpg",
+            "numberOfUserRatings": "64"
+        }
+    },
+    {
+        "artistName": "Grey Aura",
+        "albumName": "Zwart vierkant",
+        "sputnikMusic": {
+            "id": "395312",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395312.jpg",
+            "numberOfUserRatings": "28"
+        }
+    },
+    {
+        "artistName": "Seth",
+        "albumName": "La Morsure du Christ",
+        "sputnikMusic": {
+            "id": "389416",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/389416.jpg",
+            "numberOfUserRatings": "28"
+        }
+    },
+    {
+        "artistName": "Perturbator",
+        "albumName": "Lustful Sacraments",
+        "sputnikMusic": {
+            "id": "395548",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395548.jpg",
+            "numberOfUserRatings": "75"
+        }
+    },
+    {
+        "artistName": "Unfathomable Ruination",
+        "albumName": "Decennium Ruinae",
+        "sputnikMusic": {
+            "id": "390371",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/390371.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Anatomia",
+        "albumName": "Corporeal Torment",
+        "sputnikMusic": {
+            "id": "390026",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/390026.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "White Moth Black Butterfly",
+        "albumName": "The Cost Of Dreaming",
+        "sputnikMusic": {
+            "id": "397873",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397873.jpg",
+            "numberOfUserRatings": "20"
+        }
+    },
+    {
+        "artistName": "The Tragically Hip",
+        "albumName": "Saskadelphia",
+        "sputnikMusic": {
+            "id": "397547",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397547.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "CZARFACE and MF DOOM",
+        "albumName": "Super What?",
+        "sputnikMusic": {
+            "id": "395976",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395976.jpg",
+            "numberOfUserRatings": "54"
+        }
+    },
+    {
+        "artistName": "Of Mice and Men",
+        "albumName": "Bloom",
+        "sputnikMusic": {
+            "id": "394609",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/394609.jpg",
+            "numberOfUserRatings": "23"
+        }
+    },
+    {
+        "artistName": "Rx Nephew",
+        "albumName": "Slitherman Activated",
+        "sputnikMusic": {
+            "id": "397890",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397890.jpg",
+            "numberOfUserRatings": "14"
+        }
+    },
+    {
+        "artistName": "Gonemage",
+        "albumName": "Mystical Extraction",
+        "sputnikMusic": {
+            "id": "395901",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395901.jpg",
+            "numberOfUserRatings": "49"
+        }
+    },
+    {
+        "artistName": "Squid",
+        "albumName": "Bright Green Field",
+        "sputnikMusic": {
+            "id": "388831",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/388831.jpg",
+            "numberOfUserRatings": "222"
+        }
+    },
+    {
+        "artistName": "dEMOTIONAL",
+        "albumName": "Scandinavian Aftermath",
+        "sputnikMusic": {
+            "id": "398266",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/398266.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Deadlights",
+        "albumName": "The Uncanny Valley",
+        "sputnikMusic": {
+            "id": "394267",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/394267.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Canvas Solaris",
+        "albumName": "Chromosphere",
+        "sputnikMusic": {
+            "id": "395858",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395858.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "McKinley Dixon",
+        "albumName": "For My Mama And Anyone Who Look Like Her",
+        "sputnikMusic": {
+            "id": "396028",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396028.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Mannequin Pussy",
+        "albumName": "Perfect",
+        "sputnikMusic": {
+            "id": "392401",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392401.jpg",
+            "numberOfUserRatings": "13"
+        }
+    },
+    {
+        "artistName": "Convictions",
+        "albumName": "I Won't Survive",
+        "sputnikMusic": {
+            "id": "394708",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/394708.jpg",
+            "numberOfUserRatings": "13"
+        }
+    },
+    {
+        "artistName": "Chloe Moriondo",
+        "albumName": "Blood Bunny",
+        "sputnikMusic": {
+            "id": "396152",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396152.jpg",
+            "numberOfUserRatings": "13"
+        }
+    },
+    {
+        "artistName": "Violet Cold",
+        "albumName": "Empire of Love",
+        "sputnikMusic": {
+            "id": "395869",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395869.jpg",
+            "numberOfUserRatings": "59"
+        }
+    },
+    {
+        "artistName": "Vorvan",
+        "albumName": "Awakened",
+        "sputnikMusic": {
+            "id": "397850",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397850.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "King of Asgard",
+        "albumName": "Svartrvi\u00f0r",
+        "sputnikMusic": {
+            "id": "395713",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395713.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Subterranean Masquerade",
+        "albumName": "Mountain Fever",
+        "sputnikMusic": {
+            "id": "392602",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392602.jpg",
+            "numberOfUserRatings": "30"
+        }
+    },
+    {
+        "artistName": "FACS",
+        "albumName": "Present Tense",
+        "sputnikMusic": {
+            "id": "390203",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/390203.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Elderwind",
+        "albumName": "Fires",
+        "sputnikMusic": {
+            "id": "396281",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396281.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Charnel Grounds",
+        "albumName": "Molecular Entropy Examined in the Bowels of a Grea",
+        "sputnikMusic": {
+            "id": "395720",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395720.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Black Midi",
+        "albumName": "Cavalcade",
+        "sputnikMusic": {
+            "id": "392299",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392299.jpg",
+            "numberOfUserRatings": "240"
+        }
+    },
+    {
+        "artistName": "Belvedere",
+        "albumName": "Hindsight Is the Sixth Sense",
+        "sputnikMusic": {
+            "id": "396539",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396539.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Psychonaut & Saver",
+        "albumName": "Emerald",
+        "sputnikMusic": {
+            "id": "396679",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396679.jpg",
+            "numberOfUserRatings": "11"
+        }
+    },
+    {
+        "artistName": "Mach-Hommy",
+        "albumName": "Pray For Haiti",
+        "sputnikMusic": {
+            "id": "397216",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397216.jpg",
+            "numberOfUserRatings": "33"
+        }
+    },
+    {
+        "artistName": "Trade Wind",
+        "albumName": "The Day We Got What We Deserved",
+        "sputnikMusic": {
+            "id": "397367",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397367.jpg",
+            "numberOfUserRatings": "16"
+        }
+    },
+    {
+        "artistName": "Aly and AJ",
+        "albumName": "a touch of the beat gets you up on your feet...",
+        "sputnikMusic": {
+            "id": "395048",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395048.jpg",
+            "numberOfUserRatings": "23"
+        }
+    },
+    {
+        "artistName": "Djevel",
+        "albumName": "Tanker som rir natten",
+        "sputnikMusic": {
+            "id": "395860",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395860.jpg",
+            "numberOfUserRatings": "13"
+        }
+    },
+    {
+        "artistName": "Inferno (CZ)",
+        "albumName": "PARADEIGMA (Phosphenes of Aphotic Eternity)",
+        "sputnikMusic": {
+            "id": "390351",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/390351.jpg",
+            "numberOfUserRatings": "20"
+        }
+    },
+    {
+        "artistName": "Stars Hollow",
+        "albumName": "I Want To Live My Life",
+        "sputnikMusic": {
+            "id": "396029",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396029.jpg",
+            "numberOfUserRatings": "14"
+        }
+    },
+    {
+        "artistName": "Hurry Up, Brothers",
+        "albumName": "All is Beautiful. I'm Okay to be Alive..",
+        "sputnikMusic": {
+            "id": "397926",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397926.jpg",
+            "numberOfUserRatings": "15"
+        }
+    },
+    {
+        "artistName": "Storefront Church",
+        "albumName": "As We Pass",
+        "sputnikMusic": {
+            "id": "397589",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397589.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Loscil",
+        "albumName": "Clara",
+        "sputnikMusic": {
+            "id": "397917",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397917.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Convictions",
+        "albumName": "I Won\u2019t Survive",
+        "sputnikMusic": {
+            "id": "396088",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396088.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Dayglow",
+        "albumName": "Harmony House",
+        "sputnikMusic": {
+            "id": "397541",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397541.jpg",
+            "numberOfUserRatings": "11"
+        }
+    },
+    {
+        "artistName": "Bladee",
+        "albumName": "The Fool",
+        "sputnikMusic": {
+            "id": "397805",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397805.jpg",
+            "numberOfUserRatings": "33"
+        }
+    },
+    {
+        "artistName": "Cold Moon (USA-CA)",
+        "albumName": "What's The Rush?",
+        "sputnikMusic": {
+            "id": "392309",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392309.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Cirith Ungol",
+        "albumName": "Half Past Human",
+        "sputnikMusic": {
+            "id": "393480",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/393480.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "The Suns Journey Through The Night",
+        "albumName": "Demo II",
+        "sputnikMusic": {
+            "id": "395549",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395549.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "the GazettE",
+        "albumName": "Mass",
+        "sputnikMusic": {
+            "id": "397238",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397238.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Kaonashi",
+        "albumName": "Dear Lemon House, You Ruined Me: Senior Year",
+        "sputnikMusic": {
+            "id": "397375",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397375.jpg",
+            "numberOfUserRatings": "28"
+        }
+    },
+    {
+        "artistName": "Lambchop",
+        "albumName": "Showtunes",
+        "sputnikMusic": {
+            "id": "397402",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397402.jpg",
+            "numberOfUserRatings": "16"
+        }
+    },
+    {
+        "artistName": "Jute Gyte",
+        "albumName": "Mitrealit\u00e4t",
+        "sputnikMusic": {
+            "id": "395665",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395665.jpg",
+            "numberOfUserRatings": "15"
+        }
+    },
+    {
+        "artistName": "Young Nudy",
+        "albumName": "DR. EV4L",
+        "sputnikMusic": {
+            "id": "396717",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396717.jpg",
+            "numberOfUserRatings": "12"
+        }
+    },
+    {
+        "artistName": "Terminalist",
+        "albumName": "The Great Acceleration",
+        "sputnikMusic": {
+            "id": "390932",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/390932.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Wormlight",
+        "albumName": "Nightmother",
+        "sputnikMusic": {
+            "id": "387904",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/387904.jpg",
+            "numberOfUserRatings": "11"
+        }
+    },
+    {
+        "artistName": "Bala",
+        "albumName": "Maleza",
+        "sputnikMusic": {
+            "id": "395859",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395859.jpg",
+            "numberOfUserRatings": "29"
+        }
+    },
+    {
+        "artistName": "Hot Mulligan",
+        "albumName": "I Won't Reach Out To You",
+        "sputnikMusic": {
+            "id": "395058",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395058.jpg",
+            "numberOfUserRatings": "26"
+        }
+    },
+    {
+        "artistName": "Morbific",
+        "albumName": "Ominous Seep of Putridity",
+        "sputnikMusic": {
+            "id": "395474",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395474.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Gary Numan",
+        "albumName": "Intruder",
+        "sputnikMusic": {
+            "id": "385704",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/385704.jpg",
+            "numberOfUserRatings": "14"
+        }
+    },
+    {
+        "artistName": "Vokonis",
+        "albumName": "Odyssey",
+        "sputnikMusic": {
+            "id": "388558",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/388558.jpg",
+            "numberOfUserRatings": "19"
+        }
+    },
+    {
+        "artistName": "No Light Escapes",
+        "albumName": "The Purity of Guilt",
+        "sputnikMusic": {
+            "id": "395814",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395814.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Hundreds of AU",
+        "albumName": "Acting from Remote Satellites",
+        "sputnikMusic": {
+            "id": "396262",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396262.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Ghost Iris",
+        "albumName": "Comatose",
+        "sputnikMusic": {
+            "id": "389149",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/389149.jpg",
+            "numberOfUserRatings": "16"
+        }
+    },
+    {
+        "artistName": "Doss",
+        "albumName": "4 New Hit Songs",
+        "sputnikMusic": {
+            "id": "396506",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396506.jpg",
+            "numberOfUserRatings": "20"
+        }
+    },
+    {
+        "artistName": "SeeYouSpaceCowboy/If I Die First",
+        "albumName": "A Sure Disaster",
+        "sputnikMusic": {
+            "id": "392925",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392925.jpg",
+            "numberOfUserRatings": "19"
+        }
+    },
+    {
+        "artistName": "Fange",
+        "albumName": "Pantocrator",
+        "sputnikMusic": {
+            "id": "389738",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/389738.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Grave Miasma",
+        "albumName": "Abyss of Wrathful Deities",
+        "sputnikMusic": {
+            "id": "392888",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392888.jpg",
+            "numberOfUserRatings": "60"
+        }
+    },
+    {
+        "artistName": "An Autumn For Crippled Children",
+        "albumName": "As The Morning Dawns We Close Our Eyes",
+        "sputnikMusic": {
+            "id": "390359",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/390359.jpg",
+            "numberOfUserRatings": "23"
+        }
+    },
+    {
+        "artistName": "Natalia Lafourcade",
+        "albumName": "Un Canto por M\u00e9xico\u201a Vol\u2024 2",
+        "sputnikMusic": {
+            "id": "397808",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397808.jpg",
+            "numberOfUserRatings": "13"
+        }
+    },
+    {
+        "artistName": "Adventurer",
+        "albumName": "Pacifica",
+        "sputnikMusic": {
+            "id": "397726",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397726.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "The Black Keys",
+        "albumName": "Delta Kream",
+        "sputnikMusic": {
+            "id": "394020",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/394020.jpg",
+            "numberOfUserRatings": "42"
+        }
+    },
+    {
+        "artistName": "Iceage",
+        "albumName": "Seek Shelter",
+        "sputnikMusic": {
+            "id": "388987",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/388987.jpg",
+            "numberOfUserRatings": "115"
+        }
+    },
+    {
+        "artistName": "Darko (US)",
+        "albumName": "Darko",
+        "sputnikMusic": {
+            "id": "392836",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392836.jpg",
+            "numberOfUserRatings": "50"
+        }
+    },
+    {
+        "artistName": "Impaled Nazarene",
+        "albumName": "Eight Headed Serpent",
+        "sputnikMusic": {
+            "id": "393969",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/393969.jpg",
+            "numberOfUserRatings": "24"
+        }
+    },
+    {
+        "artistName": "Portico Quartet",
+        "albumName": "Terrain",
+        "sputnikMusic": {
+            "id": "397860",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397860.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Cadaveric Incubator",
+        "albumName": "Nightmare Necropolis",
+        "sputnikMusic": {
+            "id": "395165",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395165.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Kataan",
+        "albumName": "Kataan",
+        "sputnikMusic": {
+            "id": "396045",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396045.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Jorja Smith",
+        "albumName": "Be Right Back",
+        "sputnikMusic": {
+            "id": "395050",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395050.jpg",
+            "numberOfUserRatings": "17"
+        }
+    },
+    {
+        "artistName": "Jess And The Ancient Ones",
+        "albumName": "Vertigo",
+        "sputnikMusic": {
+            "id": "388444",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/388444.jpg",
+            "numberOfUserRatings": "12"
+        }
+    },
+    {
+        "artistName": "Nordjevel",
+        "albumName": "Fenriir",
+        "sputnikMusic": {
+            "id": "388961",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/388961.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Caliban",
+        "albumName": "Zeitgeister",
+        "sputnikMusic": {
+            "id": "391984",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/391984.jpg",
+            "numberOfUserRatings": "15"
+        }
+    },
+    {
+        "artistName": "Pardoner",
+        "albumName": "Came Down Different",
+        "sputnikMusic": {
+            "id": "387864",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/387864.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Dodie",
+        "albumName": "Build a Problem",
+        "sputnikMusic": {
+            "id": "396015",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396015.jpg",
+            "numberOfUserRatings": "14"
+        }
+    },
+    {
+        "artistName": "Giant Claw",
+        "albumName": "Mirror Guide",
+        "sputnikMusic": {
+            "id": "396782",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396782.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Sufjan Stevens",
+        "albumName": "Convocations",
+        "sputnikMusic": {
+            "id": "393479",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/393479.jpg",
+            "numberOfUserRatings": "20"
+        }
+    },
+    {
+        "artistName": "St. Vincent",
+        "albumName": "Daddy's Home",
+        "sputnikMusic": {
+            "id": "389563",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/389563.jpg",
+            "numberOfUserRatings": "138"
+        }
+    },
+    {
+        "artistName": "Nadja",
+        "albumName": "Luminous Rot",
+        "sputnikMusic": {
+            "id": "390775",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/390775.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Olivia Rodrigo",
+        "albumName": "SOUR",
+        "sputnikMusic": {
+            "id": "390866",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/390866.jpg",
+            "numberOfUserRatings": "141"
+        }
+    },
+    {
+        "artistName": "Khandra",
+        "albumName": "All Occupied by Sole Death",
+        "sputnikMusic": {
+            "id": "392481",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/392481.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Axial",
+        "albumName": "Conflict of Mortals",
+        "sputnikMusic": {
+            "id": "396382",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396382.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "J. Cole",
+        "albumName": "The Off-Season",
+        "sputnikMusic": {
+            "id": "395729",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395729.jpg",
+            "numberOfUserRatings": "105"
+        }
+    },
+    {
+        "artistName": "Feed Them Death",
+        "albumName": "Negative",
+        "sputnikMusic": {
+            "id": "395315",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395315.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Bloodbound",
+        "albumName": "Creatures of the Dark Realm",
+        "sputnikMusic": {
+            "id": "387276",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/387276.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Morcheeba",
+        "albumName": "Blackest Blue",
+        "sputnikMusic": {
+            "id": "391606",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/391606.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "The Mighty Mighty Bosstones",
+        "albumName": "When God Was Great",
+        "sputnikMusic": {
+            "id": "391441",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/391441.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Wiki and Nah",
+        "albumName": "Telephonebooth",
+        "sputnikMusic": {
+            "id": "395926",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395926.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Artillery",
+        "albumName": "X",
+        "sputnikMusic": {
+            "id": "391909",
+            "note": 3.0,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/391909.jpg",
+            "numberOfUserRatings": "18"
+        }
+    },
+    {
+        "artistName": "The Ember, The Ash",
+        "albumName": "Fixation",
+        "sputnikMusic": {
+            "id": "389108",
+            "note": 3.0,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/389108.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Colleen",
+        "albumName": "The Tunnel and the Clearing",
+        "sputnikMusic": {
+            "id": "387761",
+            "note": 3.0,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/387761.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "21 Savage",
+        "albumName": "Spiral",
+        "sputnikMusic": {
+            "id": "396573",
+            "note": 3.0,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396573.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Monster Magnet",
+        "albumName": "A Better Dystopia",
+        "sputnikMusic": {
+            "id": "391052",
+            "note": 3.0,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/391052.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Our Hollow, Our Home",
+        "albumName": "Burn in the Flood",
+        "sputnikMusic": {
+            "id": "389385",
+            "note": 3.0,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/389385.jpg",
+            "numberOfUserRatings": "12"
+        }
+    },
+    {
+        "artistName": "CHAI",
+        "albumName": "Wink",
+        "sputnikMusic": {
+            "id": "395052",
+            "note": 2.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395052.jpg",
+            "numberOfUserRatings": "15"
+        }
+    },
+    {
+        "artistName": "Twenty One Pilots",
+        "albumName": "Scaled and Icy",
+        "sputnikMusic": {
+            "id": "393511",
+            "note": 2.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/393511.jpg",
+            "numberOfUserRatings": "142"
+        }
+    },
+    {
+        "artistName": "Kodak Black",
+        "albumName": "Haitian Boy Kodak",
+        "sputnikMusic": {
+            "id": "396571",
+            "note": 2.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396571.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "DMX",
+        "albumName": "Exodus",
+        "sputnikMusic": {
+            "id": "396574",
+            "note": 2.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396574.jpg",
+            "numberOfUserRatings": "24"
+        }
+    },
+    {
+        "artistName": "We Were Sharks",
+        "albumName": "New Low",
+        "sputnikMusic": {
+            "id": "397374",
+            "note": 2.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397374.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Osiah",
+        "albumName": "Loss",
+        "sputnikMusic": {
+            "id": "396070",
+            "note": 2.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396070.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Undo K From Hot",
+        "albumName": "G.A.S. Get A Star",
+        "sputnikMusic": {
+            "id": "396017",
+            "note": 2.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/396017.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Portal",
+        "albumName": "Hagbulbia",
+        "sputnikMusic": {
+            "id": "397822",
+            "note": 2.8,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397822.jpg",
+            "numberOfUserRatings": "31"
+        }
+    },
+    {
+        "artistName": "Bebe Rexha",
+        "albumName": "Better Mistakes",
+        "sputnikMusic": {
+            "id": "394079",
+            "note": 2.8,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/394079.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Myles Kennedy",
+        "albumName": "The Ides of March",
+        "sputnikMusic": {
+            "id": "388921",
+            "note": 2.8,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/388921.jpg",
+            "numberOfUserRatings": "13"
+        }
+    },
+    {
+        "artistName": "YG and Mozzy",
+        "albumName": "Kommunity Service",
+        "sputnikMusic": {
+            "id": "397154",
+            "note": 2.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397154.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Sumo Cyco",
+        "albumName": "Initiation",
+        "sputnikMusic": {
+            "id": "395853",
+            "note": 2.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/395853.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Benny The Butcher and 38 Spesh",
+        "albumName": "Trust The Sopranos",
+        "sputnikMusic": {
+            "id": "397379",
+            "note": 2.7,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397379.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Odraza",
+        "albumName": "Acedia",
+        "sputnikMusic": {
+            "id": "397492",
+            "note": 2.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397492.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Weezer",
+        "albumName": "Van Weezer",
+        "sputnikMusic": {
+            "id": "334291",
+            "note": 2.6,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/334291.jpg",
+            "numberOfUserRatings": "184"
+        }
+    },
+    {
+        "artistName": "Waterparks",
+        "albumName": "Greatest Hits",
+        "sputnikMusic": {
+            "id": "397420",
+            "note": 1.9,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/397420.jpg",
+            "numberOfUserRatings": "20"
+        }
+    },
+    {
+        "artistName": "Van Morrison",
+        "albumName": "Latest Record Project, Volume I",
+        "sputnikMusic": {
+            "id": "390720",
+            "note": 1.5,
+            "releaseDate": {
+                "month": 5,
+                "year": 2021
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/390720.jpg",
+            "numberOfUserRatings": "14"
+        }
+    }
+]

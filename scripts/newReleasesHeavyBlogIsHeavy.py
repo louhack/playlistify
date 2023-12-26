@@ -101,8 +101,8 @@ f.close()
 
 
 ##### UPSERT IN DB - COLLECTION :ALBUMS
-#connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
-connection = MongoClient(os.environ.get('MONGODB_WEBSCRAPPER'))
+connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
+#connection = MongoClient(os.environ.get('MONGODB_WEBSCRAPPER'))
 
 db = connection.get_default_database()
 releases = db.albums

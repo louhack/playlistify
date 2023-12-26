@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { Observable, Subject, Subscription } from 'rxjs';
+import { forkJoin, from, Observable, of, Subject, Subscription } from 'rxjs';
 
 import { Album } from '../../../models/album.model';
 import { UserService } from '../../../services/spotify/user.service';
@@ -10,10 +10,11 @@ import { AlbumSpotify } from '../../../interfaces/albumSpotifyInterface';
 import { MyCalendar } from '../../../shared/myCalendar';
 import { AlbumsModalComponent } from '../albums-modal/albums-modal.component';
 import { AlbumPlaylistI } from '../../../interfaces/albumAddedToPlaylist.interface';
-import { switchMap, distinctUntilChanged, debounceTime, throwIfEmpty } from 'rxjs/operators';
+import { switchMap, distinctUntilChanged, debounceTime, throwIfEmpty, map } from 'rxjs/operators';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlbumsListI } from '../../../interfaces/albumsList.interface';
 import { AlbumEditComponent } from '../album-edit/album-edit.component';
+import { User } from '../../../models/user.model';
 
 @Component({
   selector: 'app-album-list',
@@ -22,7 +23,8 @@ import { AlbumEditComponent } from '../album-edit/album-edit.component';
 })
 export class AlbumListComponent implements OnInit {
 
-  albumsList: Album[];
+  albums$: Observable<Album[]>;
+
 
   albumSubscription: Subscription;
   userSubscription: Subscription;
@@ -37,29 +39,74 @@ export class AlbumListComponent implements OnInit {
 
   private searchReq = new Subject<{searchData: string, searchScope: string, searchSources: string}>();
 
-  totalNumberOfAlbums: number;
-  totalNumberOfPages: number;
-  currentPage: number;
-  maxSize = 5;
-  numPages = 0;
-  itemsPerPage = 20;
+  pageParams = {
+    totalNumberOfAlbums: 0,
+    totalNumberOfPages: 0,
+    currentPage: 1,
+    maxSize: 5,
+    numPages: 0,
+    itemsPerPage: 20
+  }
+
+
 
 // Modal for playlist creation
 bsModalRef: BsModalRef;
 
 searchMode: boolean;
 
-  constructor(private albumsService: AlbumService, private userService: UserService, private spotifyApiService: SpotifyApiService, private modalService: BsModalService) {
-  // console.log('CONSTRUCTOR');
-    this.albumSubscription = albumsService.albumChanged.subscribe(
-      albumChanged => {
-        this.albumsList[albumChanged.index] = albumChanged.album;
-    });
 
-    this.userSubscription = userService.userChanged.subscribe( () => {
-         this.searchPlaylistifiedAlbums();
-    });
+  // constructor(private albumsService: AlbumService, private userService: UserService, private spotifyApiService: SpotifyApiService, private modalService: BsModalService) {
+  // // console.log('CONSTRUCTOR');
+  //   // initPageParams();
+  //   this.getAlbums(this.pageParams.currentPage, this.pageParams.itemsPerPage).then(
+  //     (res) => {
+  //       console.log("Got album");
+  //       console.log(this.albumsListObs);
+  //       if (res){
+  //         console.log("return from promise " + res);
+  //         this.userSubscription = this.userService.userChanged.subscribe(
+  //           {next: () => {
+  //               this.searchPlaylistifiedAlbums();
+  //             }}
+  //             );
+  //       }
+  //     }
+  //   );
+
+
+  //   this.albumSubscription = albumsService.albumChanged.subscribe(
+  //     albumChanged => {
+  //       this.albumsListObs.subscribe({next: observer => {
+  //         observer[albumChanged.index] = albumChanged.album;
+  //         this.albumsListObs = of(observer);
+  //       }}
+  //     )}
+  //   );
+
+
+
+  //   // setTimeout(() => {
+  //     // this.userSubscription = userService.userChanged.subscribe( () => {
+  //     //   this.searchPlaylistifiedAlbums();
+  //     // });
+  //   // },
+  //   // 500);
+
+
+  // }
+
+  constructor(private albumsService: AlbumService, private userService: UserService, private spotifyApiService: SpotifyApiService, private modalService: BsModalService) {
+    this.albums$ = this.albumsService.getAlbums(this.pageParams.currentPage, this.pageParams.itemsPerPage).pipe(
+      map(albums => {
+          return albums.albumsList;
+        }
+    ));
+
   }
+
+
+
 
   //trigger when when user types in searchbar
   public searchEvent() {
@@ -80,10 +127,12 @@ searchMode: boolean;
 
   ngOnInit() {
     // console.log('ON INIT');
-      this.getAlbums(1, this.itemsPerPage);
+    // initPageParams();
 
-      //search logic
-      this.search();
+
+    //search logic
+    this.search();
+
   }
 
   //search each time the content of the search bar has changed
@@ -98,8 +147,8 @@ searchMode: boolean;
       // switch to new search observable each time the term changes
       switchMap((value) => {
           this.searchMode = true;
-          this.currentPage=1;
-          return this.sendSearhReq(value.searchData,value.searchScope, value.searchSources, this.currentPage, this.itemsPerPage);
+          this.pageParams.currentPage=1;
+          return this.sendSearhReq(value.searchData,value.searchScope, value.searchSources, this.pageParams.currentPage, this.pageParams.itemsPerPage);
       }),
       // catchError(e => {
       //   console.log(e);
@@ -111,13 +160,18 @@ searchMode: boolean;
       // console.log(albumsListI);
       if (!this.isEmptyObject(albumsListI)) {
         // console.log("found results");
-        this.responseToAlbumList(albumsListI);
+        // this.responseToAlbumList(albumsListI);
+
+        this.albums$ = of(albumsListI.albumsList);
+        this.pageParams.currentPage = albumsListI.currentPage;
+        this.pageParams.totalNumberOfAlbums = albumsListI.totalNumberOfAlbums;
+        this.pageParams.totalNumberOfPages = albumsListI.totalNumberOfPages;
       }
       else {
         // console.log("Display list");
         this.searchMode=false;
-        this.currentPage=1;
-        this.getAlbums(this.currentPage, this.itemsPerPage);
+        this.pageParams.currentPage=1;
+        this.getAlbums(this.pageParams.currentPage,this.pageParams.itemsPerPage);
       }
 
       });
@@ -126,58 +180,113 @@ searchMode: boolean;
     return this.albumsService.searchAlbum(searchData,searchScope, searchSources, page, resultLimit);
   }
 
-  responseToAlbumList(_albumsList: AlbumsListI){
-    // console.log(_albumsList);
-    this.albumsList = _albumsList.albumsList;
-    this.currentPage = _albumsList.currentPage;
-    this.totalNumberOfPages = _albumsList.totalNumberOfPages;
-    this.totalNumberOfAlbums = _albumsList.totalNumberOfAlbums;
-    this.searchPlaylistifiedAlbums();
-  }
+  // responseToAlbumList(_albumsList: AlbumsListI){
+  //   // console.log(_albumsList);
+  //   this.albumsList = _albumsList.albumsList;
+  //   this.currentPage = _albumsList.currentPage;
+  //   this.totalNumberOfPages = _albumsList.totalNumberOfPages;
+  //   this.totalNumberOfAlbums = _albumsList.totalNumberOfAlbums;
+  //   this.searchPlaylistifiedAlbums();
+  // }
 
   isEmptyObject(obj: Object): Boolean {
     return !Object.keys(obj).length;
   }
 
-  getAlbums(_page: number, _itemsPerPage: number){
-    this.albumsService.getAlbums(_page, _itemsPerPage)
-      .subscribe(albumsListI => {
-        this.responseToAlbumList(albumsListI);
-      });
+  async getAlbums(currentPage: number, itemsPerPage:number): Promise<boolean> {
+    console.log("getting albums");
+    return await this.getAlbumsAsync(currentPage, itemsPerPage);
+
   }
+  async getAlbumsAsync(currentPage: number, itemsPerPage: number) {
+    return new Promise<boolean>(
+      (resolve,reject) => {
+        this.albumsService.getAlbums(currentPage, itemsPerPage).subscribe({
+          next: observer => {
+            var albums:Album[] = observer.albumsList;
+            this.albums$ = of(albums);
+            this.pageParams.currentPage = observer.currentPage;
+            this.pageParams.totalNumberOfAlbums = observer.totalNumberOfAlbums;
+            this.pageParams.totalNumberOfPages = observer.totalNumberOfPages;
+            // console.log(pageParams);
+            console.log(this.albums$);
 
+            if(this.albums$ != undefined){
+              console.log("resolve with success")
+              resolve(true);
+            }
+            else {
+              reject(false);
+            }
+          }})
+      });
+      // return true;
+      // .subscribe(albumsListI => {
+      //   this.responseToAlbumList(albumsListI);
+      // });  }
+    }
 
-  pageChanged(event: any): void {
+  pageChanged(event: {page: number, itemsPerPage:number}): void {
     if (this.searchMode) {
     const _searchReqObj = {
       searchData: this.searchForm.get('search').value,
       searchScope: this.searchForm.get('scope').value,
       searchSources: this.searchForm.get('sources').value
     }
-      this.sendSearhReq(_searchReqObj.searchData,_searchReqObj.searchScope, _searchReqObj.searchSources, event.page, event.itemsPerPage).subscribe(albumsListI => {
+      this.sendSearhReq(_searchReqObj.searchData,_searchReqObj.searchScope, _searchReqObj.searchSources, event.page, event.itemsPerPage).subscribe((albumsListI: AlbumsListI) => {
         // console.log(albumsListI);
         if (!this.isEmptyObject(albumsListI)) {
           // console.log("found results");
-          this.responseToAlbumList(albumsListI);
+          // this.responseToAlbumList(albumsListI);
+          this.albums$ = of(albumsListI.albumsList);
+          this.pageParams.currentPage = albumsListI.currentPage;
+          this.pageParams.totalNumberOfAlbums = albumsListI.totalNumberOfAlbums;
+          this.pageParams.totalNumberOfPages = albumsListI.totalNumberOfPages;
+
         }
         else {
           // console.log("Display list");
           this.searchMode=false;
-          this.currentPage = 1;
-          this.getAlbums(this.currentPage, this.itemsPerPage);
+          this.pageParams.currentPage = 1;
+          this.getAlbums(this.pageParams.currentPage, this.pageParams.itemsPerPage);
         }
 
         });
 
     } else {
+      // console.log(event);
       this.getAlbums(event.page, event.itemsPerPage);
     }
       window.scroll(0, 0);
   }
 
+  getAlbumFromID(index: string): Album {
+    // Find the album with ID 123
+    let album;
+    this.albums$.subscribe((albums: Album[]) => {
+      album = albums.find((album: Album) => album._id === index);
+      if (album) {
+        console.log(album);
+        // return album;
+      } else {
+        console.log('Album not found');
+        // return null;
+      }
+    });
+    return album;
+  }
+
+  getAlbumFromObs(index: number): Album {
+    let album: Album;
+    this.albums$.subscribe({next: albums =>{
+      album = albums[index];
+    }});
+    return album
+  }
+
   openModalWithComponent(albumIndex: number) {
     // retrieve albumsFound and pass them to the modal
-    const albumToUpdate = this.albumsList[albumIndex];
+    let albumToUpdate = this.getAlbumFromObs(albumIndex);
     // console.log('AlbumToUpdate: ' + JSON.stringify(albumToUpdate));
     const initialState = {
       albumsFound: albumToUpdate.spotifySearchResults,
@@ -201,7 +310,7 @@ searchMode: boolean;
 
   editReleaseModal(albumIndex: number){
     // retrieve albumsFound and pass them to the modal
-    const albumToEdit = this.albumsList[albumIndex];
+    const albumToEdit = this.getAlbumFromObs(albumIndex);
     // console.log('AlbumToUpdate: ' + JSON.stringify(albumToUpdate));
     const initialState = {
       album: albumToEdit,
@@ -230,19 +339,34 @@ searchMode: boolean;
 
 
 
-  getDate(i: number, s: number) {
+  getDate(i: string, s: number) {
+      let month: number;
+      let year: number;
+
+      console.log("i: " + i + " s: " +s);
       if (s === 0) {
-        return (MyCalendar.month[+this.albumsList[i].sputnikMusic.releaseDate.month - 1]) + ' ' + this.albumsList[i].sputnikMusic.releaseDate.year;
+        // month = +this.getAlbumFromObs(i).sputnikMusic.releaseDate.month - 1;
+        // year = +this.getAlbumFromObs(i).sputnikMusic.releaseDate.year;
+
+        return (MyCalendar.month[month]) + ' ' + year;
+
       } else if (s === 1) {
-        return (MyCalendar.month[+this.albumsList[i].heavyBIsH.releaseDate.month - 1]) + ' ' + this.albumsList[i].heavyBIsH.releaseDate.year;
+          // month = +this.getAlbumFromObs(i).heavyBIsH.releaseDate.month - 1;
+          // year = +this.getAlbumFromObs(i).heavyBIsH.releaseDate.year;
+
+          return (MyCalendar.month[month]) + ' ' + year;
       }  else if (s === 2) {
-        return (MyCalendar.month[+this.albumsList[i].yourLastRites.releaseDate.month - 1]) + ' ' + this.albumsList[i].yourLastRites.releaseDate.year;
+          console.log(this.getAlbumFromID(i));
+          month = +this.getAlbumFromID(i).yourLastRites.releaseDate.month - 1;
+          year = +this.getAlbumFromID(i).yourLastRites.releaseDate.year;
+
+        return (MyCalendar.month[month]) + ' ' + year;
       }
   }
 
   async addToPlaylist(index: number) {
       // album not found or search on spotify preiously
-      const album = this.albumsList[index];
+      const album = this.getAlbumFromObs(index);
 
       if (!album.searchedOnSpotify) {
         //search the album
@@ -251,7 +375,7 @@ searchMode: boolean;
 
       // album has a spotify id, it has alredy be search and found previously
       if (album.searchedOnSpotify && album.spotify) {
-        const spotifyAlbumId = this.albumsList[index].spotify.id;
+        const spotifyAlbumId = album.spotify.id;
         await this.spotifyApiService.addAlbumToPlaylist(
               spotifyAlbumId,
               this.userService.getSelectedPlaylistId()
@@ -261,11 +385,11 @@ searchMode: boolean;
           idSpotify: this.userService.getSelectedPlaylistId(),
           name: this.userService.getSelectedPlaylistName(),
           userId: this.userService.getUserDbId(),
-          albumId: this.albumsList[index]._id
+          albumId: this.getAlbumFromObs(index)._id
         };
-        this.albumsList[index].addedToPlaylist = albumPlaylistToSave;
+        this.getAlbumFromObs(index).addedToPlaylist = albumPlaylistToSave;
 
-        this.savePlaylist(this.albumsList[index].addedToPlaylist);
+        this.savePlaylist(this.getAlbumFromObs(index).addedToPlaylist);
       }
   }
 
@@ -276,31 +400,66 @@ searchMode: boolean;
         );
   }
 
-  searchPlaylistifiedAlbums() {
-      //if user is authentified
-      // search if albums of the page have already been added to a playlist
-      if (this.userService.isAuthenticated()) {
-        this.albumsService.searchPlaylistifiedAlbums(this.albumsList, this.userService.getUserDbId()).subscribe(
-              (playlists: AlbumPlaylistI[])  => {
-                if (playlists != null) {
-                  playlists.forEach(playlist => {
-                    this.albumsList.forEach( (album, index) => {
-                      if (playlist.albumId === album._id) {
-                        album.addedToPlaylist =  playlist;
-                        this.updateAlbum(index, album);
-                      }
-                    });
-                  });
-                }
+  // loadPlaylistsForUserV0(AlbumsListI: albumsList) {
+  //     //if user is authentified
+  //     // search if albums of the page have already been added to a playlist
+
+  //     console.log("search for playlistified albums");
+  //     if (this.userService.isAuthenticated() && this.albums$ != undefined) {
+  //        this.albums$.subscribe({next: albums => {
+  //         albumsList = albums;
+  //       }});
+  //       // console.log(albumsList);
+  //       this.albumsService.searchPlaylistifiedAlbums(albumsList, this.userService.getUserDbId()).subscribe(
+  //             (playlists: AlbumPlaylistI[])  => {
+  //               if (playlists != null) {
+  //                 playlists.forEach(playlist => {
+  //                   albumsList.
+  //                   forEach( (album, index) => {
+  //                     if (playlist.albumId === album._id) {
+  //                       album.addedToPlaylist =  playlist;
+  //                       this.updateAlbum(index, album);
+  //                     }
+  //                   });
+  //                 });
+  //               }
+  //             }
+  //           );
+  //     }
+  // }
+
+  loadPlaylistsForUser(albums$: Observable<Album[]>): Observable<Album[]> {
+    if(this.userService.isAuthenticated() && this.albums$ != undefined){
+    return albums$.pipe(
+      switchMap((albums: Album[]) => {
+        const observables = {};
+        albums.forEach(album => {
+          observables[album._id] = this.albumsService.searchPlaylistifiedAlbum(album, this.getUserService().getUserDbId());
+        });
+        return forkJoin(observables).pipe(
+          map((results: any[]) => {
+            results.forEach((result) => {
+              const album = albums.find(a => a._id === result._id);
+              if (album) {
+                album.addedToPlaylist = result;
               }
-            );
-      }
+            });
+            return albums;
+          })
+        );
+      })
+    );
+  }
   }
 
   searchAlbumOnSpotify(index: number): Promise < boolean > {
       return new Promise(
         resolve => {
-        const album = this.albumsList[index];
+        var album: Album;
+        this.albums$.subscribe(
+          {next: observer => {
+            album = observer[index];
+          }});
         this.spotifyApiService
           .searchItem('album:' + album.albumName + ' artist:' + album.artistName , 'album')
             .subscribe(
@@ -361,9 +520,5 @@ searchMode: boolean;
     this.searchEvent();
   }
 
-}
-
-function complete(complete: any, arg1: (albumUpdated: Album) => void, error: any, arg3: (e: any) => void) {
-  throw new Error('Function not implemented.');
 }
 

@@ -69,7 +69,7 @@ def scrapReleases_HBIH_Missive(page_list, source):
         # rePattern_ArtistReleaseGenres = r'(^[^-]*[^ -]) *– *([^(]*) +\(([^)]+)\)'
 
         # this pattern works nicely. Expected pattern : <ArtistName> - < AblumNane> (Genre 1, ..., Genre n)
-        print(result.get_text())
+        # print(result.get_text())
         # rePattern_ArtistReleaseGenres = r'(^.*[^ -]) *– *([^- ].*[^ (]) *\(([^)]+)\)'
         rePattern_ArtistReleaseGenres = r'(^.*[^ -]) *– *([^- ].*)'
         artistReleaseGenres = re.findall(rePattern_ArtistReleaseGenres, unicodedata.normalize('NFKD', (result.get_text())))

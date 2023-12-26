@@ -1,106 +1,67 @@
 [
     {
-        "artistName": "Mirror",
-        "albumName": "Pyramid Of Terror",
+        "artistName": "Suotana",
+        "albumName": "Ounas I",
         "yourLastRites": {
-            "id": "26561",
-            "reviewLink": "https://yourlastrites.com/2019/08/08/mirror-pyramid-of-terror-review/",
+            "id": "44084",
+            "reviewLink": "https://yourlastrites.com/2023/03/30/suotana-ounas-i-review/",
             "releaseDate": {
-                "month": 8,
-                "year": 2019
+                "month": 3,
+                "year": 2023
             },
-            "imagePath": "https://i0.wp.com/yourlastrites.com/wp-content/uploads/2019/08/mirror-pyramid-of-terror.jpg"
+            "imagePath": "https://i0.wp.com/yourlastrites.com/wp-content/uploads/2023/03/Suotana_Ounas_I.jpg"
         }
     },
     {
-        "artistName": "Enforced",
-        "albumName": "At The Walls",
+        "artistName": "Triumpher",
+        "albumName": "Storming The Walls",
         "yourLastRites": {
-            "id": "26593",
-            "reviewLink": "https://yourlastrites.com/2019/08/07/enforced-at-the-walls-review/",
+            "id": "44069",
+            "reviewLink": "https://yourlastrites.com/2023/03/29/triumpher-storming-the-walls-review/",
             "releaseDate": {
-                "month": 8,
-                "year": 2019
+                "month": 3,
+                "year": 2023
             },
-            "imagePath": "https://i2.wp.com/yourlastrites.com/wp-content/uploads/2019/08/Enforced-At-The-Walls.jpg"
+            "imagePath": "https://i0.wp.com/yourlastrites.com/wp-content/uploads/2023/03/triumpher-storming-the-walls.jpg"
         }
     },
     {
-        "artistName": "Vokonis",
-        "albumName": "Grasping Time",
+        "artistName": "Rotten Sound",
+        "albumName": "Apocalypse",
         "yourLastRites": {
-            "id": "26565",
-            "reviewLink": "https://yourlastrites.com/2019/08/06/vokonis-grasping-time-review/",
+            "id": "44066",
+            "reviewLink": "https://yourlastrites.com/2023/03/27/rotten-sound-apocalypse-review/",
             "releaseDate": {
-                "month": 8,
-                "year": 2019
+                "month": 3,
+                "year": 2023
             },
-            "imagePath": "https://i1.wp.com/yourlastrites.com/wp-content/uploads/2019/08/vokonis-grasping-time.jpg"
+            "imagePath": "https://i0.wp.com/yourlastrites.com/wp-content/uploads/2023/03/Rotten-Sound-Apocalypse.jpeg"
         }
     },
     {
-        "artistName": "Abysmal Lord",
-        "albumName": "Exaltation Of The Infernal Cabal",
+        "artistName": "Devangelic",
+        "albumName": "Xul",
         "yourLastRites": {
-            "id": "26548",
-            "reviewLink": "https://yourlastrites.com/2019/08/05/abysmal-lord-exaltation-of-the-infernal-cabal-review/",
+            "id": "44058",
+            "reviewLink": "https://yourlastrites.com/2023/03/24/devangelic-xul-review/",
             "releaseDate": {
-                "month": 8,
-                "year": 2019
+                "month": 3,
+                "year": 2023
             },
-            "imagePath": "https://i0.wp.com/yourlastrites.com/wp-content/uploads/2019/08/Exhaltation-Of-The-Infernal-Cabal.jpg"
+            "imagePath": "https://i0.wp.com/yourlastrites.com/wp-content/uploads/2023/03/Xul.jpeg"
         }
     },
     {
-        "artistName": "Devourment",
-        "albumName": "Obscene Majesty",
+        "artistName": "Ihsahn",
+        "albumName": "Fascination Street Sessions",
         "yourLastRites": {
-            "id": "26396",
-            "reviewLink": "https://yourlastrites.com/2019/08/02/devourment-obscene-majesty-review/",
+            "id": "43984",
+            "reviewLink": "https://yourlastrites.com/2023/03/22/ihsahn-fascination-street-sessions-review/",
             "releaseDate": {
-                "month": 8,
-                "year": 2019
+                "month": 3,
+                "year": 2023
             },
-            "imagePath": "https://i1.wp.com/yourlastrites.com/wp-content/uploads/2019/07/devourment-obscene-majesty.jpg"
-        }
-    },
-    {
-        "artistName": "Phobia",
-        "albumName": "Generation Coward",
-        "yourLastRites": {
-            "id": "25802",
-            "reviewLink": "https://yourlastrites.com/2019/07/31/phobia-generation-coward-review/",
-            "releaseDate": {
-                "month": 7,
-                "year": 2019
-            },
-            "imagePath": "https://i1.wp.com/yourlastrites.com/wp-content/uploads/2019/08/Phobia-Generation-Coward.jpg"
-        }
-    },
-    {
-        "artistName": "Beastmaker",
-        "albumName": "Eye Of The Storm",
-        "yourLastRites": {
-            "id": "26473",
-            "reviewLink": "https://yourlastrites.com/2019/07/30/beastmaker-eye-of-the-storm-review/",
-            "releaseDate": {
-                "month": 7,
-                "year": 2019
-            },
-            "imagePath": "https://i1.wp.com/yourlastrites.com/wp-content/uploads/2019/07/beastmaker-eye-of-the-storm.jpg"
-        }
-    },
-    {
-        "artistName": "Mylingar",
-        "albumName": "D\u00f6da Sj\u00e4lar",
-        "yourLastRites": {
-            "id": "26465",
-            "reviewLink": "https://yourlastrites.com/2019/07/29/mylingar-doda-sjalar-review/",
-            "releaseDate": {
-                "month": 7,
-                "year": 2019
-            },
-            "imagePath": "https://i2.wp.com/yourlastrites.com/wp-content/uploads/2019/07/Mylingar-Doda-Sjalar.jpg"
+            "imagePath": "https://i0.wp.com/yourlastrites.com/wp-content/uploads/2023/03/ihsahn-fascination-street-sessions.jpg"
         }
     }
 ]

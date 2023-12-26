@@ -70,19 +70,19 @@
     <div class="col-xs-12 col-12">
           <pagination
             class="pagination-sm"
-            [(ngModel)]="currentPage"
-            [totalItems]="totalNumberOfAlbums"
-            [itemsPerPage]="itemsPerPage"
-            [maxSize]="maxSize"
+            [(ngModel)]="pageParams.currentPage"
+            [totalItems]="pageParams.totalNumberOfAlbums"
+            [itemsPerPage]="pageParams.itemsPerPage"
+            [maxSize]="pageParams.maxSize"
             [boundaryLinks]="true"
             [rotate]="false"
-            (numPages)="numPages = $event"
+            (numPages)="pageParams.numPages = $event"
             (pageChanged)="pageChanged($event)">
           </pagination>
     </div>
   </div>
   <div class="row">
-    <div *ngFor="let album of albumsList; let i = index" class="col-sm-6 col-md-4">
+    <div *ngFor="let album of albums$ | async ; let i = index" class="col-sm-6 col-md-4">
             <div class="card mb-4">
               <div class="card-header">
                 <div class="row">
@@ -121,16 +121,16 @@
                     <tab *ngIf="album.sputnikMusic" heading="Sputnik Music">
                       <p class="mt-2">Sputnik rating: {{ album.sputnikMusic.note }}</p>
                       <p *ngIf="album.sputnikMusic.numberOfUserRatings" class="mt-2">Number of user rating: {{album.sputnikMusic.numberOfUserRatings}}</p>
-                      <p>Release Date: {{ getDate(i,0) }}</p>
+                      <p>Release Date: {{ getDate(album._id,0) }}</p>
                       <p><a href="https://www.sputnikmusic.com/album/{{album.sputnikMusic.id}}/" target="_blank">Consulter sur Sputnik Music</a></p>
                     </tab>
                     <tab *ngIf="album.heavyBIsH" heading="HBIH">
                       <p *ngIf="album.heavyBIsH.sources" class="mt-2">Sources: {{ album.heavyBIsH.sources }}</p>
-                      <p class="mt-2">Date: {{ getDate(i,1) }}</p>
+                      <p class="mt-2">Date: {{ getDate(album._id,1) }}</p>
                       <p><a href="{{ album.heavyBIsH.reviewLink }}" target="_blank">Consulter sur HBIH</a></p>
                     </tab>
                     <tab *ngIf="album.yourLastRites" heading="YLR">
-                      <p class="mt-2">Release Date: {{ getDate(i,2) }}</p>
+                      <p class="mt-2">Release Date: {{ getDate(album._id,2) }}</p>
                       <p><a href="{{ album.yourLastRites.reviewLink }}" target="_blank">Consulter sur Your Last Rites</a></p>
                     </tab>
                   </tabset>
@@ -164,10 +164,10 @@
     <div class="col-xs-12 col-12">
           <pagination
             class="pagination-sm"
-            [(ngModel)]="currentPage"
-            [totalItems]="totalNumberOfAlbums"
-            [itemsPerPage]="itemsPerPage"
-            [maxSize]="maxSize"
+            [(ngModel)]="pageParams.currentPage"
+            [totalItems]="pageParams.totalNumberOfAlbums"
+            [itemsPerPage]="pageParams.itemsPerPage"
+            [maxSize]="pageParams.maxSize"
             [boundaryLinks]="true"
             [rotate]="false">
             <!-- (numPages)="numPages = $event"

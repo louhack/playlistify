@@ -1,0 +1,588 @@
+[
+    {
+        "artistName": "The Frost: Rite of Passage",
+        "albumName": "The Rise of Psychedelic Black Metal",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2021/03/01/kvlt-kolvmn-march-2021/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Kvlt Vavlt: Oranssi Pazuzu",
+        "albumName": "Muukaleinen puhuu",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2021/03/01/kvlt-kolvmn-march-2021/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [
+                "2009"
+            ],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Dawnwalker",
+        "albumName": "Ages",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2021/01/04/kvlt-kolvmn-january-2021/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Caelestra",
+        "albumName": "Black Widow Nebula",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2021/01/04/kvlt-kolvmn-january-2021/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Ritual Inscription",
+        "albumName": "Ritual Inscription",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2021/01/04/kvlt-kolvmn-january-2021/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Sainte Marie des Loups",
+        "albumName": "Fune\u0301railles de feu",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/12/07/kvlt-kolvmn-december-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Liturgy",
+        "albumName": "Origin of the Alimonies",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/12/07/kvlt-kolvmn-december-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Moeror",
+        "albumName": "The Ghosts of Amour Propre",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/12/07/kvlt-kolvmn-december-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Stormkeep",
+        "albumName": "Galdrum",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/12/07/kvlt-kolvmn-december-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Assault Sorcery",
+        "albumName": "Discernment in Viscera",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/12/07/kvlt-kolvmn-december-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Paysage d\u2019Hiver",
+        "albumName": "Im Traum",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/12/07/kvlt-kolvmn-december-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Zeal and Ardor",
+        "albumName": "Wake of a Nation",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/11/09/kvlt-kolvmn-november-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [
+                "EP"
+            ],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Botanist",
+        "albumName": "Photosynthesis",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/11/09/kvlt-kolvmn-november-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Lamp of Murmuur",
+        "albumName": "Heir of Ecliptical Romanticism",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/11/09/kvlt-kolvmn-november-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Wayfarer",
+        "albumName": "A Romance with Violence",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/11/09/kvlt-kolvmn-november-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Lord Almighty",
+        "albumName": "Wither",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/11/09/kvlt-kolvmn-november-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Paysage d\u2019Hiver",
+        "albumName": "Self-titled",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/10/05/kvlt-kolvmn-october-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [
+                "atmospheric black metal"
+            ],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Amiensus",
+        "albumName": "Abreaction",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/10/05/kvlt-kolvmn-october-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [
+                "progressive black metal"
+            ],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Yovel",
+        "albumName": "Forthcoming Humanity",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/10/05/kvlt-kolvmn-october-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [
+                "black metal"
+            ],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Dynfari",
+        "albumName": "Myrkurs er \u00feo\u0308rf",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/10/05/kvlt-kolvmn-october-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [
+                "post-black metal"
+            ],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Serpent Column",
+        "albumName": "Kathodos",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/10/05/kvlt-kolvmn-october-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [
+                "dissonant black metal"
+            ],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Ska\u0301phe",
+        "albumName": "Ska\u0301phe3",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/10/05/kvlt-kolvmn-october-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [
+                "dissonant black metal"
+            ],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Mystras",
+        "albumName": "Castles Conquered and Reclaimed",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/08/05/kvlt-kolvmn-july-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Gaerea",
+        "albumName": "Limbo",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/08/05/kvlt-kolvmn-july-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Snakeblade",
+        "albumName": "The Kingdom",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/08/05/kvlt-kolvmn-july-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Spirit Possession",
+        "albumName": "Spirit Possession",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/08/05/kvlt-kolvmn-july-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Xazraug",
+        "albumName": "Unsympathetic Empyrean",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/07/01/kvlt-kolvmn-june-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Aversio Humanitatis",
+        "albumName": "Behold the Silent Dwellers",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/07/01/kvlt-kolvmn-june-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Creature",
+        "albumName": "Ex Cathedra",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/07/01/kvlt-kolvmn-june-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Firelink",
+        "albumName": "Firelink",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/07/01/kvlt-kolvmn-june-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Inexorum",
+        "albumName": "Moonlit Navigation",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/07/01/kvlt-kolvmn-june-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Paysage d\u2019Hiver",
+        "albumName": "Im Wald",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/07/01/kvlt-kolvmn-june-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "...And Oceans",
+        "albumName": "Cosmic World Mother",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/06/03/kvlt-kolvmn-may-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "A\u0301rsti\u0301\u00f0ir li\u0301fsins",
+        "albumName": "Saga a\u0301 tveim tungum II: Eigi fjo\u0328ll ne\u0301 fir\u00f0ir",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/06/03/kvlt-kolvmn-may-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Odraza",
+        "albumName": "Rzeczom",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/06/03/kvlt-kolvmn-may-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Thrawsunblat",
+        "albumName": "Insula",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/06/03/kvlt-kolvmn-may-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Unreqvited",
+        "albumName": "Empathica",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/06/03/kvlt-kolvmn-may-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    },
+    {
+        "artistName": "Almyrkvi/The Ruins of Beverast",
+        "albumName": "Split",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "https://www.heavyblogisheavy.com/2020/06/03/kvlt-kolvmn-may-2020/",
+            "releaseDate": {
+                "month": 3,
+                "year": 2021
+            },
+            "imagePath": "",
+            "genres": [],
+            "sources": "KULT"
+        }
+    }
+]

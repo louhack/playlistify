@@ -62,12 +62,12 @@ export class AlbumService {
   }
 
 
-  updateAlbum(index: number, album: Album) {
+    updateAlbum(index: number, album: Album) {
     this.albumChanged.next({index: index, album: album});
   }
 
   savePlaylistAlbum (item: AlbumPlaylistI): Observable<Object> {
-    return this.http.post<Album>(this.localEndPoints.playlistifiedAlbumsEndPoint, {params: {playlist: item}})
+    return this.http.post<Album>(this.localEndPoints.playlistifyAlbumsEndPoint, {params: {playlist: item}})
       .pipe(map (resp => {
         return resp['data'];
       }));
@@ -90,6 +90,25 @@ export class AlbumService {
         }
       }));
   }
+
+  searchPlaylistifiedAlbum (album: Album, userId: string): Observable<any> {
+    // const albumIds: string[] = [];
+    // albums.forEach( album => {
+    //   albumIds.push(album._id);
+    // });
+
+    return this.http.get(this.localEndPoints.playlistifiedAlbumsEndPoint, {params: { userId: userId, albumId: album._id}})
+      .pipe(map((resp: Response) => {
+      // console.log(resp['data']);
+        if (resp != null) {
+          return resp['data'];
+        } else {
+          return null;
+        }
+      }));
+  }
+
+
 
   searchAlbum(searchItem: string, scope: string, searchSources:string, page: number, limit: number): Observable<any> {
     console.log(searchItem);

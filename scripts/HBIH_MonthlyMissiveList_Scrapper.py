@@ -1,3 +1,4 @@
+from scripts.wepScrapperFunctions import HBIH_scrapPageList, getHTMLPage, saveToDabase, saveToFile, scrapReleases_HBIH_Missive
 from bs4 import BeautifulSoup
 from lxml import html
 import requests
@@ -9,7 +10,6 @@ import datetime
 import pytz
 from datetime import date
 import os
-from wepScrapperFunctions import *
 import sys
 
 

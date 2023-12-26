@@ -17,6 +17,7 @@
 *.launch
 .settings/
 *.sublime-workspace
+playlistify_wkspace*
 
 # IDE - VSCode
 .vscode/*
@@ -43,3 +44,18 @@ testem.log
 Thumbs.db
 .env
 scripts/temp
+
+#DATA json
+data.json
+heavyB_data.json
+yourLastRites_data.json
+scripts/data.json
+scripts/yourLastRites_data.json
+scripts/heavyB_data.json
+.vscode/settings.json
+.gitignore
+.vscode/launch.json
+scripts/data.json
+.vscode/settings.json
+scripts/data.json
+.vscode/settings.json
