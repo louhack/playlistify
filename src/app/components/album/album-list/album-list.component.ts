@@ -14,6 +14,7 @@ import { switchMap, distinctUntilChanged, debounceTime, throwIfEmpty } from 'rxj
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlbumsListI } from '../../../interfaces/albumsList.interface';
 import { AlbumEditComponent } from '../album-edit/album-edit.component';
+import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-album-list',
@@ -49,17 +50,17 @@ bsModalRef: BsModalRef;
 
 searchMode: boolean;
 
-  constructor(private albumsService: AlbumService, private userService: UserService, private spotifyApiService: SpotifyApiService, private modalService: BsModalService) {
-  // console.log('CONSTRUCTOR');
-    this.albumSubscription = albumsService.albumChanged.subscribe(
-      albumChanged => {
-        this.albumsList[albumChanged.index] = albumChanged.album;
-    });
+  constructor(private albumsService: AlbumService, private userService: UserService, private spotifyApiService: SpotifyApiService, @Inject(BsModalService) private modalService: BsModalService) {
+    // console.log('CONSTRUCTOR');
+      this.albumSubscription = albumsService.albumChanged.subscribe(
+        albumChanged => {
+          this.albumsList[albumChanged.index] = albumChanged.album;
+      });
 
-    this.userSubscription = userService.userChanged.subscribe( () => {
-         this.searchPlaylistifiedAlbums();
-    });
-  }
+      this.userSubscription = userService.userChanged.subscribe( () => {
+           this.searchPlaylistifiedAlbums();
+      });
+    }
 
   //trigger when when user types in searchbar
   public searchEvent() {
