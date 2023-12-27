@@ -175,10 +175,13 @@ print("Output file written")
 # NOK connection = MongoClient("mongodb://heroku_j6lv18qq:k7100p7qnmkdo5kk7i9io0q6ap@ds243418.mlab.com:43418/heroku_j6lv18qq?authSource=admin")
 # mongodb://<dbuser>:<dbpassword>@ds243418.mlab.com:43418/heroku_j6lv18qq
 print("Connecting to db")
+print(os.environ.get('MONGODB_WEBSCRAPPER'))
 connection = MongoClient(os.environ.get('MONGODB_WEBSCRAPPER'))
+print(connection)
 #connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
 
 db = connection.get_default_database()
+print(db)
 releases = db.albums
 albums = open("data.json", "r")
 parsedAlbums = json_util.loads(albums.read())
