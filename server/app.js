@@ -29,11 +29,8 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const dbPlaylistify =
 mongoose.connect(config.get('Database.host'),  {
-  keepAlive: 1,
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false })
+  useUnifiedTopology: true })
       .then((m)=> {
         console.log(`Succesfully Connected to the Mongodb Database : %s`, config.get('Database.db_name'));
         return m.connection.getClient();
@@ -189,5 +186,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+function logError(err) {
+  console.error(err);
+}
 
 module.exports = app;
