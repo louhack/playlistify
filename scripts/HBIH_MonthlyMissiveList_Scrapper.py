@@ -38,7 +38,7 @@ def main() -> None:
   opts = [opt for opt in sys.argv[1:] if opt.startswith("-")]
   args = [arg for arg in sys.argv[1:] if not arg.startswith("-")]
 
-  # print(args)
+  print(args)
   if args[0] == "EDITORSPICK":
     pageToScrap = EDITORSPICK
     source = "Editor's pick"
@@ -64,18 +64,18 @@ def main() -> None:
   try:
     pageList = []
 
-    # print(pageToScrap)
+    print(pageToScrap)
     soup=getHTMLPage(pageToScrap)
 
-    # print("Table articles ")
-    # print(table_articles)
+    print("Table articles ")
+    print(table_articles)
     pageList = HBIH_scrapPageList(soup)
-    # print(pageList)
+    print(pageList)
     releasesList = scrapReleases_HBIH_Missive(pageList, source)
-    # print(releasesList)
+    print(releasesList)
 
     fileName = 'heavyB_data_'+str(args[0])+'.json'
-    # print(fileName)
+    print(fileName)
     saveToFile(fileName, releasesList)
 
     saveToDabase(fileName)
