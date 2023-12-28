@@ -67,8 +67,8 @@ def main() -> None:
     print(pageToScrap)
     soup=getHTMLPage(pageToScrap)
 
-    print("Table articles ")
-    print(table_articles)
+    # print("Table articles ")
+    # print(table_articles)
     pageList = HBIH_scrapPageList(soup)
     print(pageList)
     releasesList = scrapReleases_HBIH_Missive(pageList, source)
