@@ -27,7 +27,7 @@ monthDic["October"]=10
 monthDic["November"]=11
 monthDic["December"]=12
 
-EDITORSPICK = "https://www.heavyblogisheavy.com/category/columns/editors-picks/"
+EDITORSPICK = "https://www.heavyblogisheavy.com/tag/editors-picks/"
 JAZZCLUB = "https://www.heavyblogisheavy.com/category/columns/the-jazz-club/"
 DOOMSDAY = "https://www.heavyblogisheavy.com/category/columns/doomsday/"
 POSTROCK = "https://www.heavyblogisheavy.com/category/columns/post-rock-post/"
