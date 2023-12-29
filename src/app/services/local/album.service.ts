@@ -39,21 +39,23 @@ export class AlbumService {
   getAlbums(page: number, limit: number): Observable<AlbumsListI> {
     const httpParams = new HttpParams().set('page', page.toString());
     httpParams.append('limit', limit.toString());
-
-    return this.http.get(this.localEndPoints.albumEndPoint, {params: httpParams})
+    // console.log(httpParams);
+    return this.http.get<AlbumPlaylistI>(this.localEndPoints.albumEndPoint, {params: httpParams})
       .pipe(map((res) => {
+        // console.log(JSON.stringify(res));
         return this.retrieveResponseData(res);
     }));
 
   }
 
   retrieveResponseData(res: Object): AlbumsListI{
-    const albums = new Array<Album>();
+    const albums:Album[] = [];
+    
     for (const album of res['data'].docs) {
       albums.push(new Album(album._id, album.artistName, album.albumName, album.sputnikMusic, album.heavyBIsH, album.hasOwnProperty('spotify') ? album.spotify : null, album.yourLastRites));
     }
     const albumsListI: AlbumsListI = {
-      albumsList: albums,
+      albumsList: albums,//res['data'].docs as Album[],
       totalNumberOfAlbums: res['data'].totalDocs,
       currentPage: res['data'].page,
       totalNumberOfPages: res['data'].totalPages
@@ -67,7 +69,7 @@ export class AlbumService {
   }
 
   savePlaylistAlbum (item: AlbumPlaylistI): Observable<Object> {
-    return this.http.post<Album>(this.localEndPoints.playlistifiedAlbumsEndPoint, {params: {playlist: item}})
+    return this.http.post<Album>(this.localEndPoints.playlistifyEndPoint, {params: {playlist: item}})
       .pipe(map (resp => {
         return resp['data'];
       }));
@@ -91,10 +93,10 @@ export class AlbumService {
       }));
   }
 
-  searchAlbum(searchItem: string, scope: string, searchSources:string, page: number, limit: number): Observable<any> {
+  searchAlbum(searchItem: string, scope: string, searchSources:string, page: number, limit: number): Observable<AlbumsListI> {
     console.log(searchItem);
     // if(searchItem != (null || "")){
-      return this.http.get<Album[]>(this.localEndPoints.searchEndPoint, {
+      return this.http.get<AlbumPlaylistI>(this.localEndPoints.searchEndPoint, {
         params: {
           q: searchItem,
           scope: scope,
@@ -104,18 +106,21 @@ export class AlbumService {
         }
       }
       // return null;
-      ).pipe(
-        map(response => {
-          console.log(response);
-          if(response['data'] != null){
-            return this.retrieveResponseData(response);
-            // return response['data'];
-          }
-          else {
-            return of({});
-          }
-        })
-        );
+      ).pipe(map((res) => {
+        return this.retrieveResponseData(res);
+    }));
+      // .pipe(
+      //   map(response => {
+      //     console.log(response);
+      //     if(response['data'] != null){
+      //       return this.retrieveResponseData(response);
+      //       // return response['data'];
+      //     }
+      //     else {
+      //       return of({});
+      //     }
+      //   })
+      //   );
     // }
     // return of({});
   }

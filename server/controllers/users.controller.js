@@ -83,39 +83,26 @@ exports.deleteUserService = async function(req, res, next){
 
   }
 
-exports.getPlaylists = async function(req, res, next){
-  try {
-    const userId = req.query.userId;
-    var albumIds = [];
-    albumIds = req.query.albumId;
-    var playlistifiedAlbums = [];
-
-  async.each(albumIds, function(albumId, callback){
-      Playlist.findOne({'userId': userId, 'albumId': albumId}
-      ,(err, res) => {
-          if(err) {
-            console.log(err);
-          } else {
-              if(res){
-                playlistifiedAlbums.push(res);
-              }
-            }
-            callback();
-      });
-    },function(err){
-      if(err) {
-        console.log('ERROR WHILE SEARCHING FOR PLAYLIST : %s', err)
-        return res.status(400).json({status: 400, message: "An error occured"});
-      }
+  exports.getPlaylists = async function(req, res, next){
+    try {
+      const userId = req.query.userId;
+      const albumIds = req.query.albumId;
+      // const playlistifiedAlbums = [];
+  
+      const playlists = await Promise.all(albumIds.map(albumId => 
+        Playlist.findOne({'userId': userId, 'albumId': albumId}).exec()
+      ));
+      const playlistifiedAlbums = playlists.filter(playlist => playlist !== null);
+  
       if (playlistifiedAlbums.length > 0){
         return res.status(200).json({status: 200, data: playlistifiedAlbums, message: "Playlist(s) Successfully Found"});
       }
       return res.status(204).json({status: 204, message: "No Playlist Found"});
-    });
-  } catch (e) {
-    console.log(e);
+    } catch (e) {
+      console.log(e);
+      return res.status(400).json({status: 400, message: "An error occured"});
+    }
   }
-}
 
 exports.playlistifyAlbum = async function(req, res, next) {
   try {
