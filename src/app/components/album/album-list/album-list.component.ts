@@ -24,10 +24,8 @@ import { of } from 'rxjs';
 })
 export class AlbumListComponent implements OnInit {
 
-  // albumsList$: Observable<AlbumsListI>;
   albums$: Observable<Album[]>;
 
-  // albumSubscription: Subscription;
   userSubscription: Subscription;
 
   public searchForm = new FormGroup(
@@ -53,13 +51,6 @@ bsModalRef: BsModalRef;
 searchMode: boolean;
 
   constructor(private albumsService: AlbumService, private userService: UserService, private spotifyApiService: SpotifyApiService, @Inject(BsModalService) private modalService: BsModalService) {
-    // console.log('CONSTRUCTOR');
-      // this.albumSubscription = albumsService.albumChanged.subscribe(
-      //   albumChanged => {
-      //     this.albumsList[albumChanged.index] = albumChanged.album;
-      // });
-
-
     }
 
   //trigger when when user types in searchbar
@@ -80,7 +71,6 @@ searchMode: boolean;
   }
 
   ngOnInit() {
-    // this.getAlbums(1, this.itemsPerPage);
     this.userService.userChanged.pipe(
       startWith(null),
       switchMap(() => this.getAlbums(this.currentPage, this.itemsPerPage)),
@@ -103,11 +93,11 @@ searchMode: boolean;
 
       // switch to new search observable each time the term changes
       switchMap((value) => {
-        if (value.searchData === "") {
+        console.log(value);
+        if (value.searchData === "" && value.searchSources === "allSources") {
           this.searchMode = false;
           this.currentPage = 1;
-          this.searchForm.setValue({search: '', scope: 'all', sources: 'allSources'});
-          this.getAlbums(this.currentPage, this.itemsPerPage);
+          return this.getAlbums(this.currentPage, this.itemsPerPage);
         }
         else {
           this.searchMode = true;
@@ -117,11 +107,11 @@ searchMode: boolean;
         return of(null);
       }),
       switchMap((albumsListI) => {
-        if(albumsListI !== null){
-          this.affectSearchResults(albumsListI);
-          return this.searchPlaylistifiedAlbums(albumsListI.albumsList);
+        if(albumsListI !== null && Array.isArray(albumsListI) && albumsListI.every(item => item instanceof Album)){
+          return this.searchPlaylistifiedAlbums(albumsListI as Album[]);
         } else {
-          return this.searchPlaylistifiedAlbums(this.getAlbumsList());
+          this.affectSearchResults(albumsListI as AlbumsListI); // Cast the argument to AlbumsListI
+          return this.searchPlaylistifiedAlbums((albumsListI as AlbumsListI).albumsList);
         }
       })
     ).subscribe();
@@ -285,17 +275,9 @@ searchMode: boolean;
 
 
 
-  async getDate(i: number, s: number) {
-      if (s === 0) {
-        console.log((await this.selectAlbumAtIndex(i)).sputnikMusic.releaseDate.month); 
-        return (MyCalendar.month[+ await (await this.selectAlbumAtIndex(i)).sputnikMusic.releaseDate.month - 1]) + ' ' + (await this.selectAlbumAtIndex(i)).sputnikMusic.releaseDate.year;
-      } else if (s === 1) {
-        console.log(await (await this.selectAlbumAtIndex(i)).heavyBIsH.releaseDate.month);
-        return (MyCalendar.month[+(await this.selectAlbumAtIndex(i)).heavyBIsH.releaseDate.month - 1]) + ' ' + (await this.selectAlbumAtIndex(i)).heavyBIsH.releaseDate.year;
-      }  else if (s === 2) {
-        console.log((await this.selectAlbumAtIndex(i)).yourLastRites.releaseDate.month);
-        return (MyCalendar.month[+(await this.selectAlbumAtIndex(i)).yourLastRites.releaseDate.month - 1]) + ' ' + (await this.selectAlbumAtIndex(i)).yourLastRites.releaseDate.year;
-      }
+  getDate({month: monthNumber, year: yearNumber}) {
+        // console.log((await this.selectAlbumAtIndex(i)).sputnikMusic.releaseDate.month); 
+        return (MyCalendar.month[monthNumber - 1]) + ' ' + yearNumber;
   }
 
   async addToPlaylist(index: number) {
