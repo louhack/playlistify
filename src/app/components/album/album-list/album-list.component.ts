@@ -80,41 +80,6 @@ searchMode: boolean;
       this.search();
   }
 
-  //search each time the content of the search bar has changed
-  // search(){
-  //   this.searchReq.pipe(
-  //     // wait 300ms after each keystroke before considering the term
-  //     debounceTime(300),
-
-  //     // ignore new term if same as previous term
-  //     distinctUntilChanged(),
-
-  //     // switch to new search observable each time the term changes
-  //     switchMap((value) => {
-  //       console.log(value);
-  //       if (value.searchData === "" && value.searchSources === "allSources") {
-  //         this.searchMode = false;
-  //         this.currentPage = 1;
-  //         return this.getAlbums(this.currentPage, this.itemsPerPage);
-  //       }
-  //       else {
-  //         this.searchMode = true;
-  //         this.currentPage=1;
-  //         return this.sendSearchReq(value.searchData,value.searchScope, value.searchSources, this.currentPage, this.itemsPerPage)
-  //       }
-  //       return of(null);
-  //     }),
-  //     switchMap((albumsListI) => {
-  //       if(albumsListI !== null && Array.isArray(albumsListI) && albumsListI.every(item => item instanceof Album)){
-  //         return this.searchPlaylistifiedAlbums(albumsListI as Album[]);
-  //       } else {
-  //         this.affectSearchResults(albumsListI as AlbumsListI); // Cast the argument to AlbumsListI
-  //         return this.searchPlaylistifiedAlbums((albumsListI as AlbumsListI).albumsList);
-  //       }
-  //     })
-  //   ).subscribe();
-  // }
-
   search() {
     this.searchReq.pipe(
       debounceTime(300),
@@ -169,29 +134,6 @@ searchMode: boolean;
     return albums;
   }
 
-  // searchPlaylistifiedAlbums(albums: Album[]): Observable<Album[]> {
-  //   //if user is authenticated
-  //   // search if albums of the page have already been added to a playlist
-  //   if (this.userService.isAuthenticated()) {
-  //     return this.albums$ = this.albumsService.searchPlaylistifiedAlbums(albums, this.userService.getUserDbId()).pipe(
-  //       map((playlists: AlbumPlaylistI[])  => {
-  //         if (playlists != null) {
-  //           const playlistMap = new Map(playlists.map(playlist => [playlist.albumId, playlist]));
-  //           albums.map((album, index) => {
-  //             if (playlistMap.has(album._id)) {
-  //               album.addedToPlaylist = playlistMap.get(album._id);
-  //             }
-  //           });
-  //         }
-  //         return albums;
-  //       })
-  //     );
-  //   } else {
-  //     return of(albums);      
-  //   }
-  // }
-
-
   affectSearchResults(albumsListI: AlbumsListI){
     if (!this.isEmptyObject(albumsListI) && albumsListI.albumsList.length > 0) {
     this.totalNumberOfPages = albumsListI.totalNumberOfPages;
@@ -220,16 +162,6 @@ searchMode: boolean;
       map((albumsList: AlbumsListI) => albumsList.albumsList)
     );
   }
-  // getAlbums(_page: number, _itemsPerPage: number): Observable<Album[]> {
-  //   return this.albums$ = this.albumsService.getAlbums(_page, _itemsPerPage).pipe(
-  //     map((albumsList: AlbumsListI) => {
-  //       this.totalNumberOfPages = albumsList.totalNumberOfPages;
-  //       this.totalNumberOfAlbums = albumsList.totalNumberOfAlbums;
-  //       return albumsList.albumsList;
-  //     })
-  //   ); 
-  // }
-
 
   pageChanged(event: any): void {
     const page = event.page;
@@ -268,38 +200,63 @@ searchMode: boolean;
       });
     }
 
-    // // Get the album array
-    // getAlbumsList(): Album[] {
-    //   this.albums$.subscribe(albums => {
-    //     if (albums.length >= 1) {
-    //       return albums;
-    //     }
-    //   });
-    //   return null;
-    // }
-  async openModalWithComponent(albumIndex: number) {
-    // retrieve albumsFound and pass them to the modal
-    const albumToUpdate = await this.selectAlbumAtIndex(albumIndex);
-    // console.log('AlbumToUpdate: ' + JSON.stringify(albumToUpdate));
-    const initialState = {
-      albumsFound: albumToUpdate.spotifySearchResults,
-      title: albumToUpdate.albumName,
-      artist: albumToUpdate.artistName
-    };
-    this.bsModalRef = this.modalService.show(AlbumsModalComponent, {initialState});
-    this.bsModalRef.content.albumIndex = albumIndex;
-    this.bsModalRef.content.onChosenAlbum.subscribe((info: {resultIndex: number}) => {
-      albumToUpdate.spotify = albumToUpdate.spotifySearchResults[info.resultIndex];
+    async openModalWithComponent(albumIndex: number) {
+      const albumToUpdate = await this.selectAlbumAtIndex(albumIndex);
+      const initialState = this.createInitialState(albumToUpdate);
+    
+      this.bsModalRef = this.modalService.show(AlbumsModalComponent, {initialState});
+      this.bsModalRef.content.albumIndex = albumIndex;
+    
+      this.bsModalRef.content.onChosenAlbum.subscribe((info: {resultIndex: number}) => {
+        this.updateAlbumAndAddToPlaylist(albumToUpdate, info.resultIndex, albumIndex);
+      });
+    }
+    
+    createInitialState(albumToUpdate: Album) {
+      return {
+        albumsFound: albumToUpdate.spotifySearchResults,
+        title: albumToUpdate.albumName,
+        artist: albumToUpdate.artistName
+      };
+    }
+    
+    updateAlbumAndAddToPlaylist(albumToUpdate: Album, resultIndex: number, albumIndex: number) {
+      albumToUpdate.spotify = albumToUpdate.spotifySearchResults[resultIndex];
       albumToUpdate.searchedOnSpotify = true;
       albumToUpdate.spotifySearchResults = [];
-      this.albumsService.updateAlbumOnDB(albumToUpdate).subscribe( (albumUpdated: Album) => {
+    
+      this.albumsService.updateAlbumOnDB(albumToUpdate).subscribe((albumUpdated: Album) => {
         albumUpdated.searchedOnSpotify = true;
         albumUpdated.spotifySearchResults = [];
         this.updateAlbum(albumIndex, albumUpdated);
         this.addToPlaylist(albumIndex);
       });
-    });
-  }
+    }
+
+
+  // async openModalWithComponent(albumIndex: number) {
+  //   // retrieve albumsFound and pass them to the modal
+  //   const albumToUpdate = await this.selectAlbumAtIndex(albumIndex);
+  //   // console.log('AlbumToUpdate: ' + JSON.stringify(albumToUpdate));
+  //   const initialState = {
+  //     albumsFound: albumToUpdate.spotifySearchResults,
+  //     title: albumToUpdate.albumName,
+  //     artist: albumToUpdate.artistName
+  //   };
+  //   this.bsModalRef = this.modalService.show(AlbumsModalComponent, {initialState});
+  //   this.bsModalRef.content.albumIndex = albumIndex;
+  //   this.bsModalRef.content.onChosenAlbum.subscribe((info: {resultIndex: number}) => {
+  //     albumToUpdate.spotify = albumToUpdate.spotifySearchResults[info.resultIndex];
+  //     albumToUpdate.searchedOnSpotify = true;
+  //     albumToUpdate.spotifySearchResults = [];
+  //     this.albumsService.updateAlbumOnDB(albumToUpdate).subscribe( (albumUpdated: Album) => {
+  //       albumUpdated.searchedOnSpotify = true;
+  //       albumUpdated.spotifySearchResults = [];
+  //       this.updateAlbum(albumIndex, albumUpdated);
+  //       this.addToPlaylist(albumIndex);
+  //     });
+  //   });
+  // }
 
   async editReleaseModal(albumIndex: number){
     // retrieve albumsFound and pass them to the modal
@@ -331,41 +288,6 @@ searchMode: boolean;
         return (MyCalendar.month[monthNumber - 1]) + ' ' + yearNumber;
   }
 
-  // async addToPlaylist(index: number) {
-  //     // album not found or search on spotify preiously
-  //     const album = await this.selectAlbumAtIndex(index);
-  //     if (album) {
-  //       if (!album.searchedOnSpotify) {
-  //         //search the album
-  //         await this.searchAlbumOnSpotify(index);
-  //       }
-
-  //       // album has a spotify id, it has alredy be search and found previously
-  //       if (album.searchedOnSpotify && album.spotify) {
-  //         await this.spotifyApiService.addAlbumToPlaylist(
-  //               album.spotify.id,
-  //               this.userService.getSelectedPlaylistId()
-  //         );
-
-  //         const albumPlaylistToSave: AlbumPlaylistI = {
-  //           idSpotify: this.userService.getSelectedPlaylistId(),
-  //           name: this.userService.getSelectedPlaylistName(),
-  //           userId: this.userService.getUserDbId(),
-  //           albumId: album._id
-  //         };
-  //         album.addedToPlaylist = albumPlaylistToSave;
-
-  //         this.savePlaylist(album.addedToPlaylist);
-  //       }
-  //   } else {
-  //     console.error(`No album found at index ${index}`);
-  //   }
-  // }
-
-  // savePlaylist(savePlaylist: AlbumPlaylistI) {
-  //     this.albumsService.savePlaylistAlbum(savePlaylist)
-  //       .subscribe(() => { });
-  // }
 
   async addToPlaylist(index: number) {
     const album = await this.selectAlbumAtIndex(index);
@@ -443,60 +365,7 @@ searchMode: boolean;
     album.searchedOnSpotify = true;
     return false;
   }
-  // searchAlbumOnSpotify(index: number): Promise < boolean > {
-  //     return new Promise(
-  //       async resolve => {
-  //       const album = await this.selectAlbumAtIndex(index);
-  //       this.spotifyApiService
-  //         .searchItem('album:' + album.albumName + ' artist:' + album.artistName , 'album')
-  //           .subscribe(
-  //             (foundAlbums: AlbumSpotify[]) => {
-  //                 console.log('foundAlbums: ' + foundAlbums.length);
 
-  //                 if (foundAlbums.length > 0) {
-  //                   album.searchedOnSpotify = true;
-  //                   if (foundAlbums.length === 1) {
-  //                     // if only one result, save the spotify album id for later
-  //                     // than add album to the selected playlist
-  //                     album.spotify = foundAlbums[0];
-  //                     this.albumsService.updateAlbumOnDB(album).subscribe( (albumUpdated: Album) => {
-  //                       albumUpdated.searchedOnSpotify = true;
-  //                       albumUpdated.spotifySearchResults = [];
-  //                       this.updateAlbum(index, albumUpdated);
-  //                       // this.addToPlaylist(index);
-  //                     });
-  //                   } else {
-  //                     album.spotifySearchResults = foundAlbums;
-  //                   }
-  //                   resolve(true);
-  //                 } else {
-  //                   // no result found for search with album+artist, search with only album
-  //                   this.spotifyApiService.searchItem('artist:' + album.artistName, 'album').subscribe(
-  //                     (foundAlbums2: AlbumSpotify[]) => {
-  //                       if (foundAlbums2.length > 0) {
-  //                         album.searchedOnSpotify = true;
-  //                         if (foundAlbums2.length === 1) {
-  //                           album.spotify = foundAlbums2[0];
-  //                           this.albumsService.updateAlbumOnDB(album).subscribe( (albumUpdated: Album) => {
-  //                             albumUpdated.searchedOnSpotify = true;
-  //                             albumUpdated.spotifySearchResults = [];
-  //                             this.updateAlbum(index, albumUpdated);
-  //                             // this.addToPlaylist(index);
-  //                           });
-  //                         } else {
-  //                           album.spotifySearchResults = foundAlbums2;
-  //                         }
-  //                         resolve(true);
-  //                         } else {
-  //                           album.searchedOnSpotify = true;
-  //                           resolve(false);
-  //                         }
-  //                       });
-  //                 }
-  //             },
-  //           err => console.log(err));
-  //       });
-  // }
 
   updateAlbum(index: number, newAlbum: Album) {
       this.albumsService.updateAlbum(index, newAlbum);
