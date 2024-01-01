@@ -29,7 +29,7 @@ monthDic["December"]=12
 def getHTMLPage(page):
   r = requests.get(page)
   if r.status_code != 200:
-	  exit
+    exit
   soup = BeautifulSoup(r.content.decode("utf8"), 'lxml')
   return soup
 
@@ -161,9 +161,16 @@ def saveToFile(fileName, dataToSave):
 ##### UPSERT IN DB - COLLECTION :ALBUMS
 def saveToDabase(fileName):
   # connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
-  connection = MongoClient(os.environ.get('MONGODB_WEBSCRAPPER'))
+  #connection = MongoClient(os.environ.get('MONGODB_WEBSCRAPPER'))
 
-  db = connection.get_default_database()
+  #db = connection.get_default_database()
+  print("Connecting to db")
+  print(os.environ.get('MONGODB_WEBSCRAPPER'))
+  connection = MongoClient(os.environ.get('MONGODB_WEBSCRAPPER'))
+  print(connection)
+  #connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
+
+  db = connection['heroku_j6lv18qq']
   releases = db.albums
   albums = open(fileName, "r")
   parsedAlbums = json_util.loads(albums.read())
