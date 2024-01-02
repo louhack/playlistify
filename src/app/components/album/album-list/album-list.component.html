@@ -127,7 +127,7 @@
                     <tab *ngIf="album.heavyBIsH" heading="HBIH">
                       <p *ngIf="album.heavyBIsH.sources" class="mt-2">Sources: {{ album.heavyBIsH.sources }}</p>
                       <p class="mt-2" *ngIf="album.heavyBIsH.releaseDate" >Date: {{ getDate(album.heavyBIsH.releaseDate) }}</p>
-                      <p><a href="{{ album.heavyBIsH.reviewLink }}" target="_blank">Consulter sur HBIH</a></p>
+                      <p><a href="https://www.heavyblogisheavy.com/{{ album.heavyBIsH.reviewLink }}" target="_blank">Consulter sur HBIH</a></p>
                     </tab>
                     <tab *ngIf="album.yourLastRites" heading="YLR">
                       <p class="mt-2" *ngIf="album.yourLastRites.releaseDate">Release Date: {{ getDate(album.yourLastRites.releaseDate) }}</p>
