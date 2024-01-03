@@ -7,6 +7,9 @@ export class LocalEndPoints {
     public playlistifiedAlbumsEndPoint = '/api/user/playlistifiedAlbum';
     public searchEndPoint = '/api/albums/search';
     public playlistifyEndPoint = '/api/user/playlistifyAlbum';
+    public startTaskEndPoint = '/api/script/startTask/:taskName';
+    public stopTaskEndPoint = '/api/script/stopTask/:taskName';
+    public taskStatusEndPoint = '/api/script/taskStatus/:taskName';
 
 
 }

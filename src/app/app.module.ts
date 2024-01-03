@@ -24,6 +24,8 @@ import { LocalEndPoints } from './services/local/localAPIEndpoints';
 import { AlbumEditComponent } from './components/album/album-edit/album-edit.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { HeaderComponent } from './components/header/header.component';
+import { TaskService } from './services/local/task.service';
+import { TasksComponent } from './components/tasks/tasks.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { HeaderComponent } from './components/header/header.component';
     AlbumsModalComponent,
     MenuComponent,
     AlbumEditComponent,
+    HeaderComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,8 @@ import { HeaderComponent } from './components/header/header.component';
     SpotifyApiService,
     MessageService,
     LocalEndPoints,
-    MessageService
+    MessageService,
+    TaskService
   ],
   bootstrap: [AppComponent],
 })
