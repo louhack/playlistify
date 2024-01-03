@@ -5,7 +5,7 @@ var User = require('../models/user.model');
 
 var Playlist = require('../models/playlist.model');
 
-var ObjectId = require('mongodb').ObjectID;
+// var ObjectId = require('mongodb').ObjectID;
 
 // Saving the context of this module inside the _this variable
 _this = this;

@@ -1,8 +1,8 @@
 import os
 import re
 import time
-import json
 from datetime import date, datetime
+import json
 from pymongo import MongoClient
 from bson import json_util
 from pytz import timezone
@@ -108,8 +108,9 @@ def main():
             }
             releases_list.append(release_json)
 
+    # print('length release list ', len(releases_list))
     # Write the list of releases to a JSON file
-    with open('heavyB_data.json', 'w', encoding='iso-8859-1') as f:
+    with open('./scripts/heavyB_data.json', 'w', encoding='iso-8859-1') as f:
         json.dump(releases_list, f, indent=4, ensure_ascii=True)
 
     # Connect to the database and update the releases
@@ -117,9 +118,10 @@ def main():
     try:
         db = connection['heroku_j6lv18qq']
         releases = db.albums
-        with open("heavyB_data.json", "r") as albums:
+        with open("./scripts/heavyB_data.json", "r") as albums:
             parsed_albums = json_util.loads(albums.read())
         t_day, t_month, t_year, now = get_current_date()
+        # print(parsed_albums)
         update_releases(releases, parsed_albums, t_day, t_month, t_year, now)
     finally:
         connection.close()
