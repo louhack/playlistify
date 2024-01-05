@@ -8,6 +8,7 @@ var passport = require('passport');
 var index = require('./routes/index');
 // var users = require('./routes/users');
 var session = require('express-session');
+var RateLimit = require('express-rate-limit');
 
 const MongoStore = require('connect-mongo');
 
@@ -164,6 +165,14 @@ app.get('/auth/spotify/token', middleware.isLoggedIn, (req, res) => {
     }
 });
 
+// set up rate limiter: maximum of five requests per minute
+var limiter = RateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // max 100 requests per windowMs
+});
+
+// apply rate limiter to all requests
+app.use(limiter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
