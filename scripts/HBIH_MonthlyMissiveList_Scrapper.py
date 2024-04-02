@@ -70,11 +70,13 @@ def main() -> None:
     # print("Table articles ")
     # print(table_articles)
     pageList = HBIH_scrapPageList(soup)
+    print("Page List")
     print(pageList)
     releasesList = scrapReleases_HBIH_Missive(pageList, source)
+    print("Releases List")
     print(releasesList)
 
-    fileName = 'heavyB_data_'+str(args[0])+'.json'
+    fileName = './scripts/'+'heavyB_data_'+str(args[0])+'.json'
     print(fileName)
     saveToFile(fileName, releasesList)
 

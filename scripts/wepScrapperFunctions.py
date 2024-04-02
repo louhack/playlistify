@@ -34,21 +34,26 @@ def getHTMLPage(page):
   return soup
 
 def HBIH_scrapPageList(soup):
-  table_articles = soup.find(id="main").find_all("article")
+  table_articles = soup.find(id="main").find(class_="row").find_all(class_=["col-xs-12 col-sm-12 col-lg-4 col-md-12", "col-xs-12 col-sm-12 col-md-6 col-lg-4", "col-xs-12 col-sm-12 col-lg-8 col-md-12"])
+  # print(table_articles)
   pageList = []
   # print(table_articles)
+  # article_h2 = table_articles.find_all("h2")
+  # article_h3 = table_articles.find_all("h3")
   for article in table_articles:
-    # print("article")
+    # print("tag")
     # print(article)
     # print("article\n")
     article_json = {}
-    try:
-      article_json['articleName'] = article.find(class_="cb-post-title").a.string
-      article_json['articleLink'] = article.find(class_="cb-post-title").a.get('href')
-      pageList.append(article_json)
-    except Exception as error:
-      print(error)
-    # print(articles_list)
+    for tag in article.find_all(['h2', 'h3']):
+      # print(tag)
+      try:
+        article_json['articleName'] = tag.get_text()
+        article_json['articleLink'] = tag.a.get('href')
+        pageList.append(article_json)
+      except Exception as error:
+        print(error)
+  # print(article_json)
   return pageList
 
 
@@ -58,9 +63,9 @@ def scrapReleases_HBIH_Missive(page_list, source):
 
   for pageToScrap in page_list:
     try:
-      pageLink = pageToScrap['articleLink']
+      pageLink = "https://www.heavyblogisheavy.com"+pageToScrap['articleLink']
       soup = getHTMLPage(pageLink)
-      results = soup(isTitle_but_no_class)
+      results = soup.find_all(isTitle_but_no_class)
       # print(results)
       # print(pageToScrap['articleName'])
       for result in results:
@@ -71,31 +76,56 @@ def scrapReleases_HBIH_Missive(page_list, source):
         # this pattern works nicely. Expected pattern : <ArtistName> - < AblumNane> (Genre 1, ..., Genre n)
         print(result.get_text())
         # rePattern_ArtistReleaseGenres = r'(^.*[^ -]) *– *([^- ].*[^ (]) *\(([^)]+)\)'
-        rePattern_ArtistReleaseGenres = r'(^.*[^ -]) *– *([^- ].*)'
-        artistReleaseGenres = re.findall(rePattern_ArtistReleaseGenres, unicodedata.normalize('NFKD', (result.get_text())))
+        #rePattern_ArtistReleaseGenres = r'(^.*[^ -]) *– *([^- ].*)'
+        # rePattern_ArtistReleaseGenres = r'^([^-]+) - ([^(]+) \(([^)]+)\)'
+        # rePattern_ArtistReleaseGenres = r'^([^-]+)\s*-\s*([^(]+)\s*\(([^)]+)\)'
+        # rePattern_ArtistReleaseGenres = r'^([^–-]+)\s*[–-]\s*([^(]+)\s*\(([^)]+)\)'
+        # rePattern_ArtistReleaseGenres = r'^([^–-]+)\s*[–-]\s*([^(]+)\s*\(([^)]+)\)'
+        rePattern_ArtistReleaseGenres = r'^([^–-]+)\s*[–-]\s*([^(]+)\s*(?:\(([^)]+)\))?'
+
+        artistReleaseGenres = re.match(rePattern_ArtistReleaseGenres, result.get_text())
         # print(artistReleaseGenres)
 
-        if len(artistReleaseGenres) == 1 and len(artistReleaseGenres[0]) == 2:
-          rePattern_ReleaseGenres = r'(.*[^ (]) *\(([^)]+)\)'
-          releaseGenres = re.findall(rePattern_ReleaseGenres, unicodedata.normalize('NFKD', artistReleaseGenres[0][1]))
+        if artistReleaseGenres:
+          artist = artistReleaseGenres.group(1).strip()
+          releaseName = artistReleaseGenres.group(2).strip()
+          genres = artistReleaseGenres.group(3).strip()
+
+          print("artist :", artist)
+          print("releaseName :", releaseName)
+          print("genres :", genres)
+          
+        # if len(artistReleaseGenres) == 1 and len(artistReleaseGenres[0]) == 2:
+          # rePattern_ReleaseGenres = r'(.*[^ (]) *\(([^)]+)\)'
+          # releaseGenres = re.findall(rePattern_ReleaseGenres, unicodedata.normalize('NFKD', artistReleaseGenres[0][1]))
           # print(releaseGenres)
         # (^.*[^ -]) *– *([^- ].*)   -> group1 = artistName // group2 = albumName (Genres)
         # (.*[^ (]) *\(([^)]+)\)  Decoup qlbumName et Genres
         # search the release based on the regex pattern
         # if len(artistReleaseGenres) == 1 and len(artistReleaseGenres[0]) == 3:
             #Regex has matched a release. I save the information
-          artist = str.strip(artistReleaseGenres[0][0])
-          if len(releaseGenres) > 0:
-            releaseName = str.strip(releaseGenres[0][0])
-            genres = str.split(releaseGenres[0][1], ",")
-            genresClean = []
-            for genre in genres:
-              genresClean.append(str.strip(genre))
+          # artist = str.strip(artistReleaseGenres[0][0])
+          # if len(releaseGenres) > 0:
+            # releaseName = str.strip(releaseGenres[0][0])
+          
+          # Checking if the string contains ","
+          if "," in genres:
+            genres_list = genres.split(",")
+          # Checking if the string contains "/"
+          elif "/" in genres:
+            genres_list = genres.split("/")
+          else:
+          # If neither separator is found, treat the whole string as a single element
+            genres_list = [genres]   
+            # genres = str.split(releaseGenres[0][1], ",")
+            # genresClean = []
+            # for genre in genres:
+              # genresClean.append(str.strip(genre))
             # print(releaseName)
             # print(genresClean)
-          else:
-            genresClean=[]
-            releaseName = str.strip(artistReleaseGenres[0][1])
+          # else:
+            # genresClean=[]
+            # releaseName = str.strip(artistReleaseGenres[0][1])
             # print(releaseName)
 
           # print("GENRES : " + str(genresClean))
@@ -113,13 +143,16 @@ def scrapReleases_HBIH_Missive(page_list, source):
             print(error)
             pass
 
-          jsonRelease = {'artistName':artist, 'albumName':releaseName,'heavyBIsH':{'id':'', 'reviewLink': pageToScrap['articleLink'], 'releaseDate':{ 'month': getMonth(), 'year': getYear()}, 'imagePath': coverPath, 'genres': genresClean, 'sources': source}}
+          jsonRelease = {'artistName':artist, 'albumName':releaseName,'heavyBIsH':{'id':'', 'reviewLink': pageToScrap['articleLink'], 'releaseDate':{ 'month': getMonth(), 'year': getYear()}, 'imagePath': coverPath, 'genres': genres_list, 'sources': source}}
           # print(jsonRelease)
           releases_list.append(jsonRelease)
 
-        # else:
+        else:
+          # Write the input_string to a log file
+          with open("logfile.txt", "a") as logfile:
+            logfile.write(result.get_text() + "\n")
+          print("No match found. Logged to logfile.txt")
           # print("No album detected : " + str(artistReleaseGenres))
-
     except SyntaxError as syntax_error:
       print(syntax_error)
     except AttributeError as attibute_error:
