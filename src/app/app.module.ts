@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TabsModule } from 'ngx-bootstrap/tabs';
@@ -43,10 +43,10 @@ import { TasksComponent } from './components/tasks/tasks.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
     PaginationModule.forRoot(),
     ModalModule.forRoot(),
     TabsModule.forRoot(),
