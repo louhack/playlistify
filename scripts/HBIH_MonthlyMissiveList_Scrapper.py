@@ -29,9 +29,9 @@ monthDic["December"]=12
 
 EDITORSPICK = "https://www.heavyblogisheavy.com/tag/editors-picks/"
 JAZZCLUB = "https://www.heavyblogisheavy.com/category/columns/the-jazz-club/"
-DOOMSDAY = "https://www.heavyblogisheavy.com/category/columns/doomsday/"
-POSTROCK = "https://www.heavyblogisheavy.com/category/columns/post-rock-post/"
-KULT = "https://www.heavyblogisheavy.com/category/columns/kvlt-kolvmn/"
+DOOMSDAY = "https://www.heavyblogisheavy.com/tag/doomsday/"
+POSTROCK = "https://www.heavyblogisheavy.com/tag/post-rock-post/"
+KULT = "https://www.heavyblogisheavy.com/tag/kvlt-kolvmn/"
 UNMETAL = "https://www.heavyblogisheavy.com/category/columns/unmetal-monthly/"
 
 def main() -> None:
@@ -80,7 +80,7 @@ def main() -> None:
     print(fileName)
     saveToFile(fileName, releasesList)
 
-    saveToDabase(fileName)
+    saveToDatabase(fileName)
   except RuntimeError as runtime_error:
     print(runtime_error)
   # print(runtime_error)
