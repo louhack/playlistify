@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Inject, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Observable, Subject, Subscription, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, startWith, switchMap, tap } from 'rxjs/operators';
@@ -47,7 +47,7 @@ export class AlbumListComponent implements OnInit, OnDestroy {
     private albumsService: AlbumService,
     private userService: UserService,
     private spotifyApiService: SpotifyApiService,
-    @Inject(BsModalService) private modalService: BsModalService,
+    private modalService: BsModalService,
     private cdr: ChangeDetectorRef
   ) {}
 

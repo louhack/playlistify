@@ -1,4 +1,62 @@
 #AlbumCover {
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+}
+
+form .navbar-form {
+  padding-top: 5px;
+}
+
+.nav select {
+  width: 250px;
+}
+
+.card {
+  transition: transform 0.3s;
+  margin-bottom: 30px;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-subtitle {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+}
+
+.card-footer .btn {
+  margin-right: 10px; /* Add vertical space between buttons */
+}
+
+.pagination {
+  justify-content: center;
+}
+
+@media (max-width: 576px) {
+  .form-row {
+      flex-direction: column;
+  }
+
+  .form-check-inline {
+      display: block;
+  }
+}
+
+
+
+/*
+#AlbumCover {
     height: 300px;
     width: 300px;
 }
@@ -10,3 +68,4 @@ form .navbar-form{
 .nav select {
     width: 250px;
 }
+*/

@@ -1,0 +1,149 @@
+<form [formGroup]="searchForm">
+  <div class="form-group row">
+    <label for="Search" class="col-sm-2 col-form-label"><b>Search</b></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="Search" placeholder="Search artists and albums" formControlName="search" (input)="onSearchEvent()">
+    </div>
+  </div>
+
+  <fieldset class="form-group">
+    <div class="row">
+      <div class="col-sm">
+        <legend class="col-form-label pt-0"><b>Release Type</b></legend>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="scope" id="radioAll" value="all" formControlName="scope" (change)="onSearchEvent()">
+          <label class="form-check-label" for="radioAll">All</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="scope" id="radioArtists" value="artists" formControlName="scope" (change)="onSearchEvent()">
+          <label class="form-check-label" for="radioArtists">Artists</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="scope" id="radioAlbums" value="albums" formControlName="scope" (change)="onSearchEvent()">
+          <label class="form-check-label" for="radioAlbums">Albums</label>
+        </div>
+      </div>
+
+      <div class="col-sm">
+        <legend class="col-form-label pt-0"><b>Sources</b></legend>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sources" id="radioAllSources" value="allSources" formControlName="sources" (change)="onSearchEvent()">
+          <label class="form-check-label" for="radioAllSources">All</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sources" id="radioSputnikMusicSources" value="sputnikMusic" formControlName="sources" (change)="onSearchEvent()">
+          <label class="form-check-label" for="radioSputnikMusicSources">Sputnik Music</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sources" id="radioHBIHSources" value="hbih" formControlName="sources" (change)="onSearchEvent()">
+          <label class="form-check-label" for="radioHBIHSources">Heavy Blog Is Heavy</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sources" id="radioYLRSources" value="ylr" formControlName="sources" (change)="onSearchEvent()">
+          <label class="form-check-label" for="radioYLRSources">Your Last Rites</label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+
+<div class="row">
+  <div class="col-12">
+    <pagination
+      class="pagination-sm"
+      [(ngModel)]="currentPage"
+      [totalItems]="totalNumberOfAlbums"
+      [itemsPerPage]="itemsPerPage"
+      [maxSize]="maxSize"
+      [boundaryLinks]="true"
+      [rotate]="false"
+      (pageChanged)="onPageChanged($event)">
+    </pagination>
+  </div>
+  <div *ngIf="albums$ | async as albums">
+    <div class="row" *ngIf="albums.length > 0; else noResultsTemplate">
+      <div *ngFor="let album of albums; let i = index" class="col-sm-6 col-md-4">
+        <div class="card mb-4">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-md-8">
+                <h4 class="card-title">{{ album.artistName }}</h4>
+                <p class="card-subtitle"><strong>{{ album.albumName }}</strong></p>
+              </div>
+              <div class="col-md-4 text-center">
+                <button class="btn btn-primary" (click)="openEditModal(i)" [disabled]="!isAuthenticated">
+                  <i class="fas fa-edit fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <img *ngIf="album.spotify?.cover; else sputnikCover" class="card-img-top" [src]="album.spotify?.cover" [alt]="album.albumName">
+          <ng-template #sputnikCover>
+            <img *ngIf="album.sputnikMusic?.imagePath; else heavyBlogCover" class="card-img-top" [src]="album.sputnikMusic?.imagePath" [alt]="album.albumName">
+          </ng-template>
+          <ng-template #heavyBlogCover>
+            <img *ngIf="album.heavyBIsH?.imagePath; else yourLastRitesCover" class="card-img-top" [src]="album.heavyBIsH?.imagePath" [alt]="album.albumName">
+          </ng-template>
+          <ng-template #yourLastRitesCover>
+            <img *ngIf="album.yourLastRites?.imagePath" class="card-img-top" [src]="album.yourLastRites?.imagePath" [alt]="album.albumName">
+          </ng-template>
+          <div class="card-body">
+            <tabset>
+              <tab heading="Spotify">
+                <p *ngIf="album.spotify?.release_date" class="mt-2">Release Date: {{ album.spotify.release_date }}</p>
+                <p *ngIf="album.spotify?.total_tracks; else noInfo" class="mt-2">Tracks: {{ album.spotify.total_tracks }}</p>
+                <ng-template #noInfo>
+                  <p class="mt-2">No information. Please search on Spotify or try to add to a playlist</p>
+                </ng-template>
+              </tab>
+              <tab *ngIf="album.sputnikMusic" heading="Sputnik Music">
+                <p class="mt-2">Sputnik rating: {{ album.sputnikMusic.note }}</p>
+                <p *ngIf="album.sputnikMusic.numberOfUserRatings" class="mt-2">Number of user ratings: {{album.sputnikMusic.numberOfUserRatings}}</p>
+                <p *ngIf="album.sputnikMusic.releaseDate">Release Date: {{ getDate(album.sputnikMusic.releaseDate) }}</p>
+                <p><a [href]="'https://www.sputnikmusic.com/album/' + album.sputnikMusic.id" target="_blank">View on Sputnik Music</a></p>
+              </tab>
+              <tab *ngIf="album.heavyBIsH" heading="HBIH">
+                <p *ngIf="album.heavyBIsH.sources" class="mt-2">Sources: {{ album.heavyBIsH.sources }}</p>
+                <p class="mt-2" *ngIf="album.heavyBIsH.releaseDate">Date: {{ getDate(album.heavyBIsH.releaseDate) }}</p>
+                <p><a [href]="'https://www.heavyblogisheavy.com/' + album.heavyBIsH.reviewLink" target="_blank">View on HBIH</a></p>
+              </tab>
+              <tab *ngIf="album.yourLastRites" heading="YLR">
+                <p class="mt-2" *ngIf="album.yourLastRites.releaseDate">Release Date: {{ getDate(album.yourLastRites.releaseDate) }}</p>
+                <p><a [href]="album.yourLastRites.reviewLink" target="_blank">View on Your Last Rites</a></p>
+              </tab>
+            </tabset>
+          </div>
+          <div class="card-footer">
+            <button (click)="addToPlaylist(i)" [disabled]="!isAuthenticated" class="mr-1 btn btn-primary">
+              <i class="fas fa-plus-circle"></i> Add to playlist
+            </button>
+            <p *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length === 0 && !album.spotify">Sorry! No result found.</p>
+            <p *ngIf="album.addedToPlaylist">Album added to playlist {{ album.addedToPlaylist.name }}</p>
+            <ng-container *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length > 1">
+              <p>{{ album.spotifySearchResults.length }} results found! Please select the right one</p>
+              <button class="btn btn-primary" (click)="openModalWithComponent(i)">Select Record</button>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noResultsTemplate>
+      <div class="col-12">
+        <p>No albums found for your search criteria.</p>
+      </div>
+    </ng-template>
+  </div>
+  <div class="col-12">
+    <pagination
+      class="pagination-sm"
+      [(ngModel)]="currentPage"
+      [totalItems]="totalNumberOfAlbums"
+      [itemsPerPage]="itemsPerPage"
+      [maxSize]="maxSize"
+      [boundaryLinks]="true"
+      [rotate]="false"
+      (pageChanged)="onPageChanged($event)">
+    </pagination>
+  </div>
+</div>
