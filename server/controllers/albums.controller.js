@@ -1,10 +1,41 @@
 // Import Album Model
 const Album = require('../models/album.model');
 
-// Async Controller function to get the Albums List
+const DEFAULT_PAGE = 1;
+const DEFAULT_LIMIT = 20;
+const SUCCESS_STATUS = 200;
+const ERROR_STATUS = 400;
+const CREATED_STATUS = 201;
+const NOT_FOUND_STATUS = 404;
+const DELETED_STATUS = 204;
+
+const handleResponse = (res, status, data, message, error) => {
+  const response = { status, message };
+  if (data) response.data = data;
+  if (error) response.error = error;
+  return res.status(status).json(response);
+};
+
+const buildSearchQuery = (searchItem, scope, sources) => {
+  const searchAlbums = { albumName: { $regex: searchItem, $options: 'i' } };
+  const searchArtists = { artistName: { $regex: searchItem, $options: 'i' } };
+  const searchAllTypes = { $or: [searchArtists, searchAlbums] };
+
+  const searchSources = sources === "sputnikMusic" ? { sputnikMusic: { $exists: true } } :
+                        sources === "hbih" ? { heavyBIsH: { $exists: true } } :
+                        sources === "ylr" ? { yourLastRites: { $exists: true } } : {};
+
+  let query = scope === "albums" ? searchAlbums : scope === "artists" ? searchArtists : searchAllTypes;
+
+  if (Object.keys(searchSources).length > 0) {
+    Object.assign(query, searchSources);
+  }
+
+  return query;
+};
+
 exports.getAlbums = async function getAlbums(req, res, next) {
-  const page = req.query.page ? +req.query.page : 1;
-  const limit = req.query.limit ? +req.query.limit : 20;
+  const { page = DEFAULT_PAGE, limit = DEFAULT_LIMIT } = req.query;
 
   const options = {
     page,
@@ -14,18 +45,14 @@ exports.getAlbums = async function getAlbums(req, res, next) {
 
   try {
     const albums = await Album.paginate({}, options);
-    return res.status(200).json({ status: 200, data: albums, message: "Albums Successfully Received" });
+    return handleResponse(res, SUCCESS_STATUS, albums, "Albums Successfully Fetched");
   } catch (e) {
-    return res.status(400).json({ status: 400, message: e.message });
+    return handleResponse(res, ERROR_STATUS, null, e.message);
   }
 };
 
 exports.search = async function search(req, res, next) {
-  const searchItem = req.query.q;
-  const scope = req.query.scope;
-  const sources = req.query.sources;
-  const page = req.query.page ? +req.query.page : 1;
-  const limit = req.query.limit ? +req.query.limit : 20;
+  const { q: searchItem, scope, sources, page = DEFAULT_PAGE, limit = DEFAULT_LIMIT } = req.query;
 
   const options = {
     page,
@@ -34,103 +61,58 @@ exports.search = async function search(req, res, next) {
   };
 
   try {
-    let query = {};
-    const searchAlbums = { albumName: { $regex: searchItem, $options: 'i' } };
-    const searchArtists = { artistName: { $regex: searchItem, $options: 'i' } };
-    const searchAllTypes = { $or: [searchArtists, searchAlbums] };
-
-    const searchSources = sources === "sputnikMusic" ? { sputnikMusic: { $exists: true } } :
-                          sources === "hbih" ? { heavyBIsH: { $exists: true } } :
-                          sources === "ylr" ? { yourLastRites: { $exists: true } } : {};
-
-    query = scope === "albums" ? searchAlbums : scope === "artists" ? searchArtists : searchAllTypes;
-
-    if (Object.keys(searchSources).length > 0) {
-      Object.assign(query, searchSources);
-    }
-
+    const query = buildSearchQuery(searchItem, scope, sources);
     const foundAlbums = await Album.paginate(query, options);
 
     if (!foundAlbums.docs.length) {
-      return res.status(200).json({ status: 200, data: [], message: "No albums found" });
+      return handleResponse(res, SUCCESS_STATUS, [], "No albums found");
     }
 
-    return res.status(200).json({ status: 200, data: foundAlbums, message: "Search Successful" });
-
+    return handleResponse(res, SUCCESS_STATUS, foundAlbums, "Search Successful");
   } catch (error) {
-    return res.status(400).json({ status: 400, message: "Error while searching", error: error.message });
+    return handleResponse(res, ERROR_STATUS, null, "Error while searching", error.message);
   }
 };
 
 exports.createAlbum = async function createAlbum(req, res, next) {
-  const albumData = req.body.album;
+  const { album: albumData } = req.body;
 
-  const newAlbum = new Album({
-    artistName: albumData.artistName,
-    albumName: albumData.albumName,
-    idAlbumSputnik: albumData.idAlbumSputnik,
-    imagePath: albumData.imagePath,
-    note: albumData.note,
-    releaseMonth: albumData.releaseMonth,
-  });
+  const newAlbum = new Album(albumData);
 
   try {
     const createdAlbum = await newAlbum.save();
-    return res.status(201).json({ status: 201, data: createdAlbum, message: "Album Successfully Created" });
+    return handleResponse(res, CREATED_STATUS, createdAlbum, "Album Successfully Created");
   } catch (e) {
-    return res.status(400).json({ status: 400, message: "Album Creation was Unsuccessful", error: e.message });
+    return handleResponse(res, ERROR_STATUS, null, "Album Creation was Unsuccessful", e.message);
   }
 };
 
 exports.updateAlbum = async function updateAlbum(req, res, next) {
-  const id = req.body._id;
+  const { _id: id, ...albumData } = req.body;
 
   if (!id) {
-    return res.status(400).json({ status: 400, message: "Id must be present" });
+    return handleResponse(res, ERROR_STATUS, null, "Id must be present");
   }
-
-  const albumData = req.body;
 
   try {
     let albumToUpdate = await Album.findById(id);
 
     if (!albumToUpdate) {
-      return res.status(404).json({ status: 404, message: "Album not found" });
+      return handleResponse(res, NOT_FOUND_STATUS, null, "Album not found");
     }
 
-    albumToUpdate.artistName = albumData.artistName || albumToUpdate.artistName;
-    albumToUpdate.albumName = albumData.albumName || albumToUpdate.albumName;
-
-    if (albumData.sputnikMusic) {
-      albumToUpdate.sputnikMusic = albumData.sputnikMusic;
-    }
-
-    if (albumData.heavyBIsH) {
-      albumToUpdate.heavyBIsH = albumData.heavyBIsH;
-    }
-
-    if (albumData.spotify) {
-      albumToUpdate.spotify = albumData.spotify;
-      const coverImages = albumData.spotify.images || [];
-      albumToUpdate.spotify.cover = coverImages.length > 1 ? coverImages[1].url : null;
-    }
-
-    if (albumData.yourLastRites) {
-      albumToUpdate.yourLastRites = albumData.yourLastRites;
-    }
-
+    Object.assign(albumToUpdate, albumData);
     albumToUpdate.lastModified = new Date();
 
     const updatedAlbum = await albumToUpdate.save();
-    return res.status(200).json({ status: 200, data: updatedAlbum, message: "Album Successfully Updated" });
-
+    return handleResponse(res, SUCCESS_STATUS, updatedAlbum, "Album Successfully Updated");
   } catch (e) {
-    return res.status(400).json({ status: 400, message: "Error while updating album", error: e.message });
+    return handleResponse(res, ERROR_STATUS, null, "Error while updating album", e.message);
   }
 };
 
 exports.removeAlbum = async function removeAlbum(req, res, next) {
-  const id = req.params.id;
+  const { id } = req.params;
 
   try {
     const result = await Album.deleteOne({ _id: id });
@@ -139,9 +121,8 @@ exports.removeAlbum = async function removeAlbum(req, res, next) {
       throw new Error("Album could not be deleted");
     }
 
-    return res.status(204).json({ status: 204, message: "Album Successfully Deleted" });
-
+    return handleResponse(res, DELETED_STATUS, null, "Album Successfully Deleted");
   } catch (e) {
-    return res.status(400).json({ status: 400, message: e.message });
+    return handleResponse(res, ERROR_STATUS, null, e.message);
   }
 };
