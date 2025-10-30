@@ -4,26 +4,27 @@ const path = require('path');
 
 const tasks = {}; // Object to store tasks
 
-function startScheduledTask(taskName) {
+function startScheduledTask(taskName, scriptName, args) {
     // Run the task immediately
     console.log(`Executing ${taskName} for the first time...`);
-    runTask(taskName);
+    runTask(scriptName, args);
 
     // Schedule the task to run every 24 hours
     tasks[taskName] = cron.schedule('0 0 */24 * * *', () => {
         console.log(`Executing ${taskName}...`);
-        runTask(taskName);
+        runTask(scriptName, args);
     });
 }
 
-function runTask(taskName) {
+function runTask(scriptName, ...args) {
     const directoryPath = path.join(__dirname, '../../scripts/'); // Replace 'your_directory' with your desired directory name
-    const scriptPath = path.join(directoryPath, `${taskName}`);
+    const scriptPath = path.join(directoryPath, `${scriptName}`);
     console.log('scriptPath', scriptPath);
 
     const options = {
         mode: 'text',
         pythonOptions: ['-u'], // unbuffered output, helps in getting logs in real-time
+        args: args // pass arguments to the Python script
     };
 
     const pyShell = new PythonShell(scriptPath, options);
@@ -33,14 +34,14 @@ function runTask(taskName) {
     });
 
     pyShell.on('error', function (error) {
-        console.error(`Error in ${taskName}:`, error);
+        console.error(`Error in ${scriptName}:`, error);
     });
 
     pyShell.end(function (err, code, signal) {
         if (err) {
-            console.error(`Error executing ${taskName}:`, err);
+            console.error(`Error executing ${scriptName}:`, err);
         } else {
-            console.log(`${taskName} executed successfully`);
+            console.log(`${scriptName} executed successfully`);
         }
     });
     // PythonShell.run(scriptPath, options, function (err, result) {

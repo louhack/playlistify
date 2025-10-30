@@ -12,7 +12,7 @@ export class TasksComponent implements OnInit {
   tasks: Task[] = [
     { taskName: 'newReleasesSputnikMusicScrapper', scriptName: 'newReleasesSputnikMusicScrapper.py', status: 'Stopped' },
     { taskName: 'newReleasesHeavyBlogIsHeavy', scriptName: 'newReleasesHeavyBlogIsHeavy.py', status: 'Stopped' },
-    { taskName: 'newReleasesHeavyBlogIsHeavy EDITORSPICK', scriptName: 'HBIH_MonthlyMissiveList_Scrapper.py EDITORSPICK', status: 'Stopped' },
+    { taskName: 'newReleasesHeavyBlogIsHeavy_EDITORSPICK', scriptName: 'HBIH_MonthlyMissiveList_Scrapper.py', args: ['EDITORSPICK'],status: 'Stopped' },
     // Add more tasks as needed
 
   ];
@@ -27,7 +27,7 @@ export class TasksComponent implements OnInit {
   }
 
   startTask(task: Task): void {
-    this.taskService.startTask(task.taskName, task.scriptName).subscribe(res => {
+    this.taskService.startTask(task.taskName, task.scriptName, task.args).subscribe(res => {
       task.status = 'Running';
       console.log(res);
     });

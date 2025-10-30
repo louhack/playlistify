@@ -599,6 +599,127 @@
         }
     },
     {
+        "artistName": "Nithing",
+        "albumName": "Agonal Hymns",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "/2023/08/15/editors-picks-august-2023/",
+            "releaseDate": {
+                "month": 4,
+                "year": 2024
+            },
+            "imagePath": "",
+            "genres": [
+                ""
+            ],
+            "sources": "Editor's pick"
+        }
+    },
+    {
+        "artistName": "ABSTRACT VOID",
+        "albumName": "FOREVER",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "/2023/08/15/editors-picks-august-2023/",
+            "releaseDate": {
+                "month": 4,
+                "year": 2024
+            },
+            "imagePath": "",
+            "genres": [
+                "BLACKGAZE",
+                " SYNTHWAVE"
+            ],
+            "sources": "Editor's pick"
+        }
+    },
+    {
+        "artistName": "Chamber",
+        "albumName": "A Love To Kill For",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "/2023/08/15/editors-picks-august-2023/",
+            "releaseDate": {
+                "month": 4,
+                "year": 2024
+            },
+            "imagePath": "",
+            "genres": [
+                "mathcore"
+            ],
+            "sources": "Editor's pick"
+        }
+    },
+    {
+        "artistName": "NUCLEAR POWER TRIO",
+        "albumName": "WET ASS PLUTONIUM",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "/2023/08/15/editors-picks-august-2023/",
+            "releaseDate": {
+                "month": 4,
+                "year": 2024
+            },
+            "imagePath": "",
+            "genres": [
+                "PROG SHRED"
+            ],
+            "sources": "Editor's pick"
+        }
+    },
+    {
+        "artistName": "Sarmat",
+        "albumName": "Determined to Strike",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "/2023/08/15/editors-picks-august-2023/",
+            "releaseDate": {
+                "month": 4,
+                "year": 2024
+            },
+            "imagePath": "",
+            "genres": [
+                "brutal",
+                " progressive death metal"
+            ],
+            "sources": "Editor's pick"
+        }
+    },
+    {
+        "artistName": "Tongues",
+        "albumName": "Forml\u200b\u00f8\u200bse Stjerner",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "/2023/08/15/editors-picks-august-2023/",
+            "releaseDate": {
+                "month": 4,
+                "year": 2024
+            },
+            "imagePath": "",
+            "genres": [
+                "avant-garde black metal"
+            ],
+            "sources": "Editor's pick"
+        }
+    },
+    {
+        "artistName": "The Zenith Passage",
+        "albumName": "Datalysium",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "/2023/08/15/editors-picks-august-2023/",
+            "releaseDate": {
+                "month": 4,
+                "year": 2024
+            },
+            "imagePath": "",
+            "genres": [
+                "tech death"
+            ],
+            "sources": "Editor's pick"
+        }
+    },
+    {
         "artistName": "A Constant Knowledge of Death",
         "albumName": "Dissecting a One-Winged Bird",
         "heavyBIsH": {
@@ -679,6 +800,23 @@
             "imagePath": "",
             "genres": [
                 "prog pop metal"
+            ],
+            "sources": "Editor's pick"
+        }
+    },
+    {
+        "artistName": "EXCLUSIVE PREMIERE: Unfurl",
+        "albumName": "ing \u201cAscension\u201d",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "/2023/06/02/editors-picks-july-2023/",
+            "releaseDate": {
+                "month": 4,
+                "year": 2024
+            },
+            "imagePath": "",
+            "genres": [
+                ""
             ],
             "sources": "Editor's pick"
         }
@@ -1259,6 +1397,23 @@
         }
     },
     {
+        "artistName": "Release Day Roundup",
+        "albumName": "11/11/22",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "/2022/11/11/editors-picks-november-2022/",
+            "releaseDate": {
+                "month": 4,
+                "year": 2024
+            },
+            "imagePath": "",
+            "genres": [
+                ""
+            ],
+            "sources": "Editor's pick"
+        }
+    },
+    {
         "artistName": "The Callous Daoboys",
         "albumName": "Celebrity Therapist",
         "heavyBIsH": {
@@ -1525,6 +1680,23 @@
         }
     },
     {
+        "artistName": "Release Day Roundup",
+        "albumName": "10/7/22",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "/2022/10/10/editors-picks-october-2022/",
+            "releaseDate": {
+                "month": 4,
+                "year": 2024
+            },
+            "imagePath": "",
+            "genres": [
+                ""
+            ],
+            "sources": "Editor's pick"
+        }
+    },
+    {
         "artistName": "Abest",
         "albumName": "Molten Husk",
         "heavyBIsH": {
@@ -1711,6 +1883,40 @@
             "imagePath": "",
             "genres": [
                 "progressive post-metal"
+            ],
+            "sources": "Editor's pick"
+        }
+    },
+    {
+        "artistName": "Release Day Roundup",
+        "albumName": "9/2/22",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "/2022/09/02/editors-picks-september-2022/",
+            "releaseDate": {
+                "month": 4,
+                "year": 2024
+            },
+            "imagePath": "",
+            "genres": [
+                ""
+            ],
+            "sources": "Editor's pick"
+        }
+    },
+    {
+        "artistName": "Parkway Drive",
+        "albumName": "Darker Still",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "/2022/09/02/editors-picks-september-2022/",
+            "releaseDate": {
+                "month": 4,
+                "year": 2024
+            },
+            "imagePath": "",
+            "genres": [
+                ""
             ],
             "sources": "Editor's pick"
         }
@@ -1981,6 +2187,40 @@
         }
     },
     {
+        "artistName": "Release Day Roundup",
+        "albumName": "8/12/22 & 8/19/22",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "/2022/08/22/editors-picks-august-2022/",
+            "releaseDate": {
+                "month": 4,
+                "year": 2024
+            },
+            "imagePath": "",
+            "genres": [
+                ""
+            ],
+            "sources": "Editor's pick"
+        }
+    },
+    {
+        "artistName": "272",
+        "albumName": "Fear, And Loathing In Las Vegas Deep Dive",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "/2022/08/22/editors-picks-august-2022/",
+            "releaseDate": {
+                "month": 4,
+                "year": 2024
+            },
+            "imagePath": "",
+            "genres": [
+                ""
+            ],
+            "sources": "Editor's pick"
+        }
+    },
+    {
         "artistName": "Bekor Qilish",
         "albumName": "Throes of Death From the Dream Nihilism",
         "heavyBIsH": {
@@ -2065,6 +2305,23 @@
             "genres": [
                 "progressive",
                 "atmospheric black metal"
+            ],
+            "sources": "Editor's pick"
+        }
+    },
+    {
+        "artistName": "267",
+        "albumName": "Karl Sanders Interview",
+        "heavyBIsH": {
+            "id": "",
+            "reviewLink": "/2022/07/06/editors-picks-july-2022/",
+            "releaseDate": {
+                "month": 4,
+                "year": 2024
+            },
+            "imagePath": "",
+            "genres": [
+                ""
             ],
             "sources": "Editor's pick"
         }

@@ -265,8 +265,8 @@ exports.updateAlbum = async function updateAlbum (req, res, next){
 exports.removeAlbum = async function removeAlbum (req, res, next){
     var id = req.params.id;
     try{
-        var deleted = await Album.remove({_id: id});
-        if(deleted.result.n === 0){
+        var deleted = await Album.deleteOne({_id: id});
+        if(!deleted.acknowledged && deleted.deletedCount === 0){
           throw Error("Album Could not be deleted");
         }
         //var deleted = await AlbumService.deleteAlbumService(id)

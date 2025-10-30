@@ -280,7 +280,23 @@ searchMode: boolean;
         console.log(e);
       }});
   });
+
+  this.bsModalRef.content.onRemoveAlbum.subscribe((album: {albumToRemove: Album}) => {
+    this.albumsService.removeAlbumFromDB(album.albumToRemove).subscribe({
+      next: () => {
+        this.removeAlbum(albumIndex);
+        this.bsModalRef.hide();
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    });
+  });
+
 }
+  removeAlbum(albumIndex: number) {
+    console.log('Album removed: ' + albumIndex);
+  }
 
 
 

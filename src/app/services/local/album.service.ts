@@ -6,10 +6,17 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { AlbumsListI } from '../../interfaces/albumsList.interface';
 import { AlbumPlaylistI } from '../../interfaces/albumAddedToPlaylist.interface';
 import { LocalEndPoints } from './localAPIEndpoints';
+import { setUrlParameters } from '../../shared/utils';
 
 
 @Injectable()
 export class AlbumService {
+  removeAlbumFromDB(album: Album): Observable<any> {
+    const id = album._id;
+    const url = setUrlParameters(this.localEndPoints.albumRemoveEndPoint, {id});  // replace 'id' with the actual property name for the album ID
+    return this.http.delete(url);
+    // throw new Error('Method not implemented.');
+  }
 
   // albumUrl = `/api/albums`;
   albumChanged = new Subject<{index: number, album: Album}>();

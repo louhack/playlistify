@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LocalEndPoints } from './localAPIEndpoints';
+import { setUrlParameters } from '../../shared/utils';
 
 @Injectable()
 export class TaskService {
@@ -10,30 +11,20 @@ constructor(
     private http: HttpClient,
     private localEndPoints: LocalEndPoints) { }
 
-    setUrlParameters(url: string, params: any): string {
-        let urlWithParams = url;
-        for (const param in params) {
-            if (params.hasOwnProperty(param)) {
-                urlWithParams = urlWithParams.replace(`:${param}`, params[param]);
-            }
-        }
-        return urlWithParams;
 
-    }
-
-  startTask(taskName: string, scriptName: string) {
-    let taskPath = this.setUrlParameters(this.localEndPoints.startTaskEndPoint, {taskName});
+  startTask(taskName: string, scriptName: string, args: string[]) {
+    let taskPath = setUrlParameters(this.localEndPoints.startTaskEndPoint, {taskName});
     console.log(scriptName);
-    return this.http.post<any>(taskPath, { scriptname:scriptName });
+    return this.http.post<any>(taskPath, { scriptname:scriptName, args:args });
   }
 
   stopTask(taskName: string, scriptName: string) {
-    let taskPath = this.setUrlParameters(this.localEndPoints.stopTaskEndPoint, {taskName});
+    let taskPath = setUrlParameters(this.localEndPoints.stopTaskEndPoint, {taskName});
     return this.http.post<any>(taskPath, { scriptname:scriptName });
   }
 
   getTaskStatus(taskName: string, scriptName: string) {
-    let taskPath = this.setUrlParameters(this.localEndPoints.taskStatusEndPoint, {taskName});
+    let taskPath = setUrlParameters(this.localEndPoints.taskStatusEndPoint, {taskName});
     return this.http.get<any>(taskPath, {params:{ scriptname:scriptName }});
   }
 }
