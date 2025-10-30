@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { Observable, Subject, Subscription } from 'rxjs';
+import { Observable, Subject, Subscription, of } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, startWith, switchMap, tap } from 'rxjs/operators';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectorRef } from '@angular/core';
 
 import { Album } from '../../../models/album.model';
 import { UserService } from '../../../services/spotify/user.service';
@@ -10,86 +13,100 @@ import { AlbumSpotify } from '../../../interfaces/albumSpotifyInterface';
 import { MyCalendar } from '../../../shared/myCalendar';
 import { AlbumsModalComponent } from '../albums-modal/albums-modal.component';
 import { AlbumPlaylistI } from '../../../interfaces/albumAddedToPlaylist.interface';
-import { switchMap, distinctUntilChanged, debounceTime, throwIfEmpty, map, startWith, tap } from 'rxjs/operators';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlbumsListI } from '../../../interfaces/albumsList.interface';
 import { AlbumEditComponent } from '../album-edit/album-edit.component';
-import { Inject } from '@angular/core';
-import { of } from 'rxjs';
 
 @Component({
   selector: 'app-album-list',
   templateUrl: './album-list.component.html',
-  styleUrls: ['./album-list.component.css']
+  styleUrls: ['./album-list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AlbumListComponent implements OnInit {
+export class AlbumListComponent implements OnInit, OnDestroy {
+  albums$: Observable<Album[]> = of([]);
+  private userSubscription: Subscription;
+  private bsModalRef: BsModalRef;
+  private searchReq = new Subject<{ searchData: string, searchScope: string, searchSources: string }>();
 
-  albums$: Observable<Album[]>;
+  searchMode: boolean;
+  noResultsFound: boolean = false;
 
-  userSubscription: Subscription;
-
-  public searchForm = new FormGroup(
-    {
-      search: new FormControl('', Validators.required),
-      scope: new FormControl ('all', Validators.required),
-      sources: new FormControl('allSources', Validators.required)
-    }
-    );
-
-  private searchReq = new Subject<{searchData: string, searchScope: string, searchSources: string}>();
+  public searchForm = new FormGroup({
+    search: new FormControl('', Validators.required),
+    scope: new FormControl('all', Validators.required),
+    sources: new FormControl('allSources', Validators.required)
+  });
 
   totalNumberOfAlbums: number;
   totalNumberOfPages: number;
   currentPage = 1;
   maxSize = 5;
-  numPages = 0;
   itemsPerPage = 20;
 
-// Modal for playlist creation
-bsModalRef: BsModalRef;
+  constructor(
+    private albumsService: AlbumService,
+    private userService: UserService,
+    private spotifyApiService: SpotifyApiService,
+    private modalService: BsModalService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
-searchMode: boolean;
+  ngOnInit(): void {
+    this.initializeAlbums();
+    this.initializeSearch();
+  }
 
-  constructor(private albumsService: AlbumService, private userService: UserService, private spotifyApiService: SpotifyApiService, @Inject(BsModalService) private modalService: BsModalService) {
+  ngOnDestroy(): void {
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
     }
-
-  //trigger when when user types in searchbar
-  public searchEvent() {
-    var searchRequestObj = {
-      searchData: this.searchForm.get('search').value,
-      searchScope: this.searchForm.get('scope').value,
-      searchSources: this.searchForm.get('sources').value
-    };
-    
-    this.searchReq.next(searchRequestObj);
   }
 
-  getUserService() {
-    return this.userService;
-  }
-
-  ngOnInit() {
-    this.userService.userChanged.pipe(
+  private initializeAlbums(): void {
+    this.userSubscription = this.userService.userChanged.pipe(
       startWith(null),
       switchMap(() => this.getAlbums(this.currentPage, this.itemsPerPage)),
-      switchMap((albums) => this.searchPlaylistifiedAlbums(albums))
+      switchMap(albums => this.searchPlaylistifiedAlbums(albums))
     ).subscribe(albums => {
+      console.log('Albums loaded on init:', albums);
       this.albums$ = of(albums);
+      this.noResultsFound = albums.length === 0;
+      this.cdr.markForCheck();
     });
-
-      this.search();
   }
 
-  search() {
+  private initializeSearch(): void {
     this.searchReq.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap((value) => this.getSearchObservable(value)),
-      switchMap((albumsListI) => this.getAlbumsObservable(albumsListI))
-    ).subscribe();
+      switchMap(value => this.getSearchObservable(value)),
+      switchMap(albumsList => this.getAlbumsObservable(albumsList))
+    ).subscribe(albums => {
+      console.log('Albums updated after search:', albums);
+      this.albums$ = of(albums);
+      this.noResultsFound = albums.length === 0;
+      this.cdr.markForCheck();
+    });
   }
-  
-  getSearchObservable(value: any): Observable<AlbumsListI | Album[]> {
+
+  public onSearchEvent(): void {
+    const searchRequest = {
+      searchData: this.searchForm.get('search')?.value,
+      searchScope: this.searchForm.get('scope')?.value,
+      searchSources: this.searchForm.get('sources')?.value
+    };
+    this.searchReq.next(searchRequest);
+  }
+
+  private createSearchRequestObject() {
+    return {
+      searchData: this.searchForm.get('search')?.value,
+      searchScope: this.searchForm.get('scope')?.value,
+      searchSources: this.searchForm.get('sources')?.value
+    };
+  }
+
+  private getSearchObservable(value: any): Observable<AlbumsListI | Album[]> {
     if (value.searchData === "" && value.searchSources === "allSources") {
       this.searchMode = false;
       this.currentPage = 1;
@@ -97,241 +114,204 @@ searchMode: boolean;
     } else {
       this.searchMode = true;
       this.currentPage = 1;
-      return this.sendSearchReq(value.searchData, value.searchScope, value.searchSources, this.currentPage, this.itemsPerPage);
+      return this.sendSearchRequest(value.searchData, value.searchScope, value.searchSources, this.currentPage, this.itemsPerPage);
     }
   }
 
-  getAlbumsObservable(albumsListI: AlbumsListI | Album[]): Observable<Album[]> {
-    if (albumsListI !== null && Array.isArray(albumsListI) && albumsListI.every(item => item instanceof Album)) {
+  private getAlbumsObservable(albumsListI: AlbumsListI | Album[]): Observable<Album[]> {
+    if (Array.isArray(albumsListI) && albumsListI.every(item => item instanceof Album)) {
       return this.searchPlaylistifiedAlbums(albumsListI as Album[]);
     } else {
-      this.affectSearchResults(albumsListI as AlbumsListI);
+      this.updateSearchResults(albumsListI as AlbumsListI);
       return this.searchPlaylistifiedAlbums((albumsListI as AlbumsListI).albumsList);
     }
   }
 
-  sendSearchReq(searchData: string, searchScope: string, searchSources:string,page: number, resultLimit: number): Observable<AlbumsListI> {
-    return this.albumsService.searchAlbum(searchData,searchScope, searchSources, page, resultLimit);
+  private sendSearchRequest(searchData: string, searchScope: string, searchSources: string, page: number, resultLimit: number): Observable<AlbumsListI> {
+    return this.albumsService.searchAlbum(searchData, searchScope, searchSources, page, resultLimit);
   }
 
-  searchPlaylistifiedAlbums(albums: Album[]): Observable<Album[]> {
+  private searchPlaylistifiedAlbums(albums: Album[]): Observable<Album[]> {
     if (this.userService.isAuthenticated()) {
-      return this.albums$ = this.albumsService.searchPlaylistifiedAlbums(albums, this.userService.getUserDbId()).pipe(
-        map((playlists: AlbumPlaylistI[]) => this.mapPlaylistsToAlbums(playlists, albums))
+      return this.albumsService.searchPlaylistifiedAlbums(albums, this.userService.getUserDbId()).pipe(
+        map(playlists => this.mapPlaylistsToAlbums(playlists, albums))
       );
     } else {
       return of(albums);
     }
   }
 
-  mapPlaylistsToAlbums(playlists: AlbumPlaylistI[], albums: Album[]): Album[] {
+  private mapPlaylistsToAlbums(playlists: AlbumPlaylistI[], albums: Album[]): Album[] {
     if (playlists != null) {
       const playlistMap = new Map(playlists.map(playlist => [playlist.albumId, playlist]));
-      return albums.map((album) => {
-        return playlistMap.has(album._id) ? { ...album, addedToPlaylist: playlistMap.get(album._id) } : album;
-      });
+      return albums.map(album => playlistMap.has(album._id) ? { ...album, addedToPlaylist: playlistMap.get(album._id) } : album);
     }
     return albums;
   }
 
-  affectSearchResults(albumsListI: AlbumsListI){
-    if (!this.isEmptyObject(albumsListI) && albumsListI.albumsList.length > 0) {
-    this.totalNumberOfPages = albumsListI.totalNumberOfPages;
-    this.totalNumberOfAlbums = albumsListI.totalNumberOfAlbums;
-    this.albums$ = of(albumsListI.albumsList);
-    }
-    else {
-      this.searchMode=false;
-      this.currentPage = 1;
-      this.totalNumberOfAlbums=0;
-      this.totalNumberOfPages=0;
-      this.albums$ = of(null);
+  private updateSearchResults(albumsListI: AlbumsListI): void {
+    if (albumsListI && albumsListI.albumsList.length > 0) {
+      this.totalNumberOfPages = albumsListI.totalNumberOfPages;
+      this.totalNumberOfAlbums = albumsListI.totalNumberOfAlbums;
+      console.log('Search results:', albumsListI.albumsList);
+      this.albums$ = of(albumsListI.albumsList);
+      this.noResultsFound = false;
+      this.cdr.markForCheck();
+    } else {
+      this.resetSearchResults();
     }
   }
 
-  isEmptyObject(obj: Object): Boolean {
-    return !Object.keys(obj).length;
+  private resetSearchResults(): void {
+    this.searchMode = false;
+    this.currentPage = 1;
+    this.totalNumberOfAlbums = 0;
+    this.totalNumberOfPages = 0;
+    this.albums$ = of([]);
+    this.noResultsFound = true;
+    this.cdr.markForCheck();
   }
 
-  getAlbums(_page: number, _itemsPerPage: number): Observable<Album[]> {
-    return this.albumsService.getAlbums(_page, _itemsPerPage).pipe(
-      tap((albumsList: AlbumsListI) => {
+  private getAlbums(page: number, itemsPerPage: number): Observable<Album[]> {
+    return this.albumsService.getAlbums(page, itemsPerPage).pipe(
+      tap(albumsList => {
         this.totalNumberOfPages = albumsList.totalNumberOfPages;
         this.totalNumberOfAlbums = albumsList.totalNumberOfAlbums;
       }),
-      map((albumsList: AlbumsListI) => albumsList.albumsList)
+      map(albumsList => albumsList.albumsList)
     );
   }
 
-  pageChanged(event: any): void {
-    const page = event.page;
-    const itemsPerPage = event.itemsPerPage;
+  public onPageChanged(event: any): void {
+    const { page, itemsPerPage } = event;
 
     if (this.searchMode) {
       const searchReqObj = this.createSearchRequestObject();
-      this.sendSearchReq(searchReqObj.searchData,searchReqObj.searchScope, searchReqObj.searchSources, page, itemsPerPage)
-          .subscribe(albumsListI =>  this.affectSearchResults(albumsListI));
-    } else {
-      // console.log(event.page + " " + event.itemsPerPage);
-      this.getAlbums(page, itemsPerPage)
-        .subscribe(albums => this.albums$=this.searchPlaylistifiedAlbums(albums));
-    }
-      window.scroll(0, 0);
-  }
-
-  createSearchRequestObject() {
-    return {
-      searchData: this.searchForm.get('search').value,
-      searchScope: this.searchForm.get('scope').value,
-      searchSources: this.searchForm.get('sources').value
-    };
-  }
-
-    // Function to select a specific index of the albums array
-    selectAlbumAtIndex(index: number): Promise<Album> {
-      return new Promise((resolve, reject) => {
-        this.albums$.subscribe(albums => {
-          if (albums.length > index && index >= 0) {
-            resolve(albums[index]);
-          } else {
-            reject('Invalid index');
-          }
+      this.sendSearchRequest(searchReqObj.searchData, searchReqObj.searchScope, searchReqObj.searchSources, page, itemsPerPage)
+        .subscribe(albumsListI => {
+          this.updateSearchResults(albumsListI);
+          this.cdr.markForCheck();
         });
-      });
+    } else {
+      this.getAlbums(page, itemsPerPage)
+        .subscribe(albums => {
+          console.log('Page changed albums:', albums);
+          this.albums$ = of(albums);
+          this.noResultsFound = albums.length === 0;
+          this.cdr.markForCheck();
+        });
     }
+    window.scroll(0, 0);
+  }
 
-    async openModalWithComponent(albumIndex: number) {
-      const albumToUpdate = await this.selectAlbumAtIndex(albumIndex);
-      const initialState = this.createInitialState(albumToUpdate);
-    
-      this.bsModalRef = this.modalService.show(AlbumsModalComponent, {initialState});
-      this.bsModalRef.content.albumIndex = albumIndex;
-    
-      this.bsModalRef.content.onChosenAlbum.subscribe((info: {resultIndex: number}) => {
-        this.updateAlbumAndAddToPlaylist(albumToUpdate, info.resultIndex, albumIndex);
-      });
-    }
-    
-    createInitialState(albumToUpdate: Album) {
-      return {
-        albumsFound: albumToUpdate.spotifySearchResults,
-        title: albumToUpdate.albumName,
-        artist: albumToUpdate.artistName
-      };
-    }
-    
-    updateAlbumAndAddToPlaylist(albumToUpdate: Album, resultIndex: number, albumIndex: number) {
-      albumToUpdate.spotify = albumToUpdate.spotifySearchResults[resultIndex];
-      albumToUpdate.searchedOnSpotify = true;
-      albumToUpdate.spotifySearchResults = [];
-    
-      this.albumsService.updateAlbumOnDB(albumToUpdate).subscribe((albumUpdated: Album) => {
-        albumUpdated.searchedOnSpotify = true;
-        albumUpdated.spotifySearchResults = [];
-        this.updateAlbum(albumIndex, albumUpdated);
-        this.addToPlaylist(albumIndex);
-      });
-    }
-
-
-  // async openModalWithComponent(albumIndex: number) {
-  //   // retrieve albumsFound and pass them to the modal
-  //   const albumToUpdate = await this.selectAlbumAtIndex(albumIndex);
-  //   // console.log('AlbumToUpdate: ' + JSON.stringify(albumToUpdate));
-  //   const initialState = {
-  //     albumsFound: albumToUpdate.spotifySearchResults,
-  //     title: albumToUpdate.albumName,
-  //     artist: albumToUpdate.artistName
-  //   };
-  //   this.bsModalRef = this.modalService.show(AlbumsModalComponent, {initialState});
-  //   this.bsModalRef.content.albumIndex = albumIndex;
-  //   this.bsModalRef.content.onChosenAlbum.subscribe((info: {resultIndex: number}) => {
-  //     albumToUpdate.spotify = albumToUpdate.spotifySearchResults[info.resultIndex];
-  //     albumToUpdate.searchedOnSpotify = true;
-  //     albumToUpdate.spotifySearchResults = [];
-  //     this.albumsService.updateAlbumOnDB(albumToUpdate).subscribe( (albumUpdated: Album) => {
-  //       albumUpdated.searchedOnSpotify = true;
-  //       albumUpdated.spotifySearchResults = [];
-  //       this.updateAlbum(albumIndex, albumUpdated);
-  //       this.addToPlaylist(albumIndex);
-  //     });
-  //   });
-  // }
-
-  async editReleaseModal(albumIndex: number){
-    // retrieve albumsFound and pass them to the modal
+  public async openEditModal(albumIndex: number): Promise<void> {
     const albumToEdit = await this.selectAlbumAtIndex(albumIndex);
-    // console.log('AlbumToUpdate: ' + JSON.stringify(albumToUpdate));
     const initialState = {
       album: albumToEdit,
       updated: false
     };
-    this.bsModalRef = this.modalService.show(AlbumEditComponent, {initialState});
-    this.bsModalRef.content.onUpdateAlbum.subscribe((album: {albumToUpdate: Album} ) => {
-      this.albumsService.updateAlbumOnDB(album.albumToUpdate).subscribe( {
+    this.bsModalRef = this.modalService.show(AlbumEditComponent, { initialState });
+    this.bsModalRef.content.onUpdateAlbum.subscribe(({ albumToUpdate }) => {
+      this.albumsService.updateAlbumOnDB(albumToUpdate).subscribe({
         next: (albumUpdated: Album) => {
-        this.updateAlbum(albumIndex, albumUpdated);
-        this.bsModalRef.content.updated = true;
-        this.bsModalRef.content._alert = this.bsModalRef.content.defaultAlerts[0];
-      },
+          this.updateAlbum(albumIndex, albumUpdated);
+          this.bsModalRef.content.updated = true;
+          this.bsModalRef.content._alert = this.bsModalRef.content.defaultAlerts[0];
+          this.cdr.markForCheck();
+        },
         error: (e) => {
-        this.bsModalRef.content.updated = true;
-        this.bsModalRef.content._alert = this.bsModalRef.content.defaultAlerts[1];
-        console.log(e);
-      }});
-  });
-
-  this.bsModalRef.content.onRemoveAlbum.subscribe((album: {albumToRemove: Album}) => {
-    this.albumsService.removeAlbumFromDB(album.albumToRemove).subscribe({
-      next: () => {
-        this.removeAlbum(albumIndex);
-        this.bsModalRef.hide();
-      },
-      error: (e) => {
-        console.log(e);
-      }
+          this.bsModalRef.content.updated = true;
+          this.bsModalRef.content._alert = this.bsModalRef.content.defaultAlerts[1];
+          console.error(e);
+        }
+      });
     });
-  });
-
-}
-  removeAlbum(albumIndex: number) {
-    console.log('Album removed: ' + albumIndex);
   }
 
-
-
-  getDate({month: monthNumber, year: yearNumber}) {
-        return (MyCalendar.month[monthNumber - 1]) + ' ' + yearNumber;
+  private selectAlbumAtIndex(index: number): Promise<Album> {
+    return new Promise((resolve, reject) => {
+      this.albums$.subscribe(albums => {
+        if (albums.length > index && index >= 0) {
+          resolve(albums[index]);
+        } else {
+          reject('Invalid index');
+        }
+      });
+    });
   }
 
+  public async openModalWithComponent(albumIndex: number): Promise<void> {
+    const albumToUpdate = await this.selectAlbumAtIndex(albumIndex);
+    const initialState = this.createInitialState(albumToUpdate);
 
-  async addToPlaylist(index: number) {
+    this.bsModalRef = this.modalService.show(AlbumsModalComponent, { initialState });
+    this.bsModalRef.content.albumIndex = albumIndex;
+
+    this.bsModalRef.content.onChosenAlbum.subscribe(({ resultIndex }) => {
+      this.updateAlbumAndAddToPlaylist(albumToUpdate, resultIndex, albumIndex);
+    });
+  }
+
+  private createInitialState(albumToUpdate: Album) {
+    return {
+      albumsFound: albumToUpdate.spotifySearchResults,
+      title: albumToUpdate.albumName,
+      artist: albumToUpdate.artistName
+    };
+  }
+
+  private updateAlbumAndAddToPlaylist(albumToUpdate: Album, resultIndex: number, albumIndex: number): void {
+    albumToUpdate.spotify = albumToUpdate.spotifySearchResults[resultIndex];
+    albumToUpdate.searchedOnSpotify = true;
+    albumToUpdate.spotifySearchResults = [];
+
+    this.albumsService.updateAlbumOnDB(albumToUpdate).subscribe((albumUpdated: Album) => {
+      albumUpdated.searchedOnSpotify = true;
+      albumUpdated.spotifySearchResults = [];
+      this.updateAlbum(albumIndex, albumUpdated);
+      this.addToPlaylist(albumIndex);
+      this.cdr.markForCheck();
+    });
+  }
+
+  public async addToPlaylist(index: number): Promise<void> {
     const album = await this.selectAlbumAtIndex(index);
     if (!album) {
       console.error(`No album found at index ${index}`);
       return;
     }
-  
+
     if (!album.searchedOnSpotify) {
       await this.searchAlbumOnSpotify(index);
     }
-  
+
     if (!album.searchedOnSpotify || !album.spotify) {
       return;
     }
-  
+
     await this.spotifyApiService.addAlbumToPlaylist(
       album.spotify.id,
       this.userService.getSelectedPlaylistId()
     );
-  
+
     const albumPlaylistToSave: AlbumPlaylistI = this.createAlbumPlaylist(album);
     album.addedToPlaylist = albumPlaylistToSave;
-  
+
     this.savePlaylist(album.addedToPlaylist);
+
+    // Update the observable and trigger change detection
+    this.albums$.pipe(
+      map(albums => {
+        const updatedAlbums = albums.map((a, i) => i === index ? album : a);
+        return updatedAlbums;
+      })
+    ).subscribe(updatedAlbums => {
+      this.albums$ = of(updatedAlbums);
+      this.cdr.markForCheck();
+    });
   }
-  
-  createAlbumPlaylist(album: Album): AlbumPlaylistI {
+
+  private createAlbumPlaylist(album: Album): AlbumPlaylistI {
     return {
       idSpotify: this.userService.getSelectedPlaylistId(),
       name: this.userService.getSelectedPlaylistName(),
@@ -339,31 +319,24 @@ searchMode: boolean;
       albumId: album._id
     };
   }
-  
-  savePlaylist(savePlaylist: AlbumPlaylistI) {
-    this.albumsService.savePlaylistAlbum(savePlaylist).subscribe();
+
+  private savePlaylist(playlistAlbum: AlbumPlaylistI): void {
+    this.albumsService.savePlaylistAlbum(playlistAlbum).subscribe();
   }
 
-  /**
-   * Searches for an album on Spotify based on the given index.
-   * @param index - The index of the album to search.
-   * @returns A promise that resolves to a boolean indicating whether the search was successful.
-   */
-  async searchAlbumOnSpotify(index: number): Promise<boolean> {
+  private async searchAlbumOnSpotify(index: number): Promise<boolean> {
     const album = await this.selectAlbumAtIndex(index);
     const searchQueries = [
       `album:${album.albumName} artist:${album.artistName}`,
       `artist:${album.artistName}`
     ];
-  
+
     for (const query of searchQueries) {
       const foundAlbums: AlbumSpotify[] = await this.spotifyApiService.searchItem(query, 'album').toPromise();
-  
-      console.log('foundAlbums: ' + foundAlbums.length);
-  
+
       if (foundAlbums.length > 0) {
         album.searchedOnSpotify = true;
-  
+
         if (foundAlbums.length === 1) {
           album.spotify = foundAlbums[0];
           const albumUpdated: Album = await this.albumsService.updateAlbumOnDB(album).toPromise();
@@ -373,27 +346,39 @@ searchMode: boolean;
         } else {
           album.spotifySearchResults = foundAlbums;
         }
-  
+
         return true;
       }
     }
-  
+
     album.searchedOnSpotify = true;
     return false;
   }
 
-
-  updateAlbum(index: number, newAlbum: Album) {
-      this.albumsService.updateAlbum(index, newAlbum);
+  private updateAlbum(index: number, newAlbum: Album): void {
+    this.albumsService.updateAlbum(index, newAlbum);
+    this.albums$.pipe(
+      map(albums => {
+        const updatedAlbums = albums.map((a, i) => i === index ? newAlbum : a);
+        return updatedAlbums;
+      })
+    ).subscribe(updatedAlbums => {
+      this.albums$ = of(updatedAlbums);
+      this.cdr.markForCheck();
+    });
   }
 
-  changedSourceEvent(){
-    this.searchEvent();
+  public onSourceChanged(): void {
+    this.onSearchEvent();
   }
 
-}
+  public getDate({ month, year }: { month: string | number, year: string | number }): string {
+    const monthNumber = typeof month === 'string' ? parseInt(month, 10) : month;
+    const yearNumber = typeof year === 'string' ? parseInt(year, 10) : year;
+    return `${MyCalendar.month[monthNumber - 1]} ${yearNumber}`;
+  }
 
-function complete(complete: any, arg1: (albumUpdated: Album) => void, error: any, arg3: (e: any) => void) {
-  throw new Error('Function not implemented.');
+  public get isAuthenticated(): boolean {
+    return this.userService.isAuthenticated();
+  }
 }
-

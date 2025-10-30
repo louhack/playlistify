@@ -21,13 +21,16 @@ function runTask(scriptName, ...args) {
     const scriptPath = path.join(directoryPath, `${scriptName}`);
     console.log('scriptPath', scriptPath);
 
+    // Split the scriptPath into the actual path and the argument
+    const [actualScriptPath, arg] = scriptPath.split(' ');
+
     const options = {
         mode: 'text',
         pythonOptions: ['-u'], // unbuffered output, helps in getting logs in real-time
-        args: args // pass arguments to the Python script
+        args: [arg],
     };
 
-    const pyShell = new PythonShell(scriptPath, options);
+    const pyShell = new PythonShell(actualScriptPath, options);
 
     pyShell.on('message', function (message) {
         console.log(`Message from Python: ${message}`);

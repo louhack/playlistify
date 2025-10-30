@@ -61,23 +61,23 @@ def update_releases(releases, parsed_albums, t_day, t_month, t_year, now):
     for album in parsed_albums:
         result = releases.update_one(
             {
-                'artistName': {'$regex': '^'+re.escape(album['artistName'])+'$', '$options': 'i'}, 
-                'albumName': {'$regex': '^'+re.escape(album['albumName'])+'$',  '$options': 'i'} 
-            }, 
+                'artistName': {'$regex': '^'+re.escape(album['artistName'])+'$', '$options': 'i'},
+                'albumName': {'$regex': '^'+re.escape(album['albumName'])+'$',  '$options': 'i'}
+            },
             {
-                '$set': album, 
-                '$currentDate': { 'lastModified': True }, 
+                '$set': album,
+                '$currentDate': { 'lastModified': True },
                 '$setOnInsert': {
-                    'created': now, 
+                    'created': now,
                     'sortDate': {'day': t_day, 'month':t_month, 'year': t_year}
                 }
-            }, 
+            },
             upsert=True
         )
 
 def main():
     # Get the page content and reviews
-    soup = get_page_content("http://www.heavyblogisheavy.com/category/reviews/")
+    soup = get_page_content("https://www.heavyblogisheavy.com/tag/reviews/")
     reviews = get_reviews(soup)
 
     releases_list = []

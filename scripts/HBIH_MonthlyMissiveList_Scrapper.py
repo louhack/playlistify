@@ -27,8 +27,12 @@ UNMETAL = "https://www.heavyblogisheavy.com/tag/unmetal-monthly/"
 LISTENTOTHIS = "https://www.heavyblogisheavy.com/tag/listen-to-this/"
 ROTTEN = "https://www.heavyblogisheavy.com/tag/rotten-to-the-core/"
 
-def retrievePageToScrap(arg):
-  if arg == "EDITORSPICK":
+def main() -> None:
+  opts = [opt for opt in sys.argv[1:] if opt.startswith("-")]
+  args = [arg for arg in sys.argv[1:] if not arg.startswith("-")]
+
+  print(args)
+  if args[0] == "EDITORSPICK":
     pageToScrap = EDITORSPICK
     source = "Editor's pick"
   elif arg =="JAZZCLUB":
@@ -102,7 +106,7 @@ def main() -> None:
       logger.info(f"Saving to file {fileName}")
       utils.saveToFile(fileName, releasesList)
 
-      utils.saveToDatabase(fileName)
+    saveToDatabase(fileName)
   except RuntimeError as runtime_error:
       logger.error(runtime_error)
     # print(runtime_error)

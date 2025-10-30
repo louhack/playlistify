@@ -12,7 +12,10 @@ export class TasksComponent implements OnInit {
   tasks: Task[] = [
     { taskName: 'newReleasesSputnikMusicScrapper', scriptName: 'newReleasesSputnikMusicScrapper.py', status: 'Stopped' },
     { taskName: 'newReleasesHeavyBlogIsHeavy', scriptName: 'newReleasesHeavyBlogIsHeavy.py', status: 'Stopped' },
-    { taskName: 'newReleasesHeavyBlogIsHeavy_EDITORSPICK', scriptName: 'HBIH_MonthlyMissiveList_Scrapper.py', args: ['EDITORSPICK'],status: 'Stopped' },
+    { taskName: 'newReleasesHeavyBlogIsHeavy EDITORSPICK', scriptName: 'HBIH_MonthlyMissiveList_Scrapper.py EDITORSPICK', status: 'Stopped' },
+    { taskName: 'newReleasesHeavyBlogIsHeavy DOOMSDAY', scriptName: 'HBIH_MonthlyMissiveList_Scrapper.py DOOMSDAY', status: 'Stopped' },
+    { taskName: 'newReleasesHeavyBlogIsHeavy POSTROCK', scriptName: 'HBIH_MonthlyMissiveList_Scrapper.py POSTROCK', status: 'Stopped' },
+    { taskName: 'newReleasesHeavyBlogIsHeavy KULT', scriptName: 'HBIH_MonthlyMissiveList_Scrapper.py KULT', status: 'Stopped' },
     // Add more tasks as needed
 
   ];

@@ -43,6 +43,21 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ]
+            },
+            "development": {
+              "optimization": false,
+              "outputHashing": "none",
+              "sourceMap": true,
+              "namedChunks": true,
+              "aot": false,
+              "vendorChunk": true,
+              "buildOptimizer": false,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
             }
           }
         },
@@ -55,6 +70,9 @@
           "configurations": {
             "production": {
               "browserTarget": "playlistify:build:production"
+            },
+            "development": {
+              "browserTarget": "playlistify:build:development"
             }
           }
         },
