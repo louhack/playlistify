@@ -18,9 +18,9 @@ It’s not a professional-grade product, but it works, it's mine — and it remi
 - Extraction of new releases using web scrapping in Python of the pages of some of my favorite music sites or blogs<br>
 - Saving albums extracted to MongoDB<br>
 - Display a page with album extracted from Sputnik Music<br>
-- Search extracted albums in Spotify using Spotify API (Not fully functional)<br>
 - Authentication against spotify<br>
-- Add album to an existing or new user's playlist (Not fully functional)<br>
+- Search albums on Spotify using Spotify API<br>
+- Add album to an existing or new user's playlist<br>
 
 # Application Architecture
 ## Back-End : 
