@@ -1,1 +1,2648 @@
-
+[
+    {
+        "artistName": "pizzamachine",
+        "albumName": "Crunkcore Revenge",
+        "sputnikMusic": {
+            "id": "472312",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 1,
+                "year": 2024
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/472312.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Moon Safari",
+        "albumName": "Himlabacken Vol. 2",
+        "sputnikMusic": {
+            "id": "478875",
+            "note": 4.5,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478875.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Porcupine Tree",
+        "albumName": "Closure/Continuation. Live Amsterdam 7/11/2022",
+        "sputnikMusic": {
+            "id": "473338",
+            "note": 4.3,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473338.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Paradise Lost",
+        "albumName": "Icon 30",
+        "sputnikMusic": {
+            "id": "467907",
+            "note": 4.1,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/467907.jpg",
+            "numberOfUserRatings": "34"
+        }
+    },
+    {
+        "artistName": "Krallice",
+        "albumName": "Mass Cathexis 2 - The Kinetic Infinite",
+        "sputnikMusic": {
+            "id": "478133",
+            "note": 4.0,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478133.jpg",
+            "numberOfUserRatings": "21"
+        }
+    },
+    {
+        "artistName": "Kultura kureniya",
+        "albumName": "Polnoch v Novosibirske",
+        "sputnikMusic": {
+            "id": "478151",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478151.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Slow (BE)",
+        "albumName": "Ab\u200b\u00ee\u200bmes I",
+        "sputnikMusic": {
+            "id": "471532",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471532.jpg",
+            "numberOfUserRatings": "19"
+        }
+    },
+    {
+        "artistName": "Bull of Apis Bull of Bronze",
+        "albumName": "The Fractal Ouroboros",
+        "sputnikMusic": {
+            "id": "477871",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/477871.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Polkadot Cadaver",
+        "albumName": "Echoes Across The Hellscape",
+        "sputnikMusic": {
+            "id": "478890",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478890.jpg",
+            "numberOfUserRatings": "12"
+        }
+    },
+    {
+        "artistName": "Xibalba",
+        "albumName": "Aztl\u00e1n",
+        "sputnikMusic": {
+            "id": "478480",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478480.jpg",
+            "numberOfUserRatings": "11"
+        }
+    },
+    {
+        "artistName": "Buice",
+        "albumName": "One Day You'll See The Sun",
+        "sputnikMusic": {
+            "id": "479340",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/479340.jpg",
+            "numberOfUserRatings": "11"
+        }
+    },
+    {
+        "artistName": "Harp",
+        "albumName": "Albion",
+        "sputnikMusic": {
+            "id": "478113",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478113.jpg",
+            "numberOfUserRatings": "14"
+        }
+    },
+    {
+        "artistName": "The Republic of Wolves",
+        "albumName": "Why Would Anyone Want To Live This Long?",
+        "sputnikMusic": {
+            "id": "479305",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/479305.jpg",
+            "numberOfUserRatings": "73"
+        }
+    },
+    {
+        "artistName": "Othiel",
+        "albumName": "We Will Be Our Home",
+        "sputnikMusic": {
+            "id": "478527",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478527.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Minor Threat",
+        "albumName": "Out of Step Outtakes",
+        "sputnikMusic": {
+            "id": "474935",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/474935.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Psycho-Frame",
+        "albumName": "AUTOMATIC DEATH PROTOCOL",
+        "sputnikMusic": {
+            "id": "478944",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478944.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Phobocosm",
+        "albumName": "Foreordained",
+        "sputnikMusic": {
+            "id": "471535",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471535.jpg",
+            "numberOfUserRatings": "20"
+        }
+    },
+    {
+        "artistName": "La Dispute",
+        "albumName": "Here, Hear. IV",
+        "sputnikMusic": {
+            "id": "480222",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/480222.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Full of Hell and Nothing",
+        "albumName": "When No Birds Sang",
+        "sputnikMusic": {
+            "id": "471317",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471317.jpg",
+            "numberOfUserRatings": "99"
+        }
+    },
+    {
+        "artistName": "Shedfromthebody",
+        "albumName": "Amare",
+        "sputnikMusic": {
+            "id": "480059",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/480059.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Peter Gabriel",
+        "albumName": "i/o",
+        "sputnikMusic": {
+            "id": "471959",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471959.jpg",
+            "numberOfUserRatings": "82"
+        }
+    },
+    {
+        "artistName": "Yukika",
+        "albumName": "Time-Lapse",
+        "sputnikMusic": {
+            "id": "478208",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478208.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Captain Jazz",
+        "albumName": "Captain Jazz",
+        "sputnikMusic": {
+            "id": "478445",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478445.jpg",
+            "numberOfUserRatings": "19"
+        }
+    },
+    {
+        "artistName": "Jarhead Fertilizer",
+        "albumName": "Carceral Warfare",
+        "sputnikMusic": {
+            "id": "473423",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473423.jpg",
+            "numberOfUserRatings": "11"
+        }
+    },
+    {
+        "artistName": "Codeseven",
+        "albumName": "Go Let it In",
+        "sputnikMusic": {
+            "id": "473082",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473082.jpg",
+            "numberOfUserRatings": "18"
+        }
+    },
+    {
+        "artistName": "Carrion Spring",
+        "albumName": "how it all falls away petal by petal",
+        "sputnikMusic": {
+            "id": "478753",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478753.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Varathron",
+        "albumName": "The Crimson Temple",
+        "sputnikMusic": {
+            "id": "470703",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/470703.jpg",
+            "numberOfUserRatings": "18"
+        }
+    },
+    {
+        "artistName": "Arstidir Lifsins",
+        "albumName": "Hermalausaz",
+        "sputnikMusic": {
+            "id": "480030",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/480030.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Unprocessed",
+        "albumName": "...And Everything In Between",
+        "sputnikMusic": {
+            "id": "478049",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478049.jpg",
+            "numberOfUserRatings": "73"
+        }
+    },
+    {
+        "artistName": "Demoncy",
+        "albumName": "Black Star Gnosis",
+        "sputnikMusic": {
+            "id": "471536",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471536.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Orbit Culture",
+        "albumName": "The Forgotten",
+        "sputnikMusic": {
+            "id": "478111",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478111.jpg",
+            "numberOfUserRatings": "14"
+        }
+    },
+    {
+        "artistName": "Chained to the Bottom of the Ocean",
+        "albumName": "Consumed by the Vitriol of Life",
+        "sputnikMusic": {
+            "id": "478138",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478138.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Inculter",
+        "albumName": "Morbid Origin",
+        "sputnikMusic": {
+            "id": "470992",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/470992.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Abyssal Rift",
+        "albumName": "Extirpation Dirge",
+        "sputnikMusic": {
+            "id": "474630",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/474630.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Tuber",
+        "albumName": "Joyful Science",
+        "sputnikMusic": {
+            "id": "472898",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/472898.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Osiah",
+        "albumName": "Kairos",
+        "sputnikMusic": {
+            "id": "471244",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471244.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "CZARFACE",
+        "albumName": "Czartificial Intelligence",
+        "sputnikMusic": {
+            "id": "478286",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478286.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "HEALTH",
+        "albumName": "RAT WARS",
+        "sputnikMusic": {
+            "id": "470856",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/470856.jpg",
+            "numberOfUserRatings": "85"
+        }
+    },
+    {
+        "artistName": "Winterhorde",
+        "albumName": "Neptunian",
+        "sputnikMusic": {
+            "id": "478698",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478698.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Cryptworm",
+        "albumName": "Oozing Radioactive Vomition",
+        "sputnikMusic": {
+            "id": "479479",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/479479.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Vargrav (FIN)",
+        "albumName": "The Nighthold",
+        "sputnikMusic": {
+            "id": "479164",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/479164.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Plini",
+        "albumName": "Mirage",
+        "sputnikMusic": {
+            "id": "473355",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473355.jpg",
+            "numberOfUserRatings": "47"
+        }
+    },
+    {
+        "artistName": "Conway the Machine and Wun Two",
+        "albumName": "Palermo",
+        "sputnikMusic": {
+            "id": "480039",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/480039.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "(hed) p.e.",
+        "albumName": "Detox",
+        "sputnikMusic": {
+            "id": "471850",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471850.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Tate McRae",
+        "albumName": "Think Later",
+        "sputnikMusic": {
+            "id": "477953",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/477953.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Have Mercy",
+        "albumName": "Numb",
+        "sputnikMusic": {
+            "id": "471924",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471924.jpg",
+            "numberOfUserRatings": "12"
+        }
+    },
+    {
+        "artistName": "Fleshwater",
+        "albumName": "Sounds of Grieving",
+        "sputnikMusic": {
+            "id": "480227",
+            "note": 2.9,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/480227.jpg",
+            "numberOfUserRatings": "11"
+        }
+    },
+    {
+        "artistName": "Within Destruction",
+        "albumName": "Rebirth",
+        "sputnikMusic": {
+            "id": "478114",
+            "note": 2.9,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478114.jpg",
+            "numberOfUserRatings": "16"
+        }
+    },
+    {
+        "artistName": "The Seafloor Cinema",
+        "albumName": "The Seafloor Cinema",
+        "sputnikMusic": {
+            "id": "471408",
+            "note": 2.9,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471408.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Dimmu Borgir",
+        "albumName": "Inspiratio Profanus",
+        "sputnikMusic": {
+            "id": "471937",
+            "note": 2.7,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471937.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Nicki Minaj",
+        "albumName": "Pink Friday 2",
+        "sputnikMusic": {
+            "id": "467826",
+            "note": 2.4,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/467826.jpg",
+            "numberOfUserRatings": "18"
+        }
+    },
+    {
+        "artistName": "Atreyu",
+        "albumName": "The Beautiful Dark of Life",
+        "sputnikMusic": {
+            "id": "478870",
+            "note": 2.3,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478870.jpg",
+            "numberOfUserRatings": "19"
+        }
+    },
+    {
+        "artistName": "Hawthorne Heights",
+        "albumName": "If Only You Were Lonely XV",
+        "sputnikMusic": {
+            "id": "478128",
+            "note": 2.1,
+            "releaseDate": {
+                "month": 12,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478128.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Panopticon",
+        "albumName": "The Rime of Memory",
+        "sputnikMusic": {
+            "id": "468265",
+            "note": 4.1,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/468265.jpg",
+            "numberOfUserRatings": "240"
+        }
+    },
+    {
+        "artistName": "King Creosote",
+        "albumName": "I DES",
+        "sputnikMusic": {
+            "id": "471866",
+            "note": 4.1,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471866.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Midnight Odyssey",
+        "albumName": "Biolume Part 3 - A Fullmoon Madness",
+        "sputnikMusic": {
+            "id": "471430",
+            "note": 4.1,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471430.jpg",
+            "numberOfUserRatings": "26"
+        }
+    },
+    {
+        "artistName": "MJ Lenderman",
+        "albumName": "Live And Loose!",
+        "sputnikMusic": {
+            "id": "476618",
+            "note": 4.1,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/476618.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Hinayana",
+        "albumName": "Shatter And Fall",
+        "sputnikMusic": {
+            "id": "467853",
+            "note": 4.0,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/467853.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "death's dynamic shroud",
+        "albumName": "Midnight Tangerine",
+        "sputnikMusic": {
+            "id": "431213",
+            "note": 4.0,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/431213.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Hwwauoch",
+        "albumName": "Under the Gaze of Dissolution",
+        "sputnikMusic": {
+            "id": "478142",
+            "note": 4.0,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478142.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Valdrin",
+        "albumName": "Throne of the Lunar Soul",
+        "sputnikMusic": {
+            "id": "469837",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/469837.jpg",
+            "numberOfUserRatings": "76"
+        }
+    },
+    {
+        "artistName": "Fear Not Ourselves Alone",
+        "albumName": "DEAD DOG PARADISE (OR LIFE LIKE PARASITES\u200b?\u200b)",
+        "sputnikMusic": {
+            "id": "477393",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/477393.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Evanescence",
+        "albumName": "Fallen (20th Anniversary Deluxe Edition)",
+        "sputnikMusic": {
+            "id": "476195",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/476195.jpg",
+            "numberOfUserRatings": "11"
+        }
+    },
+    {
+        "artistName": "There Will Be Fireworks",
+        "albumName": "Summer Moon",
+        "sputnikMusic": {
+            "id": "467793",
+            "note": 3.9,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/467793.jpg",
+            "numberOfUserRatings": "189"
+        }
+    },
+    {
+        "artistName": "Convocation",
+        "albumName": "No Dawn for the Caliginous Night",
+        "sputnikMusic": {
+            "id": "470815",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/470815.jpg",
+            "numberOfUserRatings": "12"
+        }
+    },
+    {
+        "artistName": "Begotten (CAN)",
+        "albumName": "To The Dreary End",
+        "sputnikMusic": {
+            "id": "473440",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473440.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Helga (SWE)",
+        "albumName": "Wrapped in Mist",
+        "sputnikMusic": {
+            "id": "476965",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/476965.jpg",
+            "numberOfUserRatings": "19"
+        }
+    },
+    {
+        "artistName": "Warcrab",
+        "albumName": "The Howling Silence",
+        "sputnikMusic": {
+            "id": "469330",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/469330.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Empty Country",
+        "albumName": "Empty Country II",
+        "sputnikMusic": {
+            "id": "466139",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/466139.jpg",
+            "numberOfUserRatings": "47"
+        }
+    },
+    {
+        "artistName": "Secret Sphere",
+        "albumName": "Blackened Heartbeat",
+        "sputnikMusic": {
+            "id": "473692",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473692.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Cruciamentum",
+        "albumName": "Obsidian Refractions",
+        "sputnikMusic": {
+            "id": "468921",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/468921.jpg",
+            "numberOfUserRatings": "80"
+        }
+    },
+    {
+        "artistName": "John Francis Flynn",
+        "albumName": "Look Over the Wall, See the Sky",
+        "sputnikMusic": {
+            "id": "473684",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473684.jpg",
+            "numberOfUserRatings": "12"
+        }
+    },
+    {
+        "artistName": "Kumo 99",
+        "albumName": "HeadPlate",
+        "sputnikMusic": {
+            "id": "478857",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478857.jpg",
+            "numberOfUserRatings": "26"
+        }
+    },
+    {
+        "artistName": "Trha",
+        "albumName": "av\u25ca\u00eblajnt\u25ca\u00eb\u00a3 hinnem nihre",
+        "sputnikMusic": {
+            "id": "472969",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/472969.jpg",
+            "numberOfUserRatings": "11"
+        }
+    },
+    {
+        "artistName": "Tetragrammacide",
+        "albumName": "Typho-Tantric Aphorisms From the Arachneophidian Qur'an",
+        "sputnikMusic": {
+            "id": "473029",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473029.jpg",
+            "numberOfUserRatings": "15"
+        }
+    },
+    {
+        "artistName": "Suffocation",
+        "albumName": "Hymns From the Apocrypha",
+        "sputnikMusic": {
+            "id": "468679",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/468679.jpg",
+            "numberOfUserRatings": "157"
+        }
+    },
+    {
+        "artistName": "Closet Witch",
+        "albumName": "Chiaroscuro",
+        "sputnikMusic": {
+            "id": "471533",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471533.jpg",
+            "numberOfUserRatings": "34"
+        }
+    },
+    {
+        "artistName": "Vyva Melinkolya",
+        "albumName": "Unbecoming",
+        "sputnikMusic": {
+            "id": "473874",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473874.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Shylmagoghnar",
+        "albumName": "Convergence",
+        "sputnikMusic": {
+            "id": "468384",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/468384.jpg",
+            "numberOfUserRatings": "43"
+        }
+    },
+    {
+        "artistName": "Scarab (USA)",
+        "albumName": "Seeking Chaos And Revenge After Betrayal",
+        "sputnikMusic": {
+            "id": "473322",
+            "note": 3.8,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473322.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Silent Planet",
+        "albumName": "Superbloom",
+        "sputnikMusic": {
+            "id": "466847",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/466847.jpg",
+            "numberOfUserRatings": "194"
+        }
+    },
+    {
+        "artistName": "MouthBreather (USA-MA)",
+        "albumName": "Self-Tape",
+        "sputnikMusic": {
+            "id": "469154",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/469154.jpg",
+            "numberOfUserRatings": "23"
+        }
+    },
+    {
+        "artistName": "Xoth",
+        "albumName": "Exogalactic",
+        "sputnikMusic": {
+            "id": "471120",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471120.jpg",
+            "numberOfUserRatings": "61"
+        }
+    },
+    {
+        "artistName": "Future Static",
+        "albumName": "Liminality",
+        "sputnikMusic": {
+            "id": "477492",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/477492.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Aesop Rock",
+        "albumName": "Integrated Tech Solutions",
+        "sputnikMusic": {
+            "id": "469156",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/469156.jpg",
+            "numberOfUserRatings": "108"
+        }
+    },
+    {
+        "artistName": "Frog",
+        "albumName": "GROG",
+        "sputnikMusic": {
+            "id": "476097",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/476097.jpg",
+            "numberOfUserRatings": "30"
+        }
+    },
+    {
+        "artistName": "Drake",
+        "albumName": "For All The Dogs: Scary Hours Edition",
+        "sputnikMusic": {
+            "id": "476339",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/476339.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Ch'ahom",
+        "albumName": "Knots of Abhorrence",
+        "sputnikMusic": {
+            "id": "470144",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/470144.jpg",
+            "numberOfUserRatings": "17"
+        }
+    },
+    {
+        "artistName": "Aeolian",
+        "albumName": "Echoes of the Future",
+        "sputnikMusic": {
+            "id": "465425",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/465425.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "DGM",
+        "albumName": "Life",
+        "sputnikMusic": {
+            "id": "474311",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/474311.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Bonnie Montgomery",
+        "albumName": "River",
+        "sputnikMusic": {
+            "id": "473563",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473563.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Youth Fountain",
+        "albumName": "Together in Lonesome",
+        "sputnikMusic": {
+            "id": "471407",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471407.jpg",
+            "numberOfUserRatings": "11"
+        }
+    },
+    {
+        "artistName": "Beirut",
+        "albumName": "Hadsel",
+        "sputnikMusic": {
+            "id": "468428",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/468428.jpg",
+            "numberOfUserRatings": "25"
+        }
+    },
+    {
+        "artistName": "Actress",
+        "albumName": "LXXXVIII",
+        "sputnikMusic": {
+            "id": "471040",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471040.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "DVVAD",
+        "albumName": "MRKLB",
+        "sputnikMusic": {
+            "id": "479174",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/479174.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Condemned",
+        "albumName": "Daemonium",
+        "sputnikMusic": {
+            "id": "476526",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/476526.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Dyssebeia",
+        "albumName": "Garden of Stillborn Idols",
+        "sputnikMusic": {
+            "id": "475230",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/475230.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Marnie Stern",
+        "albumName": "The Comeback Kid",
+        "sputnikMusic": {
+            "id": "473138",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473138.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Horsewhip",
+        "albumName": "Consume and Burn",
+        "sputnikMusic": {
+            "id": "469155",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/469155.jpg",
+            "numberOfUserRatings": "13"
+        }
+    },
+    {
+        "artistName": "Dying Wish",
+        "albumName": "Symptoms of Survival",
+        "sputnikMusic": {
+            "id": "463492",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/463492.jpg",
+            "numberOfUserRatings": "130"
+        }
+    },
+    {
+        "artistName": "Hotline TNT",
+        "albumName": "Cartwheel",
+        "sputnikMusic": {
+            "id": "468517",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/468517.jpg",
+            "numberOfUserRatings": "58"
+        }
+    },
+    {
+        "artistName": "Earthside",
+        "albumName": "Let The Truth Speak",
+        "sputnikMusic": {
+            "id": "465221",
+            "note": 3.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/465221.jpg",
+            "numberOfUserRatings": "102"
+        }
+    },
+    {
+        "artistName": "Green Lung",
+        "albumName": "This Heathen Land",
+        "sputnikMusic": {
+            "id": "464677",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/464677.jpg",
+            "numberOfUserRatings": "44"
+        }
+    },
+    {
+        "artistName": "Totenmesse",
+        "albumName": "Fiktionlust",
+        "sputnikMusic": {
+            "id": "473094",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473094.jpg",
+            "numberOfUserRatings": "14"
+        }
+    },
+    {
+        "artistName": "Danny Brown",
+        "albumName": "Quaranta",
+        "sputnikMusic": {
+            "id": "471743",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471743.jpg",
+            "numberOfUserRatings": "179"
+        }
+    },
+    {
+        "artistName": "Amalekim",
+        "albumName": "Avodah Zarah",
+        "sputnikMusic": {
+            "id": "471449",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471449.jpg",
+            "numberOfUserRatings": "11"
+        }
+    },
+    {
+        "artistName": "Penitence Onirique",
+        "albumName": "Nature Morte",
+        "sputnikMusic": {
+            "id": "473205",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473205.jpg",
+            "numberOfUserRatings": "15"
+        }
+    },
+    {
+        "artistName": "Red Velvet",
+        "albumName": "Chill Kill",
+        "sputnikMusic": {
+            "id": "474066",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/474066.jpg",
+            "numberOfUserRatings": "19"
+        }
+    },
+    {
+        "artistName": "PoiL Ueda",
+        "albumName": "Yoshitsune",
+        "sputnikMusic": {
+            "id": "473015",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473015.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Paint It Black",
+        "albumName": "Famine",
+        "sputnikMusic": {
+            "id": "468447",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/468447.jpg",
+            "numberOfUserRatings": "20"
+        }
+    },
+    {
+        "artistName": "Cauldron (UK)",
+        "albumName": "Suicide In The City",
+        "sputnikMusic": {
+            "id": "470443",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/470443.jpg",
+            "numberOfUserRatings": "12"
+        }
+    },
+    {
+        "artistName": "Spiritbox",
+        "albumName": "The Fear of Fear",
+        "sputnikMusic": {
+            "id": "466994",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/466994.jpg",
+            "numberOfUserRatings": "239"
+        }
+    },
+    {
+        "artistName": "Lacey Sturm",
+        "albumName": "Kenotic Metanoia",
+        "sputnikMusic": {
+            "id": "476215",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/476215.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "No Cure",
+        "albumName": "The Commitment To Permanence",
+        "sputnikMusic": {
+            "id": "473776",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473776.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Carnation (BE)",
+        "albumName": "Cursed Mortality",
+        "sputnikMusic": {
+            "id": "473079",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473079.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Angra",
+        "albumName": "Cycles Of Pain",
+        "sputnikMusic": {
+            "id": "462161",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/462161.jpg",
+            "numberOfUserRatings": "29"
+        }
+    },
+    {
+        "artistName": "Night Crowned",
+        "albumName": "Tales",
+        "sputnikMusic": {
+            "id": "468561",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/468561.jpg",
+            "numberOfUserRatings": "20"
+        }
+    },
+    {
+        "artistName": "Saver",
+        "albumName": "From Ember and Rust",
+        "sputnikMusic": {
+            "id": "473687",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473687.jpg",
+            "numberOfUserRatings": "14"
+        }
+    },
+    {
+        "artistName": "Celeste",
+        "albumName": "Epilogue(s)",
+        "sputnikMusic": {
+            "id": "476198",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/476198.jpg",
+            "numberOfUserRatings": "18"
+        }
+    },
+    {
+        "artistName": "Vastum",
+        "albumName": "Inward To Gethsemane",
+        "sputnikMusic": {
+            "id": "470321",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/470321.jpg",
+            "numberOfUserRatings": "22"
+        }
+    },
+    {
+        "artistName": "Carnal Tomb",
+        "albumName": "Embalmed in Decay",
+        "sputnikMusic": {
+            "id": "465367",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/465367.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Neurectomy",
+        "albumName": "Overwrought",
+        "sputnikMusic": {
+            "id": "474940",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/474940.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Rid Of Me",
+        "albumName": "Access To The Lonely",
+        "sputnikMusic": {
+            "id": "464665",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/464665.jpg",
+            "numberOfUserRatings": "14"
+        }
+    },
+    {
+        "artistName": "Candelabro",
+        "albumName": "Ahora o Nunca",
+        "sputnikMusic": {
+            "id": "478483",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478483.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Broadside",
+        "albumName": "Hotel Bleu",
+        "sputnikMusic": {
+            "id": "473697",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473697.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Exulansis",
+        "albumName": "Hymns of Collapse",
+        "sputnikMusic": {
+            "id": "476317",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/476317.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Underdark (UK)",
+        "albumName": "Managed Decline",
+        "sputnikMusic": {
+            "id": "470175",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/470175.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Harkla",
+        "albumName": "The Living Mountain",
+        "sputnikMusic": {
+            "id": "476078",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/476078.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "full body 2",
+        "albumName": "infinity signature",
+        "sputnikMusic": {
+            "id": "477033",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/477033.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Insomnium",
+        "albumName": "Songs of the Dusk",
+        "sputnikMusic": {
+            "id": "473077",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473077.jpg",
+            "numberOfUserRatings": "36"
+        }
+    },
+    {
+        "artistName": "PinkPantheress",
+        "albumName": "Heaven Knows",
+        "sputnikMusic": {
+            "id": "471530",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471530.jpg",
+            "numberOfUserRatings": "64"
+        }
+    },
+    {
+        "artistName": "Blockhead",
+        "albumName": "The Aux",
+        "sputnikMusic": {
+            "id": "472511",
+            "note": 3.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/472511.jpg",
+            "numberOfUserRatings": "17"
+        }
+    },
+    {
+        "artistName": "Aeternus",
+        "albumName": "Philosopher",
+        "sputnikMusic": {
+            "id": "470222",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/470222.jpg",
+            "numberOfUserRatings": "14"
+        }
+    },
+    {
+        "artistName": "Spiritual Cramp",
+        "albumName": "Spiritual Cramp",
+        "sputnikMusic": {
+            "id": "466886",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/466886.jpg",
+            "numberOfUserRatings": "14"
+        }
+    },
+    {
+        "artistName": "Psychedelic Porn Crumpets",
+        "albumName": "Fronzoli",
+        "sputnikMusic": {
+            "id": "471440",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471440.jpg",
+            "numberOfUserRatings": "24"
+        }
+    },
+    {
+        "artistName": "Serenity",
+        "albumName": "Nemesis AD",
+        "sputnikMusic": {
+            "id": "473146",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473146.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Kvelgeyst",
+        "albumName": "Blut, Milch und Thr\u200b\u00e4\u200bnen",
+        "sputnikMusic": {
+            "id": "477430",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/477430.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Gong",
+        "albumName": "Unending Ascending",
+        "sputnikMusic": {
+            "id": "471648",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471648.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Ex Everything",
+        "albumName": "Slow Change Will Pull Us Apart",
+        "sputnikMusic": {
+            "id": "470870",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/470870.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Night Rider (US)",
+        "albumName": "Night Rider",
+        "sputnikMusic": {
+            "id": "473349",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473349.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "The Hope Conspiracy",
+        "albumName": "Confusion/Chaos/Misery",
+        "sputnikMusic": {
+            "id": "477224",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/477224.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "car colors",
+        "albumName": "Old Death",
+        "sputnikMusic": {
+            "id": "476079",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/476079.jpg",
+            "numberOfUserRatings": "13"
+        }
+    },
+    {
+        "artistName": "Fuming Mouth",
+        "albumName": "Last Day of Sun",
+        "sputnikMusic": {
+            "id": "468617",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/468617.jpg",
+            "numberOfUserRatings": "35"
+        }
+    },
+    {
+        "artistName": "Texas in July",
+        "albumName": "Without Reason",
+        "sputnikMusic": {
+            "id": "472071",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/472071.jpg",
+            "numberOfUserRatings": "27"
+        }
+    },
+    {
+        "artistName": "Kurt Vile",
+        "albumName": "Back To Moon Beach",
+        "sputnikMusic": {
+            "id": "472194",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/472194.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Left Cross",
+        "albumName": "Upon Desecrated Altars",
+        "sputnikMusic": {
+            "id": "468623",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/468623.jpg",
+            "numberOfUserRatings": "13"
+        }
+    },
+    {
+        "artistName": "Acopia",
+        "albumName": "Acopia",
+        "sputnikMusic": {
+            "id": "478074",
+            "note": 3.5,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478074.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Tkay Maidza",
+        "albumName": "Sweet Justice",
+        "sputnikMusic": {
+            "id": "464556",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/464556.jpg",
+            "numberOfUserRatings": "19"
+        }
+    },
+    {
+        "artistName": "Sadus",
+        "albumName": "The Shadow Inside",
+        "sputnikMusic": {
+            "id": "467846",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/467846.jpg",
+            "numberOfUserRatings": "28"
+        }
+    },
+    {
+        "artistName": "Material Girl",
+        "albumName": "Izumi Hazuki End of Days",
+        "sputnikMusic": {
+            "id": "475483",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/475483.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Drop Nineteens",
+        "albumName": "Hard Light",
+        "sputnikMusic": {
+            "id": "473158",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473158.jpg",
+            "numberOfUserRatings": "18"
+        }
+    },
+    {
+        "artistName": "Till Lindemann",
+        "albumName": "Zunge",
+        "sputnikMusic": {
+            "id": "468680",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/468680.jpg",
+            "numberOfUserRatings": "38"
+        }
+    },
+    {
+        "artistName": "moreru",
+        "albumName": "\u546a\u200b\u8a5b\u200b\u544a\u200b\u767d\u200b\u521d\u200b\u604b\u200b\u305d\u200b\u3057\u200b\u3066\u200b\u4e16\u200b\u754c",
+        "sputnikMusic": {
+            "id": "478056",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478056.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "TEMIC",
+        "albumName": "Terror Management Theory",
+        "sputnikMusic": {
+            "id": "462528",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/462528.jpg",
+            "numberOfUserRatings": "15"
+        }
+    },
+    {
+        "artistName": "Frost Children",
+        "albumName": "Hearth Room",
+        "sputnikMusic": {
+            "id": "472759",
+            "note": 3.4,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/472759.jpg",
+            "numberOfUserRatings": "11"
+        }
+    },
+    {
+        "artistName": "Chuquimamani-Condori",
+        "albumName": "DJ E",
+        "sputnikMusic": {
+            "id": "477591",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/477591.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Fawn Limbs and Nadja",
+        "albumName": "Vestigial Spectra",
+        "sputnikMusic": {
+            "id": "472358",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/472358.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "bar italia",
+        "albumName": "The Twits",
+        "sputnikMusic": {
+            "id": "473230",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473230.jpg",
+            "numberOfUserRatings": "12"
+        }
+    },
+    {
+        "artistName": "Briqueville",
+        "albumName": "IIII",
+        "sputnikMusic": {
+            "id": "473192",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473192.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Kraanium",
+        "albumName": "Scriptures of Vicennial Defilement",
+        "sputnikMusic": {
+            "id": "473084",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473084.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Semisonic",
+        "albumName": "Little Bit Of Sun",
+        "sputnikMusic": {
+            "id": "464649",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/464649.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Wind Walkers",
+        "albumName": "What If I Break?",
+        "sputnikMusic": {
+            "id": "476233",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/476233.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Lonely the Brave",
+        "albumName": "What We Do to Feel",
+        "sputnikMusic": {
+            "id": "471868",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471868.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Gama Bomb",
+        "albumName": "Bats",
+        "sputnikMusic": {
+            "id": "468560",
+            "note": 3.3,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/468560.jpg",
+            "numberOfUserRatings": "10"
+        }
+    },
+    {
+        "artistName": "Andre 3000",
+        "albumName": "New Blue Sun",
+        "sputnikMusic": {
+            "id": "474817",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/474817.jpg",
+            "numberOfUserRatings": "87"
+        }
+    },
+    {
+        "artistName": "Sea Mosquito",
+        "albumName": "Igitur",
+        "sputnikMusic": {
+            "id": "471108",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471108.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Temple of Scorn",
+        "albumName": "Funeral Altar Epiphanies",
+        "sputnikMusic": {
+            "id": "468307",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/468307.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Pendulum",
+        "albumName": "Anima",
+        "sputnikMusic": {
+            "id": "473078",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473078.jpg",
+            "numberOfUserRatings": "14"
+        }
+    },
+    {
+        "artistName": "Vantage Point",
+        "albumName": "Against Myself",
+        "sputnikMusic": {
+            "id": "470918",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/470918.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Sakis Tolis",
+        "albumName": "The Seven Seals of the Apocalypse\u200b...",
+        "sputnikMusic": {
+            "id": "478173",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/478173.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Chris Stapleton",
+        "albumName": "Higher",
+        "sputnikMusic": {
+            "id": "463293",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/463293.jpg",
+            "numberOfUserRatings": "37"
+        }
+    },
+    {
+        "artistName": "2 Chainz and Lil Wayne",
+        "albumName": "Welcome 2 Collegrove",
+        "sputnikMusic": {
+            "id": "472072",
+            "note": 3.2,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/472072.jpg",
+            "numberOfUserRatings": "12"
+        }
+    },
+    {
+        "artistName": "Mephorash",
+        "albumName": "Krystl-Ah",
+        "sputnikMusic": {
+            "id": "468968",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/468968.jpg",
+            "numberOfUserRatings": "12"
+        }
+    },
+    {
+        "artistName": "Jockstrap",
+        "albumName": "I<3UQTINVU",
+        "sputnikMusic": {
+            "id": "473092",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473092.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Obroa-skai",
+        "albumName": "Science Progresses One Funeral At A Time",
+        "sputnikMusic": {
+            "id": "477190",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/477190.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Julie Byrne With Laugh Cry Laugh",
+        "albumName": "Julie Byrne With Laugh Cry Laugh",
+        "sputnikMusic": {
+            "id": "476799",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/476799.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Foxing",
+        "albumName": "The Albatross: Ten Years",
+        "sputnikMusic": {
+            "id": "473090",
+            "note": 3.1,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473090.jpg",
+            "numberOfUserRatings": "8"
+        }
+    },
+    {
+        "artistName": "Venus",
+        "albumName": "Obscured Until Observed",
+        "sputnikMusic": {
+            "id": "474322",
+            "note": 3.0,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/474322.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Cold War Kids",
+        "albumName": "Cold War Kids",
+        "sputnikMusic": {
+            "id": "471862",
+            "note": 3.0,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471862.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "Helmet",
+        "albumName": "Left",
+        "sputnikMusic": {
+            "id": "466947",
+            "note": 3.0,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/466947.jpg",
+            "numberOfUserRatings": "36"
+        }
+    },
+    {
+        "artistName": "Bad Wolves",
+        "albumName": "Die About It",
+        "sputnikMusic": {
+            "id": "466598",
+            "note": 2.9,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/466598.jpg",
+            "numberOfUserRatings": "13"
+        }
+    },
+    {
+        "artistName": "Racetraitor",
+        "albumName": "Creation and the Timeless Order of Things",
+        "sputnikMusic": {
+            "id": "470047",
+            "note": 2.8,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/470047.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Nord (FRA)",
+        "albumName": "The Implosion of Everything that Matters",
+        "sputnikMusic": {
+            "id": "471340",
+            "note": 2.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471340.jpg",
+            "numberOfUserRatings": "9"
+        }
+    },
+    {
+        "artistName": "Matmos",
+        "albumName": "Return to Archive",
+        "sputnikMusic": {
+            "id": "473244",
+            "note": 2.7,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/473244.jpg",
+            "numberOfUserRatings": "5"
+        }
+    },
+    {
+        "artistName": "Kevin Abstract",
+        "albumName": "Blanket",
+        "sputnikMusic": {
+            "id": "471368",
+            "note": 2.5,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/471368.jpg",
+            "numberOfUserRatings": "21"
+        }
+    },
+    {
+        "artistName": "Dolly Parton",
+        "albumName": "Rockstar",
+        "sputnikMusic": {
+            "id": "458359",
+            "note": 2.4,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/458359.jpg",
+            "numberOfUserRatings": "7"
+        }
+    },
+    {
+        "artistName": "Busta Rhymes",
+        "albumName": "Blockbusta",
+        "sputnikMusic": {
+            "id": "472219",
+            "note": 2.1,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/472219.jpg",
+            "numberOfUserRatings": "6"
+        }
+    },
+    {
+        "artistName": "AJR",
+        "albumName": "The Maybe Man",
+        "sputnikMusic": {
+            "id": "470253",
+            "note": 1.6,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/470253.jpg",
+            "numberOfUserRatings": "15"
+        }
+    },
+    {
+        "artistName": "Jason Aldean",
+        "albumName": "Highway Desperado",
+        "sputnikMusic": {
+            "id": "470497",
+            "note": 1.2,
+            "releaseDate": {
+                "month": 11,
+                "year": 2023
+            },
+            "imagePath": "https://www.sputnikmusic.com/images/albums/470497.jpg",
+            "numberOfUserRatings": "12"
+        }
+    }
+]

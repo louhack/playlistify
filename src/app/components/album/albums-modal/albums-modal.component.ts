@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Inject } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { AlbumSpotify } from '../../../interfaces/albumSpotifyInterface';
 
@@ -17,7 +17,7 @@ export class AlbumsModalComponent implements OnInit {
   @Output() onChosenAlbum = new EventEmitter<{resultIndex: number}>();
   chosenAlbum: string;
 
-  constructor(public bsModalRef: BsModalRef) {}
+  constructor(@Inject(BsModalRef) public bsModalRef: BsModalRef) {}
 
   ngOnInit() {
   }
@@ -30,5 +30,7 @@ export class AlbumsModalComponent implements OnInit {
   onClose() {
     this.bsModalRef.hide();
   }
+
+
 
 }

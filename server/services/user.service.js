@@ -6,31 +6,31 @@ var Playlists = require('../models/playlist.model');
 _this = this;
 
 // Async function to get the Users List
-exports.getUsersService = async function(req, res, next){
+// exports.getUsersService = async function(req, res, next){
 
-  var page = req.query.page ? +req.query.page : 1
-  var limit = req.query.limit ? +req.query.limit : 20;
+//   var page = req.query.page ? +req.query.page : 1
+//   var limit = req.query.limit ? +req.query.limit : 20;
 
-  // Options setup for the mongoose paginate
-  var options = {
-      page,
-      limit
-  }
+//   // Options setup for the mongoose paginate
+//   var options = {
+//       page,
+//       limit
+//   }
 
-    // Try Catch the awaited promise to handle the error
+//     // Try Catch the awaited promise to handle the error
 
-    try {
-        var users = await User.paginate(query, options);
+//     try {
+//         var users = await User.paginate(query, options);
 
-        // Return the users list that was retured by the mongoose promise
-        return users;
+//         // Return the users list that was retured by the mongoose promise
+//         return users;
 
-    } catch (e) {
+//     } catch (e) {
 
-        // return a Error message describing the reason
-        throw Error('Error while Paginating Users');
-    }
-}
+//          // return a Error message describing the reason
+//         throw Error('Error while Paginating Users');
+//     }
+// }
 
 exports.getUserService = async function(id) {
     try {

@@ -8,10 +8,10 @@ import { Album } from '../../../models/album.model';
   styleUrls: ['./album-edit.component.css']
 })
 export class AlbumEditComponent implements OnInit {
-
+  
   album: Album;
   updated = false;
-
+  
   dismissible = true;
   defaultAlerts: any[] = [
     {
@@ -23,20 +23,21 @@ export class AlbumEditComponent implements OnInit {
       msg: `Oops ! Something went wrong`
     }
   ];
-
+  
   _alert = {
     type: '',
     msg: ''
   };
-
+  
   onClosed(dismissedAlert: any): void {
     this._alert = null;
     this.updated = false;
   }
-
-
+  
+  
+  @Output() onRemoveAlbum = new EventEmitter<{albumToRemove: Album}>();
   @Output() onUpdateAlbum = new EventEmitter<{albumToUpdate: Album}>();
-
+  
   constructor(public bsModalRef: BsModalRef) {}
 
   ngOnInit(): void {
@@ -58,6 +59,12 @@ export class AlbumEditComponent implements OnInit {
   }
 
   onClose() {
+    this.bsModalRef.hide();
+  }
+
+  onRemove() {
+    this.onRemoveAlbum.emit({albumToRemove: this.album});
+    // console.log("Album to be removed: " + JSON.stringify(this.album));
     this.bsModalRef.hide();
   }
 

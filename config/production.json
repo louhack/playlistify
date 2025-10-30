@@ -9,6 +9,6 @@
   "Spotify": {
     "clientID": "SPOTIFY_ID",
     "clientSecret": "SPOTIFY_SECRET",
-    "callbackURL": "https://playlistify-app.herokuapp.com/auth/spotify/callback"
+    "callbackURL": "https://playlistify-app-d13d2f4131f4.herokuapp.com/auth/spotify/callback"
   }
 }

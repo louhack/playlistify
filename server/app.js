@@ -8,6 +8,7 @@ var passport = require('passport');
 var index = require('./routes/index');
 // var users = require('./routes/users');
 var session = require('express-session');
+var RateLimit = require('express-rate-limit');
 
 const MongoStore = require('connect-mongo');
 
@@ -29,11 +30,8 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const dbPlaylistify =
 mongoose.connect(config.get('Database.host'),  {
-  keepAlive: 1,
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false })
+  useUnifiedTopology: true })
       .then((m)=> {
         console.log(`Succesfully Connected to the Mongodb Database : %s`, config.get('Database.db_name'));
         return m.connection.getClient();
@@ -56,7 +54,7 @@ app.use(function(req, res, next) {
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -167,6 +165,14 @@ app.get('/auth/spotify/token', middleware.isLoggedIn, (req, res) => {
     }
 });
 
+// set up rate limiter: maximum of five requests per minute
+var limiter = RateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // max 100 requests per windowMs
+});
+
+// apply rate limiter to all requests
+app.use(limiter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
@@ -189,5 +195,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+function logError(err) {
+  console.error(err);
+}
 
 module.exports = app;

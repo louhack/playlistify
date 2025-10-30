@@ -1,123 +1,133 @@
-from bs4 import BeautifulSoup
-from lxml import html
-import requests
-import json
-import re
-from  pymongo import MongoClient
-from bson import json_util
-import datetime
-import pytz
-from datetime import date
 import os
+import re
+import time
+from datetime import date, datetime
+import json
+from pymongo import MongoClient
+from bson import json_util
+from pytz import timezone
+from bs4 import BeautifulSoup
+import requests
 
 
-monthDic = {}
-monthDic["January"]=1
-monthDic["February"]=2
-monthDic["March"]=3
-monthDic["April"]=4
-monthDic["May"]=5
-monthDic["June"]=6
-monthDic["July"]=7
-monthDic["August"]=8
-monthDic["September"]=9
-monthDic["October"]=10
-monthDic["November"]=11
-monthDic["December"]=12
+def get_page_content(url):
+    r = requests.get(url)
+    if r.status_code != 200:
+        print("Error while getting the page")
+        exit
+    return BeautifulSoup(r.content.decode("utf8"), 'lxml')
 
-r = requests.get("http://www.heavyblogisheavy.com/category/reviews/")
-if r.status_code != 200:
-	exit
+def get_reviews(soup):
+    return soup.find_all("div",class_="post")
 
-# r.encoding = 'iso-8859-1'
-#print(r.text)
-# with open("""..\\SputnikMusic\\New Releases _ Sputnikmusic.html""") as fp:
-soup = BeautifulSoup(r.content.decode("utf8"), 'lxml')
+def get_artist_and_release(review):
+    try:
+        return review.find("h2").string
+    except AttributeError:
+        return review.find("h3").string
 
-releases_list = []
+def get_review_link(review):
+    try:
+        return review.find("h2").a.get('href')
+    except AttributeError:
+        return review.find("h3").a.get('href')
 
-#Je recupere le tableau des release du mois en cours
-table_articles = soup.find(id="main").find_all("article")
+def get_release_details(review_link):
+    match = re.search(r'/(\d{4})/(\d{2})/\d{2}/([^/]*)', review_link)
+    if match:
+        return match.group(1), match.group(2), match.group(3)
+    return None, None, None
 
-for article in table_articles:
-  # print("BEGINNING OF RELEASE ==========")
-  #print(article)
-  try:
-    artist_and_release = article.find(class_="cb-post-title").a.string
-    print(artist_and_release)
-    #Séparation de la chaine en 2 parties. Si pas 2 parties exactement alors problème
-    stringSplit = artist_and_release.split(" – ", 1)
-    #print(stringSplit)
-  except AttributeError as attrib_error:
-    print(attrib_error)
-  except TypeError as type_error:
-    print("Type Error " + type_error)
-    # print("not an album: " + artist_and_release)
-  else:
-  #extraction du nom de l'artiste et de la release : "ARTISTE - NOM RELEASE"
-    if len(stringSplit) == 2:
-      # print (artist_and_release)
-      reviewLink = article.div.a.get('href')
+def get_image_tab(review):
+    try:
+        div_tag = review.find('div', class_='background')
+        return review.get('data-src')
+    except AttributeError:
+        return None
 
-      #Récupération de l'id du post
-      idRelease=article.get('id').split('-')[1]
-      #print("idRelease: "+ idRelease)
-      artist = stringSplit[0]
-      album = stringSplit[1]
-      # print("ARTIST " + artist)
-      #Récupération de la date du post. Servira en tant que Date de Release
-      releaseDate = article.find(class_="cb-date cb-byline-element").time.string
-      print(releaseDate)
+def connect_to_db():
+    print("Connecting to db")
+    connection = MongoClient(os.environ.get('MONGODB_WEBSCRAPPER'))
+    print(connection)
+    return connection
 
-      # print(article.header.next_sibling.next_sibling.next_sibling.next_sibling.a.img.get('srcset'))
-      try:
-        # print(article.find(class_="ut-postThumbnail-Link").img)
+def get_current_date():
+    tz = timezone("Europe/Paris")
+    today = date.today()
+    now = datetime.now(tz)
+    return today.day, today.month, today.year, now
 
-        img_tab = article.find(class_="cb-mask").a.img.get('srcset').split()
-        #img_tab = article.header.next_sibling.next_sibling.next_sibling.next_sibling.a.img.get('srcset').split()
-      except AttributeError as error:
-        print(error)
-        print("Album's cover not found. Artist: " + artist)
-        #print(article.find(class_="cb-mask").a.img.get('srcset'))
-      else:
-        if len(img_tab) > 2:
-          img = img_tab[2]
-        else:
-          img = img_tab[0]
+def update_releases(releases, parsed_albums, t_day, t_month, t_year, now):
+    for album in parsed_albums:
+        result = releases.update_one(
+            {
+                'artistName': {'$regex': '^'+re.escape(album['artistName'])+'$', '$options': 'i'},
+                'albumName': {'$regex': '^'+re.escape(album['albumName'])+'$',  '$options': 'i'}
+            },
+            {
+                '$set': album,
+                '$currentDate': { 'lastModified': True },
+                '$setOnInsert': {
+                    'created': now,
+                    'sortDate': {'day': t_day, 'month':t_month, 'year': t_year}
+                }
+            },
+            upsert=True
+        )
 
-        #print(img)
-        releaseJson = {'artistName':artist, 'albumName':album,'heavyBIsH':{'id':idRelease, 'reviewLink': reviewLink, 'releaseDate':{ 'month': int(monthDic[releaseDate.split()[0]]), 'year': int(releaseDate.split()[2])}, 'imagePath': img}}
-        releases_list.append(releaseJson)
-      finally:
-        pass
+def main():
+    # Get the page content and reviews
+    soup = get_page_content("https://www.heavyblogisheavy.com/tag/reviews/")
+    reviews = get_reviews(soup)
 
-  # print("END OF RELEASE ===========")
+    releases_list = []
+    for review in reviews:
+        # Extract the necessary information from each review
+        artist_and_release = get_artist_and_release(review)
+        review_link = get_review_link(review)
+        year, month, id_release = get_release_details(review_link)
 
-#print(releases_list)
+        # Split the artist and release information
+        string_split = artist_and_release.split(" - ")
+        if len(string_split) == 2:
+            artist = string_split[0]
+            album = string_split[1]
+            img_tab = get_image_tab(review)
+            img = img_tab[2] if img_tab and len(img_tab) > 2 else img_tab[0]
 
-with open('heavyB_data.json', 'w', encoding='iso-8859-1') as f:
-  json.dump(releases_list, f, indent=4, ensure_ascii=True)
-f.close()
+            # Create a JSON object for the release and add it to the list
+            release_json = {
+                'artistName': artist,
+                'albumName': album,
+                'heavyBIsH': {
+                    'id': id_release,
+                    'reviewLink': review_link,
+                    'releaseDate': { 'month': month, 'year': year },
+                    'imagePath': img_tab
+                }
+            }
+            releases_list.append(release_json)
 
+    # print('length release list ', len(releases_list))
+    # Write the list of releases to a JSON file
+    with open('./scripts/heavyB_data.json', 'w', encoding='iso-8859-1') as f:
+        json.dump(releases_list, f, indent=4, ensure_ascii=True)
 
-##### UPSERT IN DB - COLLECTION :ALBUMS
-#connection = MongoClient("mongodb://127.0.0.1:27017/playlistifyApp")
-connection = MongoClient(os.environ.get('MONGODB_WEBSCRAPPER'))
+    # Connect to the database and update the releases
+    connection = connect_to_db()
+    try:
+        db = connection['heroku_j6lv18qq']
+        releases = db.albums
+        with open("./scripts/heavyB_data.json", "r") as albums:
+            parsed_albums = json_util.loads(albums.read())
+        t_day, t_month, t_year, now = get_current_date()
+        # print(parsed_albums)
+        update_releases(releases, parsed_albums, t_day, t_month, t_year, now)
+    finally:
+        connection.close()
 
-db = connection.get_default_database()
-releases = db.albums
-albums = open("heavyB_data.json", "r")
-parsedAlbums = json_util.loads(albums.read())
-timezone = pytz.timezone("Europe/Paris")
-today = date.today()
-t_day = today.day
-t_month = today.month
-t_year = today.year
+    # Pause for 5 seconds
+    time.sleep(5)
 
-for album in parsedAlbums:
-  # print("PRINT ALBUM ", album["heavyBIsH"]["id"])
-  #album['created'] = str(datetime.today().isoformat())
-  #result = releases.update_one({'heavyBIsH.id': album['heavyBIsH']['id'] }, {'$set': album, '$currentDate': { 'lastModified': True }, '$setOnInsert': {'created': timezone.localize(datetime.datetime.now())}}, upsert=True)
-  result = releases.update_one({'artistName': {'$regex': '^'+re.escape(album['artistName'])+'$', '$options': 'i'}, 'albumName': {'$regex': '^'+re.escape(album['albumName'])+'$',  '$options': 'i'} }, {'$set': album, '$currentDate': { 'lastModified': True }, '$setOnInsert': {'created': timezone.localize(datetime.datetime.now()), 'sortDate': {'day': t_day, 'month':t_month, 'year': t_year}}}, upsert=True)
-
-connection.close()
+if __name__ == "__main__":
+    main()

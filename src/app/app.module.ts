@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TabsModule } from 'ngx-bootstrap/tabs';
@@ -24,6 +24,8 @@ import { LocalEndPoints } from './services/local/localAPIEndpoints';
 import { AlbumEditComponent } from './components/album/album-edit/album-edit.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { HeaderComponent } from './components/header/header.component';
+import { TaskService } from './services/local/task.service';
+import { TasksComponent } from './components/tasks/tasks.component';
 
 
 @NgModule({
@@ -36,13 +38,15 @@ import { HeaderComponent } from './components/header/header.component';
     AlbumsModalComponent,
     MenuComponent,
     AlbumEditComponent,
+    HeaderComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
     PaginationModule.forRoot(),
     ModalModule.forRoot(),
     TabsModule.forRoot(),
@@ -56,9 +60,9 @@ import { HeaderComponent } from './components/header/header.component';
     SpotifyApiService,
     MessageService,
     LocalEndPoints,
-    MessageService
+    MessageService,
+    TaskService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [AlbumsModalComponent]
 })
 export class AppModule { }

@@ -6,143 +6,142 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { AlbumsListI } from '../../interfaces/albumsList.interface';
 import { AlbumPlaylistI } from '../../interfaces/albumAddedToPlaylist.interface';
 import { LocalEndPoints } from './localAPIEndpoints';
-
+import { setUrlParameters } from '../../shared/utils';
 
 @Injectable()
 export class AlbumService {
+  removeAlbumFromDB(album: Album): Observable<any> {
+    const id = album._id;
+    const url = setUrlParameters(this.localEndPoints.albumRemoveEndPoint, {id});  // replace 'id' with the actual property name for the album ID
+    return this.http.delete(url);
+    // throw new Error('Method not implemented.');
+  }
 
-  // albumUrl = `/api/albums`;
-  albumChanged = new Subject<{index: number, album: Album}>();
+  albumChanged = new Subject<{ index: number, album: Album }>();
   messageService: any;
 
   constructor(
-      private http: HttpClient,
-      private localEndPoints: LocalEndPoints) { }
+    private http: HttpClient,
+    private localEndPoints: LocalEndPoints) { }
 
   updateAlbumOnDB(album: Album): Observable<Album> {
-    // console.log(JSON.stringify(Album));
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
+        'Content-Type': 'application/json',
       })
-    }
+    };
     return this.http.put<Album>(this.localEndPoints.albumEndPoint, album, httpOptions).pipe(
-      tap( _ => console.log('update album')),
+      tap(_ => console.log('update album')),
       catchError(this.handleError<any>('updateAlbum')),
-      map(res => {
-        return res['data'];
-      })
+      map(res => res['data'])
     );
   }
 
-
   getAlbums(page: number, limit: number): Observable<AlbumsListI> {
-    const httpParams = new HttpParams().set('page', page.toString());
-    httpParams.append('limit', limit.toString());
-
-    return this.http.get(this.localEndPoints.albumEndPoint, {params: httpParams})
-      .pipe(map((res) => {
-        return this.retrieveResponseData(res);
-    }));
-
+    const httpParams = new HttpParams().set('page', page.toString()).set('limit', limit.toString());
+    return this.http.get<AlbumsListI>(this.localEndPoints.albumEndPoint, { params: httpParams })
+      .pipe(
+        map(res => this.retrieveResponseData(res)),
+        catchError(this.handleError<AlbumsListI>('getAlbums', {
+          albumsList: [],
+          totalNumberOfPages: 0,
+          totalNumberOfAlbums: 0,
+          currentPage: 1
+        }))
+      );
   }
 
-  retrieveResponseData(res: Object): AlbumsListI{
-    const albums = new Array<Album>();
-    for (const album of res['data'].docs) {
-      albums.push(new Album(album._id, album.artistName, album.albumName, album.sputnikMusic, album.heavyBIsH, album.hasOwnProperty('spotify') ? album.spotify : null, album.yourLastRites));
+  retrieveResponseData(res: any): AlbumsListI {
+    if (!res || !res['data'] || !Array.isArray(res['data'].docs)) {
+      return {
+        albumsList: [],
+        totalNumberOfAlbums: 0,
+        currentPage: 1,
+        totalNumberOfPages: 0
+      };
     }
-    const albumsListI: AlbumsListI = {
+
+    const albums: Album[] = res['data'].docs.map(album => new Album(
+      album._id,
+      album.artistName,
+      album.albumName,
+      album.sputnikMusic,
+      album.heavyBIsH,
+      album.hasOwnProperty('spotify') ? album.spotify : null,
+      album.yourLastRites
+    ));
+
+    return {
       albumsList: albums,
       totalNumberOfAlbums: res['data'].totalDocs,
       currentPage: res['data'].page,
       totalNumberOfPages: res['data'].totalPages
     };
-    return albumsListI;
   }
-
 
   updateAlbum(index: number, album: Album) {
-    this.albumChanged.next({index: index, album: album});
+    this.albumChanged.next({ index: index, album: album });
   }
 
-  savePlaylistAlbum (item: AlbumPlaylistI): Observable<Object> {
-    return this.http.post<Album>(this.localEndPoints.playlistifiedAlbumsEndPoint, {params: {playlist: item}})
-      .pipe(map (resp => {
-        return resp['data'];
-      }));
-      // .map( response => {});
+  savePlaylistAlbum(item: AlbumPlaylistI): Observable<Object> {
+    return this.http.post<Album>(this.localEndPoints.playlistifyEndPoint, { params: { playlist: item } })
+      .pipe(
+        map(resp => resp['data']),
+        catchError(this.handleError<any>('savePlaylistAlbum', null))
+      );
   }
 
-  searchPlaylistifiedAlbums (albums: Album[], userId: string): Observable<any> {
-    const albumIds: string[] = [];
-    albums.forEach( album => {
-      albumIds.push(album._id);
-    });
+  searchPlaylistifiedAlbums(albums: Album[], userId: string): Observable<any> {
+    const albumIds: string[] = albums.map(album => album._id);
 
-    return this.http.get(this.localEndPoints.playlistifiedAlbumsEndPoint, {params: { userId: userId, albumId: albumIds}})
-      .pipe(map((resp: Response) => {
-      // console.log(resp['data']);
-        if (resp != null) {
-          return resp['data'];
-        } else {
-          return null;
-        }
-      }));
+    return this.http.get(this.localEndPoints.playlistifiedAlbumsEndPoint, { params: { userId: userId, albumId: albumIds } })
+      .pipe(
+        map((resp: Response) => resp != null ? resp['data'] : null),
+        catchError(this.handleError<any>('searchPlaylistifiedAlbums', []))
+      );
   }
 
-  searchAlbum(searchItem: string, scope: string, searchSources:string, page: number, limit: number): Observable<any> {
-    console.log(searchItem);
-    // if(searchItem != (null || "")){
-      return this.http.get<Album[]>(this.localEndPoints.searchEndPoint, {
-        params: {
-          q: searchItem,
-          scope: scope,
-          sources: searchSources,
-          page: page.toString(),
-          limit: limit.toString()
-        }
-      }
-      // return null;
-      ).pipe(
-        map(response => {
-          console.log(response);
-          if(response['data'] != null){
-            return this.retrieveResponseData(response);
-            // return response['data'];
+  searchAlbum(searchItem: string, scope: string, searchSources: string, page: number, limit: number): Observable<AlbumsListI> {
+    let params = new HttpParams()
+      .set('q', searchItem)
+      .set('scope', scope)
+      .set('sources', searchSources)
+      .set('page', page.toString())
+      .set('limit', limit.toString());
+
+    return this.http.get<AlbumsListI>(this.localEndPoints.searchEndPoint, { params })
+      .pipe(
+        map(res => {
+          const responseData = this.retrieveResponseData(res);
+          if (!responseData.albumsList.length) {
+            responseData.totalNumberOfPages = 0;
+            responseData.totalNumberOfAlbums = 0;
+            responseData.currentPage = 1;
           }
-          else {
-            return of({});
-          }
-        })
-        );
-    // }
-    // return of({});
+          return responseData;
+        }),
+        catchError(this.handleError<AlbumsListI>('searchAlbum', {
+          albumsList: [],
+          totalNumberOfPages: 0,
+          totalNumberOfAlbums: 0,
+          currentPage: 1
+        }))
+      );
   }
 
-/**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
- private handleError<T>(operation = 'operation', result?: T) {
-  return (error: any): Observable<T> => {
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error); // log to console instead
+      this.log(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
+  }
 
-    // TODO: send the error to remote logging infrastructure
-    console.error(error); // log to console instead
-
-    // TODO: better job of transforming error for user consumption
-    this.log(`${operation} failed: ${error.message}`);
-
-    // Let the app keep running by returning an empty result.
-    return of(result as T);
-  };
-}
-
-  /** Log a HeroService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`Album update: ${message}`);
+    if (this.messageService && typeof this.messageService.add === 'function') {
+      this.messageService.add(`Album update: ${message}`);
+    } else {
+      console.warn(`MessageService not available: ${message}`);
+    }
   }
 }
-

@@ -1,14 +1,5 @@
-from bs4 import BeautifulSoup
-from lxml import html
-import requests
-import json
-import re
-from  pymongo import MongoClient
-from bson import json_util
 import datetime
-import pytz
-from datetime import date
-import os
+import utils
 from wepScrapperFunctions import *
 import sys
 
@@ -27,64 +18,101 @@ monthDic["October"]=10
 monthDic["November"]=11
 monthDic["December"]=12
 
-EDITORSPICK = "https://www.heavyblogisheavy.com/category/columns/editors-picks/"
-JAZZCLUB = "https://www.heavyblogisheavy.com/category/columns/the-jazz-club/"
-DOOMSDAY = "https://www.heavyblogisheavy.com/category/columns/doomsday/"
-POSTROCK = "https://www.heavyblogisheavy.com/category/columns/post-rock-post/"
-KULT = "https://www.heavyblogisheavy.com/category/columns/kvlt-kolvmn/"
-UNMETAL = "https://www.heavyblogisheavy.com/category/columns/unmetal-monthly/"
+EDITORSPICK = "https://www.heavyblogisheavy.com/tag/editors-picks/"
+JAZZCLUB = "https://www.heavyblogisheavy.com/tag/the-jazz-club/"
+DOOMSDAY = "https://www.heavyblogisheavy.com/tag/doomsday/"
+POSTROCK = "https://www.heavyblogisheavy.com/tag/post-rock-post/"
+KULT = "https://www.heavyblogisheavy.com/tag/kvlt-kolvmn/"
+UNMETAL = "https://www.heavyblogisheavy.com/tag/unmetal-monthly/"
+LISTENTOTHIS = "https://www.heavyblogisheavy.com/tag/listen-to-this/"
+ROTTEN = "https://www.heavyblogisheavy.com/tag/rotten-to-the-core/"
 
 def main() -> None:
   opts = [opt for opt in sys.argv[1:] if opt.startswith("-")]
   args = [arg for arg in sys.argv[1:] if not arg.startswith("-")]
 
-  # print(args)
+  print(args)
   if args[0] == "EDITORSPICK":
     pageToScrap = EDITORSPICK
     source = "Editor's pick"
-  elif args[0] =="JAZZCLUB":
+  elif arg =="JAZZCLUB":
     pageToScrap = JAZZCLUB
     source = "Jazz Club"
-  elif args[0] =="DOOMSDAY":
+  elif arg =="DOOMSDAY":
     pageToScrap = DOOMSDAY
     source = "Doomsday"
-  elif args[0] =="POSTROCK":
+  elif arg =="POSTROCK":
     pageToScrap = POSTROCK
     source = "Post-Rock"
-  elif args[0] =="KULT":
+  elif arg =="KULT":
     pageToScrap = KULT
     source = "KULT"
-  elif args[0] =="UNMETAL":
+  elif arg =="UNMETAL":
     pageToScrap = UNMETAL
     source = "Unmetal"
+  elif arg =="LISTENTOTHIS":
+    pageToScrap = LISTENTOTHIS
+    source = "Listen to this"
+  elif arg =="ROTTEN":
+    pageToScrap = ROTTEN
+    source = "Rotten to the core"
   else:
     print("No Page to scrap argument")
     quit()
+  
+  return pageToScrap, source
+
+
+def main() -> None:
+
+  # Get current date for log file name
+  today = datetime.datetime.now().strftime("%Y-%m-%d")
+  log_file = f"log_{today}.log"
+
+  # Setup logger
+  logger = utils.setup_logger(log_file)
+
+  pages = [
+       ("EDITORSPICK", EDITORSPICK, "Editor's pick"),
+        ("JAZZCLUB", JAZZCLUB, "Jazz Club"),
+        ("DOOMSDAY", DOOMSDAY, "Doomsday"),
+        ("POSTROCK", POSTROCK, "Post-Rock"),
+        ("KULT", KULT, "KULT"),
+        ("UNMETAL", UNMETAL, "Unmetal"),
+        ("LISTENTOTHIS", LISTENTOTHIS, "Listen to this"),
+        ("ROTTEN", ROTTEN, "Rotten to the core"),
+  ]
 
   try:
-    pageList = []
 
-    # print(pageToScrap)
-    soup=getHTMLPage(pageToScrap)
+    for suffix, pageToScrap, source in pages:
+      logger.info(f"Starting with {pageToScrap} page")
+      # pageToScrap, source = retrievePageToScrap(arg)
+      pageList = []
 
-    # print("Table articles ")
-    # print(table_articles)
-    pageList = HBIH_scrapPageList(soup)
-    # print(pageList)
-    releasesList = scrapReleases_HBIH_Missive(pageList, source)
-    # print(releasesList)
+      logger.info(f"get {pageToScrap}")
+      soup=getHTMLPage(pageToScrap)
 
-    fileName = 'heavyB_data_'+str(args[0])+'.json'
-    # print(fileName)
-    saveToFile(fileName, releasesList)
+      # print("Table articles ")
+      # print(table_articles)
+      pageList = HBIH_scrapPageList(soup)
+      
+      logger.info(f"Page list {pageList}")
+      releasesList = scrapReleases_HBIH_Missive(pageList, source)
+      # print("Releases List")
+      # print(releasesList)
 
-    saveToDabase(fileName)
+      fileName = './scripts/output/'+'heavyB_data_'+str(suffix)+'.json'
+      logger.info(f"Saving to file {fileName}")
+      utils.saveToFile(fileName, releasesList)
+
+    saveToDatabase(fileName)
   except RuntimeError as runtime_error:
-    print(runtime_error)
-  # print(runtime_error)
+      logger.error(runtime_error)
+    # print(runtime_error)
   except AttributeError as attribute_error:
-    print(attribute_error)
-  # print(attribute_error)
+      logger.error(attribute_error)
+    # print(attribute_error)
 
 if __name__ == "__main__":
     main()
