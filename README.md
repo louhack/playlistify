@@ -15,7 +15,7 @@ It’s not a professional-grade product, but it works, it's mine — and it remi
 
 # FEATURES
 
-- Extraction of new releases using web scrapping in Python of the page https://www.sputnikmusic.com/newreleases.php<br>
+- Extraction of new releases using web scrapping in Python of the pages of some of my favorite music sites or blogs<br>
 - Saving albums extracted to MongoDB<br>
 - Display a page with album extracted from Sputnik Music<br>
 - Search extracted albums in Spotify using Spotify API (Not fully functional)<br>
