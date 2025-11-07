@@ -13,13 +13,12 @@
   <label>Album</label>
   <input type="text" class="form-control" id="album" [(ngModel)]="album.albumName">
   <label>Spotify Id</label>
-  <input #spotifyId="ngModel" type="text" class="form-control" id="spotifyId" [(ngModel)]="album.spotify && album.spotify.id"
-  >
+  <input #spotifyId="ngModel" type="text" class="form-control" id="spotifyId" [ngModel]="album.spotify?.id" (ngModelChange)="album.spotify = album.spotify || {}; album.spotify.id = $event">
   <label>Release Date</label>
-  <input type="text" class="form-control" id="releaseDate" [(ngModel)]="album.spotify && album.spotify.release_date">
+  <label>Release Date</label>
+  <input type="text" class="form-control" id="releaseDate" [ngModel]="album.spotify?.release_date" (ngModelChange)="album.spotify = album.spotify || {}; album.spotify.release_date = $event">
   <label>Tracks</label>
-  <input type="text" class="form-control" id="totalTracks" [(ngModel)]="album.spotify && album.spotify.total_tracks">
-</div>
+  <input type="text" class="form-control" id="totalTracks" [ngModel]="album.spotify?.total_tracks" (ngModelChange)="album.spotify = album.spotify || {}; album.spotify.total_tracks = $event">
 <div class="modal-footer">
   <button type="button" class="btn btn-primary" (click)="onSave()">Save</button>
 <button type="button" class="btn btn-default" (click)="onClose()">Close</button>

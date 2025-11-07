@@ -2,12 +2,14 @@ import os
 import re
 import json
 import time
+import sys
 import requests
 import dns
 from bs4 import BeautifulSoup
 from bson import json_util
 from datetime import date, datetime
 from pymongo import MongoClient
+import certifi
 from pytz import timezone
 
 monthDic = {
@@ -52,10 +54,10 @@ def parse_data(content):
   #Je recupere le 1er mois affiche sur la page qui correspondant au mois en cours
   #print(soup.find(class_="plaincontentbox").tr.next_sibling.td.string)
   #currentmonth = soup.find(class_="plaincontentbox").tr.next_sibling.td.string
-  print(soup.find(class_="plaincontentbox").tr.next_sibling.td.string)
+  print(soup.find(class_="plaincontentbox").tr.td.table.tr.td.string)
   #print(soup.find(class_="plaincontentbox").tr)
   #currentmonth = soup.find(class_="plaincontentbox").table.td.string
-  currentmonth = soup.find(class_="plaincontentbox").tr.next_sibling.td.string
+  currentmonth = soup.find(class_="plaincontentbox").tr.td.table.tr.td.string
 
   #Je recupere le tableau des release du mois en cours
   table_releases = soup.find_all(class_="alt1")
@@ -116,7 +118,7 @@ def parse_data(content):
           album_1=string
           k=0
           # print("Artiste ou Album", string)
-      # print("{} - {}".format(artiste_1, album_1))
+      print("{} - {}".format(artiste_1, album_1))
       imagePath_1 = "https://www.sputnikmusic.com/images/albums/"+album_link_1[7:13]+".jpg"
       releaseJson = {'artistName':artiste_1, 'albumName':album_1,'sputnikMusic':{'id':album_link_1[7:13], 'note':float(note_release_1), 'releaseDate':{ 'month': int(monthDic[releaseDate[0]]), 'year': int(releaseDate[1])}, 'imagePath': imagePath_1, 'numberOfUserRatings': nbOfRating}}
       releases_list.append(releaseJson)
@@ -165,7 +167,7 @@ def parse_data(content):
             album_2=string
             k=0
 
-        # print("{} - {}".format(artiste_2, album_2))
+        print("{} - {}".format(artiste_2, album_2))
         imagePath_2 = "https://www.sputnikmusic.com/images/albums/"+album_link_2[7:13]+".jpg"
         releaseJson2 = {'artistName':artiste_2, 'albumName':album_2,'sputnikMusic':{'id':album_link_2[7:13], 'note':float(note_release_2), 'releaseDate':{ 'month': int(monthDic[releaseDate[0]]), 'year': int(releaseDate[1])}, 'imagePath': imagePath_2, 'numberOfUserRatings': nbOfRating2}}
         releases_list.append(releaseJson2)
@@ -180,7 +182,10 @@ def write_to_file(data, filename):
 
 def connect_to_db():
     connection_string = os.environ.get('MONGODB_WEBSCRAPPER')
-    return MongoClient(connection_string)
+    return MongoClient(connection_string,
+                      tls=True,                 # or ssl=True is fine, but tls is preferred
+                      tlsCAFile=certifi.where(),
+                      serverSelectionTimeoutMS=30000,)
 
 def update_db(connection, data):
     db = connection['heroku_j6lv18qq']
@@ -205,18 +210,30 @@ def update_db(connection, data):
         )
 
 def main():
-    url = "http://www.sputnikmusic.com/newreleases.php"
-    content = fetch_data(url)
-    if content is None:
-        return
+    skip_scrape = (
+        "--skip-scrape" in sys.argv
+        or os.getenv("SKIP_SCRAPE", "false").lower() in ("1", "true", "yes")
+    )
 
-    data = parse_data(content)
-    # print(data)
-    write_to_file(data, './scripts/data.json')
+    if not skip_scrape:
+        url = "http://www.sputnikmusic.com/newreleases.php"
+        content = fetch_data(url)
+        if content is None:
+            return
+
+        data = parse_data(content)
+        write_to_file(data, "./scripts/data.json")
+        print("album added to json file")
+    else:
+        print("Skipping fetch and parse steps")
+        # load existing file
+        with open("./scripts/data.json", "r", encoding="utf-8") as f:
+            import json
+            data = json.load(f)
 
     with connect_to_db() as connection:
         update_db(connection, data)
-    print('script finished')
+    print("script finished")
     time.sleep(5)
 
 if __name__ == "__main__":

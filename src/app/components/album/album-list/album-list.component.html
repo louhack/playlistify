@@ -1,43 +1,46 @@
 <form [formGroup]="searchForm" class="mb-4">
   <div class="form-row align-items-center">
-    <div class="col-md-4 mb-3">
+    
+    <div class="col-md-12 mb-3">
       <label for="Search"><b>Search</b></label>
       <input type="text" class="form-control" id="Search" placeholder="Search artists and albums" formControlName="search" (input)="onSearchEvent()">
     </div>
-
-    <div class="col-md-4 mb-3">
-      <legend class="col-form-label pt-0"><b>Release Type</b></legend>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="scope" id="radioAll" value="all" formControlName="scope" (change)="onSearchEvent()">
-        <label class="form-check-label" for="radioAll">All</label>
+    
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <legend class="col-form-label pt-0"><b>Release Type</b></legend>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="scope" id="radioAll" value="all" formControlName="scope" (change)="onSearchEvent()">
+          <label class="form-check-label" for="radioAll">All</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="scope" id="radioArtists" value="artists" formControlName="scope" (change)="onSearchEvent()">
+          <label class="form-check-label" for="radioArtists">Artists</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="scope" id="radioAlbums" value="albums" formControlName="scope" (change)="onSearchEvent()">
+          <label class="form-check-label" for="radioAlbums">Albums</label>
+        </div>
       </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="scope" id="radioArtists" value="artists" formControlName="scope" (change)="onSearchEvent()">
-        <label class="form-check-label" for="radioArtists">Artists</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="scope" id="radioAlbums" value="albums" formControlName="scope" (change)="onSearchEvent()">
-        <label class="form-check-label" for="radioAlbums">Albums</label>
-      </div>
-    </div>
-
-    <div class="col-md-4 mb-3">
-      <legend class="col-form-label pt-0"><b>Sources</b></legend>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="sources" id="radioAllSources" value="allSources" formControlName="sources" (change)="onSearchEvent()">
-        <label class="form-check-label" for="radioAllSources">All</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="sources" id="radioSputnikMusicSources" value="sputnikMusic" formControlName="sources" (change)="onSearchEvent()">
-        <label class="form-check-label" for="radioSputnikMusicSources">Sputnik Music</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="sources" id="radioHBIHSources" value="hbih" formControlName="sources" (change)="onSearchEvent()">
-        <label class="form-check-label" for="radioHBIHSources">Heavy Blog Is Heavy</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="sources" id="radioYLRSources" value="ylr" formControlName="sources" (change)="onSearchEvent()">
-        <label class="form-check-label" for="radioYLRSources">Your Last Rites</label>
+      
+      <div class="col-md-6 mb-3">
+        <legend class="col-form-label pt-0"><b>Sources</b></legend>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="sources" id="radioAllSources" value="allSources" formControlName="sources" (change)="onSearchEvent()">
+          <label class="form-check-label" for="radioAllSources">All</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="sources" id="radioSputnikMusicSources" value="sputnikMusic" formControlName="sources" (change)="onSearchEvent()">
+          <label class="form-check-label" for="radioSputnikMusicSources">Sputnik Music</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="sources" id="radioHBIHSources" value="hbih" formControlName="sources" (change)="onSearchEvent()">
+          <label class="form-check-label" for="radioHBIHSources">Heavy Blog Is Heavy</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="sources" id="radioYLRSources" value="ylr" formControlName="sources" (change)="onSearchEvent()">
+          <label class="form-check-label" for="radioYLRSources">Your Last Rites</label>
+        </div>
       </div>
     </div>
   </div>
@@ -108,7 +111,7 @@
             <button (click)="openEditModal(i)" *ngIf="isAuthenticated" class="btn btn-secondary btn-block mb-2 ml-md-2">
               <i class="fas fa-edit"></i> Edit
             </button>
-            <p *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length === 0 && !album.spotify" class="text-danger">Sorry! No result found.</p>
+            <p *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length === 0 && !album.spotify" class="text-danger">Sorry! No Spotify result found.</p>
             <p *ngIf="album.addedToPlaylist" class="text-success">Album added to playlist {{ album.addedToPlaylist.name }}</p>
             <ng-container *ngIf="album.searchedOnSpotify && album.spotifySearchResults.length > 1">
               <p>{{ album.spotifySearchResults.length }} results found! Please select the right one</p>

@@ -1,3 +1,4 @@
+import certifi
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -100,7 +101,10 @@ def saveToDatabase(fileName):
     if not connection_string:
         raise Exception("Database connection string not found in environment variables")
 
-    connection = MongoClient(connection_string)
+    connection = MongoClient(connection_string,
+                      tls=True,                 # or ssl=True is fine, but tls is preferred
+                      tlsCAFile=certifi.where(),
+                      serverSelectionTimeoutMS=30000)
     db = connection['heroku_j6lv18qq']
     releases = db.albums
 

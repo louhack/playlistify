@@ -352,6 +352,7 @@ export class AlbumListComponent implements OnInit, OnDestroy {
     }
 
     album.searchedOnSpotify = true;
+    this.cdr.markForCheck();
     return false;
   }
 
