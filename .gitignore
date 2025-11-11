@@ -43,5 +43,6 @@ testem.log
 .DS_Store
 Thumbs.db
 .env
-scripts/temp
+/scripts/temp
 /scripts/__pycache__/*
+/scripts/logs/*
