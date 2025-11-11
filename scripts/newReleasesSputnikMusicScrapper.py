@@ -159,31 +159,6 @@ def connect_to_db() -> MongoClient:
     return utils.connect_to_db(MONGO_ENV)
 
 
-# def update_db(connection: MongoClient, data: List[Dict[str, Any]]):
-#     db = connection["heroku_j6lv18qq"]
-#     releases = db.albums
-#     t_day, t_month, t_year, now = utils.get_current_date()
-#     for album in data:
-#         result = releases.update_one(
-#             {
-#                 "artistName": {"$regex": "^" + re.escape(album["artistName"]) + "$", "$options": "i"},
-#                 "albumName": {"$regex": "^" + re.escape(album["albumName"]) + "$", "$options": "i"},
-#             },
-#             {
-#                 "$set": album,
-#                 "$currentDate": {"lastModified": True},
-#                 "$setOnInsert": {"created": now, "sortDate": {"day": t_day, "month": t_month, "year": t_year}},
-#             },
-#             upsert=True,
-#         )
-#         logger.debug(
-#             "Upserted: matched=%d modified=%d upserted_id=%s",
-#             getattr(result, "matched_count", None),
-#             getattr(result, "modified_count", None),
-#             getattr(result, "upserted_id", None),
-#         )
-
-
 def main():
     skip_scrape = (
         "--skip-scrape" in os.sys.argv

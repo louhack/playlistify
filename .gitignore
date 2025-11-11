@@ -44,3 +44,4 @@ testem.log
 Thumbs.db
 .env
 scripts/temp
+/scripts/__pycache__/*
