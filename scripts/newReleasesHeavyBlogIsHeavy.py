@@ -1,14 +1,21 @@
 import os
 import re
 import time
-from datetime import date, datetime
+from datetime import date, datetime as dt
 import json
 from pymongo import MongoClient
 from bson import json_util
 from pytz import timezone
 from bs4 import BeautifulSoup
 import requests
+import utils
 
+MONGO_ENV = "MONGODB_WEBSCRAPPER"
+
+# --- Logging ---
+today = dt.now().strftime("%Y-%m-%d")
+log_file = f"./scripts/logs/log_{today}.log"
+logger = utils.setup_logger(log_file,console=False)
 
 def get_page_content(url):
     r = requests.get(url)
@@ -54,7 +61,7 @@ def connect_to_db():
 def get_current_date():
     tz = timezone("Europe/Paris")
     today = date.today()
-    now = datetime.now(tz)
+    now = dt.now(tz)
     return today.day, today.month, today.year, now
 
 def update_releases(releases, parsed_albums, t_day, t_month, t_year, now):
@@ -114,15 +121,13 @@ def main():
         json.dump(releases_list, f, indent=4, ensure_ascii=True)
 
     # Connect to the database and update the releases
-    connection = connect_to_db()
     try:
-        db = connection['heroku_j6lv18qq']
-        releases = db.albums
-        with open("./scripts/heavyB_data.json", "r") as albums:
-            parsed_albums = json_util.loads(albums.read())
-        t_day, t_month, t_year, now = get_current_date()
-        # print(parsed_albums)
-        update_releases(releases, parsed_albums, t_day, t_month, t_year, now)
+        with utils.connect_to_db(MONGO_ENV) as connection:
+            utils.update_db(connection, releases_list)
+            logger.info("Database update finished")
+    except Exception as e:
+        logger.error("Database update failed: %s", e)
+
     finally:
         connection.close()
 

@@ -46,3 +46,4 @@ Thumbs.db
 /scripts/temp
 /scripts/__pycache__/*
 /scripts/logs/*
+/scripts/output/*

@@ -2,7 +2,6 @@ import datetime as dt
 import sys
 import utils
 import wepScrapperFunctions as ws  # was: from wepScrapperFunctions import *
-import utils as ws_utils
 
 EDITORSPICK = "https://www.heavyblogisheavy.com/tag/editors-picks/"
 # JAZZCLUB    = "https://www.heavyblogisheavy.com/tag/the-jazz-club/"
