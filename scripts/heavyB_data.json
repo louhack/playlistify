@@ -1,0 +1,106 @@
+[
+    {
+        "artistName": "Astronoid",
+        "albumName": "Stargod",
+        "heavyBIsH": {
+            "id": "astronoid-stargod",
+            "reviewLink": "/2025/11/06/astronoid-stargod/",
+            "releaseDate": {
+                "month": "11",
+                "year": "2025"
+            },
+            "imagePath": "https://www.heavyblogisheavy.com/content/images/2025/11/011253.jpg"
+        }
+    },
+    {
+        "artistName": "Omnium Gatherum",
+        "albumName": "May The Bridges We Burn Light Our Way",
+        "heavyBIsH": {
+            "id": "omnium-gatherum-may-the-bridges-we-burn-light-our-way",
+            "reviewLink": "/2025/11/04/omnium-gatherum-may-the-bridges-we-burn-light-our-way/",
+            "releaseDate": {
+                "month": "11",
+                "year": "2025"
+            },
+            "imagePath": "https://www.heavyblogisheavy.com/content/images/2025/11/Omnium-Gatherum-2-1.jpg"
+        }
+    },
+    {
+        "artistName": "Black Cross Hotel",
+        "albumName": "Songs for Switches",
+        "heavyBIsH": {
+            "id": "black-cross-hotel-songs-for-switches",
+            "reviewLink": "/2025/10/30/black-cross-hotel-songs-for-switches/",
+            "releaseDate": {
+                "month": "10",
+                "year": "2025"
+            },
+            "imagePath": "https://www.heavyblogisheavy.com/content/images/2025/10/a3784681781_10.jpg"
+        }
+    },
+    {
+        "artistName": "Psychonaut",
+        "albumName": "World Maker",
+        "heavyBIsH": {
+            "id": "psychonaut-world-maker",
+            "reviewLink": "/2025/10/24/psychonaut-world-maker/",
+            "releaseDate": {
+                "month": "10",
+                "year": "2025"
+            },
+            "imagePath": "https://www.heavyblogisheavy.com/content/images/2025/10/a1649894834_10.jpg"
+        }
+    },
+    {
+        "artistName": "Conjurer",
+        "albumName": "Unself",
+        "heavyBIsH": {
+            "id": "conjurer-unself",
+            "reviewLink": "/2025/10/21/conjurer-unself/",
+            "releaseDate": {
+                "month": "10",
+                "year": "2025"
+            },
+            "imagePath": "https://www.heavyblogisheavy.com/content/images/2025/10/405631.jpg"
+        }
+    },
+    {
+        "artistName": "Mastiff",
+        "albumName": "For all the Dead Dreams",
+        "heavyBIsH": {
+            "id": "mastiff-for-all-the-dead-dreams",
+            "reviewLink": "/2025/10/15/mastiff-for-all-the-dead-dreams/",
+            "releaseDate": {
+                "month": "10",
+                "year": "2025"
+            },
+            "imagePath": "https://www.heavyblogisheavy.com/content/images/2025/10/420728.jpg"
+        }
+    },
+    {
+        "artistName": "Throat Piss",
+        "albumName": "Existence as a Grinding Gear",
+        "heavyBIsH": {
+            "id": "throat-piss-existence-as-a-grinding-gear",
+            "reviewLink": "/2025/10/09/throat-piss-existence-as-a-grinding-gear/",
+            "releaseDate": {
+                "month": "10",
+                "year": "2025"
+            },
+            "imagePath": "https://www.heavyblogisheavy.com/content/images/2025/10/a2946918505_16.jpg"
+        }
+    },
+    {
+        "artistName": "God Alone",
+        "albumName": "The Beep Test",
+        "heavyBIsH": {
+            "id": "god-alone-the-beep-test",
+            "reviewLink": "/2025/10/08/god-alone-the-beep-test/",
+            "releaseDate": {
+                "month": "10",
+                "year": "2025"
+            },
+            "imagePath": "https://www.heavyblogisheavy.com/content/images/2025/10/thebeeptest.jpg"
+        }
+    }
+]
